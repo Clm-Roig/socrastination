@@ -1,0 +1,151 @@
+/*----- BLOCS -----*/ 
+
+body {
+	background-image : url('../images/texture-papier.jpg');
+}
+
+@media screen and (min-width:1600px){
+body{
+	margin-right : 100px;
+	margin-left : 100px;
+}
+}
+
+.blocL, .blocC, .blocR{
+	border : 3px solid purple;
+	border-radius : 10px;
+	text-align : center;
+}
+
+.blocC{
+	margin-left : 4.166666666%;
+	margin-right : 4.166666666%;
+}
+
+@media screen and (max-width:767px){
+.blocL, .blocC, .blocR{
+	margin-left : 10%;
+	margin-right : 10%;
+	margin-bottom : 2%;
+}
+}
+
+#section{
+	margin-top : 1em;
+}
+
+footer{
+	margin-top : 2em;
+	text-align : center;
+}
+
+
+/*--- NAV ---*/
+
+.navbar{
+	margin-bottom :0;
+	border-radius : 0px;
+}
+
+li.menu {
+	font-size : 1.5em;
+	line-height : 1.5em;
+	margin-left : 1em;
+}
+
+/*----- FORMULAIRE ------*/
+
+form{
+	padding : 10px;
+	text-align : center;
+}
+
+.control-label {
+	padding-right : 0;
+}
+
+
+/*----- TEXTE DEFAUT -----*/ 
+
+p{
+
+}
+
+h1{
+
+}
+
+h2{
+
+}
+
+h3{
+
+}
+
+/*----- TEXTE PERSO -----*/ 
+
+h2.cases {
+	margin-top : 0.4em;
+}
+
+/*----- IMAGES, FIGURES, BOUTONS -----*/ 
+
+.navbar-brand{
+	padding : 0;
+}
+
+img.logo {
+	width : 2em;
+}
+
+img.case{
+	height : 200px;
+	margin : auto;
+	padding-bottom : 10px;
+}
+
+	/*-- CAROUSEL --*/
+	
+#myCarousel{
+	max-height : 400px;
+}
+
+.item{
+
+}
+
+.carousel-caption{
+
+}
+
+.blocboutonplay{
+	display : inline-block;
+	margin : 1em;
+	padding : 2em;
+	border : 3px double white;
+	border-radius : 100%;
+	background-color : purple;
+	box-shadow : 0 0 10px white;
+}
+
+a.jouer {
+	color : inherit;
+}
+
+a.jouer:hover {
+	color : gray;
+}
+
+img.slide {
+	width : 100%;
+	max-height : 400px;
+	margin : auto;
+}
+
+hr.foot{
+	height : 1px;
+	width : 90%;
+	background-color : black;
+}
+
