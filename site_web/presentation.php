@@ -39,49 +39,17 @@
      <div class="row">
 	<div class="container-fluid">
 
-			 <div class="row">
-				 <nav class="navbar navbar-inverse">
-				  	<div class="container-fluid">
+		<?php include("header1.php");?>
+			<ul class="nav navbar-nav">
+							<li class="menu"><a href="index.php">Accueil</a></li>
+							<li class="menu active"><a href="presentation.php">Présentation</a></li>
+							<li class="menu"><a href="regles.php">Règles</a></li>
+							<li class="menu"><a href="classement.php">Classement</a></li>
+					      </ul>
 
-					    	<div class="navbar-header">
-						      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-							 <span class="icon-bar"></span>
-							 <span class="icon-bar"></span>
-							 <span class="icon-bar"></span>
-						      </button>
-						      <a class="navbar-brand" href="index.html"><img class="logo" src="images/idee.png" alt="Ampoule idée"></a>
-					    	</div>
-
-				    		<div class="collapse navbar-collapse" id="myNavbar">
-						      
-						      <ul class="nav navbar-nav">
-							 <li class="menu"><a href="index.html">Accueil</a></li>
-							 <li class="menu active"><a href="presentation.html">Présentation</a></li>
-							 <li class="menu"><a href="regles.html">Règles</a></li>
-							 <li class="menu"><a href="classement.html">Classement</a></li>
-						      </ul>
-
-						      <ul class="nav navbar-nav navbar-right">
-								<li><a href="inscription.html"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-								<li>
-									   <form class="form-inline">
-
-										 <div class="form-group">
-										    <input type="text" class="form-control" id="pseudo" placeholder="Pseudo">
-										    <input type="password" class="form-control" id="password" placeholder="Mot de passe">
-									  	</div>
-
-										<div class="form-group">
-										      <button type="submit" class="btn"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
-										</div>
-									  </form>
-								</li>
-						     </ul>
-
-				   		</div>
-					</div>
-				</nav>
-			</div>
+					      <ul class="nav navbar-nav navbar-right">
+							<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+		<?php include("header2.php");?>
 		
 		<div class="row">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -98,7 +66,7 @@
 				    <div class="item active">
 				      <img class="slide img-responsive" src="images/fresque.jpeg" alt="Chania">
 				      <div class="carousel-caption">
-					<a class="jouer" href="listetables.html"><div class="blocboutonplay">JOUER</div></a>
+					<a class="jouer" href="listetables.php"><div class="blocboutonplay">JOUER</div></a>
 					<h3>Fresque</h3>
 					<p>Test légende</p>
 				      </div>
@@ -145,7 +113,7 @@
 			<div id="section">
 				<div class="col-sm-1"></div>
 
-				<a href="regles.html">
+				<a href="regles.php">
 					<div class="col-sm-2 blocL">
 						<div class="row">
 							<h2 class="cases">Règles</h2>
@@ -161,7 +129,7 @@
 						<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
 					</div>
 
-		  		<a href="classement.html">
+		  		<a href="classement.php">
 					<div class="col-sm-2 blocR">
 						<div class="row">
 							<h2 class="cases">Classement</h2>

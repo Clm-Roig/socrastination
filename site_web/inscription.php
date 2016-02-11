@@ -39,49 +39,17 @@
      <div class="row">
 	<div class="container-fluid">
 
-				 <div class="row">
-				 <nav class="navbar navbar-inverse">
-				  	<div class="container-fluid">
+		 <?php include("header1.php");?>
+			<ul class="nav navbar-nav">
+							<li class="menu"><a href="index.php">Accueil</a></li>
+							<li class="menu"><a href="presentation.php">Présentation</a></li>
+							<li class="menu"><a href="regles.php">Règles</a></li>
+							<li class="menu"><a href="classement.php">Classement</a></li>
+					      </ul>
 
-					    	<div class="navbar-header">
-						      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-							 <span class="icon-bar"></span>
-							 <span class="icon-bar"></span>
-							 <span class="icon-bar"></span>
-						      </button>
-						      <a class="navbar-brand" href="index.html"><img class="logo" src="images/idee.png" alt="Ampoule idée"></a>
-					    	</div>
-
-				    		<div class="collapse navbar-collapse" id="myNavbar">
-						      
-						      <ul class="nav navbar-nav">
-							 <li class="menu"><a href="index.html">Accueil</a></li>
-							 <li class="menu active"><a href="presentation.html">Présentation</a></li>
-							 <li class="menu"><a href="regles.html">Règles</a></li>
-							 <li class="menu"><a href="classement.html">Classement</a></li>
-						      </ul>
-
-						      <ul class="nav navbar-nav navbar-right">
-								<li><a href="inscription.html"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-								<li>
-									   <form class="form-inline">
-
-										 <div class="form-group">
-										    <input type="text" class="form-control" id="pseudo" placeholder="Pseudo">
-										    <input type="password" class="form-control" id="password" placeholder="Mot de passe">
-									  	</div>
-
-										<div class="form-group">
-										      <button type="submit" class="btn"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
-										</div>
-									  </form>
-								</li>
-						     </ul>
-
-				   		</div>
-					</div>
-				</nav>
-			</div>
+					      <ul class="nav navbar-nav navbar-right">
+							<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+		<?php include("header2.php");?>
 
 		<div class="row">
 
