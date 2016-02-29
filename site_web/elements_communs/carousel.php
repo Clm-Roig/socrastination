@@ -13,7 +13,7 @@
 				    <div class="item active">
 				      <img class="slide img-responsive" src="images/fresque.jpeg" alt="Chania">
 				      <div class="carousel-caption">
-					<a class="jouer" href="listetables.php"><div class="blocboutonplay">JOUER</div></a>
+					<a class="jouer" href="liste_forums.php"><div class="blocboutonplay">JOUER</div></a>
 					<h3>Fresque</h3>
 					<p>Test légende</p>
 				      </div>
