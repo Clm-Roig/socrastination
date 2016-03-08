@@ -1,10 +1,11 @@
 					<?php
 					$PARAM_hote='https://infolimon.iutmontp.univ-montp2.fr/phpmyadmin'; // le chemin vers le serveur
 					$PARAM_nom_bd='chacc'; // le nom de votre base de données
+					$PARAM_port='3306';
 					$PARAM_utilisateur='chacc'; // nom d'utilisateur pour se connecter
 					$PARAM_mot_passe='PetitChatDu34'; // mot de passe de l'utilisateur pour se connecter
 					try{
-					$bdd = new PDO('mysql:host='.$PARAM_hote.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
+					$bdd = new PDO('mysql:host='.$PARAM_hote.';port='.$PARAM_port.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
 					} catch (PDOException $e) {
 					echo 'Erreur de connexion : ' . $e->getMessage();
 					}
