@@ -4,7 +4,7 @@
 					$PARAM_utilisateur='chacc'; // nom d'utilisateur pour se connecter
 					$PARAM_mot_passe='PetitChatDu34'; // mot de passe de l'utilisateur pour se connecter
 					try{
-					$bdd= new PDO('mysql:host=http://infolimon.iutmontp.univ-montp2.fr/my;dbname=chacc;charset=utf8','chacc','PetitChatDu34');
+					$bdd = new PDO('mysql:host='.$PARAM_hote.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
 					} catch (PDOException $e) {
 					echo 'Erreur de connexion : ' . $e->getMessage();
 					}
