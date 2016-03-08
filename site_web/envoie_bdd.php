@@ -8,6 +8,7 @@
 					} catch (PDOException $e) {
 					echo 'Erreur de connexion : ' . $e->getMessage();
 					}
+					try{
 					// REQUETE 
 					$req = 'INSERT INTO Membres(pseudo, motDePasse, mail) VALUES(:pseudo, :motDePasse, :mail);';
 					$stmt = $bdd->prepare($req);
@@ -17,4 +18,7 @@
 					$stmt->bindParam(':motDePasse', $_POST['motDePasse'], PDO::PARAM_STR);
 					$stmt->bindParam(':mail', $_POST['mail'], PDO::PARAM_STR);
 					$stmt->execute() or die (print_r($stmt->errorInfo(), true));
+					} catch (PDOException $e) {
+    echo 'Erreur enregistrement des donnees : ' . $e->getMessage();
+}
 					?>
