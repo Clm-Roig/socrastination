@@ -1,5 +1,5 @@
 					<?php
-					$PARAM_hote='https://infolimon.iutmontp.univ-montp2.fr/phpmyadmin'; // le chemin vers le serveur
+					$PARAM_hote='localhost'; // le chemin vers le serveur
 					$PARAM_nom_bd='chacc'; // le nom de votre base de données
 					$PARAM_port='3306';
 					$PARAM_utilisateur='chacc'; // nom d'utilisateur pour se connecter
