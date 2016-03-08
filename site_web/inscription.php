@@ -57,7 +57,7 @@
 
 			<div class="col-sm-8">
 
-				 <form class="form-horizontal" role="form" action="cible.php" method="post">
+				 <form class="form-horizontal" role="form" action="envoie_bdd.php" method="post">
 					<h1>Inscription</h1>
 
 					  <div class="form-group">
