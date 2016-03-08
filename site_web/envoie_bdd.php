@@ -7,7 +7,7 @@
 					$bdd= new PDO('mysql:host=http://infolimon.iutmontp.univ-montp2.fr/my;dbname=chacc;charset=utf8','chacc','PetitChatDu34');
 					
 					// REQUETE 
-					$req = 'INSERT INTO Membre(pseudo, motDePasse, mail) VALUES(:pseudo, :motDePasse, :mail);';
+					$req = 'INSERT INTO Membres(pseudo, motDePasse, mail) VALUES(:pseudo, :motDePasse, :mail);';
 					$stmt = $bdd->prepare($req);
 
 					// PDO::BINDPARAM
