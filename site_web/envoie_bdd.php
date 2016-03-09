@@ -1,17 +1,6 @@
 					<?php
-					$PARAM_hote='http://infolimon.iutmontp.univ-montp2.fr/'; // le chemin vers le serveur
-					$PARAM_nom_bd='chacc'; // le nom de votre base de données
-					$PARAM_port='3306';
-					$PARAM_utilisateur='chacc'; // nom d'utilisateur pour se connecter
-					$PARAM_mot_passe='PetitChatDu34'; // mot de passe de l'utilisateur pour se connecter
-					try{
-					$bdd = new PDO ('mysql:dbname=chacc;host=infolimon.iutmontp.univ-montp2.fr','chacc','PetitChatDu34');}
-					  //new PDO('mysql:dbname='.$PARAM_nom_bd.';host='.$PARAM_hote, $PARAM_utilisateur, $PARAM_mot_passe);
-					
-catch (PDOException $e){
-       echo "problème PDO :". $e->getMessage();
-       exit();
-   }
+
+					require("config.php");
 					try{
 					// REQUETE 
 					$req = 'INSERT INTO Membres(pseudo, motDePasse, mail, niveau, nbDePoints, nbPartiesGagnees, NbTotalParties) VALUES(:pseudo, :motDePasse, :mail, 1, 0, 0, 0);';

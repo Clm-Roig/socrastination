@@ -1,13 +1,13 @@
 							<li>
-								   <form class="form-inline">
+								   <form class="form-inline" action="login.php" method="post">
 
 									 <div class="form-group">
-									    <input type="text" class="form-control" id="pseudo" placeholder="Pseudo">
-									    <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+									    <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo">
+									    <input type="password" name="pwd" class="form-control" id="password" placeholder="Mot de passe">
 								  	</div>
 
 									<div class="form-group">
-									      <button type="submit" class="btn"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
+									      <button type="submit" name="connexion" class="btn"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
 									</div>
 								  </form>
 							</li>

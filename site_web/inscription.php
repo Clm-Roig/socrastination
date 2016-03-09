@@ -64,7 +64,7 @@
 						    <div class="col-sm-2"></div>
 						    <label class="control-label col-sm-2" for="email">Pseudo</label>
 						    <div class="col-sm-6">
-						      <input type="text" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
+						      <input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
 						    </div>
 						    <div class="col-sm-2"></div>
 					  </div>
@@ -72,7 +72,7 @@
 						    <div class="col-sm-2"></div>
 						    <label class="control-label col-sm-2" for="email">Adresse email</label>
 						    <div class="col-sm-6">
-						      <input type="email" class="form-control" name="mail" id="email" placeholder="Entrer email">
+						      <input type="email" required="required" class="form-control" name="mail" id="email" placeholder="Entrer email">
 						    </div>
 						    <div class="col-sm-2"></div>
 					  </div>
@@ -80,7 +80,7 @@
 						    <div class="col-sm-2"></div>
 						    <label class="control-label col-sm-2" for="pwd">Mot de passe</label>
 						    <div class="col-sm-6">
-						      <input type="password" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
+						      <input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
 						    </div>
 						    <div class="col-sm-2"></div>
 					  </div>
@@ -88,8 +88,9 @@
 						    <div class="col-sm-2"></div>
 						    <label class="control-label col-sm-2" for="pwd">Confirmer mot de passe</label>
 						    <div class="col-sm-6">
-						      <input type="password" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe">
+						      <input type="password" required="required" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
 						    </div>
+							<div id="alerte"></div>
 						    <div class="col-sm-2"></div>
 					  </div>
 					
@@ -115,5 +116,22 @@
 
 	  </div>
 	</div>
+	<script>
+	function checkpass()
+{
+var val1 = document.getElementById("pwd");
+var val2 = document.getElementById("pwdconfirm");
+ 
+  if(val1.value != val2.value)
+  {
+    document.getElementById("alerte").innerHTML="Tapez deux passes identiques, merci.";
+  }
+  else
+  {
+    document.getElementById("alerte").innerHTML="Mot de passe valide, bravo !";
+  }
+}
+	</script>
+	
 </body>
 </html>

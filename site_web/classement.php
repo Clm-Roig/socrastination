@@ -68,17 +68,34 @@
 
 						<div class="col-sm-5 blocC">
 							<div class="row">
-								<h2 class="cases">Classement</h2>
-								<ol>
-									<li>Bébcort : 4563 points</li>
-									<li>Camac : 4200 points</li>
-									<li>Maxer : 3600 points</li>
-									<li>Clémoig : 3000 points</li>
-									<li>Kévin : 1900 points</li>
-									<li>Yopy : 1805 points</li>
-									<li>Bruhx : 310 points</li>
-									<li>Slurp : 42 points</li>
-								</ol>
+								
+								
+   <?php
+// connexion 
+   require("config.php");
+   
+
+
+
+   // INTERROGATION
+   $classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
+   if ($classement==false) {
+       echo "erreur query";
+       exit();
+   }
+   
+   echo "	<h2 class=\"cases\">Classement</h2>";
+   echo "	<ol>";
+
+   
+   // TRAITEMENT
+   while(($info=$classement -> fetchobject())!=null){ 
+       echo "<li> {$info->pseudo} : {$info->nbDePoints} points</li>";
+	   
+   }
+   echo "</ol>";
+   ?>
+								
 							</div>
 						</div>
 
