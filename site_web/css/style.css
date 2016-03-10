@@ -158,12 +158,7 @@ hr.foot{
 
 #headerjeu{
 	height : 80px;
-	background-color : green;
-}
-
-#barresdevie{
-	margin : 0 5em;
-	margin-bottom : 1em;
+	background-color : white;
 }
 
 .vs{
@@ -215,15 +210,4 @@ p.chat {
 	text-align : justify;
 }
 
-/*----- JURYS ----- */
-
-.tete{
-	display : inline-block;
-	background-color : beige;
-	border : 2px solid black;
-	border-radius : 100%;
-	height : 100px;
-	margin-left : 0.5em;
-	padding-top : 2%;
-	padding-left : 2.5%;
-}
+/*----- CHAT -----*/
