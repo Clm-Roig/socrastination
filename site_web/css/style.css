@@ -211,3 +211,14 @@ p.chat {
 }
 
 /*----- CHAT -----*/
+
+#conversation{
+	height : 400px;	
+	background-color : rgba(42,42,42,0.5);
+	display : block;
+}
+
+#form_chat {
+	display : block;
+	margin-bottom : 2em;
+}
