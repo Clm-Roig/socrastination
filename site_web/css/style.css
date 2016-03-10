@@ -53,6 +53,10 @@ li.menu {
 	margin-left : 0.5em;
 }
 
+form.form-inline{
+	height : 20px;
+}
+
 /*----- FORMULAIRE ------*/
 
 form{

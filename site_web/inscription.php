@@ -45,10 +45,10 @@
 							<li class="menu"><a href="presentation.php">Présentation</a></li>
 							<li class="menu"><a href="regles.php">Règles</a></li>
 							<li class="menu"><a href="classement.php">Classement</a></li>
-					      </ul>
+			</ul>
 
-					      <ul class="nav navbar-nav navbar-right">
-							<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 		<?php include("elements_communs/header2.php");?>
 
 		<div class="row">
