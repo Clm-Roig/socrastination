@@ -95,14 +95,12 @@
 		</div>
 
 		<!-- FOOTER -->
-
 			<div class="row">
 					<div class="col-sm-12"><hr class="foot"></div>
 				<footer>
 					<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
 				</footer>
 			</div>
-
 		<!-- ===== -->
 
 	  	</div>
