@@ -36,26 +36,31 @@
 
 <body> 
 
-     <div class="row">
-	<div class="container-fluid">
+  	<!-- DIV GLOBAUX -->
+	<div class="row">
+		<div class="container" id="corps">
+	<!-- ============ -->
 
-		<?php include("elements_communs/header1.php");?>
+			<!-- HEADER / NAV -->
+			<?php include("elements_communs/header1.php");?>
 			<ul class="nav navbar-nav">
-							<li class="menu"><a href="index.php">Accueil</a></li>
-							<li class="menu"><a href="presentation.php">Présentation</a></li>
-							<li class="menu"><a href="regles.php">Règles</a></li>
-							<li class="menu active"><a href="classement.php">Classement</a></li>
-					      </ul>
+				<li class="menu"><a href="index.php">Accueil</a></li>
+				<li class="menu"><a href="presentation.php">Présentation</a></li>
+				<li class="menu"><a href="regles.php">Règles</a></li>
+				<li class="menu active"><a href="classement.php">Classement</a></li>
+			</ul>
 
-					      <ul class="nav navbar-nav navbar-right">
-							<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-		<?php include("elements_communs/header2.php");?>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+				<?php include("elements_communs/header2.php");?>
+			<!-- ============ -->
 
-		<?php include("elements_communs/carousel.php");?>
+			<!-- CORPS -->
 
-		<div class="row">
+			<div class="row">
 				<div id="section">
-					<div class="col-sm-1"></div>
+
+					<div class="col-sm-1"></div><!-- Marge gauche => trouver une autre solution -->
 
 					<a href="presentation.php">
 						<div class="col-sm-2 blocL">
@@ -66,38 +71,35 @@
 						</div>
 					</a>
 
-						<div class="col-sm-5 blocC">
-							<div class="row">
+					<div class="col-sm-5 blocC">
+						<div class="row">
 								
+							<!-- PHP pour le Classement -->
+							<?php
+								// connexion 
+								require("config.php");
+
+						   		// INTERROGATION
+						   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
+						   		if ($classement==false) {
+						       			echo "erreur query";
+						       			exit();
+						   		}
+						   
+						   		echo "	<h2 class=\"cases\">Classement</h2>";
+						  		echo "	<ol>";
+
+						   
+						   		// TRAITEMENT
+						  		while(($info=$classement -> fetchobject())!=null){ 
+						       			echo "<li> {$info->pseudo} : {$info->nbDePoints} points</li>";
+							   	}
+						   		echo "</ol>";
+						   	?>
+							<!-- ============== -->
 								
-   <?php
-// connexion 
-   require("config.php");
-   
-
-
-
-   // INTERROGATION
-   $classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
-   if ($classement==false) {
-       echo "erreur query";
-       exit();
-   }
-   
-   echo "	<h2 class=\"cases\">Classement</h2>";
-   echo "	<ol>";
-
-   
-   // TRAITEMENT
-   while(($info=$classement -> fetchobject())!=null){ 
-       echo "<li> {$info->pseudo} : {$info->nbDePoints} points</li>";
-	   
-   }
-   echo "</ol>";
-   ?>
-								
-							</div>
 						</div>
+					</div>
 
 			  		<a href="regles.php">
 						<div class="col-sm-2 blocR">
@@ -108,21 +110,22 @@
 						</div>
 					</a>
 
-					<div class="col-sm-1"></div>
+					<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
+
 				</div>
 			</div>
-		</div>
 
-		<div class="row">
-				<div class="col-sm-12"><hr class="foot"></div>
+			<!-- FOOTER -->
+			<div class="row">
+					<div class="col-sm-12"><hr class="foot"></div>
 
-				<footer>
-					<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
-				</footer>
-		</div>
+					<footer>
+						<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
+					</footer>
+			</div>
+			<!-- ===== -->
 
-
-	  </div>
+	  	</div>
 	</div>
 
 </body>

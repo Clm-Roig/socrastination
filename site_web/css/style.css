@@ -1,8 +1,20 @@
 /*----- BLOCS -----*/ 
 
+body {
+	background-image : url('../images/bg.jpg');
+	background-repeat : no-repeat;
+	background-size : 100% 1000px;
+}
+
 #corps {
 	background-image : url('../images/texture-papier.jpg');
-	border : 1px solid gray;
+	margin : auto;
+	margin-top : 140px;
+	margin-bottom : 140px;
+	box-shadow : 0 10px 20px;
+	width : 75%;
+	height : 700px;
+	
 }
 
 .blocL, .blocC, .blocR{

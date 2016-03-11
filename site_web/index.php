@@ -40,7 +40,7 @@
 		<div class="container" id="corps">
 	<!-- ============ -->
 			
-		<!-- HEADER / NAV -->
+			<!-- HEADER / NAV -->
 			<?php include("elements_communs/header1.php");?>
 			<ul class="nav navbar-nav">
 				<li class="menu active"><a href="index.php">Accueil</a></li>
@@ -53,14 +53,14 @@
 			<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 
 			<?php include("elements_communs/header2.php");?>
-		<!-- ========= -->
+			<!-- ========= -->
 	
-		<!-- CORPS -->
+			<!-- CORPS -->
 
 			<div class="row">
 				<div id="section">
-
-					<div class="col-sm-1"></div> <!-- Marge gauche => trouver une autre solution -->
+						
+					<div class="col-sm-1"></div><!-- Marge gauche => trouver une autre solution -->
 
 					<a href="presentation.php">
 						<div class="col-sm-3 blocL">
