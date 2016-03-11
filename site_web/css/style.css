@@ -1,14 +1,8 @@
 /*----- BLOCS -----*/ 
 
-body {
+#corps {
 	background-image : url('../images/texture-papier.jpg');
-}
-
-@media screen and (min-width:1600px){
-body{
-	margin-right : 100px;
-	margin-left : 100px;
-}
+	border : 1px solid gray;
 }
 
 .blocL, .blocC, .blocR{
@@ -108,44 +102,6 @@ img.case{
 	height : 200px;
 	margin : auto;
 	padding-bottom : 10px;
-}
-
-	/*-- CAROUSEL --*/
-	
-#myCarousel{
-	max-height : 400px;
-}
-
-.item{
-
-}
-
-.carousel-caption{
-
-}
-
-.blocboutonplay{
-	display : inline-block;
-	margin : 1em;
-	padding : 2em;
-	border : 3px double white;
-	border-radius : 100%;
-	background-color : purple;
-	box-shadow : 0 0 10px white;
-}
-
-a.jouer {
-	color : inherit;
-}
-
-a.jouer:hover {
-	color : gray;
-}
-
-img.slide {
-	width : 100%;
-	max-height : 400px;
-	margin : auto;
 }
 
 hr.foot{

@@ -35,11 +35,13 @@
 </head>
 
 <body> 
-    
+    	<!-- DIV GLOBAUX -->
 	<div class="row">
-	  <div class="container-fluid">
-
-		<?php include("elements_communs/header1.php");?>
+		<div class="container" id="corps">
+	<!-- ============ -->
+			
+		<!-- HEADER / NAV -->
+			<?php include("elements_communs/header1.php");?>
 			<ul class="nav navbar-nav">
 				<li class="menu active"><a href="index.php">Accueil</a></li>
 				<li class="menu"><a href="presentation.php">Présentation</a></li>
@@ -48,55 +50,63 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-		<?php include("elements_communs/header2.php");?>
+			<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 
-		<?php include("elements_communs/carousel.php");?>
+			<?php include("elements_communs/header2.php");?>
+		<!-- ========= -->
+	
+		<!-- CORPS -->
 
-		<div class="row">
-			<div id="section">
-				<div class="col-sm-1"></div>
+			<div class="row">
+				<div id="section">
 
-				<a href="presentation.php">
-					<div class="col-sm-3 blocL">
-						<div class="row">
-							<h2 class="cases">Présentation</h2>
+					<div class="col-sm-1"></div> <!-- Marge gauche => trouver une autre solution -->
+
+					<a href="presentation.php">
+						<div class="col-sm-3 blocL">
+							<div class="row">
+								<h2 class="cases">Présentation</h2>
+							</div>
+							<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
 						</div>
-						<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
-					</div>
-				</a>
+					</a>
 
-		  		<a href="regles.php">
-					<div class="col-sm-3 blocC">
-						<div class="row">
-							<h2 class="cases">Règles</h2>
-						</div>
+		  			<a href="regles.php">
+						<div class="col-sm-3 blocC">
+							<div class="row">
+								<h2 class="cases">Règles</h2>
+							</div>
 							<img class="case img-responsive" src="images/règles.png" alt="Manuscrit papier">
-					</div>
-				</a>
-
-		  		<a href="classement.php">
-					<div class="col-sm-3 blocR">
-						<div class="row">
-							<h2 class="cases">Classement</h2>
 						</div>
+					</a>
+
+		  			<a href="classement.php">
+						<div class="col-sm-3 blocR">
+							<div class="row">
+								<h2 class="cases">Classement</h2>
+							</div>
 							<img class="case img-responsive" src="images/classement.png" alt="Podium">
-					</div>
-				</a>
+						</div>
+					</a>
 				
-				<div class="col-sm-1"></div>
+				<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
+
 			</div>
 		</div>
 
-		<div class="row">
-				<div class="col-sm-12"><hr class="foot"></div>
+		<!-- FOOTER -->
 
+			<div class="row">
+					<div class="col-sm-12"><hr class="foot"></div>
 				<footer>
 					<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
 				</footer>
-		</div>
+			</div>
 
-	  </div>
+		<!-- ===== -->
+
+	  	</div>
 	</div>
+
 </body>
 </html>
