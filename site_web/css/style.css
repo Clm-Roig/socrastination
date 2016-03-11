@@ -1,9 +1,25 @@
+/* ------- RESET ------*/
+body, nav, footer, ul, li, figure, img, header {
+	margin : 0;
+	padding : 0;
+}
+
+p, h1, h2, h3, h4 {
+	margin : 0;
+	padding : 0;
+}
+
 /*----- BLOCS -----*/ 
 
 body {
 	background-image : url('../images/bg.jpg');
 	background-repeat : no-repeat;
-	background-size : 100% 1000px;
+	background-attachment: fixed;
+	background-size : 100% 100%;
+}
+
+#row_corps {
+	margin : 0;
 }
 
 #corps {
@@ -12,7 +28,7 @@ body {
 	margin-bottom : 140px;
 	box-shadow : 0 10px 20px;
 	width : 75%;
-	height : 700px;
+	height : 550px;
 	
 }
 
