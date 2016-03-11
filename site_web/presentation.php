@@ -35,10 +35,8 @@
 </head>
 
 <body> 
-
-	<!-- DIV GLOBAUX -->
+    	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
-		<div class="container" id="corps">
 	<!-- ============ -->
 
 			<!-- HEADER / NAV -->
@@ -54,6 +52,8 @@
 				<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 			<?php include("elements_communs/header2.php");?>
 			<!-- ============ -->
+
+		<div class="container" id="corps">
 
 			<div class="row">
 				<div id="section">
@@ -89,16 +89,17 @@
 				</div>
 			</div>
 
+		</div><!-- Ferme le bloc du milieu -->
+
 		<!-- FOOTER -->
-			<div class="row">
-				<div class="col-sm-12"><hr class="foot"></div>
-				<footer>
-					<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
-				</footer>
+		<div class="row">
+			<div class="col-sm-12" id="footer">
+					<p class="foot">Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
 			</div>
+		</div>
 		<!-- ===== -->
 
-	  	</div>
-	</div>
+	</div><!-- Ferme la row_corps" -->
+
 </body>
 </html>

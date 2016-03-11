@@ -35,7 +35,7 @@
 </head>
 
 <body> 
-    	<!-- DIV GLOBAUX -->
+    	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
 	<!-- ============ -->
 			
@@ -89,12 +89,15 @@
 							<img class="case img-responsive" src="images/classement.png" alt="Podium">
 						</div>
 					</a>
+
+			
 				
 				<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
 
+				</div>
 			</div>
-		</div>
-	  </div><!-- Ferme le bloc au milieu -->
+
+	  	</div><!-- Ferme le bloc au milieu -->
 
 		<!-- FOOTER -->
 		<div class="row">
