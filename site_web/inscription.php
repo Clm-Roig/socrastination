@@ -36,101 +36,117 @@
 
 <body> 
 
-     <div class="row">
-	<div class="container-fluid">
+	<!-- DIV GLOBALE -->
+	<div class="row" id="row_corps">
+	<!-- ============ -->
 
+		<!-- HEADER / NAV -->
 		 <?php include("elements_communs/header1.php");?>
-			<ul class="nav navbar-nav">
-							<li class="menu"><a href="index.php">Accueil</a></li>
-							<li class="menu"><a href="presentation.php">Présentation</a></li>
-							<li class="menu"><a href="regles.php">Règles</a></li>
-							<li class="menu"><a href="classement.php">Classement</a></li>
-			</ul>
+		<ul class="nav navbar-nav">
+			<li class="menu"><a href="index.php">Accueil</a></li>
+			<li class="menu"><a href="presentation.php">Présentation</a></li>
+			<li class="menu"><a href="regles.php">Règles</a></li>
+			<li class="menu"><a href="classement.php">Classement</a></li>
+		</ul>
 
-			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 		<?php include("elements_communs/header2.php");?>
+		<!-- ============ -->
 
-		<div class="row">
+		<div class="container" id="corps">
 
-			<div class="col-sm-2"></div>
+			<div class="row">
+				<div id="section">
 
-			<div class="col-sm-8">
+					<div class="col-sm-2"></div><!-- Marge gauche => trouver une autre solution -->
 
-				 <form class="form-horizontal" role="form" action="envoie_bdd.php" method="post">
-					<h1>Inscription</h1>
+					<div class="col-sm-8">
+						 <form class="form-horizontal" role="form" action="envoie_bdd.php" method="post">
+							<h1>Inscription</h1>
 
-					  <div class="form-group">
-						    <div class="col-sm-2"></div>
-						    <label class="control-label col-sm-2" for="email">Pseudo</label>
-						    <div class="col-sm-6">
-						      <input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
-						    </div>
-						    <div class="col-sm-2"></div>
-					  </div>
-					  <div class="form-group">
-						    <div class="col-sm-2"></div>
-						    <label class="control-label col-sm-2" for="email">Adresse email</label>
-						    <div class="col-sm-6">
-						      <input type="email" required="required" class="form-control" name="mail" id="email" placeholder="Entrer email">
-						    </div>
-						    <div class="col-sm-2"></div>
-					  </div>
-					  <div class="form-group">
-						    <div class="col-sm-2"></div>
-						    <label class="control-label col-sm-2" for="pwd">Mot de passe</label>
-						    <div class="col-sm-6">
-						      <input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
-						    </div>
-						    <div class="col-sm-2"></div>
-					  </div>
-					  <div class="form-group">
-						    <div class="col-sm-2"></div>
-						    <label class="control-label col-sm-2" for="pwd">Confirmer mot de passe</label>
-						    <div class="col-sm-6">
-						      <input type="password" required="required" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
-						    </div>
-							<div id="alerte"></div>
-						    <div class="col-sm-2"></div>
-					  </div>
+							<div class="form-group">
+								<div class="col-sm-2"></div><!-- Marge -->
+
+								<label class="control-label col-sm-2" for="pseudo">Pseudo</label>
+							   	<div class="col-sm-6">
+							      		<input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
+								</div>
+								<div class="col-sm-2"></div><!-- Marge -->
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-2"></div><!-- Marge -->
+
+								<label class="control-label col-sm-2" for="email">Adresse email</label>
+								<div class="col-sm-6">
+									<input type="email" required="required" class="form-control" name="mail" id="email" placeholder="Entrer email">
+								</div>
+
+								    <div class="col-sm-2"></div><!-- Marge -->
+							</div>
+
+					  		<div class="form-group">
+						  		<div class="col-sm-2"></div><!-- Marge -->
+
+						    		<label class="control-label col-sm-2" for="pwd">Mot de passe</label>
+						   		<div class="col-sm-6">
+							      		<input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
+							    	</div>
+
+								<div class="col-sm-2"></div><!-- Marge -->
+							</div>
+
+						 	<div class="form-group">
+							    	<div class="col-sm-2"></div><!-- Marge -->
+							    
+								<label class="control-label col-sm-2" for="pwd">Confirmer mot de passe</label>
+							    	<div class="col-sm-6">
+							      		<input type="password" required="required" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
+							    	</div>
+							
+								<div id="alerte"></div>
+
+							    	<div class="col-sm-2"></div><!-- Marge -->
+						  	</div>
 					
-					  <div class="form-group">
-						    <div class="col-sm-12">
-						      <button type="submit" class="btn btn-default">Envoyer</button>
-						    </div>
-					  </div>
-				</form>
+						  	<div class="form-group">
+								<div class="col-sm-12">
+							      		<button type="submit" class="btn btn-default">Envoyer</button>
+							    	</div>
+						  	</div>
+						</form>
+					</div><!-- Ferme le col-sm-8 du formulaire -->
 
-			</div>
+					<div class="col-sm-2"></div><!-- Marge droite => trouver une autre solution -->
 
-			<div class="col-sm-2"></div>
-		</div>
+				</div><!-- Ferme la row du formulaire -->
 
+			</div><!-- Ferme le bloc du milieu -->
+		</div><!-- Ferme le div #section -->
+
+		<!-- FOOTER -->
 		<div class="row">
-				<div class="col-sm-12"><hr class="foot"></div>
-
-				<footer>
-					<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
-				</footer>
+			<div class="col-sm-12" id="footer">
+					<p class="foot">Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
+			</div>
 		</div>
+		<!-- ===== -->
+		
+	</div><!-- Ferme la row_corps" -->
 
-	  </div>
-	</div>
 	<script>
-	function checkpass()
-{
-var val1 = document.getElementById("pwd");
-var val2 = document.getElementById("pwdconfirm");
- 
-  if(val1.value != val2.value)
-  {
-    document.getElementById("alerte").innerHTML="Tapez deux passes identiques, merci.";
-  }
-  else
-  {
-    document.getElementById("alerte").innerHTML="Mot de passe valide, bravo !";
-  }
-}
+		function checkpass() {
+			var val1 = document.getElementById("pwd");
+			var val2 = document.getElementById("pwdconfirm");
+		 
+		 	 if(val1.value != val2.value){
+				document.getElementById("alerte").innerHTML="Tapez deux passes identiques, merci.";
+		  	}
+		 	else{
+		    		document.getElementById("alerte").innerHTML="Mot de passe valide, bravo !";
+		  	}
+		}
 	</script>
 	
 </body>
