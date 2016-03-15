@@ -44,7 +44,6 @@
 		 <?php include("elements_communs/header1.php");?>
 		<ul class="nav navbar-nav">
 			<li class="menu"><a href="index.php">Accueil</a></li>
-			<li class="menu"><a href="presentation.php">Présentation</a></li>
 			<li class="menu"><a href="regles.php">Règles</a></li>
 			<li class="menu"><a href="classement.php">Classement</a></li>
 		</ul>

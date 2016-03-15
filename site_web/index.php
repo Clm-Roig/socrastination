@@ -43,7 +43,6 @@
 		<?php include("elements_communs/header1.php");?>
 		<ul class="nav navbar-nav">
 			<li class="menu active"><a href="index.php">Accueil</a></li>
-			<li class="menu"><a href="presentation.php">Présentation</a></li>
 			<li class="menu"><a href="regles.php">Règles</a></li>
 			<li class="menu"><a href="classement.php">Classement</a></li>
 		</ul>
@@ -56,24 +55,13 @@
 	
 		<div class="container" id="corps">
 
-			<!-- CORPS -->
-
 			<div class="row">
 				<div id="section">
-						
+
 					<div class="col-sm-1"></div><!-- Marge gauche => trouver une autre solution -->
 
-					<a href="presentation.php">
-						<div class="col-sm-3 blocL">
-							<div class="row">
-								<h2 class="cases">Présentation</h2>
-							</div>
-							<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
-						</div>
-					</a>
-
-		  			<a href="regles.php">
-						<div class="col-sm-3 blocC">
+					<a href="regles.php">
+						<div class="col-sm-2 blocL">
 							<div class="row">
 								<h2 class="cases">Règles</h2>
 							</div>
@@ -81,23 +69,27 @@
 						</div>
 					</a>
 
+					<div class="col-sm-5 blocC">
+						<div class="row">
+							<h2 class="cases">Présentation</h2>
+						</div>
+						<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
+					</div>
+
 		  			<a href="classement.php">
-						<div class="col-sm-3 blocR">
+						<div class="col-sm-2 blocR">
 							<div class="row">
 								<h2 class="cases">Classement</h2>
 							</div>
-							<img class="case img-responsive" src="images/classement.png" alt="Podium">
+						<img class="case img-responsive" src="images/classement.png" alt="Podium">
 						</div>
 					</a>
-
-			
 				
-				<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
-
+					<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
 				</div>
 			</div>
 
-	  	</div><!-- Ferme le bloc au milieu -->
+		</div><!-- Ferme le bloc du milieu -->
 
 		<!-- FOOTER -->
 		<div class="row">
