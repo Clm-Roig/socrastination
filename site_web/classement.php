@@ -111,8 +111,17 @@
 
 					<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
 
-				</div>
-			</div>
+					<!-- BOUTON JOUER TEMPORAIRE -->
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<br><br><br>
+							<h1><a href="liste_forums.php">JOUER</a></h1>
+						</div>
+					</div>
+					<!-- ========================= -->
+
+				</div><!-- Ferme la row  du milieu -->
+			</div><!-- Ferme le bloc section du milieu -->
 
 	  	</div><!-- Ferme le bloc du milieu -->
 
