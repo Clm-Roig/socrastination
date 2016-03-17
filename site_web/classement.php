@@ -59,19 +59,10 @@
 			<div class="row">
 				<div id="section">
 
-					<div class="col-sm-1"></div><!-- Marge gauche => trouver une autre solution -->
 
-					<a href="presentation.php">
-						<div class="col-sm-2 blocL">
-							<div class="row">
-								<h2 class="cases">Présentation</h2>
-							</div>
-							<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
-						</div>
-					</a>
-
-					<div class="col-sm-5 blocC">
+					<div class="col-sm-12">
 						<div class="row">
+							<h1>Classement</h1>
 								
 							<!-- PHP pour le Classement -->
 							<?php
@@ -85,13 +76,12 @@
 						       			exit();
 						   		}
 						   
-						   		echo "	<h2 class=\"cases\">Classement</h2>";
-						  		echo "	<ol>";
+						  		echo "<ol class=\"classement\">";
 
 						   
 						   		// TRAITEMENT
 						  		while(($info=$classement -> fetchobject())!=null){ 
-						       			echo "<li> {$info->pseudo} : {$info->nbDePoints} points</li>";
+						       			echo "<li class=\"classement\">{$info->pseudo} : {$info->nbDePoints} points</li>";
 							   	}
 						   		echo "</ol>";
 						   	?>
@@ -100,22 +90,11 @@
 						</div>
 					</div>
 
-			  		<a href="regles.php">
-						<div class="col-sm-2 blocR">
-							<div class="row">
-								<h2 class="cases">Règles</h2>
-							</div>
-								<img class="case img-responsive" src="images/règles.png" alt="Manuscrit papier">
-						</div>
-					</a>
-
-					<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
 
 					<!-- BOUTON JOUER TEMPORAIRE -->
 					<div class="row">
-						<div class="col-sm-12 text-center">
-							<br><br><br>
-							<h1><a href="liste_forums.php">JOUER</a></h1>
+						<div class="col-sm-12">
+							<h2><a href="liste_forums.php">JOUER</a></h2>
 						</div>
 					</div>
 					<!-- ========================= -->
@@ -123,7 +102,7 @@
 				</div><!-- Ferme la row  du milieu -->
 			</div><!-- Ferme le bloc section du milieu -->
 
-	  	</div><!-- Ferme le bloc du milieu -->
+	  	</div><!-- Ferme le bloc du milieu (container #corps) -->
 
 		<!-- FOOTER -->
 		<div class="row">

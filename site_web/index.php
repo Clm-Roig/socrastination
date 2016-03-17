@@ -81,7 +81,7 @@
 				</div><!-- Ferme la row  du milieu -->
 			</div><!-- Ferme le bloc section du milieu -->
 
-		</div><!-- Ferme le bloc du milieu -->
+		</div><!-- Ferme le bloc du milieu (container #corps) -->
 
 		<!-- FOOTER -->
 		<div class="row">

@@ -48,6 +48,16 @@ body {
 	margin-top : 1em;
 }
 
+/* ---- CLASSEMENT ---- */
+
+ol.classement {
+	text-align : center;
+}
+
+li.classement {
+	font-size : 2em;
+}
+
 /*--- NAV ---*/
 
 nav {
