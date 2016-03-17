@@ -57,46 +57,23 @@
 			<div class="row">
 				<div id="section">
 
-					<div class="col-sm-1"></div><!-- Marge gauche => trouver une autre solution -->
-
-					<a href="presentation.php">
-						<div class="col-sm-2 blocL">
-							<div class="row">
-								<h2 class="cases">Présentation</h2>
-							</div>
-						<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
-						</div>
-					</a>
-
-					<div class="col-sm-5 blocC">
+					<div class="col-sm-12">
 						<div class="row">
-							<h2 class="cases">Règles</h2>
-							<p>Nul joueur n'est censé ignorer la loi. Vous veillerez particulièrement à respecter les règles suivantes :</p>
-							<h3>Règle 1</h3>
-							<p>Les dialogues se font dans le respect de l'autre.</p>
-							<h3>Règle 2</h3>
-							<p>Les insultes sont bannies. Eternellement.</p>
-							<h3>Règle 3</h3>
-							<p>Certaines discussions peuvent porter sur des sujets se rapportant à des domaines non-appropriés aux plus jeunes (sexualité, mort, religion...). En cela, le jeu est interdit au moins de 18 ans.</p>
+							<h1>Règles</h1>
+							<p class="text-center">Nul joueur n'est censé ignorer la loi. Vous veillerez particulièrement à respecter les règles suivantes :</p>
+							<h2>Article 1</h2>
+							<p class="text-center">Les dialogues se font dans le respect de l'autre.</p>
+							<h2>Article 2</h2>
+							<p class="text-center">Les insultes sont bannies. Eternellement.</p>
+							<h2>Article 3</h2>
+							<p class="text-center">Certaines discussions peuvent porter sur des sujets se rapportant à des domaines non-appropriés aux plus jeunes (sexualité, mort, religion...). En cela, le jeu est interdit au moins de 18 ans.</p>
 						</div>		
 					</div>
 
-		  			<a href="classement.php">
-						<div class="col-sm-2 blocR">
-							<div class="row">
-								<h2 class="cases">Classement</h2>
-							</div>
-						<img class="case img-responsive" src="images/classement.png" alt="Podium">
-						</div>
-					</a>
-				
-					<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
-
 					<!-- BOUTON JOUER TEMPORAIRE -->
 					<div class="row">
-						<div class="col-sm-12 text-center">
-							<br><br><br>
-							<h1><a href="liste_forums.php">JOUER</a></h1>
+						<div class="col-sm-12">
+							<h2><a href="liste_forums.php">JOUER</a></h2>
 						</div>
 					</div>
 					<!-- ========================= -->
@@ -104,7 +81,7 @@
 				</div><!-- Ferme la row  du milieu -->
 			</div><!-- Ferme le bloc section du milieu -->
 
-		</div><!-- Ferme le bloc du milieu -->
+		</div><!-- Ferme le bloc du milieu (container #corps) -->
 
 		<!-- FOOTER -->
 		<div class="row">
