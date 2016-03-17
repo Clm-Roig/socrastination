@@ -40,27 +40,9 @@ body {
 	box-shadow : 0 10px 20px;
 	width : 75%;
 	height : 550px;
-	
 }
 
-.blocL, .blocC, .blocR{
-	border : 2px solid gray;
-	border-radius : 10px;
-	text-align : center;
-}
-
-.blocC{
-	margin-left : 4.166666666%;
-	margin-right : 4.166666666%;
-}
-
-@media screen and (max-width:767px){
-.blocL, .blocC, .blocR{
-	margin-left : 10%;
-	margin-right : 10%;
-	margin-bottom : 2%;
-}
-}
+/* ---- Partie Centrale ---- */
 
 #section{
 	margin-top : 1em;
@@ -102,19 +84,31 @@ form{
 	padding-right : 0;
 }
 
+/* ---- RESUME POLICE ---- */
+/*
+ * Texte 
+ * Titres
+ * 
+ *
+*/
+
 
 /*----- TEXTE DEFAUT -----*/ 
 
 p{
-
+	padding : 0 4em;
+	font-size : 1.1em;
 }
 
 h1{
-	margin-bottom : 0.5em;
+	margin-bottom : 1em;
+	text-align : center;
+	font-weight : bold;
 }
 
 h2{
-
+	text-align : center;
+	margin : 0.5em;
 }
 
 h3{
@@ -123,9 +117,6 @@ h3{
 
 /*----- TEXTE PERSO -----*/ 
 
-h2.cases {
-	margin-bottom : 0.5em;
-}
 
 /*----- IMAGES, FIGURES, BOUTONS -----*/ 
 
@@ -144,35 +135,11 @@ img.case{
 	padding-bottom : 10px;
 }
 
-
-
 /*----- INTERFACE DE JEU -----*/
 
 #headerjeu{
 	height : 80px;
 	background-color : white;
-}
-
-.vs{
-	text-align : center;
-	font-size : 3em;
-}
-
-#barrevie2, #barrevie1 {
-	height : 3em;
-	box-shadow : 0 5px 5px 0 black;
-}
-
-#barrevie1{
-	background-color : blue;
-	color : white;
-	border-radius : 10px 0 0 10px;
-}
-
-#barrevie2{
-	background-color : yellow;
-	text-align : right;
-	border-radius : 0px 10px 10px 0;
 }
 
 #interface{

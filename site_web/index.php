@@ -27,7 +27,7 @@
 
 	<!-- POLICES EN LIGNE -->
 	<link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
 	
 	<title>Socrat' - Accueil</title>
@@ -58,40 +58,22 @@
 			<div class="row">
 				<div id="section">
 
-					<div class="col-sm-1"></div><!-- Marge gauche => trouver une autre solution -->
-
-					<a href="regles.php">
-						<div class="col-sm-2 blocL">
-							<div class="row">
-								<h2 class="cases">Règles</h2>
-							</div>
-							<img class="case img-responsive" src="images/règles.png" alt="Manuscrit papier">
-						</div>
-					</a>
-
-					<div class="col-sm-5 blocC">
+					<div class="col-sm-12">
 						<div class="row">
-							<h2 class="cases">Présentation</h2>
+							<h1>Présentation</h1>
+							<p>
+								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+							</p>
+							<h2>Titre 1</h2>
+							<p>
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 						</div>
-						<img class="case img-responsive" src="images/presentation.png" alt="Point d'interrogation">
 					</div>
-
-		  			<a href="classement.php">
-						<div class="col-sm-2 blocR">
-							<div class="row">
-								<h2 class="cases">Classement</h2>
-							</div>
-						<img class="case img-responsive" src="images/classement.png" alt="Podium">
-						</div>
-					</a>
-				
-					<div class="col-sm-1"></div><!-- Marge droite => trouver une autre solution -->
 					
 					<!-- BOUTON JOUER TEMPORAIRE -->
 					<div class="row">
-						<div class="col-sm-12 text-center">
-							<br><br><br>
-							<h1><a href="liste_forums.php">JOUER</a></h1>
+						<div class="col-sm-12">
+							<h2><a href="liste_forums.php">JOUER</a></h2>
 						</div>
 					</div>
 					<!-- ========================= -->
