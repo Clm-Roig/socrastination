@@ -136,7 +136,7 @@
 			var val2 = document.getElementById("pwdconfirm");
 		 
 		 	 if(val1.value != val2.value){
-				document.getElementById("alerte").innerHTML="Tapez deux passes identiques, merci.";
+				document.getElementById("alerte").innerHTML="Tapez deux mots de passe identiques, merci.";
 		  	}
 		 	else{
 		    		document.getElementById("alerte").innerHTML="Mot de passe valide, bravo !";
