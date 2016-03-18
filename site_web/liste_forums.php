@@ -34,7 +34,7 @@
    	
 </head>
 
-<body> 
+<body>
 
     	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
@@ -55,9 +55,9 @@
 
 		<div class="container" id="corps">
 
-			<div class="row">
-				<div class="col-sm-12">
-					<table class="table table-hover table-responsive" id="liste_forums">	
+			<div class="row" id="liste_forums">
+
+					<table class="table table-hover table-responsive">	
 						<thead>
 							<tr>
 								<th>N° Forum</th>
@@ -117,9 +117,8 @@
 								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
 							</tr>
 						</tbody>
-					</table>
- 
-				</div>
+					</table> 
+	
 			</div>
 
 		</div><!-- Ferme le bloc du milieu -->

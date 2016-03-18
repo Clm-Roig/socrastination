@@ -26,7 +26,6 @@ body {
 	-moz-box-sizing: border-box;
 	position: relative;
 	min-height : 100%;
-	
 }
 
 #row_corps {
@@ -40,6 +39,7 @@ body {
 	box-shadow : 0 10px 20px;
 	width : 75%;
 	height : 550px;
+	opacity : 1;
 }
 
 /* ---- Partie Centrale ---- */
@@ -181,6 +181,16 @@ p.chat {
 	font-size : 1.3em;
 	margin : 0.8em;
 	text-align : justify;
+}
+
+/* ---- Liste Forums ---- */
+
+#liste_forums {
+	
+}
+
+.table-responsive {
+
 }
 
 /*----- FOOTER -----*/
