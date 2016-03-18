@@ -90,7 +90,7 @@ form{
 	text-align : center;
 }
 
-.control-label {
+label.control-label {
 	padding-right : 0;
 }
 

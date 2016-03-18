@@ -64,57 +64,53 @@
 						 <form class="form-horizontal" role="form" action="envoie_bdd.php" method="post">
 							<h1>Inscription</h1>
 
-							<div class="form-group">
-								<div class="col-sm-2"></div><!-- Marge -->
-
-								<label class="control-label col-sm-2" for="pseudo">Pseudo</label>
-							   	<div class="col-sm-6">
-							      		<input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
+							<div class="row">
+								<div class="form-group">
+									<label class="control-label col-sm-3" for="pseudo">Pseudo</label>
+								   	<div class="col-sm-9">
+								      		<input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
+									</div>
 								</div>
-								<div class="col-sm-2"></div><!-- Marge -->
 							</div>
-
-							<div class="form-group">
-								<div class="col-sm-2"></div><!-- Marge -->
-
-								<label class="control-label col-sm-2" for="email">Adresse email</label>
-								<div class="col-sm-6">
-									<input type="email" required="required" class="form-control" name="mail" id="email" placeholder="Entrer email">
-								</div>
-
-								    <div class="col-sm-2"></div><!-- Marge -->
-							</div>
-
-					  		<div class="form-group">
-						  		<div class="col-sm-2"></div><!-- Marge -->
-
-						    		<label class="control-label col-sm-2" for="pwd">Mot de passe</label>
-						   		<div class="col-sm-6">
-							      		<input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
-							    	</div>
-
-								<div class="col-sm-2"></div><!-- Marge -->
-							</div>
-
-						 	<div class="form-group">
-							    	<div class="col-sm-2"></div><!-- Marge -->
-							    
-								<label class="control-label col-sm-2" for="pwd">Confirmer mot de passe</label>
-							    	<div class="col-sm-6">
-							      		<input type="password" required="required" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
-							    	</div>
 							
-								<div id="alerte"></div>
+							<div class="row">
+								<div class="form-group">								
+									<label class="control-label col-sm-3" for="email">Adresse email</label>
+									<div class="col-sm-9">
+										<input type="email" required="required" class="form-control" name="mail" id="email" placeholder="Entrer email">
+									</div>
+								</div>
+							</div>
 
-							    	<div class="col-sm-2"></div><!-- Marge -->
-						  	</div>
+							<div class="row">
+						  		<div class="form-group">
+							    		<label class="control-label col-sm-3" for="pwd">Mot de passe</label>
+							   		<div class="col-sm-9">
+								      		<input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
+								    	</div>
+								</div>
+							</div>
+
+							<div class="row">
+							 	<div class="form-group">
+								    
+									<label class="control-label col-sm-3" for="pwd">Confirmer mot de passe</label>
+								    	<div class="col-sm-9">
+								      		<input type="password" required="required" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
+								    	</div>
+							
+									<div id="alerte"></div>
+							  	</div>
+							</div>
 					
 						  	<div class="form-group">
 								<div class="col-sm-12">
 							      		<button type="submit" class="btn btn-default">Envoyer</button>
 							    	</div>
 						  	</div>
+
 						</form>
+
 					</div><!-- Ferme le col-sm-8 du formulaire -->
 
 					<div class="col-sm-2"></div><!-- Marge droite => trouver une autre solution -->
