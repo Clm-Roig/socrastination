@@ -35,6 +35,9 @@
 </head>
 
 <body> 
+
+	<?php require("fonctions_chat_joueur/chat_joueur.php");?>
+
 	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
 	<!-- ============ -->
