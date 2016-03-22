@@ -74,11 +74,11 @@
 							<div class="row">
 								<div class="col-sm-12">
 
-									 <form class="form-inline" id="form_chat" onsubmit="envoyer(); return false;">
+									 <form class="form-inline" id="form_chat" action="fonctions_chat_joueur/chat_joueur.php" method="post">
 										<div class="form-group">
 											<input type="text" class="form-control" id="message" placeholder="Message...">
 										</div>
-										  <button id="post"  class="btn btn-default" type="submit" onclick="envoyer()" value="Envoyer">Envoyer</button>
+										  <button id="post"  class="btn btn-default" type="submit">Envoyer</button>
 									</form>
 
 								</div>
