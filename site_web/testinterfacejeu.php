@@ -27,56 +27,79 @@
 	<link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
+
+	<script src="fonctions_chat_joueur/chat_joueur.js"></script>
 	
 	<title>Socrat' - Jeu</title>
    	
 </head>
 
 <body> 
+	<!-- DIV GLOBALE -->
+	<div class="row" id="row_corps">
+	<!-- ============ -->
 
-	<div class="row">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-12" id="headerjeu">
-					<h2>en haut du jeu</h2>
+		<!-- HEADER / NAV -->
+		<div class="row">
+			 <nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+				    	<div class="navbar-header">
+						<h2 class="haut_chat">EN JEU<h2>
+					</div>
 				</div>
-			</div>
+			</nav>
+		</div>
+		<!-- ========= -->
+
+		<div class="container" id="corps">
+			<div class="row">
+
+				<div id="section">
 
 	<!-- INTERFACE DE CHAT -->
-			<div class="row">
+			
+					<div class="col-sm-12">
+						<div class="row">
+	
+					<!-- Panneau affichage de la conversation -->
+							<div id="conversation">
+								<p>Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+							</div>
+					<!-- Fermeture panneau -->
 
-				<div class="col-sm-1"></div>
-				<div class="col-sm-10">
+					<!-- ZONE DE TEXTE -->
+							<div class="row">
+								<div class="col-sm-12">
 
-					<div id="conversation"></div>
-					<div class="row">
-						<div class="col-sm-12">
+									 <form class="form-inline" id="form_chat" onsubmit="envoyer(); return false;">
+										<div class="form-group">
+											<input type="text" class="form-control" id="message" placeholder="Message...">
+										</div>
+										  <button id="post"  class="btn btn-default" type="submit" onclick="envoyer()" value="Envoyer">Envoyer</button>
+									</form>
 
-							 <form class="form-inline" id="form_chat">
-								<div class="form-group">
-									<input type="text" class="form-control" id="message" placeholder="Message...">
 								</div>
-								  <button type="submit" class="btn btn-default">Envoyer</button>
-							</form>
+							</div>
+					<!-- Fermeteure z. de texte -->
 
 						</div>
 					</div>
-
-				</div>
-				<div class="col-sm-1"></div>
-			</div>
+				
 	<!-- FIN INTERFACE CHAT -->
+				</div><!--Ferme le div #section -->
+			</div><!-- Ferme ROW principale -->
+		</div><!-- Ferme CONTAINER #corps -->
 
-			<div class="row">
-				<div class="col-sm-12"><hr class="foot"></div>
-				<footer>
-					<p>Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
-				</footer>
+		<!-- FOOTER -->
+		<div class="row">
+			<div class="col-sm-12" id="footer">
+					<p class="foot">Mentions légales 2016, IUT Montpellier-Sète - Projet AS : Dalle-Cort, Chac, Ferrer, Roig</p>
 			</div>
+		</div>
+		<!-- ===== -->
 
-	  	</div><!-- Ferme ROW principale -->
-	</div><!-- Ferme CONTAINER-FLUID principale -->
-	
+			 
+	</div><!-- Ferme #row_corps -->
 
 </body>
 </html>

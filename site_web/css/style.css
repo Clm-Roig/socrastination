@@ -149,40 +149,6 @@ img.case{
 	padding-bottom : 10px;
 }
 
-/*----- INTERFACE DE JEU -----*/
-
-#headerjeu{
-	height : 80px;
-	background-color : white;
-}
-
-#interface{
-
-}
-
-#chat1,#chat2 {
-	background-color : rgba(50, 50, 50, 0.4);
-	border : 3px solid white;
-	border-radius : 10px;
-	margin-bottom : 1em;
-}
-
-#chat1 {
-	margin-right : 40%;
-	margin-left : 1em;
-}
-
-#chat2 {
-	margin-left : 40%;
-	margin-right : 1em;
-}
-
-p.chat {
-	font-size : 1.3em;
-	margin : 0.8em;
-	text-align : justify;
-}
-
 /* ---- Liste Forums ---- */
 
 #liste_forums {
@@ -208,12 +174,15 @@ p.foot {
 /*----- CHAT -----*/
 
 #conversation{
-	height : 400px;	
-	background-color : rgba(42,42,42,0.5);
-	display : block;
+	height : 450px;
 }
 
 #form_chat {
 	display : block;
 	margin-bottom : 2em;
+}
+
+h2.haut_chat {
+	color:white;
+	text-align:center;
 }
