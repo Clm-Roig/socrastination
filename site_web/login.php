@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require("config.php");
 
 	if (empty($_POST['pseudo']) || empty($_POST['pwd']) ) { //Oubli d'un champ

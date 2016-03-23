@@ -20,6 +20,6 @@
 
    	// TRAITEMENT
 	echo "Pseudo : {$info->pseudo} ; Mail : {$info->mail}; Niveau : {$info->niveau}; Points : {$info->nbDePoints}; Parties gagnees : {$info->nbPartiesGagnees}; Total parties : {$info->NbTotalParties} ";	
-	
+	echo "<a href='deco.php'>deco</a>";
 ?>
 
