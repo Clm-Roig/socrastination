@@ -17,7 +17,11 @@
 		echo "erreur query";
 		exit();
 	}   
-
+	echo '		<ul class="nav navbar-nav">
+			<li class="menu active"><a href="index.php">Accueil</a></li>
+			<li class="menu"><a href="regles.php">Règles</a></li>
+			<li class="menu"><a href="classement.php">Classement</a></li>
+		</ul> <br>';
    	// TRAITEMENT
 	echo "Pseudo : {$info->pseudo} ; Mail : {$info->mail}; Niveau : {$info->niveau}; Points : {$info->nbDePoints}; Parties gagnees : {$info->nbPartiesGagnees}; Total parties : {$info->NbTotalParties} ";	
 	echo "<a href='deco.php'>deco</a>";
