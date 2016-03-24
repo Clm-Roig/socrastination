@@ -55,11 +55,12 @@
 
 		<?php 
 			if (!isset($_SESSION['pseudo'])) {
-		include("elements_communs/header2.php");
-		
-	}
-	else {
-		include("elements_communs/header3.php");}?>
+				include("elements_communs/header2.php");
+				}
+		else {
+			include("elements_communs/header3.php");
+			}
+			?>
 		<!-- ========= -->
 	
 		<div class="container" id="corps">

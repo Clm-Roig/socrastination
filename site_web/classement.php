@@ -52,7 +52,14 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-				<?php include("elements_communs/header2.php");?>
+		<?php 
+			if (!isset($_SESSION['pseudo'])) {
+				include("elements_communs/header2.php");
+				}
+		else {
+			include("elements_communs/header3.php");
+			}
+			?>
 			<!-- ============ -->
 
 		<div class="container" id="corps">
