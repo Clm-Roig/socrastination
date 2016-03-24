@@ -83,6 +83,11 @@ form.form-inline{
 	height : 20px;
 }
 
+#deco {
+	margin-top : 8px;
+	margin-right : 8px;
+}
+
 /*----- FORMULAIRE ------*/
 
 form{
