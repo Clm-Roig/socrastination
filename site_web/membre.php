@@ -73,7 +73,6 @@
 				<div id="section">
 				
 					<?php
-	
 						// connexion BDD
 						require("config.php");
 						   
@@ -85,11 +84,19 @@
 						if ($query==false) {
 							echo "erreur query";
 							exit();
-						}   
+						} 
 
 					   	// TRAITEMENT
-						echo "Pseudo : {$info->pseudo} ; Mail : {$info->mail}; Niveau : {$info->niveau}; Points : {$info->nbDePoints}; Parties gagnees : {$info->nbPartiesGagnees}; Total parties : {$info->NbTotalParties} ";	
-						echo "<a href='deco.php'>deco</a>";
+						echo "
+							<ul class=\"membre\">
+								<li class=\"membre\"><h2 class=\"membre souligne\">Pseudo :</h2><h2 class=\"membre\">{$info->pseudo}</h2></li>
+								<li class=\"membre\"><h2 class=\"membre souligne\">Mail :</h2><h2 class=\"membre\">{$info->mail}</h2></li>
+								<li class=\"membre\"><h2 class=\"membre souligne\">Niveau :</h2><h2 class=\"membre\">{$info->niveau}</h2></li>
+								<li class=\"membre\"><h2 class=\"membre souligne\">Points :</h2><h2 class=\"membre\">{$info->nbDePoints}</h2></li>
+								<li class=\"membre\"><h2 class=\"membre souligne\">Total parties :</h2><h2 class=\"membre\">{$info->NbTotalParties}</h2></li>
+								<li class=\"membre\"><h2 class=\"membre souligne\">Parties gagnees :</h2><h2 class=\"membre\">{$info->nbPartiesGagnees}</h2></li>
+							</ul>					
+						";	
 					?>
 
 					</div><!-- Ferme la row  du milieu -->

@@ -58,6 +58,23 @@ li.classement {
 	font-size : 2em;
 }
 
+/* ---- MEMBRE ---- */
+
+h2.membre {
+	padding : 0;
+	display : inline-block;
+	text-align : center;
+}
+
+h2.souligne {
+	text-decoration : underline;
+}
+
+li.membre {
+	list-style-type : none;
+	text-align : center;
+}
+
 /*--- NAV ---*/
 
 nav {
