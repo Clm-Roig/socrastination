@@ -2,8 +2,8 @@
 								   <form class="form-inline" action="login.php" method="post">
 
 									 <div class="form-group">
-									    <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo">
-									    <input type="password" name="pwd" class="form-control" id="password" placeholder="Mot de passe">
+									    <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo" required>
+									    <input type="password" name="pwd" class="form-control" id="password" placeholder="Mot de passe" required>
 								  	</div>
 
 									<div class="form-group">
