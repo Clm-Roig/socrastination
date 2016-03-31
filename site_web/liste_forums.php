@@ -75,11 +75,26 @@
 								<th>Nombre d'arbitres</th>
 							</tr>
 						</thead>
-						<tbody>
+
+						<tbody>	
+							<!-- Pour le post des "value" :	
+								- Premier chiffre => numéro du forum
+								- Deuxième chiffre =>  joueur (0) ou arbitre (1) 
+
+							 	Ex : 21, sur le forum 2, je veux entrer en tant qu'arbitre
+							-->
 							<tr>
 								<td>1</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="10">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="11">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 						      	<tr>
 								<td>2</td>

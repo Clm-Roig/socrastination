@@ -181,6 +181,12 @@ img.case{
 
 }
 
+form.forum{
+	margin : 0;
+	padding : 0;
+	display : inline;
+}
+
 /*----- FOOTER -----*/
 
 #footer{
