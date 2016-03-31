@@ -5,7 +5,7 @@
 	require("../config.php");
 	
 	if (!isset($_SESSION['pseudo'])) {
-		echo('Veuillez vous identifier pour pouvoir rejoindre une partie');
+		header('Location: ../erreur_paslog.php');
 	}
 	
 	else {
