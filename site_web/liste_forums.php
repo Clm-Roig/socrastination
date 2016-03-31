@@ -87,12 +87,12 @@
 								<td>1</td>
 								<td>0/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="10">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="10" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
 								<td>0/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="11">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="11" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
 								</td>
 							</tr>
