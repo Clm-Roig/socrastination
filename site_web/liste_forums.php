@@ -98,48 +98,107 @@
 							</tr>
 						      	<tr>
 								<td>2</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="20" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="21" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>3</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="30" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="31" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>4</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="40" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="41" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>5</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="50" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="51" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>6</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="60" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="61" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>7</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="70" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="71" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>8</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="80" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="81" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 							<tr>
 								<td>9</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>0/2 <button class="btn btn-default">Rejoindre en tant que joueur</button></td>
-								<td>0/10 <button class="btn btn-default">Rejoindre en tant qu'arbitre</button></td>
+								<td>0/2 
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="90" name="assign">Rejoindre en tant que joueur</button>
+									</form>  
+								</td>
+								<td>0/10
+									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
+										<button class="btn btn-default" value="91" name="assign">Rejoindre en tant qu'arbitre</button>
+									</form>  
+								</td>
 							</tr>
 						</tbody>
 					</table> 
