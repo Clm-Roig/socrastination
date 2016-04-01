@@ -17,13 +17,22 @@
 		$verif=$bdd->query("SELECT idPartie FROM Forums WHERE idForum=$num_forum");
 		$verif_string=$verif->fetchobject();
 
-		if($verif_string->idPartie == ''){		//si 0, on crée une nouvelle partie
+		if($verif_string->idPartie == 0){		//si 0, on crée une nouvelle partie
+			
+			//ON CHERCHE L'ID MAX DES PARTIES
+			$req_id="SELECT MAX(idPartie) AS idmax FROM Forums";	
+			$res_id=$bdd->query($req_id);
+			$id_max=$res_id->fetchobject();
+			$id_max=$id_max->idmax;		
+			$id_max++;
+
 			$req_creation="UPDATE Forums
-						SET idPartie
+						SET idPartie=$id_max
 						WHERE idForum=$num_forum;							
 						";
 			echo "$req_creation";
-			$bdd->query($req_creation);
+			$bdd->qu
+			
 		}
 		
 		/*$res_partie_creee = 'SELECT' ;
