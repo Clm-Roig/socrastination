@@ -127,7 +127,7 @@
 							<div class="row">
 							  	<div class="form-group">
 									<div class="col-sm-12">
-								      		<button type="submit" class="btn btn-default">Envoyer</button>
+								      		<button type="submit" class="btn btn-default" id="bouton_envoi">Envoyer</button>
 								    	</div>
 							  	</div>
 							</div>
@@ -160,11 +160,11 @@
 		 
 		 	 if(val1.value != val2.value){
 				document.getElementById("alerte").innerHTML="<p class=\"text-danger\">Tapez deux mots de passe identiques, merci.</p>";
-				document.getElementById("pwd").value=="";
-				document.getElementById("pwdconfirm").value=="";
+				document.getElementById("bouton_envoi").disabled=true;
 		  	}
 		 	else{
 		    		document.getElementById("alerte").innerHTML="<p class=\"text-success\">Les mots de passe concordent !</p>";
+				document.getElementById("bouton_envoi").disabled=false;
 		  	}
 		}
 
