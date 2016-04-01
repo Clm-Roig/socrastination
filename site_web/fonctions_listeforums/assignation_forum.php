@@ -13,13 +13,21 @@
 		$num_forum = (int) ($_POST['assign']/10);
 		$num_role = $_POST['assign']%10;
 
-		echo 'Valeur du num_forum : '.$num_forum;
-		echo '<br>Valeur du role : '.$num_role;
-		/*
-		$res_partie_creee = 'SELECT' ;
-		$req = 'INSERT INTO Role(role, , ) VALUES(:pseudo, :motDePasse, :mail, 1, 0, 0, 0);';
-		$stmt = $bdd->prepare($req);*/
+		//CREATION DE LA PARTIE SI JOUEUR ET PARTIE INEXISTANTE 
+		$verif=$bdd->query("SELECT idPartie FROM Forums WHERE idForum=$num_forum");
+		$verif_string=$verif->fetchobject();
 
-		echo '<br>Valeur du post : '.$_POST['assign'];
+		if($verif_string->idPartie == 0){		//si 0, on créer une nouvelle partie
+			$req_creation="INSERT INTO Forums(idForum, idPartie) 
+				VALUES(
+						NULL,
+						$num_forum,
+			)";
+			$bdd->query($req_creation);
+		}
+		
+		/*$res_partie_creee = 'SELECT' ;
+		$req = 'INSERT INTO Role(role, , ) VALUES(:pseudo, :motDePasse, :mail, 1, 0, 0, 0);';
+		*/
 	}
 ?>
