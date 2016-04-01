@@ -10,7 +10,7 @@
 	
 	else {
 		//RECUPERATION DES VARIABLES
-		$num_forum = $_POST['assign']/10;
+		$num_forum = (int) ($_POST['assign']/10);
 		$num_role = $_POST['assign']%10;
 
 		echo 'Valeur du num_forum : '.$num_forum;
