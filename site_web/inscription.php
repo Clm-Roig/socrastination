@@ -163,10 +163,14 @@
 		 	 if(val1.value != val2.value){
 				document.getElementById("alerte").innerHTML="<p class=\"text-danger\">Tapez deux mots de passe identiques, merci.</p>";
 				document.getElementById("bouton_envoi").disabled=true;
+				document.getElementById('pwd').style.border = "2px solid red";
+				document.getElementById('pwdconfirm').style.border = "2px solid red";
 		  	}
 		 	else{
 		    		document.getElementById("alerte").innerHTML="<p class=\"text-success\">Les mots de passe concordent !</p>";
 				document.getElementById("bouton_envoi").disabled=false;
+				document.getElementById('pwd').style.border = "2px solid green";
+				document.getElementById('pwdconfirm').style.border = "2px solid green";
 		  	}
 		}
 
@@ -179,11 +183,13 @@
 			xhr.onreadystatechange = function() {
 				if(xhr.readyState == 4) {		//serveur ok + réponse reçue
 					var r=xhr.responseText;	//récupération du résultat
-					if(r.value==1){
-						document.getElementById('alerte2').innerHTML = "<p class=\"text-danger\">J'ai reçu "+r+", s'pas bon !</p>";	
+					if (r == 1) {
+						document.getElementById('alerte2').innerHTML = "<p class=\"text-danger\">Pseudo déjà utilisé, veuillez en choisir un autre !</p>";		
+						document.getElementById('pseudoinscr').style.border = "2px solid red";
 					}
 					else {
-						document.getElementById('alerte2').innerHTML = "<p class=\"text-success\">J'ai reçu "+r+", okay !</p>";
+						document.getElementById('alerte2').innerHTML = "<p class=\"text-success\">Pseudo valide.</p>";
+						document.getElementById('pseudoinscr').style.border = "2px solid green";
 					}
 				}			
 			};
