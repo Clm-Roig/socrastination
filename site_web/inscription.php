@@ -153,6 +153,8 @@
 		
 	</div><!-- Ferme la row_corps" -->
 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
 	<script>
 		function checkpass() {
 			var val1 = document.getElementById("pwd");
@@ -171,29 +173,26 @@
 		function check_pseudo() {
 			
 			var val1 = document.getElementById("pseudoinscr");
-			
 			//Passage de la valeur en AJAX pour php
 			//instanciation de l'objet XMLHHTP
 			var xhr = new XMLHttpRequest();
 		
-			//Passage par url
-			xhr.open("GET", '/fonctions_inscription/check_pseudo.php?pseudoinscr='+val1, true);
-			xhr.send(null);
-
-			//Récupération du résultat du php
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-					alert(xhr.responseText); // Données textuelles récupérées
+			//Attente du résultat du php
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState  == 4) {		//serveur ok + réponse reçue
+					if(xhr.responseText==1){
+						document.getElementById('alerte2').innerHTML = "<p class=\"text-danger\">Pseudo déjà utilisé, veuillez en choisir un autre.</p>"
+					}
+					else{
+						document.getElementById('alerte2').innerHTML = "<p class=\"text-success\">Pseudo valide !</p>"; 
+					}
 				}
 			};
-			
 
-		 	 if(val2="ERREUR"){
-				document.getElementById("alerte2").innerHTML="<p class=\"text-danger\">Pseudo déjà utilisé, veuillez en choisir un autre.</p>";
-		  	}
-		 	else{
-		    		document.getElementById("alerte2").innerHTML="<p class=\"text-success\">Pseudo valide !</p>";
-		  	}
+			//Passage par url
+			xhr.open("GET","/fonctions_inscription/check_pseudo.php?pseudoinscr="+val1.value+"", true);
+			xhr.send(null);		
+
 		}
 	</script>
 	
