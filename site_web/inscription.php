@@ -96,7 +96,7 @@
 						  		<div class="form-group">
 							    		<label class="control-label col-sm-3" for="pwd">Mot de passe</label>
 							   		<div class="col-sm-9">
-								      		<input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe">
+								      		<input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe" onkeyup="checkpass();">
 								    	</div>
 								</div>
 							</div>
@@ -163,14 +163,14 @@
 		 	 if(val1.value != val2.value){
 				document.getElementById("alerte").innerHTML="<p class=\"text-danger\">Tapez deux mots de passe identiques, merci.</p>";
 				document.getElementById("bouton_envoi").disabled=true;
-				document.getElementById('pwd').style.border = "2px solid red";
-				document.getElementById('pwdconfirm').style.border = "2px solid red";
+				document.getElementById('pwd').style.border = "2px solid  rgba(174, 44, 44, 1)";
+				document.getElementById('pwdconfirm').style.border = "2px solid  rgba(174, 44, 44, 1)";
 		  	}
 		 	else{
 		    		document.getElementById("alerte").innerHTML="<p class=\"text-success\">Les mots de passe concordent !</p>";
 				document.getElementById("bouton_envoi").disabled=false;
-				document.getElementById('pwd').style.border = "2px solid green";
-				document.getElementById('pwdconfirm').style.border = "2px solid green";
+				document.getElementById('pwd').style.border = "2px solid rgba(141, 200, 121, 0.8)";
+				document.getElementById('pwdconfirm').style.border = "2px solid rgba(141, 200, 121, 0.8)";
 		  	}
 		}
 
@@ -185,11 +185,11 @@
 					var r=xhr.responseText;	//récupération du résultat
 					if (r == 1) {
 						document.getElementById('alerte2').innerHTML = "<p class=\"text-danger\">Pseudo déjà utilisé, veuillez en choisir un autre !</p>";		
-						document.getElementById('pseudoinscr').style.border = "2px solid red";
+						document.getElementById('pseudoinscr').style.border = "2px solid  rgba(174, 44, 44, 1)";
 					}
 					else {
 						document.getElementById('alerte2').innerHTML = "<p class=\"text-success\">Pseudo valide.</p>";
-						document.getElementById('pseudoinscr').style.border = "2px solid green";
+						document.getElementById('pseudoinscr').style.border = "2px solid rgba(141, 200, 121, 0.8)";
 					}
 				}			
 			};
