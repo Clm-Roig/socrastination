@@ -17,12 +17,12 @@
 		$verif=$bdd->query("SELECT idPartie FROM Forums WHERE idForum=$num_forum");
 		$verif_string=$verif->fetchobject();
 
-		if($verif_string->idPartie == 0){		//si 0, on créer une nouvelle partie
-			$req_creation="INSERT INTO Forums(idForum, idPartie) 
-				VALUES(
-						NULL,
-						$num_forum,
-			)";
+		if($verif_string->idPartie == ''){		//si 0, on crée une nouvelle partie
+			$req_creation="UPDATE Forums
+						SET idPartie
+						WHERE idForum=$num_forum;							
+						";
+			echo "$req_creation";
 			$bdd->query($req_creation);
 		}
 		
