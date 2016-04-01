@@ -24,15 +24,27 @@
 			$id_max=$res_id->fetchobject();
 			$id_max=$id_max->idmax;		
 			$id_max++;
-
+	
+			//CREATION DE LA REQUETE
+			//Requete pour la table Forums
 			$req_creation="UPDATE Forums
 						SET idPartie=$id_max
 						WHERE idForum=$num_forum;							
 						";
-			echo "$req_creation";
+			//Requete pour la table Parties
+			$req_creation2="INSERT INTO Parties (idPartie)
+						VALUES ($id_max);						
+						";
+
+			//Requete pour la table Role
+			$req_creation3="INSERT INTO Role (role,idPartie,idMembre)
+						VALUES ($num_role,$id_max,);						
+						";
+
+			$bdd->query($req_creation);
+			$bdd->query($req_creation2);
+			$bdd->query($req_creation3);			
 		}		
-		/*$res_partie_creee = 'SELECT' ;
-		$req = 'INSERT INTO Role(role, , ) VALUES(:pseudo, :motDePasse, :mail, 1, 0, 0, 0);';
-		*/
+
 	}
 ?>

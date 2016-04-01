@@ -16,7 +16,7 @@
 			header('Location: membre.php'); 
 		}
 		else { // Accès pas OK !
-			echo "erreur inconnu";
+			echo "Erreur login, mot de passe ou pseudo incorect !";
 		}
 	    $query->CloseCursor();
 	    }
