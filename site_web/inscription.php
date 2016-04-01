@@ -78,7 +78,7 @@
 								<div class="form-group">
 									<label class="control-label col-sm-3" for="pseudo">Pseudo</label>
 								   	<div class="col-sm-9">
-								      		<input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo">
+								      		<input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo" onkeyup="check_pseudo();">
 									</div>
 								</div>
 							</div>
@@ -115,6 +115,12 @@
 							<div class="row">
 								<div class="form-group">
 									<div id="alerte" class="col-sm-12"></div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group">
+									<div id="alerte2" class="col-sm-12"></div>
 								</div>
 							</div>
 							
@@ -154,9 +160,39 @@
 		 
 		 	 if(val1.value != val2.value){
 				document.getElementById("alerte").innerHTML="<p class=\"text-danger\">Tapez deux mots de passe identiques, merci.</p>";
+				document.getElementById("pwd").value=="";
+				document.getElementById("pwdconfirm").value=="";
 		  	}
 		 	else{
-		    		document.getElementById("alerte").innerHTML="<p class=\"text-success\">Mot de passe valide, bravo !</p>";
+		    		document.getElementById("alerte").innerHTML="<p class=\"text-success\">Les mots de passe concordent !</p>";
+		  	}
+		}
+
+		function check_pseudo() {
+			
+			var val1 = document.getElementById("pseudoinscr");
+			
+			//Passage de la valeur en AJAX pour php
+			//instanciation de l'objet XMLHHTP
+			var xhr = new XMLHttpRequest();
+		
+			//Passage par url
+			xhr.open("GET", '/fonctions_inscription/check_pseudo.php?pseudoinscr='+val1, true);
+			xhr.send(null);
+
+			//Récupération du résultat du php
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+					alert(xhr.responseText); // Données textuelles récupérées
+				}
+			};
+			
+
+		 	 if(val2="ERREUR"){
+				document.getElementById("alerte2").innerHTML="<p class=\"text-danger\">Pseudo déjà utilisé, veuillez en choisir un autre.</p>";
+		  	}
+		 	else{
+		    		document.getElementById("alerte2").innerHTML="<p class=\"text-success\">Pseudo valide !</p>";
 		  	}
 		}
 	</script>
