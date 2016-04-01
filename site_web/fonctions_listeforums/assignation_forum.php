@@ -27,10 +27,11 @@
 	
 			//CREATION DE LA REQUETE
 			//Requete pour la table Forums
-			$req_creation="UPDATE Forums
+			$req_creation1="UPDATE Forums
 						SET idPartie=$id_max
 						WHERE idForum=$num_forum;							
 						";
+
 			//Requete pour la table Parties
 			$req_creation2="INSERT INTO Parties (idPartie)
 						VALUES ($id_max);						
@@ -38,12 +39,12 @@
 
 			//Requete pour la table Role
 			$req_creation3="INSERT INTO Role (role,idPartie,idMembre)
-						VALUES ($num_role,$id_max,);						
+						VALUES ($num_role,$id_max,".$_SESSION['idMembre'].");						
 						";
 
-			$bdd->query($req_creation);
+			$bdd->query($req_creation1);
 			$bdd->query($req_creation2);
-			$bdd->query($req_creation3);			
+			$bdd->query($req_creation3);		
 		}		
 
 	}

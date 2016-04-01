@@ -13,7 +13,7 @@
 		$data=$query->fetch();
 		if ($data['motDePasse'] == $_POST['pwd']) { // Accès OK 
 			$_SESSION['pseudo'] = $data['pseudo'];
-			$_SESSION['idMembre'] = $date['idMembre'];
+			$_SESSION['idMembre'] = $data['idMembre'];
 			header('Location: membre.php'); 
 		}
 		else { // Accès pas OK !
