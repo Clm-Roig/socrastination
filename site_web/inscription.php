@@ -78,7 +78,7 @@
 								<div class="form-group">
 									<label class="control-label col-sm-3" for="pseudo">Pseudo</label>
 								   	<div class="col-sm-9">
-								      		<input type="text" required="required" class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo" onkeyup="check_pseudo();">
+								      		<input type="text" required class="form-control" name="pseudo" id="pseudoinscr" placeholder="Entrer pseudo" onkeyup="check_pseudo();">
 									</div>
 								</div>
 							</div>
@@ -87,7 +87,7 @@
 								<div class="form-group">								
 									<label class="control-label col-sm-3" for="email">Adresse email</label>
 									<div class="col-sm-9">
-										<input type="email" required="required" class="form-control" name="mail" id="email" placeholder="Entrer email">
+										<input type="email" required class="form-control" name="mail" id="email" placeholder="Entrer email">
 									</div>
 								</div>
 							</div>
@@ -96,7 +96,7 @@
 						  		<div class="form-group">
 							    		<label class="control-label col-sm-3" for="pwd">Mot de passe</label>
 							   		<div class="col-sm-9">
-								      		<input type="password" required="required" class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe" onkeyup="checkpass();">
+								      		<input type="password" required class="form-control" name="motDePasse" id="pwd" placeholder="Entrer mot de passe" onkeyup="checkpass();">
 								    	</div>
 								</div>
 							</div>
@@ -106,7 +106,7 @@
 								    
 									<label class="control-label col-sm-3" for="pwd">Confirmer mot de passe</label>
 								    	<div class="col-sm-9">
-								      		<input type="password" required="required" class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
+								      		<input type="password" required class="form-control" id="pwdconfirm" placeholder="Confirmer mot de passe" onkeyup="checkpass();">
 								    	</div>
 			
 							  	</div>
@@ -156,6 +156,7 @@
 	<!-- SCRIPTS -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
+
 		function checkpass() {
 			var val1 = document.getElementById("pwd");
 			var val2 = document.getElementById("pwdconfirm");
@@ -173,6 +174,7 @@
 				document.getElementById('pwdconfirm').style.border = "2px solid rgba(141, 200, 121, 0.8)";
 		  	}
 		}
+
 
 		function check_pseudo() {
 			var val1 = document.getElementById("pseudoinscr");
@@ -198,6 +200,7 @@
 			xhr.open("GET","fonctions_inscription/check_pseudo.php?pseudoinscr="+val1.value);
 			xhr.send(null);	
 		}
+
 	</script>
 	
 </body>
