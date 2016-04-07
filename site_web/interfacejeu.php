@@ -39,7 +39,7 @@
 
 <body> 
 
-	<?php require("fonctions_chat_joueur/chat_joueur.php");?>
+	<?php require("fonctions_interfacejeu/enjeu.php");?>
 
 	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">

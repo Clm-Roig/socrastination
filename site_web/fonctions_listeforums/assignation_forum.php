@@ -44,7 +44,11 @@
 
 			$bdd->query($req_creation1);
 			$bdd->query($req_creation2);
-			$bdd->query($req_creation3);		
+			$bdd->query($req_creation3);	
+
+			//Redirection vers la partie créée
+			header("Location: ../interfacejeu.php?npartie=$id_max&nforum=$num_forum");
+			exit();
 		}		
 
 	}
