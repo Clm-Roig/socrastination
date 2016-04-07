@@ -223,9 +223,14 @@
 	<script>
 	function actualiser() {
 
-			//Passage de la valeur en AJAX pour php
+			//Instanciation de l'objet pour passage à php
 			var xhr = new XMLHttpRequest();
-			//Attente du résultat du php
+			
+			//Passage avec GET
+			xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
+			xhr.send(null);	
+
+			//Traitement du résultat du php
 			xhr.onreadystatechange = function() {
 				if(xhr.readyState == 4) {		//serveur ok + réponse reçue
 					var r=xhr.responseText;	//récupération du résultat
@@ -236,10 +241,6 @@
 					var timer=setTimeout("actualiser()",1000);
 				}			
 			};
-
-			//Passage avec GET
-			xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
-			xhr.send(null);	
 		}
 
 	</script>
