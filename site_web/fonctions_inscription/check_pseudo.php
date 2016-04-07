@@ -1,6 +1,7 @@
 <?php
 	//CONNEXION BDD
 	require("../config.php");
+
 	$pseudo=$_GET['pseudoinscr'];
 	$req = $bdd->query("SELECT pseudo FROM Membres WHERE pseudo='$pseudo'");
 	$nb_occur= $req->fetch(PDO::FETCH_ASSOC);

@@ -37,7 +37,7 @@
    	
 </head>
 
-<body>
+<body onload="actualiser()">
 
     	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
@@ -85,12 +85,12 @@
 							-->
 							<tr>
 								<td>1</td>
-								<td>0/2 
+								<td><span id="nbj1"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="10" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba1"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="11" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -216,6 +216,33 @@
 		<!-- ===== -->
 
 	</div><!-- Ferme la row_corps" -->
+
+
+	<!-- JS/AJAX pour actualiser le nombre de joueurs sur les forums -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script>
+	function actualiser() {
+			//Passage de la valeur en AJAX pour php
+			var xhr = new XMLHttpRequest();
+			//Attente du résultat du php
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4) {		//serveur ok + réponse reçue
+					var r=xhr.responseText;	//récupération du résultat
+					rj=r.substring(0,1);
+					ra=r.substring(2,3);
+					document.getElementById('nbj1').innerHTML = rj;
+					document.getElementById('nba1').innerHTML = ra;
+				}			
+			};
+
+			//Passage avec GET
+			//for (int i=; i<9;i++){
+				xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); //pour l'instant on teste que sur le forum 1
+				xhr.send(null);	
+			//}
+		}
+
+	</script>
 
 </body>
 </html>
