@@ -19,7 +19,7 @@
 		if($verif_string->idPartie == 0){		//si 0, on créé une nouvelle partie
 			
 			//ON CHERCHE L'ID MAX DES PARTIES
-			$req_id="SELECT MAX(idPartie) AS idmax FROM Forums";	
+			$req_id="SELECT MAX(idPartie) AS idmax FROM Parties";	
 			$res_id=$bdd->query($req_id);
 			$id_max=$res_id->fetchobject();
 			$id_max=$id_max->idmax;		

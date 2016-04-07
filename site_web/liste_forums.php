@@ -98,12 +98,12 @@
 							</tr>
 						      	<tr>
 								<td>2</td>
-								<td>0/2 
+								<td><span id="nbj2">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="20" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba2">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="21" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -111,12 +111,12 @@
 							</tr>
 							<tr>
 								<td>3</td>
-								<td>0/2 
+								<td><span id="nbj3">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="30" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nbj3">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="31" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -124,12 +124,12 @@
 							</tr>
 							<tr>
 								<td>4</td>
-								<td>0/2 
+								<td><span id="nbj4">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="40" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba4">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="41" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -137,12 +137,12 @@
 							</tr>
 							<tr>
 								<td>5</td>
-								<td>0/2 
+								<td><span id="nbj5">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="50" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba5">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="51" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -150,12 +150,12 @@
 							</tr>
 							<tr>
 								<td>6</td>
-								<td>0/2 
+								<td><span id="nbj6">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="60" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba6">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="61" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -163,12 +163,12 @@
 							</tr>
 							<tr>
 								<td>7</td>
-								<td>0/2 
+								<td><span id="nbj7">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="70" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba7">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="71" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -176,12 +176,12 @@
 							</tr>
 							<tr>
 								<td>8</td>
-								<td>0/2 
+								<td><span id="nbj8">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="80" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nbj8">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="81" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -189,12 +189,12 @@
 							</tr>
 							<tr>
 								<td>9</td>
-								<td>0/2 
+								<td><span id="nbj9">/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="90" name="assign">Rejoindre en tant que joueur</button>
 									</form>  
 								</td>
-								<td>0/10
+								<td><span id="nba9">/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="91" name="assign">Rejoindre en tant qu'arbitre</button>
 									</form>  
@@ -222,6 +222,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
 	function actualiser() {
+
 			//Passage de la valeur en AJAX pour php
 			var xhr = new XMLHttpRequest();
 			//Attente du résultat du php
@@ -232,14 +233,13 @@
 					ra=r.substring(2,3);
 					document.getElementById('nbj1').innerHTML = rj;
 					document.getElementById('nba1').innerHTML = ra;
+					var timer=setTimeout("actualiser()",1000);
 				}			
 			};
 
 			//Passage avec GET
-			//for (int i=; i<9;i++){
-				xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); //pour l'instant on teste que sur le forum 1
-				xhr.send(null);	
-			//}
+			xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
+			xhr.send(null);	
 		}
 
 	</script>
