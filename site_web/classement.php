@@ -82,7 +82,7 @@
 						   		// INTERROGATION
 						   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
 						   		if ($classement==false) {
-						       			echo "erreur query";
+						       			header('Location: erreur_paslog.php?num_erreur=1');
 						       			exit();
 						   		}
 						   

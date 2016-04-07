@@ -64,13 +64,24 @@
 		<!-- ============ -->
 
 		<div class="container" id="corps">
+		<?php
+		if ($_GET['num_erreur']==0){
+			echo " 
+				<div class='row' id='liste_forums'>
+					<h1>IDENTIFICATION REQUISE</h1>	
+				</div>
 
-			<div class="row" id="liste_forums">
-				<h1>IDENTIFICATION REQUISE</h1>	
-			</div>
+				</div><!-- Ferme le bloc du milieu --> ";
+		}
+		if ($_GET['num_erreur']==1){
+			echo "
+				<div class='row' id='liste_forums'>
+					<h1>Problème de connexion serveur</h1>	
+				</div>
 
-		</div><!-- Ferme le bloc du milieu -->
-
+				</div><!-- Ferme le bloc du milieu --> ";
+		}
+		?>
 		<!-- FOOTER -->
 		<div class="row">
 			<div class="col-sm-12" id="footer">

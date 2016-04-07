@@ -4,7 +4,7 @@
 	//CONNEXION BDD
 	require("../config.php");
 	if (!isset($_SESSION['pseudo'])) {
-		header('Location: ../erreur_paslog.php');
+		header('Location: ../erreur_paslog.php?num_erreur=0');
 	}
 	
 	else {
