@@ -221,27 +221,27 @@
 	<!-- JS/AJAX pour actualiser le nombre de joueurs sur les forums -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
+
 	function actualiser() {
-
-			//Instanciation de l'objet pour passage à php
-			var xhr = new XMLHttpRequest();
+		
+		//Instanciation de l'objet pour passage à php
+		var xhr = new XMLHttpRequest();
 			
-			//Passage avec GET
-			xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
-			xhr.send(null);	
+		//Passage avec GET
+		xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
+		xhr.send(null);	
 
-			//Traitement du résultat du php
-			xhr.onreadystatechange = function() {
-				if(xhr.readyState == 4) {		//serveur ok + réponse reçue
-					var r=xhr.responseText;	//récupération du résultat
-					rj=r.substring(0,1);
-					ra=r.substring(2,3);
-					document.getElementById('nbj1').innerHTML = rj;
-					document.getElementById('nba1').innerHTML = ra;
-					var timer=setTimeout("actualiser()",1000);
-				}			
-			};
-		}
+		//Traitement du résultat du php
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
+				var r=xhr.responseText;	//récupération du résultat
+				rj=r.substring(0,1);
+				ra=r.substring(2,3);
+				document.getElementById('nbj1').innerHTML = rj;
+				document.getElementById('nba1').innerHTML = ra;
+				var timer=setTimeout("actualiser()",1000);
+			}			
+		};
 
 	</script>
 
