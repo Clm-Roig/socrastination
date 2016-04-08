@@ -67,7 +67,7 @@
 
 				else {	//Ok on a une place pour toi, joueur
 					//Requete pour la table Role
-					$req_creation_J1="INSERT INTO Role (role,idPartie,idMembre)
+					$req_creation_j1="INSERT INTO Role (role,idPartie,idMembre)
 								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
 								";
 
@@ -104,11 +104,6 @@
 					exit();
 				}
 			}	
-			
-	
-
-	
 		}
-
 	}
 ?>
