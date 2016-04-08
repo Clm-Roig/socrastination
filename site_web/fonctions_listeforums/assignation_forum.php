@@ -4,7 +4,7 @@
 	//CONNEXION BDD
 	require("../config.php");
 	if (!isset($_SESSION['pseudo'])) {
-		header('Location: ../gabarits/erreur.php?num_erreur=0');
+		header('Location: ../erreur.php?num_erreur=0');
 	}
 	
 	else {
@@ -61,7 +61,7 @@
 
 				if($nb_j >= 2){		//Il y a trop de joueurs, du balais !
 					//Redirection vers listeforums
-					header("Location: ../gabarits/erreur.php?num_erreur=2");
+					header("Location: ../erreur.php?num_erreur=2");
 					exit();
 				}
 
@@ -86,7 +86,7 @@
 
 				if($nb_a >= 10){		//Il y a trop d'arbitres, du balais !
 					//Redirection vers erreur.php
-					header("Location: ../gabarits/erreur.php?num_erreur=2");
+					header("Location: ../erreur.php?num_erreur=2");
 					exit();
 				}
 				

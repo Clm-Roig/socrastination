@@ -3,7 +3,7 @@
 	require("config.php");
 
 	if (!isset($_SESSION['pseudo'])) {
-		header('Location: ../gabarits/erreur.php?num_erreur=0');
+		header('Location: ../erreur.php?num_erreur=0');
 	}
 	
 	else {
