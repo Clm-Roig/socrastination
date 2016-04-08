@@ -12,13 +12,14 @@
 		$num_forum = (int) ($_POST['assign']/10);
 		$num_role = $_POST['assign']%10;
 
-		//CREATION DE LA PARTIE SI JOUEUR ET PARTIE INEXISTANTE 
+		//VERIFICATION SI PARTIE INEXISTANTE 
 		$verif=$bdd->query("SELECT idPartie FROM Forums WHERE idForum=$num_forum");
 		$verif_string=$verif->fetchobject();
+		$id_partie=$verif_string->idPartie;
 
-		if($verif_string->idPartie == 0){		//si 0, on créé une nouvelle partie
+		if($id_partie == 0){		//si 0, on créé une nouvelle partie
 			
-			//ON CHERCHE L'ID MAX DES PARTIES
+			//ON CHERCHE L'ID MAX DES PARTIES (et on incrémente)
 			$req_id="SELECT MAX(idPartie) AS idmax FROM Parties";	
 			$res_id=$bdd->query($req_id);
 			$id_max=$res_id->fetchobject();
@@ -49,7 +50,26 @@
 			//Redirection vers la partie créée
 			header("Location: ../interfacejeu.php?npartie=$id_max&nforum=$num_forum");
 			exit();
-		}		
+		}
+
+		else{	
+			 if($num_role==0) {		//Il y a une partie sur ce forum et on est rentré en tant que joueur
+
+				//VERIFICATION NOMBRE DE JOUEURS
+				$req_nbj=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=0");
+				$nb_j= $req_nbj->fetchColumn();
+
+				if($nb_j >= 2){		//Il y a trop de joueurs, du balais !
+					//Redirection vers listeforums
+					header("Location: ../erreur_paslog.php?num_erreur=2");
+					exit();
+				}
+			}
+	
+			if($num_role==1){			//Il y a une partie sur ce forum et on est rentré en tant qu'arbitre
+
+			}			
+		}
 
 	}
 ?>

@@ -65,6 +65,7 @@
 
 		<div class="container" id="corps">
 		<?php
+
 		if ($_GET['num_erreur']==0){
 			echo " 
 				<div class='row' id='liste_forums'>
@@ -73,10 +74,20 @@
 
 				</div><!-- Ferme le bloc du milieu --> ";
 		}
+
 		if ($_GET['num_erreur']==1){
 			echo "
 				<div class='row' id='liste_forums'>
 					<h1>Problème de connexion serveur</h1>	
+				</div>
+
+				</div><!-- Ferme le bloc du milieu --> ";
+		}
+
+		if ($_GET['num_erreur']==2){
+			echo "
+				<div class='row' id='liste_forums'>
+					<h1>Partie pleine !</h1>	
 				</div>
 
 				</div><!-- Ferme le bloc du milieu --> ";
