@@ -65,7 +65,7 @@
 
 		<div class="container" id="corps">
 			<div class='row' id='liste_forums'>
-				<h1>
+				<h1>{message_erreur}
 		<?php
 
 		if ($_GET['num_erreur']==0){
