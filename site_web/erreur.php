@@ -64,35 +64,32 @@
 		<!-- ============ -->
 
 		<div class="container" id="corps">
+			<div class='row' id='liste_forums'>
+				<h1>
 		<?php
 
 		if ($_GET['num_erreur']==0){
-			echo " 
-				<div class='row' id='liste_forums'>
-					<h1>IDENTIFICATION REQUISE</h1>	
-				</div>
-
-				</div><!-- Ferme le bloc du milieu --> ";
+			echo "
+					Erreur : identification requise.
+				";
 		}
 
 		if ($_GET['num_erreur']==1){
 			echo "
-				<div class='row' id='liste_forums'>
-					<h1>Problème de connexion serveur</h1>	
-				</div>
-
-				</div><!-- Ferme le bloc du milieu --> ";
+					Erreur : problème de connexion serveur.
+				";
 		}
 
 		if ($_GET['num_erreur']==2){
 			echo "
-				<div class='row' id='liste_forums'>
-					<h1>Partie pleine !</h1>	
-				</div>
-
-				</div><!-- Ferme le bloc du milieu --> ";
+					Erreur : partie pleine.
+				";
 		}
 		?>
+				</h1>	
+			</div>
+		</div><!-- Ferme le bloc du milieu --> 
+
 		<!-- FOOTER -->
 		<div class="row">
 			<div class="col-sm-12" id="footer">
