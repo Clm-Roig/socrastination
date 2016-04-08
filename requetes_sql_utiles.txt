@@ -1,0 +1,6 @@
+#Supprimer toutes les parties déjà crées 
+DELETE FROM Parties; 
+DELETE FROM Role; 
+UPDATE Forums
+SET idPartie=0;						
+			
