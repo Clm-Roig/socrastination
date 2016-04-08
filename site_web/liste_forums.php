@@ -37,7 +37,7 @@
    	
 </head>
 
-<body onload="actualiser()">
+<body>
 
     	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
@@ -53,6 +53,7 @@
 
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+
 		<?php 
 			if (!isset($_SESSION['pseudo'])) {
 				include("elements_communs/header2.php");
@@ -60,7 +61,7 @@
 		else {
 			include("elements_communs/header3.php");
 			}
-			?>
+		?>
 		<!-- ============ -->
 
 		<div class="container" id="corps">
@@ -222,14 +223,11 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
 
+	var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
+
 	function actualiser() {
-		
 		//Instanciation de l'objet pour passage à php
-		var xhr = new XMLHttpRequest();
-			
-		//Passage avec GET
-		xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
-		xhr.send(null);	
+		var xhr = new XMLHttpRequest(); 
 
 		//Traitement du résultat du php
 		xhr.onreadystatechange = function() {
@@ -239,9 +237,13 @@
 				ra=r.substring(2,3);
 				document.getElementById('nbj1').innerHTML = rj;
 				document.getElementById('nba1').innerHTML = ra;
-				var timer=setTimeout("actualiser()",1000);
 			}			
 		};
+
+		//Passage avec GET
+		xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum=1"); 	//pour l'instant on teste que sur le forum 1
+		xhr.send(null);	
+	}
 
 	</script>
 
