@@ -22,7 +22,7 @@
 			$query->CloseCursor();
 		}
 		else { 
-			header('Location: erreur_paslog.php?num_erreur=1');
+			header('Location: erreur.php?num_erreur=1');
 		}
 	}
 

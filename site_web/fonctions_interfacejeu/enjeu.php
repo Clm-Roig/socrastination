@@ -3,7 +3,7 @@
 	require("config.php");
 
 	if (!isset($_SESSION['pseudo'])) {
-		header('Location: ../erreur_paslog.php');
+		header('Location: ../erreur.php?num_erreur=0');
 	}
 	
 	else {
