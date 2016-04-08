@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8" />
 
-	<link rel="icon" href="images/favicon.ico"/>
+	<link rel="icon" href="../images/favicon.ico"/>
 
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 
@@ -24,7 +24,7 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 		<!-- PERSO -->
-		<link rel="stylesheet" href="css/style.css">   
+		<link rel="stylesheet" href="../css/style.css">   
 
 	<!-- === -->
 
@@ -44,28 +44,62 @@
 	<!-- ============ -->
 
 		<!-- HEADER / NAV -->
-		<?php include("elements_communs/header1.php");?>
-		<ul class="nav navbar-nav">
-			<li class="menu"><a href="index.php">Accueil</a></li>
-			<li class="menu"><a href="regles.php">Règles</a></li>
-			<li class="menu"><a href="classement.php">Classement</a></li>
-		</ul>
+		<div class="row">
+			<nav class="navbar navbar-inverse">
+			  	<div class="container-fluid">
+				    	<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+					     	</button>
+				    	</div>
 
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+			    		<div class="collapse navbar-collapse" id="myNavbar">      
+						<ul class="nav navbar-nav">
+							<li class="menu"><a href="../index.php">Accueil</a></li>
+							<li class="menu"><a href="../regles.php">Règles</a></li>
+							<li class="menu"><a href="../classement.php">Classement</a></li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="../inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 		<?php 
 			if (!isset($_SESSION['pseudo'])) {
-				include("elements_communs/header2.php");
-				}
-		else {
-			include("elements_communs/header3.php");
+				echo '		<li>
+								<form class="form-inline" action="login.php" method="post">
+							 		<div class="form-group">
+										<input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo" required>
+										<input type="password" name="pwd" class="form-control" id="password" placeholder="Mot de passe" required>
+									</div>
+
+									<div class="form-group">
+										<button type="submit" name="connexion" class="btn"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
+									</div>
+								</form>
+							</li>
+						</ul>
+			   		</div>
+				</div>
+			</nav>
+		</div>	
+				';
 			}
-			?>
+			else {
+				echo '		<li><a href="../membre.php">Mon compte</a></li>
+							<li><button  class="btn btn-danger" id="deco" type="submit" name="deconnexion" onclick="self.location.href=\'../deco.php\'"><span class="glyphicon glyphicon-log-out"></span> Se deconnecter</button></li>		  
+						</ul>
+			   		</div>
+				</div>
+			</nav>
+		</div>	
+				';
+			}
+		?>
 		<!-- ============ -->
 
 		<div class="container" id="corps">
 			<div class='row' id='liste_forums'>
-				<h1>{message_erreur}
+				<h1>
 		<?php
 
 		if ($_GET['num_erreur']==0){

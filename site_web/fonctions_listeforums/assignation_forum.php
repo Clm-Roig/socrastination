@@ -26,7 +26,7 @@
 			$id_max=$id_max->idmax;		
 			$id_max++;
 	
-			//CREATION DE LA REQUETE
+			//CREATION DES REQUETES
 			//Requete pour la table Forums
 			$req_creation1="UPDATE Forums
 						SET idPartie=$id_max
@@ -64,11 +64,50 @@
 					header("Location: ../gabarits/erreur.php?num_erreur=2");
 					exit();
 				}
+
+				else {	//Ok on a une place pour toi, joueur
+					//Requete pour la table Role
+					$req_creation_J1="INSERT INTO Role (role,idPartie,idMembre)
+								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
+								";
+
+					$bdd->query($req_creation_j1);
+
+					//Redirection vers la partie
+					header("Location: ../interfacejeu.php?npartie=$id_partie&nforum=$num_forum");
+					exit();
+				}
 			}
 	
 			if($num_role==1){			//Il y a une partie sur ce forum et on est rentré en tant qu'arbitre
+				//VERIFICATION NOMBRE D'ARBITRES
+				$req_nba=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=1");
+				$nb_a= $req_nba->fetchColumn();
 
-			}			
+				if($nb_a >= 10){		//Il y a trop d'arbitres, du balais !
+					//Redirection vers erreur.php
+					header("Location: ../gabarits/erreur.php?num_erreur=2");
+					exit();
+				}
+				
+				else {	//Ok on a une place pour toi, arbitre
+
+					//Requete pour la table Role
+					$req_creation_a1="INSERT INTO Role (role,idPartie,idMembre)
+								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
+								";
+
+					$bdd->query($req_creation_a1);
+
+					//Redirection vers la partie
+					header("Location: ../interfacejeu.php?npartie=$id_partie&nforum=$num_forum");
+					exit();
+				}
+			}	
+			
+	
+
+	
 		}
 
 	}
