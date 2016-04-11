@@ -19,8 +19,4 @@
 		//Affichage pour vérifier, à retirer à l'avenir
 		echo "<p class=\"foot\">Vous êtes ".$_SESSION['pseudo']." et vous vous situez sur le forum $num_forum, dans la partie $num_partie avec le rôle $nom_role.</p>";
 	}
-
-
-
-
 ?>
