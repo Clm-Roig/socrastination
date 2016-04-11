@@ -1,13 +1,13 @@
 <?php
 	//CONNEXION BDD
-	require("config.php");
+	require("fonctions_interfacejeu/../config.php");
 
 	if (!isset($_SESSION['pseudo'])) {
 		header('Location: ../erreur.php?num_erreur=0');
 	}
 	
 	else {
-		//RECUPERATION DES VARIABLES
+	// ========== RECUPERATION DES VARIABLES ========== // 
 		$num_forum = $_GET['nforum'];
 		$num_partie = $_GET['npartie'];
 
@@ -18,5 +18,5 @@
 
 		//Affichage pour vérifier, à retirer à l'avenir
 		echo "<p class=\"foot\">Vous êtes ".$_SESSION['pseudo']." et vous vous situez sur le forum $num_forum, dans la partie $num_partie avec le rôle $nom_role.</p>";
-	}
+	}	
 ?>
