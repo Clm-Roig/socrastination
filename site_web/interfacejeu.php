@@ -69,7 +69,30 @@
 	
 					<!-- Panneau affichage de la conversation -->
 							<div id="conversation">
-								<p>Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								<div class ="message_adv">
+									<p class="arg">Mon argument est le suivant. En effet, on peut considérer le citoyen comme indépendant et croyant en sont propre esprit conceptuel. Cependant, cela ne le mènera qu'à sa perte.</p>
+								</div>
+								<div class="message_moi">
+									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								</div>
+								<div class ="message_adv">
+									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								</div>
+								<div class="message_moi">
+									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								</div>
+								<div class ="message_adv">
+									<p class="arg">Mon argument est le suivant. En effet, on peut considérer le citoyen comme indépendant et croyant en sont propre esprit conceptuel. Cependant, cela ne le mènera qu'à sa perte.</p>
+								</div>
+								<div class="message_moi">
+									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								</div>
+								<div class ="message_adv">
+									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								</div>
+								<div class="message_moi">
+									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
+								</div>
 							</div>
 					<!-- Fermeture panneau -->
 

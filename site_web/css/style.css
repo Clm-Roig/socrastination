@@ -200,14 +200,40 @@ p.foot {
 
 #conversation{
 	height : 450px;
+	width : 100%;
+	overflow-y : scroll;
 }
 
 #form_chat {
-	display : block;
 	margin-bottom : 2em;
 }
 
 h2.haut_chat {
 	color:white;
 	text-align:center;
+}
+
+.message_adv, .message_moi {
+	margin-bottom : 1.5em;	
+	box-shadow : 0 4px 7px;
+	border-radius : 10px;
+}
+
+.message_adv {
+	background-color : gold;
+	margin-left : 600px;
+	margin-right : 20px;
+}
+
+.message_moi{
+	background-color : lightblue;
+	margin-right : 600px;
+	margin-left : 20px;
+}
+
+p.arg {
+	margin : 0;
+	padding : 0.2em;
+	font-size : 1.3em;
+	text-align : justify;
 }
