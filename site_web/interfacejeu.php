@@ -100,9 +100,9 @@
 
 									<form class="form-inline" id="form_chat" action="fonctions_interfacejeu/envoi_message.php" method="post">
 										<div class="form-group">
-											<input type="text" class="form-control" id="message" placeholder="Message...">
+											<input type="text" class="form-control" id="message" name="message" placeholder="Message...">
 										</div>
-										  <button id="post"  class="btn btn-default" type="submit">Envoyer</button>
+										  <button id="poster"  class="btn btn-default" type="submit">Envoyer</button>
 									</form>
 
 								</div>
