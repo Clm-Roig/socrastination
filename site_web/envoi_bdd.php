@@ -96,19 +96,6 @@
 		
 	</div><!-- Ferme la row_corps" -->
 
-	<script>
-		function checkpass() {
-			var val1 = document.getElementById("pwd");
-			var val2 = document.getElementById("pwdconfirm");
-		 
-		 	 if(val1.value != val2.value){
-				document.getElementById("alerte").innerHTML="<p class=\"text-danger\">Tapez deux mots de passe identiques, merci.</p>";
-		  	}
-		 	else{
-		    		document.getElementById("alerte").innerHTML="<p class=\"text-success\">Mot de passe valide, bravo !</p>";
-		  	}
-		}
-	</script>
 	
 </body>
 </html>

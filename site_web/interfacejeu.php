@@ -30,8 +30,6 @@
 	<link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
-
-	<script src="fonctions_chat_joueur/chat_joueur.js"></script>
 	
 	<title>Socrat' - Jeu</title>
    	
@@ -100,7 +98,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 
-									 <form class="form-inline" id="form_chat" action="fonctions_chat_joueur/enjeu.php" method="post">
+									<form class="form-inline" id="form_chat" action="fonctions_interfacejeu/envoi_message.php" method="post">
 										<div class="form-group">
 											<input type="text" class="form-control" id="message" placeholder="Message...">
 										</div>
