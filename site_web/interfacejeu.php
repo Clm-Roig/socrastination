@@ -107,7 +107,7 @@
 
 								</div>
 							</div>
-					<!-- Fermeteure z. de texte -->
+					<!-- Fermeteure z. de texte -->				
 
 						</div>
 					</div>

@@ -237,3 +237,9 @@ p.arg {
 	font-size : 1.3em;
 	text-align : justify;
 }
+
+p.erreur_jeu {
+	color :red;
+	font-weight : bold;
+	text-align : center;
+}
