@@ -7,10 +7,10 @@
 	try{
 		
 		// REQUETE 
-		$req_message = 	"INSERT INTO Chat_messages(message_id_membre, message_time, message_text, n_forum)
-						VALUES (".$_SESSION['idMembre'].",NOW(),'".$_POST['message']."',".$_SESSION['id_forum'].");
+		$req_message = 	"INSERT INTO Chat_messages(message_id_membre, message_time, message_text, id_partie)
+						VALUES (".$_SESSION['idMembre'].",NOW(),'".$_POST['message']."',".$_SESSION['id_partie'].");
 						";	
-		echo "<h1>".$req_message."</h1>";
+
 		$bdd->query($req_message);
 
 		//CONTROLE

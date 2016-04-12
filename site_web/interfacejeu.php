@@ -130,7 +130,7 @@
 	</div><!-- Ferme #row_corps -->
 
 	<!-- INVOCATION DU SCRIPT-->
-	 <script type="text/javascript" src="fonctions_interfacejeu/envoi_message.js"></script>
+	 <script type="text/javascript" src="fonctions_interfacejeu/afficher_message.js"></script>
 	<!-- ==================== -->
 
 </body>
