@@ -47,6 +47,10 @@
 			$bdd->query($req_creation2);
 			$bdd->query($req_creation3);	
 
+			//Stockage dans $_SESSION 
+			$_SESSION['id_forum']=$num_forum;	
+			$_SESSION['id_partie']=$id_max;				
+
 			//Redirection vers la partie créée
 			header("Location: ../interfacejeu.php?npartie=$id_max&nforum=$num_forum");
 			exit();
@@ -73,6 +77,10 @@
 
 					$bdd->query($req_creation_j1);
 
+					//Stockage dans $_SESSION 
+					$_SESSION['id_forum']=$num_forum;	
+					$_SESSION['id_partie']=$id_partie;
+
 					//Redirection vers la partie
 					header("Location: ../interfacejeu.php?npartie=$id_partie&nforum=$num_forum");
 					exit();
@@ -98,6 +106,10 @@
 								";
 
 					$bdd->query($req_creation_a1);
+
+					//Stockage dans $_SESSION 
+					$_SESSION['id_forum']=$num_forum;	
+					$_SESSION['id_partie']=$id_partie;
 
 					//Redirection vers la partie
 					header("Location: ../interfacejeu.php?npartie=$id_partie&nforum=$num_forum");
