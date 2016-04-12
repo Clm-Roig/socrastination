@@ -107,7 +107,8 @@
 
 								</div>
 							</div>
-					<!-- Fermeteure z. de texte -->				
+					<!-- Fermeteure z. de texte -->			
+		<div id="test">BLABLABLABLA</div>	
 
 						</div>
 					</div>
@@ -130,7 +131,27 @@
 	</div><!-- Ferme #row_corps -->
 
 	<!-- INVOCATION DU SCRIPT-->
-	 <script type="text/javascript" src="fonctions_interfacejeu/afficher_message.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script>
+	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les 4 secondes.
+
+	function affichage() {
+		//Instanciation de l'objet pour passage à php
+		var xhr = new XMLHttpRequest(); 
+
+		//Traitement du résultat du php
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
+				var r=xhr.responseText;	//récupération du résultat
+				document.getElementById('test').innerHTML = r;
+			}			
+		};
+
+		//Passage avec GET
+		xhr.open("GET","fonctions_interfacejeu/afficher_message.php"); 
+		xhr.send(null);	
+	}
+	</script>		
 	<!-- ==================== -->
 
 </body>
