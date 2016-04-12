@@ -110,7 +110,7 @@
 	<!-- INVOCATION DU SCRIPT-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
-	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
+	var timer=setInterval("affichage()",2000);	//on lance la fonction toutes les secondes.
 
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
@@ -120,7 +120,7 @@
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
 				var r = xhr.responseText;	//récupération du résultat
-				if (false){
+				if (r!=''){
 					//Config du div contenant le bloc p
 		    			var new_div = document.createElement('div');
 					new_div.className = 'message_moi';
