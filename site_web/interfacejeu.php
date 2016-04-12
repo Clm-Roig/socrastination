@@ -67,30 +67,7 @@
 	
 					<!-- Panneau affichage de la conversation -->
 							<div id="conversation">
-								<div class ="message_adv">
-									<p class="arg">Mon argument est le suivant. En effet, on peut considérer le citoyen comme indépendant et croyant en sont propre esprit conceptuel. Cependant, cela ne le mènera qu'à sa perte.</p>
-								</div>
-								<div class="message_moi">
-									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
-								</div>
-								<div class ="message_adv">
-									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
-								</div>
-								<div class="message_moi">
-									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
-								</div>
-								<div class ="message_adv">
-									<p class="arg">Mon argument est le suivant. En effet, on peut considérer le citoyen comme indépendant et croyant en sont propre esprit conceptuel. Cependant, cela ne le mènera qu'à sa perte.</p>
-								</div>
-								<div class="message_moi">
-									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
-								</div>
-								<div class ="message_adv">
-									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
-								</div>
-								<div class="message_moi">
-									<p class="arg">Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation Test conversation</p>
-								</div>
+							
 							</div>
 					<!-- Fermeture panneau -->
 
@@ -108,7 +85,7 @@
 								</div>
 							</div>
 					<!-- Fermeteure z. de texte -->			
-		<div id="test">BLABLABLABLA</div>	
+		<div id="test"></div>	
 
 						</div>
 					</div>
@@ -133,7 +110,7 @@
 	<!-- INVOCATION DU SCRIPT-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
-	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les 4 secondes.
+	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
@@ -142,8 +119,20 @@
 		//Traitement du résultat du php
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
-				var r=xhr.responseText;	//récupération du résultat
-				document.getElementById('test').innerHTML = r;
+				var r = xhr.responseText;	//récupération du résultat
+				if (false){
+					//Config du div contenant le bloc p
+		    			var new_div = document.createElement('div');
+					new_div.className = 'message_moi';
+					//Config du p contenant le message
+					var new_p = document.createElement('p');
+					new_p.className = 'arg';
+		    			new_p.innerHTML = r;          			
+					//Passage de p dans le div
+					new_div.appendChild(new_p);
+					//Affichage du div 
+		    			document.getElementById('conversation').appendChild(new_div);  
+				}
 			}			
 		};
 
@@ -151,7 +140,7 @@
 		xhr.open("GET","fonctions_interfacejeu/afficher_message.php"); 
 		xhr.send(null);	
 	}
-	</script>		
+	</script>	
 	<!-- ==================== -->
 
 </body>

@@ -1,7 +1,6 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script>
-
-	var timer=setInterval("affichage()",4000);	//on lance la fonction toutes les 4 secondes.
+	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les 4 secondes.
 
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
@@ -16,8 +15,7 @@
 		};
 
 		//Passage avec GET
-		xhr.open("GET","afficher_messages.php"); 
+		xhr.open("GET","afficher_message.php"); 
 		xhr.send(null);	
-	};
-
-</script>
+	}
+</script>	
