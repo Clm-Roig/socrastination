@@ -15,18 +15,16 @@
 
 		//CONTROLE
 		if (!$bdd){
-			header("Location: ../interfacejeu.php?npartie=".$_SESSION['id_partie']."&nforum=".$_SESSION['id_forum']."&erreur=1");
-			exit();
+			echo "Erreur envoi BDD, veuillez réessayer.";
 		}
 
-		//OK REDIRECTION
+		//OK 
 		else {
-			header("Location: ../interfacejeu.php?npartie=".$_SESSION['id_partie']."&nforum=".$_SESSION['id_forum'])."&erreur=0";
-			exit();
+			
 		}
 	}
 	catch (PDOException $e) {
-		echo '<h2>Erreur enregistrement des données : ' . $e->getMessage().'</h2>';
+		echo 'Erreur connexion BDD : ' . $e->getMessage().'';
 	}
 
 ?>

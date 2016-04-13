@@ -37,7 +37,7 @@
 
 <body> 
 
-	<?php require("fonctions_interfacejeu/enjeu.php");?>
+	<!--<?php require("fonctions_interfacejeu/enjeu.php");?>-->
 
 	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
@@ -75,17 +75,17 @@
 							<div class="row">
 								<div class="col-sm-12">
 
-									<form class="form-inline" id="form_chat" action="fonctions_interfacejeu/envoi_message.php" method="post">
+									<form class="form-inline" id="form_chat" onSubmit="return false;">
 										<div class="form-group">
 											<input type="text" class="form-control" id="message" name="message" placeholder="Message...">	
 										</div>
-										  <button id="poster"  class="btn btn-default" type="submit">Envoyer</button>
+										  <button id="poster"  class="btn btn-default" type="submit" >Envoyer</button>
 									</form>
 
 								</div>
 							</div>
 					<!-- Fermeteure z. de texte -->			
-		<div id="test"></div>	
+		<div id="test">blabla</div>	
 
 						</div>
 					</div>
@@ -108,7 +108,7 @@
 	</div><!-- Ferme #row_corps -->
 
 	<!-- INVOCATION DU SCRIPT-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script>
 	var timer=setInterval("affichage()",2000);	//on lance la fonction toutes les secondes.
 
@@ -140,6 +140,19 @@
 		xhr.open("GET","fonctions_interfacejeu/afficher_message.php"); 
 		xhr.send(null);	
 	}
+	
+
+	//ENVOI MESSAGE EN AJAX (2ème méthode)
+	$("#poster").click(function(){
+	var mess = document.getElementById("message").value;
+     	$.ajax({
+		url : 'fonctions_interfacejeu/envoi_message.php',
+       		type : 'POST', 
+       		dataType : 'html',
+		data : 'message='+mess
+   		});
+	});
+
 	</script>	
 	<!-- ==================== -->
 
