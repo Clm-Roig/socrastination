@@ -85,7 +85,6 @@
 								</div>
 							</div>
 					<!-- Fermeteure z. de texte -->			
-		<div id="test">blabla</div>	
 
 						</div>
 					</div>
@@ -115,6 +114,9 @@
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
 		var xhr = new XMLHttpRequest(); 
+
+		var compteur_moi=0;	//compte nb message envoyé par moi
+		var compteur_adv=0;	//compte nb message envoyé par adversaire
 
 		//Traitement du résultat du php
 		xhr.onreadystatechange = function() {
