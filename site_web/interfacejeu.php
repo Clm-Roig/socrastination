@@ -109,31 +109,40 @@
 	<!-- INVOCATION DU SCRIPT-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script>
-	var timer=setInterval("affichage()",2000);	//on lance la fonction toutes les secondes.
+	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
+
+	//On va arrêter de chercher des messages après 10 arguments échangés
+	var compteur_moi=10;	
+	var compteur_adv=10;	
+		
+	//On stocke le dernier message affiché pour ne pas le spammer 
+	var last_mess="0";
 
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
 		var xhr = new XMLHttpRequest(); 
 
-		var compteur_moi=0;	//compte nb message envoyé par moi
-		var compteur_adv=0;	//compte nb message envoyé par adversaire
-
 		//Traitement du résultat du php
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
 				var r = xhr.responseText;	//récupération du résultat
-				if (r!=''){
+				if (r != last_mess){
+
 					//Config du div contenant le bloc p
 		    			var new_div = document.createElement('div');
 					new_div.className = 'message_moi';
 					//Config du p contenant le message
 					var new_p = document.createElement('p');
 					new_p.className = 'arg';
-		    			new_p.innerHTML = r;          			
+		    			new_p.innerHTML = r;      
+    			
 					//Passage de p dans le div
 					new_div.appendChild(new_p);
 					//Affichage du div 
 		    			document.getElementById('conversation').appendChild(new_div);  
+
+					//MAJ last_mess
+					last_mess=r;				
 				}
 			}			
 		};
@@ -146,14 +155,16 @@
 
 	//ENVOI MESSAGE EN AJAX (2ème méthode)
 	$("#poster").click(function(){
-	var mess = document.getElementById("message").value;
-     	$.ajax({
-		url : 'fonctions_interfacejeu/envoi_message.php',
-       		type : 'POST', 
-       		dataType : 'html',
-		data : 'message='+mess
-   		});
-	});
+		var mess = document.getElementById("message").value;
+	     	$.ajax({
+			url : 'fonctions_interfacejeu/envoi_message.php',
+	       		type : 'POST', 
+	       		dataType : 'html',
+			data : 'message='+mess
+	   		});
+		//On efface le contenu après postage du message
+		document.getElementById('message').value='';  
+		});
 
 	</script>	
 	<!-- ==================== -->
