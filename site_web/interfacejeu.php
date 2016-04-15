@@ -75,9 +75,9 @@
 							<div class="row">
 								<div class="col-sm-12">
 
-									<form class="form-inline" id="form_chat" onSubmit="return false;">
+									<form class="form-inline"  id="form_chat" onSubmit="return false;">
 										<div class="form-group">
-											<input type="text" class="form-control" id="message" name="message" placeholder="Message...">	
+											<textarea class="form-control" id="message" name="message" placeholder="Message..." maxlength="254" rows ="2" cols ="80"></textarea>	
 										</div>
 										  <button id="poster"  class="btn btn-default" type="submit" >Envoyer</button>
 									</form>
@@ -109,6 +109,7 @@
 	<!-- INVOCATION DU SCRIPT-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script>
+
 	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
 	//On va arrêter de chercher des messages après 10 arguments échangés

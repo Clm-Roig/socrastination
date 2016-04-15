@@ -217,17 +217,18 @@ h2.haut_chat {
 	margin-bottom : 1.5em;	
 	box-shadow : 0 4px 7px;
 	border-radius : 10px;
+	word-break: break-all;
 }
 
 .message_adv {
 	background-color : gold;
-	margin-left : 600px;
+	margin-left : 45%;
 	margin-right : 20px;
 }
 
 .message_moi{
 	background-color : lightblue;
-	margin-right : 600px;
+	margin-right : 45%;
 	margin-left : 20px;
 }
 
@@ -243,3 +244,4 @@ p.erreur_jeu {
 	font-weight : bold;
 	text-align : center;
 }
+
