@@ -131,6 +131,7 @@ label.control-label {
 p{
 	padding : 0 4em;
 	font-size : 1.1em;
+	text-align : justify;
 }
 
 h1{

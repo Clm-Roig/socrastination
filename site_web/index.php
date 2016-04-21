@@ -71,12 +71,18 @@
 					<div class="col-sm-12">
 						<div class="row">
 							<h1>Présentation</h1>
-							<p>
-								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-							</p>
-							<h2>Titre 1</h2>
-							<p>
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+							<p>Socrastination est un projet basé sur un forum fonctionnant sur les principes de la méthode socratique.</p>
+							<p><em>Mais qu'est ce que la méthode socratique?</em></p>
+							<p>Celle-ci consiste à rechercher une définition universelle qui pourra se présenter comme une solution à un problème moral. Pour ce faire, Socrate a mis en place une méthode pratique qui est basée sur le dialogue appellé la dialectique.</p>
+							<p>Celle-ci est divisée en deux phases. La première, appellée l'ironie, dont le but est d'atteindre un état de "lâcher prise". Ainsi, chaque protagoniste reconnait son ignorance après avoir confronté ses idées (et du coup sa vérité) à celles d'un autre. La seconde phase, la maïeutique, est celle de la recherche de la fameuse définition universelle.</p>
+							<h2>
+								"Je sais seulement que je ne sais rien"
+								-Socrate-
+							</h2>
+							<p>Pour résumer : c'est un forum de débat.</p>
+							<p>Le principe : le 1er joueur qui se connecte crée une partie basée sur une question. Un deuxième joueur se connecte à la conversation et c'est parti!</p>
+							<p>D'autres joueurs peuvent assister au débat et faire figure d'arbitres, en votant pour ou contre chaque argument. Ceci permettra aux principaux protagonistes de voir quel type d'argument marche (...ou non).</p>
+							<p>Enjoy dans la joie, la bonne humeur et le respect des <a href="regles.php">règles</a>!</p>
 						</div>
 					</div>
 					

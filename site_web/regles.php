@@ -71,13 +71,21 @@
 					<div class="col-sm-12">
 						<div class="row">
 							<h1>Règles</h1>
+							<p class="text-center">Avertissement : certaines discussions peuvent porter sur des sujets se rapportant à des domaines non-appropriés aux plus jeunes (sexualité, mort, religion...). En cela, le jeu est interdit au moins de 18 ans.</p>
 							<p class="text-center">Nul joueur n'est censé ignorer la loi. Vous veillerez particulièrement à respecter les règles suivantes :</p>
-							<h2>Article 1</h2>
-							<p class="text-center">Les dialogues se font dans le respect de l'autre.</p>
-							<h2>Article 2</h2>
-							<p class="text-center">Les insultes sont bannies. Eternellement.</p>
-							<h2>Article 3</h2>
-							<p class="text-center">Certaines discussions peuvent porter sur des sujets se rapportant à des domaines non-appropriés aux plus jeunes (sexualité, mort, religion...). En cela, le jeu est interdit au moins de 18 ans.</p>
+							<h2>Pour tout le monde</h2>
+							<p class="text-center">1- L'Autre tu respecteras.</p>
+							<p class="text-center">2- D'insulter tu t'abstiendras</p>
+		
+							<h2>Orateur</h2>
+<p class="text-center">1- Ton tour tu attendras.</p>
+<p class="text-center">2- Un seul argument pas tour tu présenteras.</p>
+<p class="text-center">3- Fair-play tu resteras.</p>
+
+							<h2>Arbitre</h2>
+<p class="text-center">1- Neutre tu resteras.</p>
+<p class="text-center">2- Neutre tu resteras.</p>
+<p class="text-center">3- Voir règle 1 de la section Arbitre.</p>
 						</div>		
 					</div>
 
