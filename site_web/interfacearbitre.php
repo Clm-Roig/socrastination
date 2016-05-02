@@ -103,6 +103,10 @@
 	//On stocke le dernier message affiché pour ne pas le spammer 
 	var last_mess="";
 
+	//On stocke les id des joueurs
+	var idj1=-1;
+	var idj2=-1;
+
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
 		var xhr = new XMLHttpRequest(); 
@@ -111,13 +115,28 @@
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {				//serveur ok + réponse reçue
 				var r_brut = xhr.responseText;		//récupération du résultat
-				var auteur=r_brut.substring(0,1);	//auteur
-				var r=r_brut.substring(1);			//message
+
+				// £$¤ sont les caractères qui séparent l'id du membre du message
+				var index_separateur=r_brut.lastIndexof('£$¤');
+				var idj=r_brut.substring(0,index_separateur);		//auteur
+			
+				var r = r_brut.substring(index_separateur);
+
+				//On va initialiser les id des joueurs si ils sont vides
+				if (idj1==-1){
+					idj1=idj;
+				}
+				else if (idj2==-1){
+					idj2=idj;
+				}
+				
+				var r=r_brut.substring(1);		//message
+
 				if (r != last_mess){
 
 					//Config du div contenant le bloc p
 		    			var new_div = document.createElement('div');
-					if (auteur==1){
+					if (idj==idj1){
 						new_div.className = 'message_moi';
 					}
 					else {
@@ -141,24 +160,10 @@
 		};
 
 		//Passage avec GET
-		xhr.open("GET","fonctions_interfacejeu/afficher_message.php"); 
+		xhr.open("GET","fonctions_interfacejeu/afficher_message_arbitre.php"); 
 		xhr.send(null);	
 	}
 	
-
-	//ENVOI MESSAGE EN AJAX (2ème méthode)
-	$("#poster").click(function(){
-		var mess = document.getElementById("message").value;
-	     	$.ajax({
-			url : 'fonctions_interfacejeu/envoi_message.php',
-	       		type : 'POST', 
-	       		dataType : 'html',
-			data : 'message='+mess
-	   		});
-		//On efface le contenu après postage du message
-		document.getElementById('message').value='';  
-		});
-
 	</script>	
 	<!-- ==================== -->
 
