@@ -103,8 +103,8 @@
 
 					<!-- BOUTON JOUER TEMPORAIRE -->
 					<div class="row">
-						<div class="col-sm-12">
-							<h2><a href="liste_forums.php">JOUER</a></h2>
+						<div id="bloc_jouer" class="col-sm-12">
+							<a id="jouer" href="liste_forums.php">JOUER</a>
 						</div>
 					</div>
 					<!-- ========================= -->

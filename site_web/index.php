@@ -77,10 +77,10 @@
 							<p>Celle-ci est divisée en deux phases. La première, appellée l'ironie, dont le but est d'atteindre un état de "lâcher prise". Ainsi, chaque protagoniste reconnait son ignorance après avoir confronté ses idées (et du coup sa vérité) à celles d'un autre. La seconde phase, la maïeutique, est celle de la recherche de la fameuse définition universelle.</p>
 							<h2>
 								"Je sais seulement que je ne sais rien"
-								-Socrate-
+								- Socrate
 							</h2>
 							<p>Pour résumer : c'est un forum de débat.</p>
-							<p>Le principe : le 1er joueur qui se connecte crée une partie basée sur une question. Un deuxième joueur se connecte à la conversation et c'est parti!</p>
+							<p>Le principe : le 1er joueur qui se connecte crée une partie basée sur une question. Un deuxième joueur se connecte à la conversation et c'est parti !</p>
 							<p>D'autres joueurs peuvent assister au débat et faire figure d'arbitres, en votant pour ou contre chaque argument. Ceci permettra aux principaux protagonistes de voir quel type d'argument marche (...ou non).</p>
 							<p>Enjoy dans la joie, la bonne humeur et le respect des <a href="regles.php">règles</a>!</p>
 						</div>
@@ -88,8 +88,8 @@
 					
 					<!-- BOUTON JOUER TEMPORAIRE -->
 					<div class="row">
-						<div class="col-sm-12">
-							<h2><a href="liste_forums.php">JOUER</a></h2>
+						<div id="bloc_jouer" class="col-sm-12">
+							<a id ="jouer" href="liste_forums.php">JOUER</a>
 						</div>
 					</div>
 					<!-- ========================= -->

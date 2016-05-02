@@ -151,6 +151,26 @@ h3{
 
 /*----- TEXTE PERSO -----*/ 
 
+#bloc_jouer {
+	text-align : center;
+	margin-top : 2em;
+}
+
+#jouer {
+	color : black;
+	font-size : 2em;
+	border : 4px solid brown;
+	border-radius : 15%;
+	padding : 0 0.5em;
+	transition : 0.5s;
+}
+
+#jouer:hover {
+	text-decoration : none;
+	background-color : black;
+	color : white;
+	transition : 0.5s;
+}
 
 /*----- IMAGES, FIGURES, BOUTONS -----*/ 
 
