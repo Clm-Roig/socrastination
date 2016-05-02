@@ -63,8 +63,9 @@
 				$req_nbj=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=0");
 				$nb_j= $req_nbj->fetchColumn();
 
-				if($nb_j >= 2){		//Il y a trop de joueurs, du balais !
-					//Redirection vers listeforums
+				if($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
+
+					//Nope c'était pas toi , redirection vers listeforums
 					header("Location: ../erreur.php?num_erreur=2");
 					exit();
 				}
