@@ -28,11 +28,11 @@
 		$res_req_auteur= $bdd->query($req_auteur);
 		$res_req_auteur_str = $res_req_auteur->fetch();
 
-		$res_req=$bdd->query($req_message);
-		$res_req_str=$res_req->fetch();
+		$res_req = $bdd -> query($req_message);
+		$res_req_str = $res_req -> fetch();
 
 		//On insère les caractères £$¤ pour séparer l'auteur du message
-		echo $res_req_auteur_str."£$¤".$res_req_str[0];	
+		echo $res_req_auteur_str[0].'£$¤'.$res_req_str[0];
 	}
 	catch (PDOException $e) {
 		echo '<h2>Erreur affichage des données : ' . $e->getMessage().'</h2>';
