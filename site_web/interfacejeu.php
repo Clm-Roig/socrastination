@@ -125,13 +125,21 @@
 
 		//Traitement du résultat du php
 		xhr.onreadystatechange = function() {
-			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
-				var r = xhr.responseText;	//récupération du résultat
+			if(xhr.readyState == 4) {				//serveur ok + réponse reçue
+				var r_brut = xhr.responseText;		//récupération du résultat
+				var auteur=r_brut.substring(0,1);	//auteur
+				var r=r_brut.substring(1);			//message
 				if (r != last_mess){
 
 					//Config du div contenant le bloc p
 		    			var new_div = document.createElement('div');
-					new_div.className = 'message_moi';
+					if (auteur==1){
+						new_div.className = 'message_moi';
+					}
+					else {
+						new_div.className = 'message_adv';
+					}
+
 					//Config du p contenant le message
 					var new_p = document.createElement('p');
 					new_p.className = 'arg';
