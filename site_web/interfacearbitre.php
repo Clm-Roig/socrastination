@@ -117,20 +117,18 @@
 				var r_brut = xhr.responseText;		//récupération du résultat
 
 				// £$¤ sont les caractères qui séparent l'id du membre du message
-				var index_separateur=r_brut.lastIndexof('£$¤');
+				var index_separateur=r_brut.lastIndexOf('£$¤');
 				var idj=r_brut.substring(0,index_separateur);		//auteur
-			
+				index_separateur += 3;
 				var r = r_brut.substring(index_separateur);
 
 				//On va initialiser les id des joueurs si ils sont vides
-				if (idj1==-1){
+				if (idj1== -1){
 					idj1=idj;
 				}
-				else if (idj2==-1){
+				if (idj2 == -1){
 					idj2=idj;
 				}
-				
-				var r=r_brut.substring(1);		//message
 
 				if (r != last_mess){
 

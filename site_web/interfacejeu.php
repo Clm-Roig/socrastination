@@ -77,7 +77,7 @@
 
 									<form class="form-inline"  id="form_chat" onSubmit="return false;">
 										<div class="form-group">
-											<textarea class="form-control" id="message" name="message" placeholder="Message..." maxlength="254" rows ="2" cols ="80"></textarea>	
+											<textarea class="form-control" id="message" name="message" onKeyUp="if(event.keyCode == 13) validerForm();" placeholder="Message..." maxlength="254" rows ="2" cols ="80"></textarea>	
 										</div>
 										  <button id="poster"  class="btn btn-default" type="submit" >Envoyer</button>
 									</form>
@@ -110,9 +110,20 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script>
 
+	// SCRIPT VALIDATION FORMULAIRE AVEC ENTREE
+	function validerForm(){
+		document.getElementById("poster").click();	
+	}
+
+	//Annulation défaut du saut de ligne 
+	$('textarea').click(function(e){
+		e.preventDefault(); 
+	});
+
+	//SCRIPT D'AFFICHAGE DES MESSAGES
 	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
-	//On va arrêter de chercher des messages après 10 arguments échangés
+	//TODO : On va arrêter de chercher des messages après 10 arguments échangés
 	var compteur_moi=10;	
 	var compteur_adv=10;	
 		

@@ -113,7 +113,7 @@
 					$_SESSION['id_partie']=$id_partie;
 
 					//Redirection vers la partie
-					header("Location: ../interfacejeu.php?npartie=$id_partie&nforum=$num_forum");
+					header("Location: ../interfacearbitre.php?npartie=$id_partie&nforum=$num_forum");
 					exit();
 				}
 			}	
