@@ -117,7 +117,7 @@
 	var compteur_adv=10;	
 		
 	//On stocke le dernier message affiché pour ne pas le spammer 
-	var last_mess="0";
+	var last_mess="";
 
 	function affichage() {
 		//Instanciation de l'objet pour passage à php
