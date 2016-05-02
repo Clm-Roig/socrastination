@@ -1,4 +1,4 @@
-#Supprimer toutes les parties déjà crées 
+#Supprimer toutes les parties + messages déjà crées 
 DELETE FROM Parties; 
 DELETE FROM Role; 
 DELETE FROM Chat_messages;
