@@ -79,7 +79,7 @@
 		
 							<h2>Orateur</h2>
 <p class="text-center">1- Ton tour tu attendras.</p>
-<p class="text-center">2- Un seul argument pas tour tu présenteras.</p>
+<p class="text-center">2- Un seul argument par tour tu présenteras.</p>
 <p class="text-center">3- Fair-play tu resteras.</p>
 
 							<h2>Arbitre</h2>
