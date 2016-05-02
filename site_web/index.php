@@ -33,7 +33,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
 	
-	<title>Socrat' - Accueil</title>
+	<title>Socrastination - Accueil</title>
    	
 </head>
 

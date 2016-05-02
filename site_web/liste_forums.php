@@ -33,7 +33,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
 	
-	<title>Socrat' - Liste des Forums</title>
+	<title>Socrastination - Liste des Forums</title>
    	
 </head>
 

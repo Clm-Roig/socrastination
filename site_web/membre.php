@@ -38,7 +38,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
 	
-	<title>Socrat' - Espace</title>
+	<title>Socrastination - Espace Membre</title>
    	
 </head>
 
