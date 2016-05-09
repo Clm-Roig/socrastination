@@ -3,24 +3,48 @@
 	//CONNEXION BDD
 	require("../config.php");
 
-	// ========== POST DU MESSAGE ========== // 
 	try{
-		
-		// REQUETE 
-		$req_message = 	"INSERT INTO Chat_messages(message_id_membre, message_time, message_text, id_partie)
-						VALUES (".$_SESSION['idMembre'].",NOW(),'".$_POST['message']."',".$_SESSION['id_partie'].");
+		if ($_GET['type_vote']==1) {	//VOTE +1
+
+			// UPDATE DE LA TABLE
+			$id_message=$_GET['id_message'];
+			$req_vote= 	"UPDATE Chat_messages
+						SET votes_up=votes_up+1
+						WHERE message_id=$id_message
 						";	
 
-		$bdd->query($req_message);
+			$bdd->query($req_vote);
 
-		//CONTROLE
-		if (!$bdd){
-			echo "Erreur envoi BDD, veuillez réessayer.";
-		}
+			//CONTROLE
+			if (!$bdd){
+				echo "Erreur envoi BDD, veuillez réessayer.";
+			}
 
-		//OK 
-		else {
+			//OK 
+			else {
 			
+			}
+
+		else {	//vote -1
+			// UPDATE DE LA TABLE
+			$id_message=$_GET['id_message'];
+			$req_vote= 	"UPDATE Chat_messages
+						SET votes_up=votes_down+1
+						WHERE message_id=$id_message
+						";	
+
+			$bdd->query($req_vote);
+
+			//CONTROLE
+			if (!$bdd){
+				echo "Erreur envoi BDD, veuillez réessayer.";
+			}
+
+			//OK 
+			else {
+			
+			}
+
 		}
 	}
 	catch (PDOException $e) {
