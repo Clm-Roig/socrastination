@@ -272,6 +272,11 @@ p.erreur_jeu {
 .glyphicon-thumbs-down, .glyphicon-thumbs-up{
 	font-size : 1.5em;
 	text-align :center;
+	transition : transform;
+}
+
+.glyphicon-thumbs-down:hover, .glyphicon-thumbs-up:hover{
+	transform : rotate(15deg);
 }
 
 .glyphicon-thumbs-down {
