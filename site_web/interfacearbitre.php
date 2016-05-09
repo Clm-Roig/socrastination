@@ -175,6 +175,10 @@
 		xhr.open("GET","fonctions_interfacejeu/afficher_message_arbitre.php"); 
 		xhr.send(null);	
 	}
+
+	function vote(){
+
+	}
 	
 	</script>	
 	<!-- ==================== -->
