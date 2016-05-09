@@ -97,8 +97,8 @@
 	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
 	//On va arrêter de chercher des messages après 10 arguments échangés
-	var compteur_moi=10;	
-	var compteur_adv=10;	
+	var compteur_j1=10;	
+	var compteur_j2=10;	
 		
 	//On stocke le dernier message affiché pour ne pas le spammer 
 	var last_mess="";
@@ -131,28 +131,42 @@
 				}
 
 				if (r != last_mess){
+			
+					//Config du div contenant le bloc p + le vote
+					var new_div0 = document.createElement('div');
+					new_div0.className='bloc_arbitre';
 
 					//Config du div contenant le bloc p
 		    			var new_div = document.createElement('div');
 					if (idj==idj1){
 						new_div.className = 'message_moi';
+						compteur_j1--;
 					}
 					else {
 						new_div.className = 'message_adv';
+						compteur_j2--;
 					}
 
 					//Config du p contenant le message
-					var new_p = document.createElement('p');
-					new_p.className = 'arg';
-		    			new_p.innerHTML = r;      
-    			
-					//Passage de p dans le div
-					new_div.appendChild(new_p);
-					//Affichage du div 
-		    			document.getElementById('conversation').appendChild(new_div);  
 
 					//MAJ last_mess
-					last_mess=r;				
+					last_mess = r;	
+					var new_p = document.createElement('p');
+					new_p.className = 'arg';
+
+					//Insertion du vote dans le bloc
+		    			new_p.innerHTML = r+'<div class="votes"><span class="glyphicon glyphicon-thumbs-up"> </span> '+' <span class="glyphicon glyphicon-thumbs-down"></div>';      
+    			
+					//Passage de p dans le div et passage du div dans bloc_arbitre
+					new_div.appendChild(new_p);
+					new_div0.appendChild(new_div);
+					
+					
+
+					//Affichage du div 
+		    			document.getElementById('conversation').appendChild(new_div0);  
+
+													
 				}
 			}			
 		};

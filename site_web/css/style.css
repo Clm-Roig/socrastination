@@ -265,3 +265,25 @@ p.erreur_jeu {
 	text-align : center;
 }
 
+.bloc_arbitre {
+
+}
+
+.glyphicon-thumbs-down, .glyphicon-thumbs-up{
+	font-size : 1.5em;
+	text-align :center;
+}
+
+.glyphicon-thumbs-down {
+	color :red;
+	margin-left : 0.5em;
+}
+
+.glyphicon-thumbs-up {
+	color :green;
+	margin-right : 0.5em;
+}
+
+.votes {
+	text-align :center;
+}
