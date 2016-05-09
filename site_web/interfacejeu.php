@@ -123,7 +123,6 @@
 	//SCRIPT D'AFFICHAGE DES MESSAGES
 	var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
-	//TODO : On va arrêter de chercher des messages après 10 arguments échangés
 	var compteur_moi=10;	
 	var compteur_adv=10;	
 		
@@ -146,9 +145,11 @@
 		    			var new_div = document.createElement('div');
 					if (auteur==1){
 						new_div.className = 'message_moi';
+						compteur_moi --;
 					}
 					else {
 						new_div.className = 'message_adv';
+						compteur_adv --;
 					}
 
 					//Config du p contenant le message
