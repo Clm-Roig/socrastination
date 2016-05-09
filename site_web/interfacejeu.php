@@ -185,7 +185,7 @@
 	   		});
 		//On efface le contenu après postage du message
 		document.getElementById('message').value='';  
-		});
+	});
 
 	</script>	
 	<!-- ==================== -->
