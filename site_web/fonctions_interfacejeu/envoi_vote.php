@@ -4,10 +4,10 @@
 	require("../config.php");
 
 	try{
-		if ($_GET['type_vote']==1) {	//VOTE +1
+		if ($_POST['type_vote']==1) {	//VOTE +1
 
 			// UPDATE DE LA TABLE
-			$id_message=$_GET['id_message'];
+			$id_message=$_POST['id_message'];
 			$req_vote= 	"UPDATE Chat_messages
 						SET votes_up=votes_up+1
 						WHERE message_id=$id_message
@@ -27,7 +27,7 @@
 
 		else {	//vote -1
 			// UPDATE DE LA TABLE
-			$id_message=$_GET['id_message'];
+			$id_message=$_POST['id_message'];
 			$req_vote= 	"UPDATE Chat_messages
 						SET votes_up=votes_down+1
 						WHERE message_id=$id_message

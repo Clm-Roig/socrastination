@@ -37,8 +37,6 @@
 
 <body> 
 
-	<!--<?php require("fonctions_interfacejeu/enjeu.php");?>-->
-
 	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
 	<!-- ============ -->
@@ -117,10 +115,16 @@
 				var r_brut = xhr.responseText;		//récupération du résultat
 
 				// £$¤ sont les caractères qui séparent l'id du membre du message
-				var index_separateur=r_brut.lastIndexOf('£$¤');
-				var idj=r_brut.substring(0,index_separateur);		//auteur
-				index_separateur += 3;
-				var r = r_brut.substring(index_separateur);
+				var index_separateur_auteur=r_brut.lastIndexOf('£$¤');
+				var idj=r_brut.substring(0,index_separateur_auteur);		//auteur
+				index_separateur_auteur += 3;
+
+				// ù%*µ sont les caractères qui séparent l'id du message du message
+				var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
+				index_separateur_id += 4;
+				var id_message = r_brut.substring(index_separateur_id);	//id_message
+				
+				var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
 
 				//On va initialiser les id des joueurs si ils sont vides
 				if (idj1== -1){
@@ -155,18 +159,14 @@
 					new_p.className = 'arg';
 
 					//Insertion du vote dans le bloc
-		    			new_p.innerHTML = r+'<div class="votes"><span class="glyphicon glyphicon-thumbs-up"> </span> '+' <span class="glyphicon glyphicon-thumbs-down"></div>';      
+		    			new_p.innerHTML = r+'<div class="votes '+id_message+'"><a href="" onclick="vote(1);return false"><span class="glyphicon glyphicon-thumbs-up"> </span></a> '+' <a href="" onclick="vote(-1);return false"><span class="glyphicon glyphicon-thumbs-down"></a></div>';      
     			
 					//Passage de p dans le div et passage du div dans bloc_arbitre
 					new_div.appendChild(new_p);
 					new_div0.appendChild(new_div);
-					
-					
 
 					//Affichage du div 
-		    			document.getElementById('conversation').appendChild(new_div0);  
-
-													
+		    			document.getElementById('conversation').appendChild(new_div0);  									
 				}
 			}			
 		};
@@ -176,9 +176,18 @@
 		xhr.send(null);	
 	}
 
-	function vote(){
+	//ENVOI VOTE EN AJAX
+	function vote(type_vote, id_mess){
+	     	$.ajax({
+			url : 'fonctions_interfacejeu/envoi_vote.php',
+	       		type : 'POST', 
+	       		dataType : 'html',
+			data : 'type_vote='+type_vote+'&id_message='+id_mess
+	   		});
 
-	}
+		//On efface le bouton de vote après post
+		document.getElementById('message').value='';  
+	};
 	
 	</script>	
 	<!-- ==================== -->
