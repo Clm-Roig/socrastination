@@ -14,10 +14,10 @@
 			if ($data['motDePasse'] == $_POST['pwd']) { // Accès OK 
 				$_SESSION['pseudo'] = $data['pseudo'];
 				$_SESSION['idMembre'] = $data['idMembre'];
-				header('Location: membre.php'); 
+				header('Location: liste_forums.php'); 
 			}
 			else { // Accès pas OK !
-				echo "Erreur login, mot de passe ou pseudo incorect !";
+				header('Location: erreur.php?num_erreur=3');
 			}
 			$query->CloseCursor();
 		}

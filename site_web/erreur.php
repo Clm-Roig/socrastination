@@ -66,26 +66,32 @@
 		<div class="container" id="corps">
 			<div class='row' id='liste_forums'>
 				<h1>
-		<?php
+				<?php
 
-		if ($_GET['num_erreur']==0){
-			echo "
-					Erreur : identification requise.
-				";
-		}
+				if ($_GET['num_erreur']==0){
+					echo "
+							Erreur : identification requise.
+						";
+				}
 
-		if ($_GET['num_erreur']==1){
-			echo "
-					Erreur : problème de connexion serveur.
-				";
-		}
+				if ($_GET['num_erreur']==1){
+					echo "
+							Erreur : problème de connexion serveur.
+						";
+				}
 
-		if ($_GET['num_erreur']==2){
-			echo "
-					Erreur : partie pleine.
-				";
-		}
-		?>
+				if ($_GET['num_erreur']==2){
+					echo "
+							Erreur : partie pleine.
+						";
+				}	
+
+				if ($_GET['num_erreur']==3){
+					echo "
+							Erreur : login incorrect.
+						";
+				}
+				?>
 				</h1>	
 			</div>
 		</div><!-- Ferme le bloc du milieu --> 
