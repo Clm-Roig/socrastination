@@ -185,9 +185,16 @@
 			data : { 	type_vote : type_vote,
 				  	id_message : id_mess	
 			},
-			success : function(id_mess){ 	//En cas d'envoi, on efface le bouton de vote
-				alert ('Vote envoyé');
-           			$('#id_mess').css('background-color','blue'); //FONCTIONNE PAS
+			success : function(){ 	//En cas d'envoi, on empêche un vote supplémentaire
+				var div_votes = document.getElementById(id_mess);
+				if(type_vote==1) {
+					//Mise en gras du vote +
+					var span_vote_positif = div_votes.firstChild.firstChild;
+					span_vote_positif.style.fontWeight= 'bold';
+				}
+				else {
+
+				}
       			}
 	   	});		
 	};
