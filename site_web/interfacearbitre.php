@@ -159,7 +159,7 @@
 					new_p.className = 'arg';
 
 					//Insertion du vote dans le bloc
-		    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><a href="" onclick="vote(1,'+id_message+') ; return false;"><span class="glyphicon glyphicon-thumbs-up"> </span></a> '+' <a href="" onclick="vote(-1,'+id_message+') ; return false;"><span class="glyphicon glyphicon-thumbs-down"></a></div>';      
+		    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
     			
 					//Passage de p dans le div et passage du div dans bloc_arbitre
 					new_div.appendChild(new_p);
@@ -178,25 +178,31 @@
 
 	//ENVOI VOTE EN AJAX
 	function vote(type_vote, id_mess){
-	     	$.ajax({
-			url : 'fonctions_interfacejeu/envoi_vote.php',
-	       		type : 'POST', 
-	       		dataType : 'html',
-			data : { 	type_vote : type_vote,
-				  	id_message : id_mess	
-			},
-			success : function(){ 	//En cas d'envoi, on empêche un vote supplémentaire
-				var div_votes = document.getElementById(id_mess);
-				if(type_vote==1) {
-					//Mise en gras du vote +
-					var span_vote_positif = div_votes.firstChild.firstChild;
-					span_vote_positif.style.fontWeight= 'bold';
-				}
-				else {
-
-				}
-      			}
-	   	});		
+		if (document.getElementById(id_mess).children[0].style.display != 'none' && document.getElementById(id_mess).children[1].style.display != 'none' ){
+		     	$.ajax({
+				url : 'fonctions_interfacejeu/envoi_vote.php',
+		       		type : 'POST', 
+		       		dataType : 'html',
+				data : { 	type_vote : type_vote,
+					  	id_message : id_mess	
+				},
+				success : function(){ 	//En cas d'envoi, on empêche un vote supplémentaire
+					var div_votes = document.getElementById(id_mess);
+					var span_plus = div_votes.firstChild;		//span du vote positif
+					var span_moins = div_votes.children[1];	//span du vote négatif
+					if(type_vote==1) {
+						//Mise en gras du vote positif + disparition du négatif
+						span_plus.className += ' vote_valide';
+						span_moins.style.display = 'none';
+					}
+					else {
+						//Mise en gras du vote négatif + disparition du positif						
+						span_moins.className += ' vote_valide';
+						span_plus.style.display = 'none';
+					}
+	      			}
+	   		});	
+		}	
 	};
 	
 	</script>	
