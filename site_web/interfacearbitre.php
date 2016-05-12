@@ -159,14 +159,14 @@
 					new_p.className = 'arg';
 
 					//Insertion du vote dans le bloc
-		    			new_p.innerHTML = r+'<div class="votes '+id_message+'"><a href="" onclick="vote(1)"><span class="glyphicon glyphicon-thumbs-up"> </span></a> '+' <a href="#" onclick="vote(-1)"><span class="glyphicon glyphicon-thumbs-down"></a></div>';      
+		    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><a href="" onclick="vote(1,'+id_message+') ; return false;"><span class="glyphicon glyphicon-thumbs-up"> </span></a> '+' <a href="" onclick="vote(-1,'+id_message+') ; return false;"><span class="glyphicon glyphicon-thumbs-down"></a></div>';      
     			
 					//Passage de p dans le div et passage du div dans bloc_arbitre
 					new_div.appendChild(new_p);
 					new_div0.appendChild(new_div);
 
 					//Affichage du div 
-		    			document.getElementById('conversation').appendChild(new_div0);  									
+		    			document.getElementById('conversation').appendChild(new_div0);  							
 				}
 			}			
 		};
@@ -184,10 +184,12 @@
 	       		dataType : 'html',
 			data : { 	type_vote : type_vote,
 				  	id_message : id_mess	
-				}
-	   		});
-
-		//On efface le bouton de vote après post
+			},
+			success : function(id_mess){ 	//En cas d'envoi, on efface le bouton de vote
+				alert ('Vote envoyé');
+           			$('#id_mess').css('background-color','blue'); //FONCTIONNE PAS
+      			}
+	   	});		
 	};
 	
 	</script>	
