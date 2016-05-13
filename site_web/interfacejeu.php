@@ -108,7 +108,7 @@
 
 	<!-- INVOCATION DU SCRIPT-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script type="text/javasceript" src="fonctions_interfacejeu/script_joueur.js"></script>	
+	<script type="text/javascript" src="fonctions_interfacejeu/script_joueur.js"></script>	
 	<!-- ==================== -->
 
 </body>
