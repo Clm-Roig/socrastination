@@ -46,7 +46,7 @@
 			 <nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 				    	<div class="navbar-header">
-						<h2 class="haut_chat">EN JEU (arbitrage)<h2>
+						<h2 class="haut_chat">EN JEU (arbitrage)</h2>
 					</div>
 				</div>
 			</nav>
