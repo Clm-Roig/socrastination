@@ -1,3 +1,21 @@
 .bloc_score{
 	padding : 1em;
 }
+
+.vote_down, .vote_up {
+	font-size : 2em;
+	margin : 0;
+}
+
+.vote_down{
+	color :red;	
+}
+
+.vote_up{
+	color :green;
+}
+
+p.resultat {
+	margin : 1em 0; 
+	
+}

@@ -278,17 +278,17 @@ p.erreur_jeu {
 	opacity : 0.7;
 }
 
-.glyphicon-thumbs-down {
+.vote_down{
 	color :red;
 	margin-left : 0.5em;
 }
 
-.glyphicon-thumbs-up {
+.vote_up{
 	color :green;
 	margin-right : 0.5em;
 }
 
-.glyphicon-thumbs-down:hover, .glyphicon-thumbs-up:hover{
+.vote_down:hover, .vote_up:hover{
 	transform : rotate(15deg);
 }
 

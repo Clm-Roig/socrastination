@@ -71,17 +71,18 @@
 					<div class="row">
 						<div class="col-sm-6 text-center bloc_score">	
 							<h3>{pseudo_joueur}</h3>
-							<p>{nb_votes_plus_joueur}</p>
-							<p>{nb_votes_moins_joueur}</p>
+							<p class="resultat"><span class="glyphicon glyphicon-thumbs-up vote_up"></span> {nb_votes_plus_joueur}</p>
+							<p class="resultat"><span class="glyphicon glyphicon-thumbs-down vote_down"></span> {nb_votes_moins_joueur}</p>
 							<h3>Total : {score_joueur}</h3>
 						</div>
 						<div class="col-sm-6 text-center bloc_score">	
 							<h3>{pseudo_advesiare}</h3>
-							<p>{nb_votes_plus_adversaire}</p>
-							<p>{nb_votes_moins_adversaire}</p>
+							<p class="resultat"><span class="glyphicon glyphicon-thumbs-up vote_up"></span> {nb_votes_plus_adversaire}</p>
+							<p class="resultat"><span class="glyphicon glyphicon-thumbs-down vote_down"></span> {nb_votes_moins_adversaire}</p>
 							<h3>Total : {score_adversaire}</h3>
 						</div>
 					</div>
+					<h2>Vous avez {statut} !</h2>
 				</div>	
 			</div>
 		</div><!-- Ferme le bloc du milieu --> 

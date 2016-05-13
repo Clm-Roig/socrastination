@@ -65,7 +65,7 @@ function affichage() {
 				new_p.className = 'arg';
 
 				//Insertion du vote dans le bloc
-	    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
+	    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
 		
 				//Passage de p dans le div et passage du div dans bloc_arbitre
 				new_div.appendChild(new_p);
