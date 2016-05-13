@@ -16,6 +16,10 @@
 }
 
 p.resultat {
-	margin : 1em 0; 
-	
+	margin : 1em 0; 	
+}
+
+#quitter {
+	text-align : center;
+	box-shadow : 0 2px 5px black;
 }

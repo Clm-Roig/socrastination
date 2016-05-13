@@ -34,7 +34,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
 	
-	<title>Socrat' - Liste des Forums</title>
+	<title>Socrastination - Résultat</title>
    	
 </head>
 
@@ -65,7 +65,7 @@
 		<!-- ============ -->
 
 		<div class="container" id="corps">
-			<div class='row' id='liste_forums'>
+			<div class='row'>
 				<div class="col-sm-12">
 					<h1>Partie n°{num_partie} contre {pseudo_adversaire}</h1>
 					<div class="row">
@@ -83,6 +83,14 @@
 						</div>
 					</div>
 					<h2>Vous avez {statut} !</h2>
+
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<a href="index.php"><button  class="btn btn-default" id="quitter" type="submit" name="quitter"><span class="glyphicon glyphicon-home"></span> Quitter
+							</button></a>
+						</div>
+					</div>
+
 				</div>	
 			</div>
 		</div><!-- Ferme le bloc du milieu --> 
