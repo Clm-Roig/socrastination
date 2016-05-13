@@ -69,13 +69,13 @@
 				<div class="col-sm-12">
 					<h1>Partie n°{num_partie} contre {pseudo_adversaire}</h1>
 					<div class="row">
-						<div class="col-sm-6 text-center">	
+						<div class="col-sm-6 text-center bloc_score">	
 							<h3>{pseudo_joueur}</h3>
 							<p>{nb_votes_plus_joueur}</p>
 							<p>{nb_votes_moins_joueur}</p>
 							<h3>Total : {score_joueur}</h3>
 						</div>
-						<div class="col-sm-6 text-center">	
+						<div class="col-sm-6 text-center bloc_score">	
 							<h3>{pseudo_advesiare}</h3>
 							<p>{nb_votes_plus_adversaire}</p>
 							<p>{nb_votes_moins_adversaire}</p>
