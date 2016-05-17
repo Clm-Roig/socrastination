@@ -72,6 +72,7 @@
 						<thead>
 							<tr>
 								<th>N° Forum</th>
+								<th>Sujet</th>
 								<th>Nombre de joueurs</th>
 								<th>Nombre d'arbitres</th>
 							</tr>
@@ -86,118 +87,127 @@
 							-->
 							<tr>
 								<td>1</td>
+								<td>Ceci est un sujet un peu long pour permettre à la colonne de s'agrandir.</td>
 								<td><span id="nbj1"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="10" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="10" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba1"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="11" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="11" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 						      	<tr>
 								<td>2</td>
+								<td></td>
 								<td><span id="nbj2"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="20" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="20" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba2"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="21" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="21" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>3</td>
+								<td></td>
 								<td><span id="nbj3"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="30" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="30" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba3"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="31" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="31" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>4</td>
+								<td></td>
 								<td><span id="nbj4"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="40" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="40" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba4"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="41" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="41" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>5</td>
+								<td></td>
 								<td><span id="nbj5"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="50" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="50" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba5"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="51" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="51" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>6</td>
+								<td></td>
 								<td><span id="nbj6"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="60" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="60" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba6"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="61" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="61" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>7</td>
+								<td></td>
 								<td><span id="nbj7"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="70" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="70" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba7"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="71" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="71" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>8</td>
+								<td></td>
 								<td><span id="nbj8"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="80" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="80" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba8"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="81" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="81" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>
 							<tr>
 								<td>9</td>
+								<td></td>
 								<td><span id="nbj9"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="90" name="assign">Rejoindre en tant que joueur</button>
+										<button class="btn btn-default" value="90" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 								<td><span id="nba9"></span>/10
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
-										<button class="btn btn-default" value="91" name="assign">Rejoindre en tant qu'arbitre</button>
+										<button class="btn btn-default" value="91" name="assign">Rejoindre</button>
 									</form>  
 								</td>
 							</tr>

@@ -62,6 +62,9 @@
 		<div class="container" id="corps">
 			<div class='row'>
 				<h1>{erreur}</h1>	
+				<form>
+					<input type="button" class="btn btn-default btn-lg" value="Retour" onclick="history.go(-1)">
+				</form>
 			</div>
 		</div><!-- Ferme le bloc du milieu --> 
 
