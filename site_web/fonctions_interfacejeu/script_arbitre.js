@@ -1,4 +1,4 @@
-var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
+var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
 
 //On va arrêter de chercher des messages après 10 arguments échangés
 var compteur_j1=0;	
@@ -31,7 +31,7 @@ function affichage() {
 			index_separateur_id += 4;
 			var id_message = r_brut.substring(index_separateur_id);
 			
-			if (r_brut! = "Dernier message atteint."){
+			if (r_brut != "Dernier message atteint."){
 				//On mémorise l'id du dernier message affiché 
 				id_last_mess = id_message;
 			

@@ -9,7 +9,7 @@ $('textarea').click(function(e){
 });
 
 //SCRIPT D'AFFICHAGE DES MESSAGES
-var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
+var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
 
 var compteur_moi=0;	
 var compteur_adv=0;	
