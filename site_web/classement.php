@@ -69,11 +69,11 @@
 			<div class="row">
 				<div id="section">
 
-
 					<div class="col-sm-12">
 						<div class="row">
+
 							<h1>Classement</h1>
-								
+							
 							<!-- PHP pour le Classement -->
 							<?php
 								// connexion 
@@ -96,14 +96,14 @@
 						   		echo "</ol>";
 						   	?>
 							<!-- ============== -->
-								
+							
 						</div>
 					</div>
 
 
-					<!-- BOUTON JOUER TEMPORAIRE -->
-					<div class="row">
-						<div id="bloc_jouer" class="col-sm-12">
+					<!-- ====== BOUTON JOUER ===== -->
+					<div class="col-sm-12">
+						<div id="bloc_jouer" class="row">
 							<a id="jouer" href="liste_forums.php">JOUER</a>
 						</div>
 					</div>
