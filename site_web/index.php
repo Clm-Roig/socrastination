@@ -75,7 +75,7 @@
 							<p>Cette méthode consiste à rechercher une définition universelle qui pourra se présenter comme une solution à un problème moral. Pour ce faire, Socrate a mis en place une méthode pratique qui est basée sur le dialogue appellé la dialectique. Celle-ci est divisée en deux phases.</p>
 							<p>La première, appellée l'ironie, dont le but est d'atteindre un état de "lâcher prise". Ainsi, chaque protagoniste reconnait son ignorance après avoir confronté ses idées (et du coup sa vérité) à celles d'un autre. La seconde phase, la maïeutique, est celle de la recherche de la fameuse définition universelle.</p>
 							
-							<div class="text-center"><img class="socrate" src="images/socrate.jpg" alt="Portrait Socrate"></img></div>
+							<div class="text-center"><img id="socrate" src="images/socrate.jpg" alt="Portrait Socrate"></img></div>
 							<h2>
 								"Je sais seulement que je ne sais rien"
 								- Socrate

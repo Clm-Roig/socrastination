@@ -73,7 +73,7 @@
 						<div class="row">
 
 							<h1>Classement</h1>
-							
+							<div class="text-center"><img id="podium" src="images/classement.png" alt="Podium"></img></div>
 							<!-- PHP pour le Classement -->
 							<?php
 								// connexion 
@@ -88,7 +88,6 @@
 						   
 						  		echo "<ol class=\"classement\">";
 
-						   
 						   		// TRAITEMENT
 						  		while(($info=$classement -> fetchobject())!=null){ 
 						       			echo "<li class=\"classement\">{$info->pseudo} : {$info->nbDePoints} points</li>";
@@ -96,6 +95,7 @@
 						   		echo "</ol>";
 						   	?>
 							<!-- ============== -->
+	
 							
 						</div>
 					</div>

@@ -191,10 +191,14 @@ img.case{
 	padding-bottom : 10px;
 }
 
-img.socrate {
+#socrate {
 	height : 200px;
 	box-shadow : 0 2px 5px;
 	margin-top : 1em;
+}
+
+#podium {
+	height : 100px;
 }
 
 /* ---- Liste Forums ---- */
