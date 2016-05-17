@@ -63,29 +63,30 @@
 	<!-- INTERFACE DE CHAT -->
 			
 					<div class="col-sm-12">
-						<div class="row"><div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-12">
 	
-					<!-- Panneau affichage de la conversation -->
-							<div id="conversation">
+						<!-- Panneau affichage de la conversation -->
+								<div id="conversation">
 							
-							</div>
-					<!-- Fermeture panneau -->
-
-					<!-- ZONE DE TEXTE -->
-							<div class="row">
-								<div class="col-sm-12">
-
-									<form class="form-inline"  id="form_chat" onSubmit="return false;">
-										<div class="form-group">
-											<textarea class="form-control" id="message" name="message" onKeyUp="if(event.keyCode == 13) validerForm();" placeholder="Message..." maxlength="254" rows ="2" cols ="80"></textarea>	
-										</div>
-										  <button id="poster"  class="btn btn-default" type="submit" >Envoyer</button>
-									</form>
-
 								</div>
-							</div>
-					<!-- Fermeteure z. de texte -->			
+						<!-- Fermeture panneau -->
 
+						<!-- ZONE DE TEXTE -->
+								<div class="row">
+									<div class="col-sm-12">
+
+										<form class="form-inline"  id="form_chat" onSubmit="return false;">
+											<div class="form-group">
+												<textarea class="form-control" id="message" name="message" onKeyUp="if(event.keyCode == 13) validerForm();" placeholder="Message..." maxlength="254" rows ="2" cols ="80"></textarea>	
+											</div>
+											  <button id="poster"  class="btn btn-default" type="submit" >Envoyer</button>
+										</form>
+
+									</div>
+								</div>
+						<!-- Fermeteure z. de texte -->			
+							</div>
 						</div>
 					</div>
 	<!-- FIN INTERFACE CHAT -->

@@ -234,7 +234,7 @@ p.foot {
 #conversation{
 	height : 450px;
 	width : 100%;
-	overflow-y : scroll;
+	overflow-y : auto;
 }
 
 #form_chat {
