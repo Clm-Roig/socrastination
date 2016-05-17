@@ -1,8 +1,8 @@
 var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
 //On va arrêter de chercher des messages après 10 arguments échangés
-var compteur_j1=10;	
-var compteur_j2=10;	
+var compteur_j1=0;	
+var compteur_j2=0;	
 	
 //On stocke l'id du dernier message affiché 
 //Initialisation à -1 quand l'arbitre arrive pour la première fois
@@ -31,8 +31,7 @@ function affichage() {
 			index_separateur_id += 4;
 			var id_message = r_brut.substring(index_separateur_id);
 			
-			//if (id_last_mess != id_messager) {
-			if (r_brut!="Dernier message atteint."){
+			if (r_brut! = "Dernier message atteint."){
 				//On mémorise l'id du dernier message affiché 
 				id_last_mess = id_message;
 			
@@ -54,11 +53,11 @@ function affichage() {
 	    			var new_div = document.createElement('div');
 				if (idj==idj1){
 					new_div.className = 'message_moi';
-					compteur_j1--;
+					compteur_j1++;
 				}
 				else {
 					new_div.className = 'message_adv';
-					compteur_j2--;
+					compteur_j2++;
 				}
 
 				var new_p = document.createElement('p');

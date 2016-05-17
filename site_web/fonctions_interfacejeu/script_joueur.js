@@ -11,12 +11,14 @@ $('textarea').click(function(e){
 //SCRIPT D'AFFICHAGE DES MESSAGES
 var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les secondes.
 
-var compteur_moi=10;	
-var compteur_adv=10;	
+var compteur_moi=0;	
+var compteur_adv=0;	
 	
-//On stocke le dernier message affiché pour ne pas le spammer 
-var last_mess="";
+//On stocke l'id du dernier message affiché 
+//Initialisation à -1 quand l'arbitre arrive pour la première fois
+var id_last_mess=-1;
 
+/*
 function affichage() {
 	//Instanciation de l'objet pour passage à php
 	var xhr = new XMLHttpRequest(); 
@@ -25,19 +27,74 @@ function affichage() {
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
 			var r_brut = xhr.responseText;		//récupération du résultat
-			var auteur=r_brut.substring(0,1);	//auteur
-			var r=r_brut.substring(1);			//message
-			if (r != last_mess){
+
+			if (r_brut != "Dernier message atteint."){
+
+				//On mémorise l'id du dernier message affiché 
+				id_last_mess = id_message;
+
+				var auteur = r_brut.substring(0,1);	//auteur
+				var r=r_brut.substring(1);			//message
 
 				//Config du div contenant le bloc p
 	    			var new_div = document.createElement('div');
 				if (auteur==1){
 					new_div.className = 'message_moi';
-					compteur_moi --;
+					compteur_moi ++;
 				}
 				else {
 					new_div.className = 'message_adv';
-					compteur_adv --;
+					compteur_adv ++;
+				}
+
+				//Config du p contenant le message
+				var new_p = document.createElement('p');
+				new_p.className = 'arg';
+	    			new_p.innerHTML = r;      
+		
+				//Passage de p dans le div
+				new_div.appendChild(new_p);
+				//Affichage du div 
+	    			document.getElementById('conversation').appendChild(new_div);  			
+			}
+		}			
+	};
+
+	//Passage avec GET
+	xhr.open("GET","fonctions_interfacejeu/afficher_message.php"); 
+	xhr.send(null);	
+}*/
+
+// ========== AFFICHAGE DU MESSAGE ========== // 
+function affichage() {
+	var xhr = new XMLHttpRequest(); 
+
+	//Traitement du résultat du php
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
+			var r_brut = xhr.responseText;		//récupération du résultat
+
+			if (r_brut!="Dernier message atteint."){
+				//ù%*µ sont les caractères qui séparent l'id du message du message
+				var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
+				index_separateur_id += 4;
+				var id_message = r_brut.substring(index_separateur_id);
+
+				//On mémorise l'id du dernier message affiché 
+				id_last_mess = id_message;
+
+				var auteur = r_brut.substring(0,1);	//auteur
+				var r = r_brut.substring(1,index_separateur_id-4);	//message
+			
+				//Config du div contenant le bloc p
+	    			var new_div = document.createElement('div');
+				if (auteur==1){
+					new_div.className = 'message_moi';
+					compteur_moi ++;
+				}
+				else {
+					new_div.className = 'message_adv';
+					compteur_adv ++;
 				}
 
 				//Config du p contenant le message
@@ -51,14 +108,16 @@ function affichage() {
 	    			document.getElementById('conversation').appendChild(new_div);  
 
 				//MAJ last_mess
-				last_mess=r;				
-			}
+				last_mess=r;		
+			}  							
 		}			
 	};
-
-	//Passage avec GET
-	xhr.open("GET","fonctions_interfacejeu/afficher_message.php"); 
-	xhr.send(null);	
+	
+	//Passage avec POST
+	xhr.open("POST", "fonctions_interfacejeu/afficher_message.php");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//ID du dernier message affiché
+	xhr.send("id_last_mess="+id_last_mess);
 }
 
 

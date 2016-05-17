@@ -16,7 +16,6 @@
 		if ($id_mess==$res_tab_last_id['last_id']) echo 'Dernier message atteint.';
 		
 		else {
-		
 			//Si l'id = -1, on le positionne sur le premier message de la partie 
 			if ($id_mess==-1){
 				$req =	"SELECT message_id , message_id_membre, message_text
