@@ -63,12 +63,14 @@
 			
 					<div class="col-sm-12">
 						<div class="row">
+							<div class="col-sm-12">
 	
 					<!-- Panneau affichage de la conversation -->
-							<div id="conversation">
+								<div id="conversation">
 							
-							</div>
+								</div>
 					<!-- Fermeture panneau -->
+							</div>
 						</div>
 					</div>
 				

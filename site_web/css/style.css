@@ -40,6 +40,7 @@ body {
 	width : 75%;
 	height : 550px;
 	opacity : 1;
+	overflow : auto;
 }
 
 /* ---- Partie Centrale ---- */

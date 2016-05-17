@@ -63,7 +63,7 @@
 	<!-- INTERFACE DE CHAT -->
 			
 					<div class="col-sm-12">
-						<div class="row">
+						<div class="row"><div class="col-sm-12">
 	
 					<!-- Panneau affichage de la conversation -->
 							<div id="conversation">
@@ -88,7 +88,6 @@
 
 						</div>
 					</div>
-				
 	<!-- FIN INTERFACE CHAT -->
 
 				</div><!--Ferme le div #section -->
