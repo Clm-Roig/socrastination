@@ -4,15 +4,16 @@ var timer=setInterval("affichage()",1000);	//on lance la fonction toutes les sec
 var compteur_j1=10;	
 var compteur_j2=10;	
 	
-//On stocke le dernier message affiché pour ne pas le spammer 
-var last_mess="";
+//On stocke l'id du dernier message affiché 
+//Initialisation à -1 quand l'arbitre arrive pour la première fois
+var id_last_mess=-1;
 
 //On stocke les id des joueurs
 var idj1=-1;
 var idj2=-1;
 
+// ========== AFFICHAGE DU MESSAGE ========== // 
 function affichage() {
-	//Instanciation de l'objet pour passage à php
 	var xhr = new XMLHttpRequest(); 
 
 	//Traitement du résultat du php
@@ -28,19 +29,22 @@ function affichage() {
 			// ù%*µ sont les caractères qui séparent l'id du message du message
 			var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
 			index_separateur_id += 4;
-			var id_message = r_brut.substring(index_separateur_id);	//id_message
+			var id_message = r_brut.substring(index_separateur_id);
 			
-			var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
+			//if (id_last_mess != id_messager) {
+			if (r_brut!="Dernier message atteint."){
+				//On mémorise l'id du dernier message affiché 
+				id_last_mess = id_message;
+			
+				var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
 
-			//On va initialiser les id des joueurs si ils sont vides
-			if (idj1== -1){
-				idj1=idj;
-			}
-			if (idj2 == -1){
-				idj2=idj;
-			}
-
-			if (r != last_mess){
+				//On va initialiser les id des joueurs si ils sont vides
+				if (idj1== -1){
+					idj1=idj;
+				}
+				if (idj2 == -1){
+					idj2=idj;
+				}
 		
 				//Config du div contenant le bloc p + le vote
 				var new_div0 = document.createElement('div');
@@ -57,32 +61,30 @@ function affichage() {
 					compteur_j2--;
 				}
 
-				//Config du p contenant le message
-
-				//MAJ last_mess
-				last_mess = r;	
 				var new_p = document.createElement('p');
 				new_p.className = 'arg';
 
 				//Insertion du vote dans le bloc
 	    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
-		
+	
 				//Passage de p dans le div et passage du div dans bloc_arbitre
 				new_div.appendChild(new_p);
 				new_div0.appendChild(new_div);
 
 				//Affichage du div 
-	    			document.getElementById('conversation').appendChild(new_div0);  							
-			}
+	    			document.getElementById('conversation').appendChild(new_div0);
+			}  							
 		}			
 	};
-
-	//Passage avec GET
-	xhr.open("GET","fonctions_interfacejeu/afficher_message_arbitre.php"); 
-	xhr.send(null);	
+	
+	//Passage avec POST
+	xhr.open("POST", "fonctions_interfacejeu/afficher_message_arbitre.php");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//ID du dernier message affiché
+	xhr.send("id_last_mess="+id_last_mess);
 }
 
-//ENVOI VOTE EN AJAX
+// ========== ENVOI DU VOTE ========== // 
 function vote(type_vote, id_mess){
 	if (document.getElementById(id_mess).children[0].style.display != 'none' && document.getElementById(id_mess).children[1].style.display != 'none' ){
 	     	$.ajax({
