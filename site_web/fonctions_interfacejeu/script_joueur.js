@@ -21,7 +21,6 @@ var id_last_mess=-1;
 // ========== AFFICHAGE DU MESSAGE ========== // 
 function affichage() {
 	var xhr = new XMLHttpRequest(); 
-
 	//Traitement du résultat du php
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
@@ -76,12 +75,22 @@ function affichage() {
 // ================== ENVOI MESSAGE EN AJAX/JQUERY  ================== //
 $("#poster").click(function(){
 	var mess = document.getElementById("message").value;
-     	$.ajax({
-		url : 'fonctions_interfacejeu/envoi_message.php',
-       		type : 'POST', 
-       		dataType : 'html',
-		data : 'message='+mess
-   		});
-	//On efface le contenu après postage du message
-	document.getElementById('message').value='';  
+	if (mess != null) {
+		//On grise le bouton d'envoi
+		document.getElementById("poster").disabled=true;
+	     	$.ajax({
+			url : 'fonctions_interfacejeu/envoi_message.php',
+	       		type : 'POST', 
+	       		dataType : 'html',
+			data : 'message='+mess,
+			success : function(){ 
+				//On efface le contenu après postage du message
+				document.getElementById('message').value='';  
+				//On rétablit le bouton pour envoyer un autre message après 1 seconde
+				setTimeout(function() {
+					document.getElementById("poster").disabled=false;
+				}, 1000);				
+			}
+	   	});
+	}	
 });
