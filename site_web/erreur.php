@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$vue = file_get_contents("vues/v_erreur.php");
+$vue = file_get_contents("vues/v_erreur.html");
 $message="";
 
 if ($_GET['num_erreur']==0){
