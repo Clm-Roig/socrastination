@@ -2,11 +2,12 @@
 function validerForm(){
 	document.getElementById("poster").click();	
 }
-
 //Annulation défaut du saut de ligne 
 $('textarea').click(function(e){
 	e.preventDefault(); 
 });
+
+//======================================//
 
 //SCRIPT D'AFFICHAGE DES MESSAGES
 var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.

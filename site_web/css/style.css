@@ -243,11 +243,10 @@ p.foot {
 
 h2.haut_chat {
 	color:white;
-	text-align:center;
 }
 
 .message_adv, .message_moi {
-	margin-bottom : 1.5em;	
+	margin-bottom : 1em;	
 	box-shadow : 0 4px 7px;
 	border-radius : 10px;
 	word-break: break-all;
@@ -272,14 +271,29 @@ p.arg {
 	text-align : justify;
 }
 
-p.erreur_jeu {
-	color :red;
-	font-weight : bold;
-	text-align : center;
-}
-
 .bloc_arbitre {
 
+}
+
+#pseudos {
+	margin-bottom : 1em;
+}
+
+#pseudo_moi, #pseudo_adv {
+	display : inline-block;	
+	font-size : 1.2em;
+	padding : 0.2em;
+	border : 2px solid white;
+	border-radius : 10%;
+}
+
+#pseudo_moi {
+	background-color : lightblue;
+}
+
+#pseudo_adv {
+	background-color : gold;
+	float : right;
 }
 
 /* VOTES */

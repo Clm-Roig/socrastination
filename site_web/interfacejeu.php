@@ -47,8 +47,8 @@
 		<div class="row">
 			 <nav class="navbar navbar-inverse">
 				<div class="container-fluid">
-				    	<div class="navbar-header">
-						<h2 class="haut_chat">EN JEU<h2>
+				    	<div class="navbar-header text-center">
+						<h2 class="haut_chat">Sujet : {sujet}</h2>
 					</div>
 				</div>
 			</nav>
@@ -68,7 +68,10 @@
 	
 						<!-- Panneau affichage de la conversation -->
 								<div id="conversation">
-							
+									<div id="pseudos">
+										<div id="pseudo_moi">{pseudo_moi}</div>
+										<div id="pseudo_adv">{pseudo_adv}</div>
+									</div>
 								</div>
 						<!-- Fermeture panneau -->
 
