@@ -53,7 +53,7 @@
 			$_SESSION['id_partie']=$id_max;				
 
 			//Redirection vers la partie créée
-			header("Location: ../interfacejeu.php?npartie=$id_max&nforum=$num_forum");
+			header("Location: ../interfacejeu.php");
 			exit();
 		}
 
