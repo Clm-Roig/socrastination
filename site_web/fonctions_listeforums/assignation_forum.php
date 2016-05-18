@@ -54,10 +54,9 @@
 
 			//Redirection vers la partie créée
 			header("Location: ../interfacejeu.php");
-			exit();
 		}
 
-		else{	
+		else {	
 
 // ================= VERIFICATION JOUEUR ================= //
 
@@ -65,11 +64,10 @@
 				$req_nbj=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=0");
 				$nb_j= $req_nbj->fetchColumn();
 
-				if($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
+				if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
 
 					//Nope c'était pas toi , redirection vers listeforums
 					header("Location: ../erreur.php?num_erreur=2");
-					exit();
 				}
 
 				else {	//Ok on a une place pour toi, joueur
@@ -85,8 +83,7 @@
 					$_SESSION['id_partie']=$id_partie;
 
 					//Redirection vers la partie
-					header("Location: ../interfacejeu.php?npartie=$id_partie&nforum=$num_forum");
-					exit();
+					header("Location: ../interfacejeu.php");
 				}
 			}
 
@@ -105,7 +102,6 @@
 					if($nba>=10) {	//Partie pleine
 						//Redirection vers erreur.php
 						header("Location: ../erreur.php?num_erreur=2");
-						exit();
 					}	
 					else { 	//Ok place disponible
 						//Requete pour la table Role
@@ -120,15 +116,13 @@
 						$_SESSION['id_partie']=$id_partie;
 
 						//Redirection vers la partie
-						header("Location: ../interfacearbitre.php?npartie=$id_partie&nforum=$num_forum");
-						exit();
+						header("Location: ../interfacearbitre.php");
 					}
 				}
 				
 				else {	//Ok on te connait toi, tu peux passer
 					//Redirection vers la partie
-					header("Location: ../interfacearbitre.php?npartie=$id_partie&nforum=$num_forum");
-					exit();
+					header("Location: ../interfacearbitre.php");
 				}
 			}	
 		}

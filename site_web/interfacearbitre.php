@@ -66,7 +66,10 @@
 	
 					<!-- Panneau affichage de la conversation -->
 								<div id="conversation">
-							
+									<div id="pseudos">
+										<div id="pseudo_moi">{pseudo_moi}</div>
+										<div id="pseudo_adv">{pseudo_adv}</div>
+									</div>
 								</div>
 					<!-- Fermeture panneau -->
 							</div>
