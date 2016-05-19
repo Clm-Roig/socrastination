@@ -92,7 +92,7 @@ function vote(type_vote, id_mess){
 				var div_votes = document.getElementById(id_mess);
 				var span_plus = div_votes.firstChild;		//span du vote positif
 				var span_moins = div_votes.children[1];	//span du vote négatif
-				if(type_vote==1) {
+				if (type_vote==1) {
 					//Mise en gras du vote positif + disparition du négatif
 					span_plus.className += ' vote_valide';
 					span_moins.style.display = 'none';
@@ -112,7 +112,11 @@ var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les se
 function actualiser(){
 	$.ajax({
 		url : 'fonctions_interfacejeu/infos_joueurs.php',
- 		type : 'GET'
+ 		type : 'GET',
+		dataType : "json",
+		success : function(){ 
+			console.log(data); 			
+		}
    	});	
 }	
 

@@ -49,5 +49,4 @@
 	catch (PDOException $e) {
 		echo 'Erreur connexion BDD : ' . $e->getMessage().'';
 	}
-
 ?>
