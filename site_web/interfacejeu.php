@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	require ("config.php");
-	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	//REQUETE MON PSEUDO
 	$req_pseudo_moi =	"SELECT pseudo FROM Membres 
