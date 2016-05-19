@@ -20,58 +20,60 @@ function affichage() {
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
 			var r_brut = xhr.responseText;		//récupération du résultat
-
-			// £$¤ sont les caractères qui séparent l'id du membre du message
-			var index_separateur_auteur=r_brut.lastIndexOf('£$¤');
-			var idj=r_brut.substring(0,index_separateur_auteur);		//auteur
-			index_separateur_auteur += 3;
-
-			// ù%*µ sont les caractères qui séparent l'id du message du message
-			var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
-			index_separateur_id += 4;
-			var id_message = r_brut.substring(index_separateur_id);
 			
 			if (r_brut != "Dernier message atteint."){
-				//On mémorise l'id du dernier message affiché 
-				id_last_mess = id_message;
+				if (r_brut != "Pas de messages."){
+					//On mémorise l'id du dernier message affiché 
+					id_last_mess = id_message;
+
+					// £$¤ sont les caractères qui séparent l'id du membre du message
+					var index_separateur_auteur=r_brut.lastIndexOf('£$¤');
+					var idj=r_brut.substring(0,index_separateur_auteur);		//auteur
+					index_separateur_auteur += 3;
+
+					// ù%*µ sont les caractères qui séparent l'id du message du message
+					var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
+					index_separateur_id += 4;
+					var id_message = r_brut.substring(index_separateur_id);
 			
-				var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
+					var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
 
-				//On va initialiser les id des joueurs si ils sont vides
-				if (idj1== -1){
-					idj1=idj;
-				}
-				if (idj2 == -1){
-					idj2=idj;
-				}
+					//On va initialiser les id des joueurs si ils sont vides
+					if (idj1== -1){
+						idj1=idj;
+					}
+					if (idj2 == -1){
+						idj2=idj;
+					}
 		
-				//Config du div contenant le bloc p + le vote
-				var new_div0 = document.createElement('div');
-				new_div0.className='bloc_arbitre';
+					//Config du div contenant le bloc p + le vote
+					var new_div0 = document.createElement('div');
+					new_div0.className='bloc_arbitre';
 
-				//Config du div contenant le bloc p
-	    			var new_div = document.createElement('div');
-				if (idj==idj1){
-					new_div.className = 'message_moi';
-					compteur_j1++;
-				}
-				else {
-					new_div.className = 'message_adv';
-					compteur_j2++;
-				}
+					//Config du div contenant le bloc p
+		    			var new_div = document.createElement('div');
+					if (idj==idj1){
+						new_div.className = 'message_moi';
+						compteur_j1++;
+					}
+					else {
+						new_div.className = 'message_adv';
+						compteur_j2++;
+					}
 
-				var new_p = document.createElement('p');
-				new_p.className = 'arg';
+					var new_p = document.createElement('p');
+					new_p.className = 'arg';
 
-				//Insertion du vote dans le bloc
-	    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
+					//Insertion du vote dans le bloc
+		    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
 	
-				//Passage de p dans le div et passage du div dans bloc_arbitre
-				new_div.appendChild(new_p);
-				new_div0.appendChild(new_div);
+					//Passage de p dans le div et passage du div dans bloc_arbitre
+					new_div.appendChild(new_p);
+					new_div0.appendChild(new_div);
 
-				//Affichage du div 
-	    			document.getElementById('conversation').appendChild(new_div0);
+					//Affichage du div 
+		    			document.getElementById('conversation').appendChild(new_div0);
+				}
 			}  							
 		}			
 	};

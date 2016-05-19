@@ -6,14 +6,22 @@
 	// ========== SEARCH DU MESSAGE ========== // 
 	try{
 		$id_mess = $_POST['id_last_mess'];
-		//Si l'id passé en paramètre est celui du dernier message, on quitte 
+		//Si l'id passé en paramètre est celui du dernier message ou s'il n'y a pas de messages, on quitte 
 		$req_last_id =	"SELECT MAX(message_id) AS last_id
 						FROM Chat_messages
 						WHERE id_partie=".$_SESSION['id_partie']."
 						;";
 		$res_last_id = $bdd -> query($req_last_id);
 		$res_tab_last_id = $res_last_id -> fetch((PDO::FETCH_ASSOC));	
-		if ($id_mess==$res_tab_last_id['last_id']) echo 'Dernier message atteint.';
+
+		if ($id_mess==$res_tab_last_id['last_id']) {
+			echo 'Dernier message atteint.';	
+			exit();
+		}
+		if ($res_tab_last_id['last_id']==null) {
+			echo 'Pas de messages.';
+			exit();
+		}
 		
 		else {
 			//Si l'id = -1, on le positionne sur le premier message de la partie 
