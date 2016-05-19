@@ -102,6 +102,15 @@
 					</div><!-- Ferme la row  du milieu -->
 				</div><!-- Ferme le bloc section du milieu -->
 			</div><!-- Ferme le bloc du milieu (container #corps) -->
+
+		<!-- FOOTER -->
+		<div class="row">
+			<div class="col-sm-12" id="footer">
+					<p class="foot">Mentions légales 2016, IUT Montpellier-Sète - Projet AS : <a href="http://www.dalle-cort.fr/" target="_blank">Dalle-Cort</a>, <a href="http://infolimon.iutmontp.univ-montp2.fr/~chacc">Chac</a>, <a href="http://www.maxime.ferrer-ferrer.fr/" target="_blank">Ferrer</a>, <a href="http://infolimon.iutmontp.univ-montp2.fr/~roigc/" target="_blank">Roig</a></p>
+			</div>
+		</div>
+		<!-- ===== -->
+
 		</div><!-- Ferme la row_corps" -->
 
 </body>
