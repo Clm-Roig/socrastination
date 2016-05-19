@@ -8,10 +8,6 @@ var compteur_j2=0;
 //Initialisation à -1 quand l'arbitre arrive pour la première fois
 var id_last_mess=-1;
 
-//On stocke les id des joueurs
-var idj1=-1;
-var idj2=-1;
-
 // ========== AFFICHAGE DU MESSAGE ========== // 
 function affichage() {
 	var xhr = new XMLHttpRequest(); 
@@ -38,21 +34,17 @@ function affichage() {
 					id_last_mess = id_message;
 			
 					var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
-
-					//On va initialiser les id des joueurs si ils sont vides
-					if (idj1== -1){
-						idj1=idj;
-					}
-					if (idj2 == -1){
-						idj2=idj;
-					}
 		
 					//Config du div contenant le bloc p + le vote
-					var new_div0 = document.createElement('div');
-					new_div0.className='bloc_arbitre';
+					var new_bloc_arbitre = document.createElement('div');
+					new_bloc_arbitre.className='bloc_arbitre';
 
 					//Config du div contenant le bloc p
 		    			var new_div = document.createElement('div');
+
+					//De qui vient le message ?
+					var idj1=document.getElementById('idj1').innerHTML;
+					var idj2=document.getElementById('idj2').innerHTML;
 					if (idj==idj1){
 						new_div.className = 'message_moi';
 						compteur_j1++;
@@ -70,10 +62,10 @@ function affichage() {
 	
 					//Passage de p dans le div et passage du div dans bloc_arbitre
 					new_div.appendChild(new_p);
-					new_div0.appendChild(new_div);
+					new_bloc_arbitre.appendChild(new_div);
 
 					//Affichage du div 
-		    			document.getElementById('conversation').appendChild(new_div0);
+		    			document.getElementById('conversation').appendChild(new_bloc_arbitre);
 				}
 			}  							
 		}			

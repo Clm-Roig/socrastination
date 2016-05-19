@@ -279,7 +279,7 @@ p.arg {
 	margin-bottom : 1em;
 }
 
-#pseudo_moi, #pseudo_adv {
+#pseudo_moi, #pseudo_adv, #pseudo_j1, #pseudo_j2 {
 	display : inline-block;	
 	font-size : 1.2em;
 	padding : 0.2em;
@@ -287,23 +287,24 @@ p.arg {
 	border-radius : 10%;
 }
 
-#pseudo_moi {
+#pseudo_moi, #pseudo_j1 {
 	background-color : lightblue;
 }
 
-#pseudo_adv {
+#pseudo_adv, #pseudo_j2 {
 	background-color : gold;
 	float : right;
 }
 
 /* VOTES */
 
-.glyphicon-thumbs-down, .glyphicon-thumbs-up{
-	font-size : 1.5em;
+.vote_down,.vote_up{
+	font-size : 1.3em;
 	text-align :center;
 	transition : transform;
 	opacity : 0.7;
 	cursor : pointer;
+	transition : 0.3s;
 }
 
 .vote_down{
@@ -317,7 +318,8 @@ p.arg {
 }
 
 .vote_down:hover, .vote_up:hover{
-	transform : rotate(15deg);
+	transform : rotateX(70deg);
+	transition : 0.3s;
 }
 
 .vote_valide {
