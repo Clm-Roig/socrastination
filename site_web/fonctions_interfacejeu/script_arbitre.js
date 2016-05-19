@@ -1,5 +1,3 @@
-var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
-
 //On va arrêter de chercher des messages après 10 arguments échangés
 var compteur_j1=0;	
 var compteur_j2=0;	
@@ -9,6 +7,8 @@ var compteur_j2=0;
 var id_last_mess=-1;
 
 // ========== AFFICHAGE DU MESSAGE ========== // 
+var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
+
 function affichage() {
 	var xhr = new XMLHttpRequest(); 
 
@@ -103,7 +103,16 @@ function vote(type_vote, id_mess){
 					span_plus.style.display = 'none';
 				}
       			}
-   		});	
-	}	
-};
+   		});
+	}
+};	
+
+// ========== ACTUALISATION DES PSEUDOS ========== // 
+var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
+function actualiser(){
+	$.ajax({
+		url : 'fonctions_interfacejeu/infos_joueurs.php',
+ 		type : 'GET'
+   	});	
+}	
 

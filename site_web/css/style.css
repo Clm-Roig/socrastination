@@ -325,6 +325,7 @@ p.arg {
 .vote_valide {
 	opacity : 1;
 	font-weight : bold;
+	cursor : auto;
 }
 
 .vote_valide:hover {
