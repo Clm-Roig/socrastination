@@ -23,8 +23,6 @@ function affichage() {
 			
 			if (r_brut != "Dernier message atteint."){
 				if (r_brut != "Pas de messages."){
-					//On mémorise l'id du dernier message affiché 
-					id_last_mess = id_message;
 
 					// £$¤ sont les caractères qui séparent l'id du membre du message
 					var index_separateur_auteur=r_brut.lastIndexOf('£$¤');
@@ -35,6 +33,9 @@ function affichage() {
 					var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
 					index_separateur_id += 4;
 					var id_message = r_brut.substring(index_separateur_id);
+
+					//On mémorise l'id du dernier message affiché 
+					id_last_mess = id_message;
 			
 					var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
 

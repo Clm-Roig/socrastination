@@ -36,8 +36,8 @@
 							)
 						;";
 
-				$res_req = $bdd -> query($req);
-				$res_req_tab = $res_req -> fetch((PDO::FETCH_ASSOC));		
+				$res_req = $bdd->query($req);
+				$res_req_tab = $res_req->fetch();		
 				$auteur_str = $res_req_tab['message_id_membre'];
 				$id_str = $res_req_tab['message_id'];
 				$message_str = $res_req_tab['message_text'];
@@ -56,7 +56,7 @@
 						;";
 
 				$res_req = $bdd -> query($req);
-				$res_req_tab = $res_req -> fetch((PDO::FETCH_ASSOC));		
+				$res_req_tab = $res_req -> fetch();		
 				$auteur_str = $res_req_tab['message_id_membre'];
 				$id_str = $res_req_tab['message_id'];
 				$message_str = $res_req_tab['message_text'];
