@@ -87,7 +87,7 @@
 							-->
 							<tr>
 								<td>1</td>
-								<td>Ceci est un sujet un peu long pour permettre à la colonne de s'agrandir.</td>
+								<td><span id="suj1"></span></td>
 								<td><span id="nbj1"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="10" name="assign">Rejoindre</button>
@@ -101,7 +101,7 @@
 							</tr>
 						      	<tr>
 								<td>2</td>
-								<td></td>
+								<td><span id="suj2"></span></td>
 								<td><span id="nbj2"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="20" name="assign">Rejoindre</button>
@@ -115,7 +115,7 @@
 							</tr>
 							<tr>
 								<td>3</td>
-								<td></td>
+								<td><span id="suj3"></span></td>
 								<td><span id="nbj3"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="30" name="assign">Rejoindre</button>
@@ -129,7 +129,7 @@
 							</tr>
 							<tr>
 								<td>4</td>
-								<td></td>
+								<td><span id="suj4"></span></td>
 								<td><span id="nbj4"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="40" name="assign">Rejoindre</button>
@@ -143,7 +143,7 @@
 							</tr>
 							<tr>
 								<td>5</td>
-								<td></td>
+								<td><span id="suj5"></span></td>
 								<td><span id="nbj5"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="50" name="assign">Rejoindre</button>
@@ -157,7 +157,7 @@
 							</tr>
 							<tr>
 								<td>6</td>
-								<td></td>
+								<td><span id="suj6"></span></td>
 								<td><span id="nbj6"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="60" name="assign">Rejoindre</button>
@@ -171,7 +171,7 @@
 							</tr>
 							<tr>
 								<td>7</td>
-								<td></td>
+								<td><span id="suj7"></span></td>
 								<td><span id="nbj7"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="70" name="assign">Rejoindre</button>
@@ -185,7 +185,7 @@
 							</tr>
 							<tr>
 								<td>8</td>
-								<td></td>
+								<td><span id="suj8"></span></td>
 								<td><span id="nbj8"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="80" name="assign">Rejoindre</button>
@@ -199,7 +199,7 @@
 							</tr>
 							<tr>
 								<td>9</td>
-								<td></td>
+								<td><span id="suj9"></span></td>
 								<td><span id="nbj9"></span>/2 
 									<form class="forum" method="post" action="fonctions_listeforums/assignation_forum.php">               
 										<button class="btn btn-default" value="90" name="assign">Rejoindre</button>
@@ -254,15 +254,16 @@
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {		//serveur ok + réponse reçue
 				var r=xhr.responseText;	//récupération du résultat
-				rj=r.substring(0,1);
-				ra=r.substring(2,3);
+				var rj=r.substring(0,1);
+				var ra=r.substring(2,3);
+				var suj=r.substring(4);
 				document.getElementById('nbj'+numero).innerHTML = rj;
 				document.getElementById('nba'+numero).innerHTML = ra;
+				document.getElementById('suj'+numero).innerHTML = suj;
 			}			
 		};
-
 		//Passage avec GET
-		xhr.open("GET","fonctions_listeforums/compteur_utilisateur.php?numforum="+numero); 
+		xhr.open("GET","fonctions_listeforums/actualisation_forums.php?numforum="+numero); 
 		xhr.send(null);	
 	}
 
