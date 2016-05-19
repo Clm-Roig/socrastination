@@ -51,80 +51,74 @@
 			//Stockage dans $_SESSION 
 			$_SESSION['id_forum']=$num_forum;	
 			$_SESSION['id_partie']=$id_max;				
-
-			//Redirection vers la partie créée
-			header("Location: ../interfacejeu.php");
 		}
-
-		else {	
 
 // ================= VERIFICATION JOUEUR ================= //
 
-			 if($num_role==0) {		//Il y a une partie sur ce forum et on est rentré en tant que joueur
-				$req_nbj=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=0");
-				$nb_j= $req_nbj->fetchColumn();
+		 if($num_role==0) {		//Il y a une partie sur ce forum et on est rentré en tant que joueur
+			$req_nbj=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=0");
+			$nb_j= $req_nbj->fetchColumn();
 
-				if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
+			if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
 
-					//Nope c'était pas toi , redirection vers listeforums
+				//Nope c'était pas toi , redirection vers listeforums
+				header("Location: ../erreur.php?num_erreur=2");
+			}
+
+			else {	//Ok on a une place pour toi, joueur
+				//Requete pour la table Role
+				$req_creation_j1="INSERT INTO Role (role,idPartie,idMembre)
+							VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
+							";
+
+				$bdd->query($req_creation_j1);
+
+				//Stockage dans $_SESSION 
+				$_SESSION['id_forum']=$num_forum;	
+				$_SESSION['id_partie']=$id_partie;
+
+				//Redirection vers la partie
+				header("Location: ../interfacejeu.php");
+			}
+		}
+
+// ================= VERIFICATION ARBITRE ================= //
+
+		if($num_role==1){			//Il y a une partie sur ce forum et on est rentré en tant qu'arbitre
+
+			$req_ida = $bdd->query("SELECT idMembre FROM Role WHERE idPartie=$id_partie AND role=1");
+			$ida = $req_ida->fetch();
+			echo $ida;
+
+			$req_nba = $bdd->query("SELECT COUNT(idMembre) FROM Role WHERE idPartie=$id_partie AND role=1");
+			$nba= $req_nba->fetchColumn();
+
+			if($ida == null){		//Nouvel arbitre 
+				if($nba>=10) {	//Partie pleine
+					//Redirection vers erreur.php
 					header("Location: ../erreur.php?num_erreur=2");
-				}
-
-				else {	//Ok on a une place pour toi, joueur
+				}	
+				else { 	//Ok place disponible
 					//Requete pour la table Role
-					$req_creation_j1="INSERT INTO Role (role,idPartie,idMembre)
-								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
-								";
+					$req_creation_a1="INSERT INTO Role (role,idPartie,idMembre)
+							VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
+							";
 
-					$bdd->query($req_creation_j1);
+					$bdd->query($req_creation_a1);
 
 					//Stockage dans $_SESSION 
 					$_SESSION['id_forum']=$num_forum;	
 					$_SESSION['id_partie']=$id_partie;
 
 					//Redirection vers la partie
-					header("Location: ../interfacejeu.php");
-				}
-			}
-
-// ================= VERIFICATION ARBITRE ================= //
-
-			if($num_role==1){			//Il y a une partie sur ce forum et on est rentré en tant qu'arbitre
-
-				$req_ida = $bdd->query("SELECT idMembre FROM Role WHERE idPartie=$id_partie AND role=1");
-				$ida = $req_ida->fetch();
-				echo $ida;
-
-				$req_nba = $bdd->query("SELECT COUNT(idMembre) FROM Role WHERE idPartie=$id_partie AND role=1");
-				$nba= $req_nba->fetchColumn();
-
-				if($ida == null){		//Nouvel arbitre 
-					if($nba>=10) {	//Partie pleine
-						//Redirection vers erreur.php
-						header("Location: ../erreur.php?num_erreur=2");
-					}	
-					else { 	//Ok place disponible
-						//Requete pour la table Role
-						$req_creation_a1="INSERT INTO Role (role,idPartie,idMembre)
-								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
-								";
-
-						$bdd->query($req_creation_a1);
-
-						//Stockage dans $_SESSION 
-						$_SESSION['id_forum']=$num_forum;	
-						$_SESSION['id_partie']=$id_partie;
-
-						//Redirection vers la partie
-						header("Location: ../interfacearbitre.php");
-					}
-				}
-				
-				else {	//Ok on te connait toi, tu peux passer
-					//Redirection vers la partie
 					header("Location: ../interfacearbitre.php");
 				}
-			}	
-		}
+			}
+			
+			else {	//Ok on te connait toi, tu peux passer
+				//Redirection vers la partie
+				header("Location: ../interfacearbitre.php");
+			}
+		}	
 	}
 ?>
