@@ -9,7 +9,7 @@ $('textarea').click(function(e){
 
 //======================================//
 
-//SCRIPT D'AFFICHAGE DES MESSAGES
+// ========== AFFICHAGE DES MESSAGES ========== // 
 var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
 
 var compteur_moi=0;	
@@ -19,7 +19,6 @@ var compteur_adv=0;
 //Initialisation à -1 quand l'arbitre arrive pour la première fois
 var id_last_mess=-1;
 
-// ========== AFFICHAGE DU MESSAGE ========== // 
 function affichage() {
 	var xhr = new XMLHttpRequest(); 
 	//Traitement du résultat du php
