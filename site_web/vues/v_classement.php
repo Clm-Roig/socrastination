@@ -30,17 +30,16 @@
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'>
 	<!-- ================ -->
 	
-	<title>Socrastination - Erreur</title>
+	<title>Socrastination - Classement</title>
    	
 </head>
 
-<body>
-
+<body> 
     	<!-- DIV GLOBALE -->
 	<div class="row" id="row_corps">
 	<!-- ============ -->
 
-		<!-- HEADER / NAV -->
+			<!-- HEADER / NAV -->
 		<div class="row">
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
@@ -48,23 +47,65 @@
 						<ul class="nav navbar-nav">
 							<li class="menu"><a href="index.php">Accueil</a></li>
 							<li class="menu"><a href="regles.php">Règles</a></li>
-							<li class="menu"><a href="classement.php">Classement</a></li>
+							<li class="menu active"><a href="classement.php">Classement</a></li>
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 						{header}
-						
-		<!-- ============ -->
+		<!-- ========= -->
 
 		<div class="container" id="corps">
-			<div class='row'>
-				<h1>{erreur}</h1>	
-				<form>
-					<input type="button" class="btn btn-default btn-lg" value="Retour" onclick="history.go(-1)">
-				</form>
-			</div>
-		</div><!-- Ferme le bloc du milieu --> 
+
+			<!-- CORPS -->
+
+			<div class="row">
+				<div id="section">
+
+					<div class="col-sm-12">
+						<div class="row">
+
+							<h1>Classement</h1>
+							<div class="text-center"><img id="podium" src="images/classement.png" alt="Podium"></img></div>
+							<!-- PHP pour le Classement -->
+							<?php
+								// connexion 
+								require("config.php");
+
+						   		// INTERROGATION
+						   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
+						   		if ($classement==false) {
+						       			header('Location: erreur.php?num_erreur=1');
+						       			exit();
+						   		}
+						   
+						  		echo "<ol class=\"classement\">";
+
+						   		// TRAITEMENT
+						  		while(($info=$classement -> fetchobject())!=null){ 
+						       			echo "<li class=\"classement\">{$info->pseudo} : {$info->nbDePoints} points</li>";
+							   	}
+						   		echo "</ol>";
+						   	?>
+							<!-- ============== -->
+	
+							
+						</div>
+					</div>
+
+
+					<!-- ====== BOUTON JOUER ===== -->
+					<div class="col-sm-12">
+						<div id="bloc_jouer" class="row">
+							<a id="jouer" href="liste_forums.php">JOUER</a>
+						</div>
+					</div>
+					<!-- ========================= -->
+
+				</div><!-- Ferme la row  du milieu -->
+			</div><!-- Ferme le bloc section du milieu -->
+
+	  	</div><!-- Ferme le bloc du milieu (container #corps) -->
 
 		<!-- FOOTER -->
 		<div class="row">
@@ -75,6 +116,6 @@
 		<!-- ===== -->
 
 	</div><!-- Ferme la row_corps" -->
+
 </body>
 </html>
-
