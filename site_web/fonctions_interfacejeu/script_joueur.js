@@ -93,4 +93,22 @@ $("#poster").click(function(){
 			}
 	   	});
 	}	
-});
+})
+
+// ========== ACTUALISATION DES PSEUDOS ========== // 
+var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
+function actualiser(){
+	var xhr = new XMLHttpRequest(); 
+	//Passage avec GET
+	xhr.open("GET", "fonctions_interfacejeu/infos_joueurs.php");
+	xhr.send();
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
+			var r = JSON.parse(xhr.responseText);			//récupération du résultat
+			document.getElementById('pseudo_j1').innerHTML=r.pseudoj1;
+			document.getElementById('pseudo_j2').innerHTML=r.pseudoj2;
+			document.getElementById('idj1').innerHTML=r.idj1;
+			document.getElementById('idj2').innerHTML=r.idj2;
+		}
+   	}	
+}	
