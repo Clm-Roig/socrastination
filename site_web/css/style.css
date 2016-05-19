@@ -232,13 +232,13 @@ p.foot {
 /*----- CHAT -----*/
 
 #conversation{
-	height : 450px;
+	height : 380px;
 	width : 100%;
 	overflow-y : auto;
 }
 
 #form_chat {
-	margin-bottom : 2em;
+	margin-bottom : 1em;
 }
 
 h2.haut_chat {
