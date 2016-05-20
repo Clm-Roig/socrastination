@@ -125,3 +125,5 @@ function actualiser(){
    	}	
 }	
 
+// ========== ALERTE SI ON QUITTE LA PAGE ========== // 
+
