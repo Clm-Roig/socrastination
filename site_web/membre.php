@@ -54,7 +54,7 @@
 					<div id="myNavbar">
 					      
 						<ul class="nav navbar-nav">
-							<li class="menu active"><a href="index.php">Accueil</a></li>
+							<li class="menu"><a href="index.php">Accueil</a></li>
 							<li class="menu"><a href="index.php?action=regles">Règles</a></li>
 							<li class="menu"><a href="index.php?action=classement">Classement</a></li>
 						</ul>
