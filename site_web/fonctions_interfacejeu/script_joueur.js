@@ -100,7 +100,7 @@ var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les se
 function actualiser(){
 	var xhr = new XMLHttpRequest(); 
 	//Passage avec GET
-	xhr.open("GET", "fonctions_interfacejeu/infos_joueurs.php");
+	xhr.open("GET", "fonctions_interfacejeu/infos_partie.php");
 	xhr.send();
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
