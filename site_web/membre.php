@@ -60,7 +60,7 @@
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
-						<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+						<li><a href="index.php?action=inscription"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 
 					<?php 
 						if (!isset($_SESSION['pseudo'])) {
