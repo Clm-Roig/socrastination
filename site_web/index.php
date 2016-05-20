@@ -40,6 +40,11 @@
 			$vue=file_get_contents("vues/v_regles.html");	
 			break;
 
+/*----------------- INSCRIPTION ----------------- */
+		case("inscription") :
+			$vue=file_get_contents("vues/v_inscription.html");	
+			break;
+
 /*----------------- ERREUR ----------------- */
 		case("erreur") :
 			$vue = file_get_contents("vues/v_erreur.html");
