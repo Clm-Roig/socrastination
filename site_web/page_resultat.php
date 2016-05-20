@@ -76,7 +76,7 @@
 							<h3>Total : {score_joueur}</h3>
 						</div>
 						<div class="col-sm-6 text-center bloc_score">	
-							<h3>{pseudo_advesiare}</h3>
+							<h3>{pseudo_advesaire}</h3>
 							<p class="resultat"><span class="glyphicon glyphicon-thumbs-up vote_up"></span> {nb_votes_plus_adversaire}</p>
 							<p class="resultat"><span class="glyphicon glyphicon-thumbs-down vote_down"></span> {nb_votes_moins_adversaire}</p>
 							<h3>Total : {score_adversaire}</h3>
