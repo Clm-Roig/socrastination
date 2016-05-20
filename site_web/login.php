@@ -17,12 +17,12 @@
 				header('Location: liste_forums.php'); 
 			}
 			else { // Accès pas OK !
-				header('Location: erreur.php?num_erreur=3');
+				header('Location: index.php?action=erreur&num_erreur=3');
 			}
 			$query->CloseCursor();
 		}
 		else { 
-			header('Location: erreur.php?num_erreur=1');
+			header('Location: index.php?action=erreur&num_erreur=1');
 		}
 	}
 

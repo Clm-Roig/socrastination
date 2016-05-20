@@ -3,7 +3,7 @@
 	require("fonctions_interfacejeu/../config.php");
 
 	if (!isset($_SESSION['pseudo'])) {
-		header('Location: ../erreur.php?num_erreur=0');
+		header('Location: ../index.php?action=erreur&num_erreur=0');
 	}
 	
 	else {

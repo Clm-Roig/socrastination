@@ -4,7 +4,7 @@
 	//CONNEXION BDD
 	require("../config.php");
 	if (!isset($_SESSION['pseudo'])) {
-		header('Location: ../erreur.php?num_erreur=0');
+		header('Location: ../index.php?action=erreur&num_erreur=0');
 	}
 	
 	else {
@@ -66,7 +66,7 @@
 				if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
 
 					//Nope c'était pas toi , redirection vers listeforums
-					header("Location: ../erreur.php?num_erreur=2");
+					header("Location: ../index.php?action=erreur&num_erreur=2");
 				}
 
 				else {	//Ok on a une place pour toi, joueur
@@ -100,7 +100,7 @@
 				if($ida == null){		//Nouvel arbitre 
 					if($nba>=10) {	//Partie pleine
 						//Redirection vers erreur.php
-						header("Location: ../erreur.php?num_erreur=2");
+						header("Location: ../index.php?action=erreur?num_erreur=2");
 					}	
 					else { 	//Ok place disponible
 						//Requete pour la table Role

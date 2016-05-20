@@ -40,9 +40,30 @@
 			$vue=file_get_contents("vues/v_regles.html");	
 			break;
 
-/*----------------- INSCRIPTION ----------------- */
-		case("inscription") :
-			$vue=file_get_contents("vues/v_inscription.html");	
+/*----------------- ERREUR ----------------- */
+		case("erreur") :
+			$vue = file_get_contents("vues/v_erreur.html");
+			$message="";
+
+			//Contrôle de l'erreur envoyée
+			if ($_GET['num_erreur']==0){
+				$message = 'Erreur : identification requise.';
+			}
+
+			if ($_GET['num_erreur']==1){
+				$message = 'Erreur : problème de connexion serveur.';
+			}
+
+			if ($_GET['num_erreur']==2){
+				$message = 'Erreur : partie pleine.';
+			}	
+
+			if ($_GET['num_erreur']==3){
+				$message = 'Erreur : login incorrect.';
+			}
+	
+			//Remplacement
+			$vue = str_replace('{erreur}',$message,$vue);	
 			break;
 
 /*----------------- DEFAUT (INDEX) ----------------- */
