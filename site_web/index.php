@@ -37,23 +37,21 @@
 
 /*----------------- REGLES ----------------- */
 		case("regles") :
-
+			$vue=file_get_contents("vues/v_regles.html");	
 			break;
 
 /*----------------- INSCRIPTION ----------------- */
 		case("inscription") :
-
+			$vue=file_get_contents("vues/v_inscription.html");	
 			break;
 
 /*----------------- DEFAUT (INDEX) ----------------- */
 		default :
-
+			$vue=file_get_contents("vues/v_index.html");	
 			break;
-
-
 	}//fin switch
-	//Remplacement header + affichage
 
+	//Remplacement header + affichage
 	$vue=str_replace("{header}",$header,$vue);
 	echo $vue;
 ?>
