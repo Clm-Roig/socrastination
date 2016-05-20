@@ -52,7 +52,7 @@
 
 	//REQUETE SUJET DE LA PARTIE
 	$req_sujet=	"SELECT sujet FROM Parties
-				WHERE idPartie={$_SESSION['idPartie']}
+				WHERE idPartie={$_SESSION['id_partie']}
 				;";
 	$res_sujet = $bdd -> query($req_sujet);
 	if($res_sujet == false) {
