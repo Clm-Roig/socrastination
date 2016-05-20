@@ -295,7 +295,12 @@ p.arg {
 	float : right;
 }
 
-/* VOTES */
+#quitter {
+	margin-top : -80px;
+	box-shadow : 0 2px 5px black;
+}
+
+/* ----- VOTES ------ */
 
 .vote_down,.vote_up{
 	font-size : 1.3em;
