@@ -50,11 +50,26 @@
 	if ($tab_j2['idMembre']==null) $idj2 ="-1";
 	else $idj2  = $tab_j2['idMembre'];
 
+	//REQUETE SUJET DE LA PARTIE
+	$req_sujet=	"SELECT sujet FROM Parties
+				WHERE idPartie=$_SESSION['idPartie']
+				;"
+	$res_sujet = $bdd -> query($req_sujet);
+	if($res_sujet == false) {
+		echo "Erreur query : $req_sujet.";
+	}	
+
+	$tab_sujet = $res_sujet -> fetch();
+	if($tab_sujet['sujet']==null) $sujet="Sujet non-choisi.";
+	else $sujet=$tab_sujet['sujet'];
+
+	//Tableau pour l'envoi
 	$tab = array(
 				"idj1"=>$idj1,
 				"idj2"=>$idj2,
 				"pseudoj1"=>$pseudoj1,
-				"pseudoj2"=>$pseudoj2
+				"pseudoj2"=>$pseudoj2,
+				"sujet"=>$sujet
 				);
 
 	echo json_encode($tab);	

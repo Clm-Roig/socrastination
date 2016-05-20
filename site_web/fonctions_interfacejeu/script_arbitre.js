@@ -121,6 +121,7 @@ function actualiser(){
 			document.getElementById('pseudo_j2').innerHTML=r.pseudoj2;
 			document.getElementById('idj1').innerHTML=r.idj1;
 			document.getElementById('idj2').innerHTML=r.idj2;
+			document.getElementById('sujet').innerHTML=r.sujet;
 		}
    	}	
 }	
