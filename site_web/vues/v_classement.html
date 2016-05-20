@@ -46,12 +46,12 @@
 					<div id="myNavbar">
 						<ul class="nav navbar-nav">
 							<li class="menu"><a href="index.php">Accueil</a></li>
-							<li class="menu"><a href="regles.php">Règles</a></li>
-							<li class="menu active"><a href="classement.php">Classement</a></li>
+							<li class="menu"><a href="index.php?action=regles">Règles</a></li>
+							<li class="menu active"><a href="classement.php?action=classement">Classement</a></li>
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+							<li><a href="index.php?action=inscription"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 						{header}
 		<!-- ========= -->
 
@@ -66,33 +66,15 @@
 						<div class="row">
 
 							<h1>Classement</h1>
-							<div class="text-center"><img id="podium" src="images/classement.png" alt="Podium"></img></div>
-							<!-- PHP pour le Classement -->
-							<?php
-								// connexion 
-								require("config.php");
-
-						   		// INTERROGATION
-						   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
-						   		if ($classement==false) {
-						       			header('Location: erreur.php?num_erreur=1');
-						       			exit();
-						   		}
-						   
-						  		echo "<ol class=\"classement\">";
-
-						   		// TRAITEMENT
-						  		while(($info=$classement -> fetchobject())!=null){ 
-						       			echo "<li class=\"classement\">{$info->pseudo} : {$info->nbDePoints} points</li>";
-							   	}
-						   		echo "</ol>";
-						   	?>
-							<!-- ============== -->
-	
-							
+							<div class="text-center"><img id="podium" src="images/classement.png" alt="Podium"></img></div>	
+							<ol class="classement">	
+								<li id="j1" class="classement">{pseudo1} : {nbp1}</li>
+								<li id="j2" class="classement">{pseudo2} : {nbp2}</li>
+								<li id="j3" class="classement">{pseudo3} : {nbp3}</li>
+								<li id="j4" class="classement">{pseudo4} : {nbp4}</li>
+								<li id="j5" class="classement">{pseudo5} : {nbp5}</li>
 						</div>
 					</div>
-
 
 					<!-- ====== BOUTON JOUER ===== -->
 					<div class="col-sm-12">
