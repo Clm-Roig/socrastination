@@ -126,9 +126,6 @@ function actualiser(){
 };	
 
 // ========== ALERTE SI ON QUITTE LA PAGE ========== // 
-window.onbeforeunload = function(){
-	var msg="Attention !";	
-	return msg;
-};
-
-
+function quitter(){
+	window.location = "liste_forums.php";
+};	
