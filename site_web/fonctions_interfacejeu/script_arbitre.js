@@ -126,22 +126,9 @@ function actualiser(){
 };	
 
 // ========== ALERTE SI ON QUITTE LA PAGE ========== // 
-var confirmOnLeave = function(msg) {
-    window.onbeforeunload = function (e) {
-        e = e || window.event;
-        msg = msg || '';
- 
-        // For IE and Firefox
-        if (e) {e.returnValue = msg;}
- 
-        // For Chrome and Safari
-        return msg;
-    }; 
+window.onbeforeunload = function(){
+	var msg="Attention !";	
+	return msg;
 };
-
-// message de confirmation générique du navigateur
-confirmOnLeave(); 
-// message de confirmation personnalisé
-confirmOnLeave('Êtes-vous sûr de vouloir quitter la partie en cours ?');
 
 
