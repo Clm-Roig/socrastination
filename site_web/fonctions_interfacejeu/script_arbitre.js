@@ -15,68 +15,63 @@ function affichage() {
 	//Traitement du résultat du php
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
-			var r_brut = xhr.responseText;		//récupération du résultat
-			
-			if (r_brut != "Dernier message atteint."){
-				if (r_brut != "Pas de messages."){
-
-					// £$¤ sont les caractères qui séparent l'id du membre du message
-					var index_separateur_auteur=r_brut.lastIndexOf('£$¤');
-					var idj=r_brut.substring(0,index_separateur_auteur);		//auteur
-					index_separateur_auteur += 3;
-
-					// ù%*µ sont les caractères qui séparent l'id du message du message
-					var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
-					index_separateur_id += 4;
-					var id_message = r_brut.substring(index_separateur_id);
-
-					//On mémorise l'id du dernier message affiché 
-					id_last_mess = id_message;
-			
-					var r = r_brut.substring(index_separateur_auteur,index_separateur_id-4);
+			var r = JSON.parse(xhr.responseText);		//récupération du résultat	
 		
-					//Config du div contenant le bloc p + le vote
-					var new_bloc_arbitre = document.createElement('div');
-					new_bloc_arbitre.className='bloc_arbitre';
+			if (r.statut){					
+				var idj = r.auteur;
+				var message = r.message_txt;
+				var idm = r.idm;
+				var vote = r.vote;
 
-					//Config du div contenant le bloc p
-		    			var new_div = document.createElement('div');
+				//On mémorise l'id du dernier message affiché 
+				id_last_mess = idm;
 
-					//De qui vient le message ?
-					var idj1=document.getElementById('idj1').innerHTML;
-					var idj2=document.getElementById('idj2').innerHTML;
-					if (idj==idj1){
-						new_div.className = 'message_moi';
-						compteur_j1++;
-					}
-					else {
-						new_div.className = 'message_adv';
-						compteur_j2++;
-					}
+				//Config du div contenant le bloc p + le vote
+				var new_bloc_arbitre = document.createElement('div');
+				new_bloc_arbitre.className='bloc_arbitre';
 
-					var new_p = document.createElement('p');
-					new_p.className = 'arg';
+				//Config du div contenant le bloc p
+	    			var new_div = document.createElement('div');
 
-					//Insertion du vote dans le bloc
-		    			new_p.innerHTML = r+'<div class="votes" id="'+id_message+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+id_message+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+id_message+') ; return false;"> </span></div>';      
-	
-					//Passage de p dans le div et passage du div dans bloc_arbitre
-					new_div.appendChild(new_p);
-					new_bloc_arbitre.appendChild(new_div);
-
-					//Affichage du div 
-		    			document.getElementById('conversation').appendChild(new_bloc_arbitre);
+				//De qui vient le message ?
+				var idj1=document.getElementById('idj1').innerHTML;
+				var idj2=document.getElementById('idj2').innerHTML;
+				if (idj==idj1){
+					new_div.className = 'message_moi';
+					compteur_j1++;
 				}
-			}  							
+				else {
+					new_div.className = 'message_adv';
+					compteur_j2++;
+				}
+
+				var new_p = document.createElement('p');
+				new_p.className = 'arg';
+
+				//Insertion du vote dans le bloc en fonction du vote déjà envoyé ou pas 
+				if(vote==1) {
+	    			new_p.innerHTML = message+'<div class="votes" id="'+idm+'"><span class="glyphicon glyphicon-thumbs-up vote_up vote_valide" onclick="vote(1,'+idm+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down hide" onclick="vote(-1,'+idm+') ; return false;"> </span></div>';      
+				}
+				else {
+					new_p.innerHTML = message+'<div class="votes" id="'+idm+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+idm+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+idm+') ; return false;"> </span></div>';      
+				}
+
+				//Passage de p dans le div et passage du div dans bloc_arbitre
+				new_div.appendChild(new_p);
+				new_bloc_arbitre.appendChild(new_div);
+
+				//Affichage du div 
+	    			document.getElementById('conversation').appendChild(new_bloc_arbitre);
+			}						
 		}			
-	};
+	}
 	
 	//Passage avec POST
 	xhr.open("POST", "fonctions_interfacejeu/afficher_message_arbitre.php");
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	//ID du dernier message affiché
 	xhr.send("id_last_mess="+id_last_mess);
-}
+};
 
 // ========== ENVOI DU VOTE ========== // 
 function vote(type_vote, id_mess){
@@ -105,7 +100,7 @@ function vote(type_vote, id_mess){
       			}
    		});
 	}
-}
+};
 
 // ========== ACTUALISATION DES PSEUDOS ========== // 
 var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
@@ -124,7 +119,7 @@ function actualiser(){
 			document.getElementById('sujet').innerHTML=r.sujet;
 		}
    	}	
-}	
+};	
 
 // ========== ALERTE SI ON QUITTE LA PAGE ========== // 
 var confirmOnLeave = function(msg) {
