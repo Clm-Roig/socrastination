@@ -19,10 +19,12 @@
 		echo "Erreur query : $req_j1.";
 	}
 
+	//Si pseudo vide, pseudo "en attente d'un joueur"
 	$tab_j1 = $res_j1->fetch();
 	if ($tab_j1['pseudo']==null) $pseudoj1 ="En attente d'un joueur...";
 	else $pseudoj1  = $tab_j1['pseudo'];
 
+	//Si l'id est vide, id=-1
 	if ($tab_j1['idMembre']==null) $idj1 ="-1";
 	else $idj1  = $tab_j1['idMembre'];
 
@@ -44,10 +46,10 @@
 	}
 	$tab_j2 = $res_j2 -> fetch();
 
-	if ($tab_j2['pseudo']==null || $tab_j2['pseudo']==$_SESSION['pseudo']) $pseudoj2 ="En attente d'un joueur...";
+	if ($tab_j2['pseudo']==null || $tab_j2['pseudo']==$_SESSION['pseudo'] ||$tab_j2['pseudo']==$pseudoj1) $pseudoj2 ="En attente d'un joueur...";
 	else $pseudoj2  = $tab_j2['pseudo'];
 
-	if ($tab_j2['idMembre']==null) $idj2 ="-1";
+	if ($tab_j2['idMembre']==null ||$tab_j2['idMembre']==$idj1 ) $idj2 ="-1";
 	else $idj2  = $tab_j2['idMembre'];
 
 	//REQUETE SUJET DE LA PARTIE

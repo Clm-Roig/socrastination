@@ -7,7 +7,7 @@ var compteur_j2=0;
 var id_last_mess=-1;
 
 // ========== AFFICHAGE DU MESSAGE ========== // 
-var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
+var timer=setInterval("affichage()",500);	//on lance la fonction toutes les 0.5s
 
 function affichage() {
 	var xhr = new XMLHttpRequest(); 
@@ -18,7 +18,7 @@ function affichage() {
 			var r = JSON.parse(xhr.responseText);		//récupération du résultat	
 		
 			if (r.statut){					
-				var idj = r.auteur;
+				var idj = r.auteur; 
 				var message = r.message_txt;
 				var idm = r.idm;
 				var vote = r.vote;
@@ -36,6 +36,7 @@ function affichage() {
 				//De qui vient le message ?
 				var idj1=document.getElementById('idj1').innerHTML;
 				var idj2=document.getElementById('idj2').innerHTML;
+
 				if (idj==idj1){
 					new_div.className = 'message_moi';
 					compteur_j1++;
@@ -50,7 +51,10 @@ function affichage() {
 
 				//Insertion du vote dans le bloc en fonction du vote déjà envoyé ou pas 
 				if(vote==1) {
-	    			new_p.innerHTML = message+'<div class="votes" id="'+idm+'"><span class="glyphicon glyphicon-thumbs-up vote_up vote_valide" onclick="vote(1,'+idm+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down hide" onclick="vote(-1,'+idm+') ; return false;"> </span></div>';      
+	    				new_p.innerHTML = message+'<div class="votes" id="'+idm+'"><span class="glyphicon glyphicon-thumbs-up vote_up vote_valide" onclick="vote(1,'+idm+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down hide" onclick="vote(-1,'+idm+') ; return false;"> </span></div>';      
+				}
+				else if(vote==-1) {
+					new_p.innerHTML = message+'<div class="votes" id="'+idm+'"><span class="glyphicon glyphicon-thumbs-up vote_up hide" onclick="vote(1,'+idm+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down vote_valide" onclick="vote(-1,'+idm+') ; return false;"> </span></div>';      
 				}
 				else {
 					new_p.innerHTML = message+'<div class="votes" id="'+idm+'"><span class="glyphicon glyphicon-thumbs-up vote_up" onclick="vote(1,'+idm+') ; return false;"> </span>'+'<span class="glyphicon glyphicon-thumbs-down vote_down" onclick="vote(-1,'+idm+') ; return false;"> </span></div>';      
@@ -103,7 +107,7 @@ function vote(type_vote, id_mess){
 };
 
 // ========== ACTUALISATION DES PSEUDOS ========== // 
-var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
+var timer=setInterval("actualiser()",400);	//on lance la fonction toutes les 0.4s
 function actualiser(){
 	var xhr = new XMLHttpRequest(); 
 	//Passage avec GET
