@@ -62,7 +62,7 @@
 				$vue=str_replace("{niveau}",$info['niveau'],$vue);
 				$vue=str_replace("{nbDePoints}",$info['nbDePoints'],$vue);
 				$vue=str_replace("{nbTotalParties}",$info['nbTotalParties'],$vue);
-				$vue=str_replace("{nbTotalParties}",$info['nbPartiesGagnees'],$vue);
+				$vue=str_replace("{nbPartiesGagnees}",$info['nbPartiesGagnees'],$vue);
 			}
 			break;
 
@@ -100,7 +100,6 @@
 
 	//Remplacement header + pseudo + affichage
 	$vue=str_replace("{header}",$header,$vue);
-	$vue=str_replace("{pseudo}",$_SESSION['pseudo'],$vue);
 	echo $vue;
 ?>
 		
