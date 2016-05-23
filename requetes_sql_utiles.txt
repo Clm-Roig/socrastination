@@ -2,6 +2,7 @@
 DELETE FROM Parties; 
 DELETE FROM Role; 
 DELETE FROM Chat_messages;
+DELETE FROM Votes;
 UPDATE Forums
 SET idPartie=0;						
 			
