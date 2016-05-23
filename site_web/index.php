@@ -77,8 +77,9 @@
 			break;
 	}//fin switch
 
-	//Remplacement header + affichage
+	//Remplacement header + pseudo + affichage
 	$vue=str_replace("{header}",$header,$vue);
+	$vue=str_replace("{pseudo}",$_SESSION['pseudo'],$vue);
 	echo $vue;
 ?>
 		

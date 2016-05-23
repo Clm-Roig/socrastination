@@ -11,7 +11,8 @@
 	}
 
 	//Chargement de la vue
-	$gabarit=file_get_contents("vues/v_liste_forums.html");
-	$gabarit=str_replace("{header}",$header,$gabarit);
-	echo $gabarit;
+	$vue=file_get_contents("vues/v_liste_forums.html");
+	$vue=str_replace("{header}",$header,$vue);
+	$vue=str_replace("{pseudo}",$_SESSION['pseudo'],$vue);
+	echo $vue;
 ?>
