@@ -45,6 +45,27 @@
 			$vue=file_get_contents("vues/v_inscription.html");	
 			break;
 
+/*----------------- MEMBRE ----------------- */
+		case("membre") :
+			$vue=file_get_contents("vues/v_membre.html");
+			// INTERROGATION
+			$req = "SELECT * FROM Membres WHERE idMembre={$_SESSION['idMembre']}";
+			$query = $bdd->query($req);
+			if ($query==false) {
+				echo "Erreur query : $req";
+				exit();
+			}
+			else {
+				$info=$query->fetch();
+				$vue=str_replace("{pseudo}",$info['pseudo'],$vue);
+				$vue=str_replace("{mail}",$info['mail'],$vue);
+				$vue=str_replace("{niveau}",$info['niveau'],$vue);
+				$vue=str_replace("{nbDePoints}",$info['nbDePoints'],$vue);
+				$vue=str_replace("{nbTotalParties}",$info['nbTotalParties'],$vue);
+				$vue=str_replace("{nbTotalParties}",$info['nbPartiesGagnees'],$vue);
+			}
+			break;
+
 /*----------------- ERREUR ----------------- */
 		case("erreur") :
 			$vue = file_get_contents("vues/v_erreur.html");
