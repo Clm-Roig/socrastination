@@ -7,6 +7,7 @@
 	}
 	else {
 		$header=file_get_contents("elements_communs/header3.php");
+		$header=str_replace("{pseudo}",$_SESSION['pseudo'],$header);
 	}
 
 	if(isset($_GET['action'])) $action=$_GET['action'];
@@ -57,7 +58,6 @@
 			}
 			else {
 				$info=$query->fetch();
-				$vue=str_replace("{pseudo}",$info['pseudo'],$vue);
 				$vue=str_replace("{mail}",$info['mail'],$vue);
 				$vue=str_replace("{niveau}",$info['niveau'],$vue);
 				$vue=str_replace("{nbDePoints}",$info['nbDePoints'],$vue);
