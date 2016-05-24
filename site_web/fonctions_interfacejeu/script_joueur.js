@@ -74,8 +74,8 @@ function affichage() {
 
 // ================== ENVOI MESSAGE EN AJAX/JQUERY  ================== //
 $("#poster").click(function(){
-	var mess = document.getElementById("message").value;
-	if (mess != null) {
+	var mess = document.getElementById("message").value.trim();	
+	if (mess != "") {
 		//On grise le bouton d'envoi
 		document.getElementById("poster").disabled=true;
 	     	$.ajax({
