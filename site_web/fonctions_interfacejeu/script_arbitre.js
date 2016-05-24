@@ -16,7 +16,6 @@ function affichage() {
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
 			var r = JSON.parse(xhr.responseText);		//récupération du résultat	
-		
 			if (r.statut){					
 				var idj = r.auteur; 
 				var message = r.message_txt;
