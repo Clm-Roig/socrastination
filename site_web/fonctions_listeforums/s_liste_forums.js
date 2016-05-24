@@ -23,8 +23,9 @@ function actualiser(numero) {
 			document.getElementById('nbj'+numero).innerHTML = rj;
 			document.getElementById('nba'+numero).innerHTML = ra;
 			document.getElementById('suj'+numero).innerHTML = suj;
-		}			
+		}		
 	};
+
 	//Passage avec GET
 	xhr.open("GET","fonctions_listeforums/actualisation_forums.php?numforum="+numero); 
 	xhr.send(null);	

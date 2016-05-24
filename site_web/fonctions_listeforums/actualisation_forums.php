@@ -29,11 +29,13 @@
 				WHERE F.idForum=$id_forum
 				;";
 	$res_sujet = $bdd->query($req_sujet);
-	if ($res_sujet==null) {
+	if ($res_sujet==false) {
 		echo "Erreur query : $req_sujet";
 		exit();
 	}
+
 	$res_sujet = $res_sujet->fetch();
+
 	if ($res_sujet['sujet']==null) $sujet = "";
 	else $sujet = $res_sujet['sujet'];
 

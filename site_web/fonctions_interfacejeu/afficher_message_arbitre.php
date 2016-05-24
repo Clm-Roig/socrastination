@@ -46,26 +46,41 @@
 		$res_req = $bdd->query($req);
 		$res_req_tab = $res_req->fetch();		
 		$auteur_str = $res_req_tab['message_id_membre'];
-		$id_mess = $res_req_tab['message_id'];
+		$id_new_mess = $res_req_tab['message_id'];
 		$message_str = $res_req_tab['message_text'];
 	}
 
 	// Sinon, on sélectionne les messages suivants
 	else {
+		//Requete pour l'heure du dernier message affiché
+		$req_time_last_mess = 	"SELECT message_time	
+							FROM Chat_messages
+							WHERE message_id=$id_mess
+							;";
+		$res_time = $bdd->query($req_time_last_mess);
+		if ($res_time==false) {
+			echo "Erreur query : $req_time_last_mess";
+			exit();
+		}
+		$res_time = $res_time -> fetch();
+		$time_last_mess = $res_time['message_time'];
+
+		//Requete pour le message suivant
 		$req =	"SELECT message_id , message_id_membre, message_text
 				FROM Chat_messages
-				WHERE id_partie=".$_SESSION['id_partie']."
-				AND message_time > (
-					SELECT message_time	
-					FROM Chat_messages
-					WHERE message_id=$id_mess
-					)
+				WHERE id_partie={$_SESSION['id_partie']}
+				AND message_time=( 
+							SELECT MIN(message_time) 
+							FROM Chat_messages 
+							WHERE message_time > $time_last_mess
+							AND id_partie={$_SESSION['id_partie']}
+							)
 				;";
 
 		$res_req = $bdd -> query($req);
 		$res_req_tab = $res_req -> fetch();		
 		$auteur_str = $res_req_tab['message_id_membre'];
-		$id_mess = $res_req_tab['message_id'];
+		$id_new_mess = $res_req_tab['message_id'];
 		$message_str = $res_req_tab['message_text'];
 	}
 
@@ -75,7 +90,7 @@
 				AND idArbitre={$_SESSION['idMembre']}
 				;";
 	$res_vote = $bdd -> query($req_vote);
-	if($res_vote==false) $vote=0;	//Si la requete est vide, on retourne 0
+	if ($res_vote==false) $vote=0;	//Si la requete est vide, on retourne 0
 	else {
 		$res_tab = $res_vote->fetch();	
 		if($res_tab['vote']==null) $vote=0;
@@ -86,7 +101,7 @@
 	$tab = array(
 				"auteur"=>$auteur_str,
 				"message_txt"=>$message_str,
-				"idm"=>$id_mess,
+				"idm"=>$id_new_mess,
 				"vote"=>$vote,
 				"statut"=>true,	//requete réussie 
 				);
