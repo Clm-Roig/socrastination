@@ -46,9 +46,11 @@
 	}
 	$tab_j2 = $res_j2 -> fetch();
 
-	if ($tab_j2['pseudo']==null || $tab_j2['pseudo']==$_SESSION['pseudo'] ||$tab_j2['pseudo']==$pseudoj1) $pseudoj2 ="En attente d'un joueur...";
+	//Si pseudo vide, pseudo "en attente d'un joueur"
+	if ($tab_j2['pseudo']==null ||$tab_j2['pseudo']==$pseudoj1) $pseudoj2 ="En attente d'un joueur...";
 	else $pseudoj2  = $tab_j2['pseudo'];
 
+	//Si id vide, id = -1
 	if ($tab_j2['idMembre']==null ||$tab_j2['idMembre']==$idj1 ) $idj2 ="-1";
 	else $idj2  = $tab_j2['idMembre'];
 
