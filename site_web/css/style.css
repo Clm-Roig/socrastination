@@ -234,7 +234,7 @@ p.foot {
 /*----- CHAT -----*/
 
 #conversation{
-	height : 380px;
+	height : 420px;
 	width : 100%;
 	overflow-y : auto;
 }

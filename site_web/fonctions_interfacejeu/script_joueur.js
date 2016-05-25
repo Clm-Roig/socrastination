@@ -114,7 +114,7 @@ function actualiser(){
    	}	
 }	
 
-// ========== ALERTE SI ON QUITTE LA PAGE ========== // 
+// ========== BOUTON QUITTER ========== // 
 function quitter(){
 	window.location = "liste_forums.php";
 };	
