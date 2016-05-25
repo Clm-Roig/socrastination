@@ -64,9 +64,22 @@
 				$nb_j= $req_nbj->fetchColumn();
 
 				if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
+					$req = 	"SELECT idMembre FROM Role
+							WHERE idPartie=$id_partie 
+							AND role=0
+							AND idMembre={$_SESSION['idMembre']}
+							;";
+					$res = $bdd->query($req);
+					if ($res==false){
+						echo "Erreur query : $req";
+						exit();
+					}
+					$idj = $res->fetch();
 
-					//Nope c'était pas toi , redirection vers listeforums
-					header("Location: ../index.php?action=erreur&num_erreur=2");
+					//Redirection vers la partie si la requete n'est pas nulle
+					if($idj['idMembre'] != null) header("Location: ../interfacejeu.php");
+					//Non ce n'était pas toi , redirection vers listeforums
+					else header("Location: ../index.php?action=erreur&num_erreur=2");
 				}
 
 				else {	//Ok on a une place pour toi, joueur
