@@ -113,8 +113,3 @@ function actualiser(){
 		}
    	}	
 }	
-
-// ========== BOUTON QUITTER ========== // 
-function quitter(){
-	window.location = "liste_forums.php";
-};	
