@@ -44,16 +44,19 @@
 	<!-- ============ -->
 
 		<!-- HEADER / NAV -->
-		 <?php include("elements_communs/header1.php");?>
-		<ul class="nav navbar-nav">
-			<li class="menu"><a href="index.php">Accueil</a></li>
-			<li class="menu"><a href="regles.php">Règles</a></li>
-			<li class="menu"><a href="classement.php">Classement</a></li>
-		</ul>
+		<div class="row">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li class="menu"><a href="index.php">Accueil</a></li>
+							<li class="menu"><a href="regles.php">Règles</a></li>
+							<li class="menu"><a href="classement.php">Classement</a></li>
+						</ul>
 
-		<ul class="nav navbar-nav navbar-right">
-			<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-		<?php include("elements_communs/header2.php");?>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="active"><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+						<?php include("elements_communs/header2.php");?>
 		<!-- ============ -->
 
 		<div class="container" id="corps">
