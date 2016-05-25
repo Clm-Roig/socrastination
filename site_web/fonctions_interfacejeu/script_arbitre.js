@@ -110,7 +110,7 @@ var timer=setInterval("actualiser()",400);	//on lance la fonction toutes les 0.4
 function actualiser(){
 	var xhr = new XMLHttpRequest(); 
 	//Passage avec GET
-	xhr.open("GET", "fonctions_interfacejeu/infos_partie.php");
+	xhr.open("GET", "fonctions_interfacejeu/infos_partie_arbitre.php");
 	xhr.send();
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
