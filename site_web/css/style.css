@@ -34,11 +34,11 @@ body {
 
 #corps {
 	margin : auto;
-	margin-top : 75px;
+	margin-top : 60px;
 	margin-bottom : 100px;
 	box-shadow : 0 10px 20px;
 	width : 75%;
-	height : 550px;
+	height : 600px;
 	opacity : 1;
 	overflow : auto;
 }
@@ -204,12 +204,14 @@ img.case{
 /* ---- Liste Forums ---- */
 
 #liste_forums {
-	
+	height : 100%;
 }
 
 .table-responsive {
-
+	height : 96.5%;
 }
+
+
 
 form.forum{
 	margin : 0;
