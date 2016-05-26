@@ -2,6 +2,10 @@
 	session_start();
 	require ("config.php");
 
+	if (!isset($_SESSION['pseudo'])) {
+		header('Location: liste_forums.php');
+	}
+
 	//REQUETE MON PSEUDO
 	$req_pseudo_moi =	"SELECT pseudo FROM Membres 
 						WHERE idMembre=".$_SESSION['idMembre'].
