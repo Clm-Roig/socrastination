@@ -5,7 +5,21 @@
 	if (!isset($_SESSION['pseudo'])) {
 		header('Location: liste_forums.php');
 	}
-	$gabarit=file_get_contents("vues/v_interfacejeu.html");
-	echo $gabarit;
+
+	// REQUETE SUJETS DISPONIBLES
+	$req=	"SELECT nomsujet FROM Sujets;";
+	$res=$bdd->query($req);
+	if ($res==false) {
+		echo "Erreur query sujets : $req.";
+		exit();
+	}
+
+	$c=1;	
+	$vue=file_get_contents("vues/v_interfacejeu.html");
+	while($liste_sujets=$res->fetch()){
+		$vue=str_replace("{sj".$c."}",$liste_sujets['nomsujet'],$vue);
+		$c=$c+1;
+	}	
+	echo $vue;
 ?>
 
