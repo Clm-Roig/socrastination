@@ -109,7 +109,7 @@ li.menu {
 
 /*----- FORMULAIRE ------*/
 
-form{
+#form_login{
 	padding : 10px;
 	text-align : center;
 }
@@ -201,6 +201,10 @@ img.case{
 	height : 100px;
 }
 
+#erreur_retour {
+	text-align :center;
+}
+
 /* ---- Liste Forums ---- */
 
 #liste_forums {
@@ -241,10 +245,24 @@ p.foot {
 
 #form_chat {
 	margin-bottom : 1em;
+	text-align : center;
 }
 
 h2.haut_chat {
 	color:white;
+}
+
+#choix_sujet {
+	text-align : center;
+}
+
+#liste_choix_sujet {
+	font-size : 1.2em;
+}
+
+#valider_sujet {
+	font-size : 1.2em;
+	margin-bottom : 0.3em;
 }
 
 .message_adv, .message_moi {

@@ -7,19 +7,20 @@
 	}
 
 	// REQUETE SUJETS DISPONIBLES
-	$req=	"SELECT nomsujet FROM Sujets;";
+	$req=	"SELECT idSujet,nomsujet FROM Sujets;";
 	$res=$bdd->query($req);
 	if ($res==false) {
 		echo "Erreur query sujets : $req.";
 		exit();
 	}
 
-	$c=1;	
-	$vue=file_get_contents("vues/v_interfacejeu.html");
+	$sujets="";
 	while($liste_sujets=$res->fetch()){
-		$vue=str_replace("{sj".$c."}",$liste_sujets['nomsujet'],$vue);
-		$c=$c+1;
+		$sujets=$sujets.'<option value="'.$liste_sujets['idSujet'].'">'.$liste_sujets['nomsujet'].'</option>';										
 	}	
+
+	$vue=file_get_contents("vues/v_interfacejeu.html");
+	$vue=str_replace("{sujets}",$sujets,$vue);
 	echo $vue;
 ?>
 

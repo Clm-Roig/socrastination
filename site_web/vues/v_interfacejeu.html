@@ -70,32 +70,14 @@
 
 									<!-- Liste déroulante pour les sujets -->
 									<form id="choix_sujet" method="post" action="fonctions_interfacejeu/quit.php">
-										<select class="c-select">
+										<select id="liste_choix_sujet" class="c-select">
 											<option selected>Choisissez un sujet</option>
-											<option value="{ids1}">{sj1}</option>
-											<option value="{ids2}">{sj2}</option>
-											<option value="{ids3}">{sj3}</option>
-											<option value="{ids4}">{sj4}</option>
-											<option value="{ids5}">{sj5}</option>
-											<option value="{ids6}">{sj6}</option>
-											<option value="{ids7}">{sj7}</option>
-											<option value="{ids8}">{sj8}</option>
-											<option value="{ids9}">{sj9}</option>		
-											<option value="{ids10}">{sj10}</option>
-											<option value="{ids11}">{sj11}</option>
-											<option value="{ids12}">{sj12}</option>
-											<option value="{ids13}">{sj13}</option>
-											<option value="{ids14}">{sj14}</option>
-											<option value="{ids15}">{sj15}</option>
-											<option value="{ids16}">{sj16}</option>
-											<option value="{ids17}">{sj17}</option>
-											<option value="{ids18}">{sj18}</option>			
+											{sujets}
 										</select>
+										<input id="valider_sujet" type="button" class="btn btn-default btn-sm" value="Valider" onclick="">
 									</form>
-									<!-- ======================== -->
-								
-
-									</select>
+									<!-- ======================== -->	
+						
 								</div>
 						<!-- Fermeture panneau -->
 
