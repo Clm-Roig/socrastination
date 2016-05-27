@@ -24,9 +24,11 @@
 	$nb_a= $req_arbitre->fetchColumn();	//on compte le nombre d'arbitres (role=1) dans une partie
 
 	//SUJET CHOISI
-	$req_sujet =	"SELECT sujet FROM Parties P
+	$req_sujet =	"SELECT nomSujet FROM Sujets S
+				JOIN Parties P ON P.idSujet=S.idSujet
 				JOIN Forums F ON F.idPartie=P.idPartie
-				WHERE F.idForum=$id_forum
+				WHERE F.idForum={$id_forum}
+				AND S.idSujet=P.idSujet 
 				;";
 	$res_sujet = $bdd->query($req_sujet);
 	if ($res_sujet==false) {
@@ -36,8 +38,8 @@
 
 	$res_sujet = $res_sujet->fetch();
 
-	if ($res_sujet['sujet']==null) $sujet = "";
-	else $sujet = $res_sujet['sujet'];
+	if ($res_sujet['nomSujet']==null) $sujet = "";
+	else $sujet = $res_sujet['nomSujet'];
 
 	// MISE À JOUR DE LA PAGE 
 	echo "$nb_j,$nb_a,$sujet";	
