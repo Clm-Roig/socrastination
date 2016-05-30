@@ -34,7 +34,7 @@
 						WHERE idForum=$num_forum;							
 						";
 
-			//Requete pour la table Parties
+			//Requete pour la table Parties (si tu es joueur, c'est toi qui choisis le sujet) 
 			$req_creation2="INSERT INTO Parties (idPartie)
 						VALUES ($id_max);						
 						";

@@ -26,7 +26,8 @@
 	else $idj2  = $tab_j2['idMembre'];
 
 	//===============REQUETE SUJET DE LA PARTIE===================
-	$req_sujet=	"SELECT sujet FROM Parties
+	$req_sujet=	"SELECT nomSujet FROM Sujets S
+				JOIN Parties P ON P.idSujet=S.idSujet
 				WHERE idPartie={$_SESSION['id_partie']}
 				;";
 	$res_sujet = $bdd -> query($req_sujet);
@@ -35,8 +36,8 @@
 	}	
 
 	$tab_sujet = $res_sujet -> fetch();
-	if($tab_sujet['sujet']==null) $sujet="Sujet non-choisi.";
-	else $sujet=$tab_sujet['sujet'];
+	if($tab_sujet['nomSujet']==null) $sujet="Sujet non-choisi.";
+	else $sujet=$tab_sujet['nomSujet'];
 
 	//Tableau pour l'envoi
 	$tab = array(

@@ -95,7 +95,7 @@ $("#poster").click(function(){
 	}	
 })
 
-// ========== ACTUALISATION DES PSEUDOS ========== // 
+// ========== ACTUALISATION DES INFOS  ========== // 
 var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
 function actualiser(){
 	var xhr = new XMLHttpRequest(); 
