@@ -162,8 +162,3 @@ function arret_partie(){
 		}
 	}
 };
-
-
-
-
-
