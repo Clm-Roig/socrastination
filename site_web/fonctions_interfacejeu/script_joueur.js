@@ -95,6 +95,23 @@ $("#poster").click(function(){
 	}	
 })
 
+// ==== ENVOI DU SUJET ==== //
+$("#valider_sujet").click(function(){
+	var id = document.getElementById("liste_choix_sujet").value;	
+	if (id != null) {
+	     	$.ajax({
+			url : 'fonctions_interfacejeu/envoi_sujet.php',
+	       		type : 'POST', 
+	       		dataType : 'html',
+			data : 'id_sujet='+id,
+			success : function(retour){ 
+				//Envoi ok, on efface le formulaire de choix de sujet	
+				document.getElementById("choix_sujet").style.display='none';	
+			}
+	   	});
+	}	
+})
+
 // ========== ACTUALISATION DES INFOS  ========== // 
 var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
 function actualiser(){
@@ -140,5 +157,7 @@ function arret_partie(){
 };
 
 // ======= BLOQUER ENVOI DE MESSAGES EN FONCTION DE "tour_joueur" ======= //
+
+
 
 
