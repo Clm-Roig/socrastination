@@ -138,3 +138,7 @@ function arret_partie(){
 		}
 	}
 };
+
+// ======= BLOQUER ENVOI DE MESSAGES EN FONCTION DE "tour_joueur" ======= //
+
+
