@@ -28,6 +28,16 @@ body {
 	min-height : 100%;
 }
 
+#loader {
+	position: absolute; 
+    width: 100%;
+    height: 100%; 
+    opacity : 0.9;
+    background: url('../images/loader.gif') no-repeat center center;
+    background-color : white;
+    z-index : 999999;
+}
+
 #row_corps {
 	margin : 0;
 }

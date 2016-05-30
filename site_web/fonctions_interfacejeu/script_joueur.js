@@ -7,6 +7,13 @@ $('textarea').click(function(e){
 	e.preventDefault(); 
 });
 
+$(window).ready(function() {
+	setTimeout(function() {
+		 $('#loader').fadeOut(1000);
+	}, 1000);	
+    		
+});
+
 //======================================//
 
 // ========== AFFICHAGE DES MESSAGES ========== // 
