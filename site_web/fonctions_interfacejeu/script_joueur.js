@@ -86,10 +86,6 @@ $("#poster").click(function(){
 			success : function(){ 
 				//On efface le contenu après postage du message
 				document.getElementById('message').value='';  
-				//On rétablit le bouton pour envoyer un autre message après 1 seconde
-				setTimeout(function() {
-					document.getElementById("poster").disabled=false;
-				}, 1000);				
 			}
 	   	});
 	}	
@@ -127,6 +123,17 @@ function actualiser(){
 			document.getElementById('idj1').innerHTML=r.idj1;
 			document.getElementById('idj2').innerHTML=r.idj2;
 			document.getElementById('sujet').innerHTML=r.sujet;
+
+			//Si le sujet n'est pas choisi, on empêche l'envoi de message
+			if(document.getElementById('sujet').innerHTML=="Sujet non-choisi.") document.getElementById("poster").disabled=true;
+			else {
+				document.getElementById("poster").disabled=false;		
+				//sujet choisi, on cache le formulaire
+				document.getElementById("choix_sujet").style.display='none';	
+			}
+			//Si ce n'est pas mon tour, on empêche l'envoi de message
+			if (!r.tour)  document.getElementById("poster").disabled=true;
+			else document.getElementById("poster").disabled=false;
 		}
    	}	
 };
@@ -156,7 +163,6 @@ function arret_partie(){
 	}
 };
 
-// ======= BLOQUER ENVOI DE MESSAGES EN FONCTION DE "tour_joueur" ======= //
 
 
 

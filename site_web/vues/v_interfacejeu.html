@@ -69,12 +69,12 @@
 								<div id="conversation">
 
 									<!-- Liste déroulante pour les sujets -->
-									<form id="choix_sujet" method="post" action="fonctions_interfacejeu/quit.php">
-										<select id="liste_choix_sujet" class="c-select">
+									<form id="choix_sujet" method="post" onSubmit="return false">
+										<select id="liste_choix_sujet" name="id_sujet" class="c-select">
 											<option selected>Choisissez un sujet</option>
 											{sujets}
 										</select>
-										<input id="valider_sujet" type="button" class="btn btn-default btn-sm" value="Valider" onclick="">
+										<input id="valider_sujet" type="submit" name="valider_sujet" class="btn btn-default btn-sm" value="Valider">
 									</form>
 									<!-- ======================== -->	
 						
@@ -89,7 +89,7 @@
 											<div class="form-group">
 												<textarea class="form-control" id="message" name="message" onKeyUp="if(event.keyCode == 13) validerForm();" placeholder="Message..." maxlength="254" rows ="2" cols ="80"></textarea>	
 											</div>
-											  <button id="poster"  class="btn btn-default" type="submit" >Envoyer</button>
+											  <button id="poster"  class="btn btn-default" type="submit" disabled>Envoyer</button>
 										</form>
 
 									</div>
