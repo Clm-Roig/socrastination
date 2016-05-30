@@ -35,8 +35,8 @@
 						";
 
 			//Requete pour la table Parties (si tu es joueur, c'est toi qui choisis le sujet) 
-			$req_creation2="INSERT INTO Parties (idPartie)
-						VALUES ($id_max);						
+			$req_creation2="INSERT INTO Parties (idPartie,tour_joueur)
+						VALUES ($id_max,".$_SESSION['idMembre'].");						
 						";
 
 			//Requete pour la table Role
