@@ -145,6 +145,7 @@ label.control-label {
 
 /*----- TEXTE DEFAUT -----*/ 
 
+
 p, h1, h2, h3, h4, h5 {
 
 	color: rgba(0,0,0,0.95);
@@ -153,7 +154,7 @@ p, h1, h2, h3, h4, h5 {
 
 
 p{
-	padding : 0 4em;
+	/*padding : 0 4em;  paddign enlevé car causait des problèmes pour afficher de simples textes, on les mettra sur les conteneurs plutot. */
 	font-size : 1.1em;
 	text-align : justify;
 	
@@ -275,6 +276,7 @@ p.foot {
 
 h2.haut_chat {
 	color:white;
+	text-shadow:inherit;
 }
 
 #choix_sujet {
