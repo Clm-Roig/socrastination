@@ -143,32 +143,56 @@ function actualiser(){
 			document.getElementById('idj2').innerHTML=r.idj2;
 			document.getElementById('sujet').innerHTML=r.sujet;
 
-			//Si ce n'est pas mon tour ou s'il n'y a pas d'adversaire, on empêche l'envoi de message
-			if ( (!r.tour) || (document.getElementById('idj2').innerHTML==-1) ) bouton.disabled=true;
-			else bouton.disabled=false;
+			// ========= CONDITIONS SUR LE BOUTON ENVOI, LE FORMULAIRE, LE MESSAGE AFFICHÉ ======== //
 
-			//Si le sujet est choisi, on cache le formulaire et on annonce à qui c'est le tour. Sinon on bloque l'envoi de message
-			if(document.getElementById('sujet').innerHTML != "Sujet non-choisi.") {
-				document.getElementById("choix_sujet").style.display='none';
-				//Mon tour mais pas d'adversaire
-				if ( (r.tour) && (document.getElementById('idj2').innerHTML==-1) ) document.getElementById("communication").innerHTML="En attente d'un adversaire...";
-				//Mon tour et il y a un adversaire
-				else if(r.tour) document.getElementById("communication").innerHTML="A vous de jouer !";
-				else document.getElementById("communication").innerHTML=r.pseudoj2+" prépare son argument...";
-			}
-			else {
-				bouton.disabled=true;	
-				//Si on choisit le sujet, on affiche le formulaire
-				if(r.tour) {
+			//Formulaire "sujet" masqué de base à chaque appel
+			document.getElementById("choix_sujet").style.display='none';
+			//=== Mon tour ===/
+			if(r.tour){				
+				//Mon tour + pas de sujet 
+				if(document.getElementById('sujet').innerHTML == "Sujet non-choisi.") {
+					bouton.disabled=true;
 					document.getElementById("communication").innerHTML="Veuillez choisir un sujet parmi la liste suivante : ";
 					document.getElementById("choix_sujet").style.display='block';
 				}
-				//Si on ne choisit pas le sujet, on cache le formulaire de choix de sujet
+
+				//Mon tour + sujet choisi 
 				else {
-					document.getElementById("choix_sujet").style.display='none';
-					document.getElementById("communication").innerHTML="L'adversaire choisit le sujet du débat, veuillez patienter.";
+					//Mon tour + sujet choisi + pas d'adv
+					if(document.getElementById('idj2').innerHTML==-1) {
+						bouton.disabled=true;
+						document.getElementById("communication").innerHTML="En attente d'un deuxième joueur...";
+					}
+					//Mon tour + sujet choisi + un adv présent 
+					else {
+						bouton.disabled=false;
+						document.getElementById("communication").innerHTML="A vous de jouer !";						
+					}
 				}
-			}		
+			}	
+
+			//=== Pas mon tour ===/
+			else {
+				//Pas mon tour + pas de sujet 
+				if(document.getElementById('sujet').innerHTML == "Sujet non-choisi.") {
+					bouton.disabled=true;
+					document.getElementById("communication").innerHTML="Veuillez patienter, l'adversaire choisit un sujet...";
+				}
+
+				//Pas mon tour + sujet choisi 
+				else {
+					//Pas mon tour + sujet choisi + pas d'adv (impossible normalement : c'est forcément mon tour s'il n'y a pas d'aversaire)
+					if(document.getElementById('idj2').innerHTML==-1) {
+						bouton.disabled=true;
+						document.getElementById("communication").innerHTML="En attente d'un deuxième joueur...";
+					}
+					//Pas mon tour + sujet choisi + un adv présent 
+					else {
+						bouton.disabled=true;
+						document.getElementById("communication").innerHTML=r.pseudoj2+" prépare son argument...";					
+					}
+				}
+			}	
 		}
    	}	
 };
