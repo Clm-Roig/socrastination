@@ -1,5 +1,5 @@
 /* ------- RESET ------*/
-body, nav, footer, ul, li, figure, img, header {
+body, nav, footer, figure, img, header {
 	margin : 0;
 	padding : 0;
 }
@@ -145,6 +145,10 @@ label.control-label {
 
 /*----- TEXTE DEFAUT -----*/ 
 
+.margin_left_list{
+	padding:inherit;
+	padding-left:20px;
+}
 
 p, h1, h2, h3, h4, h5 {
 
@@ -176,6 +180,11 @@ h3{
 }
 
 /*----- TEXTE PERSO -----*/ 
+
+.citation{
+	padding:5px;
+	font-size: 1.3em;
+}
 
 #bloc_jouer {
 	text-align : center;
