@@ -150,13 +150,18 @@ function actualiser(){
 			//Si le sujet est choisi, on cache le formulaire et on annonce à qui c'est le tour. Sinon on bloque l'envoi de message
 			if(document.getElementById('sujet').innerHTML != "Sujet non-choisi.") {
 				document.getElementById("choix_sujet").style.display='none';
-				if(r.tour) document.getElementById("communication").innerHTML="A vous de jouer !";
-				else 	document.getElementById("communication").innerHTML=r.pseudoj2+" prépare son argument...";
+				if (r.tour) document.getElementById("communication").innerHTML="A vous de jouer !";
+				else document.getElementById("communication").innerHTML=r.pseudoj2+" prépare son argument...";
 			}
 			else {
 				bouton.disabled=true;	
+				//Si on choisit le sujet, on affiche le formulaire
+				if(r.tour) {
+					document.getElementById("communication").innerHTML="Veuillez choisir un sujet parmi la liste suivante : ";
+					document.getElementById("choix_sujet").style.display='block';
+				}
 				//Si on ne choisit pas le sujet, on cache le formulaire de choix de sujet
-				if(!r.tour) {
+				else {
 					document.getElementById("choix_sujet").style.display='none';
 					document.getElementById("communication").innerHTML="L'adversaire choisit le sujet du débat, veuillez patienter.";
 				}

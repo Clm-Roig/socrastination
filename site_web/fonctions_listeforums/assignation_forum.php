@@ -63,7 +63,39 @@
 				$req_nbj=$bdd->query("SELECT COUNT(*) FROM Role WHERE idPartie=$id_partie AND role=0");
 				$nb_j= $req_nbj->fetchColumn();
 
-				if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui était dedans 
+				if($nb_j == 0){		//Il y a une partie mais pas de joueurs
+					//Requete pour la table Role
+					$req_creation_j1="INSERT INTO Role (role,idPartie,idMembre)
+								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
+								";
+
+					$res=$bdd->query($req_creation_j1);
+					if(!$res) {
+						echo "Erreur query joueur : $req_creation_j1.";
+						exit();
+					}
+
+					//Requete pour la table Parties
+					$req_tour=	"UPDATE Parties
+								SET tour_joueur={$_SESSION['idMembre']}
+								WHERE idPartie=$id_partie
+								;";
+
+					$res=$bdd->query($req_tour);
+					if(!$res) {
+						echo "Erreur query tour_joueur : $req_tour.";
+						exit();
+					}
+
+					//Stockage dans $_SESSION 
+					$_SESSION['id_forum']=$num_forum;	
+					$_SESSION['id_partie']=$id_partie;
+
+					//Redirection vers la partie
+					header("Location: ../interfacejeu.php");
+				}
+
+				if ($nb_j >= 2){		//Il y a trop de joueurs, on va voir si c'est toi qui étais dedans 
 					$req = 	"SELECT idMembre FROM Role
 							WHERE idPartie=$id_partie 
 							AND role=0
