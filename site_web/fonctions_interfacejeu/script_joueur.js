@@ -32,23 +32,31 @@ $("#valider_sujet").click(function(){
 	}	
 })
 
-
 // ========== FONCTION GENERALE ========== //
-//TO DO !!!
-/*var timer=setInterval("general()",500);	
-function general() {
-	if(!arret_partie()) {
-		setTimeout(function() {
-			affichage();	
-			actualiser();
-		}, 500);		
-	}
-}*/
+var timer=setInterval("general()",1000);	
 
+function general() {
+	var statut=arret_partie();
+	console.log(statut);
+	if(!statut) {
+		affichage();	
+		actualiser();
+	}	
+	else {
+		//On arrete de relancer la fonction avec clearInterval()
+		clearInterval(timer);
+		document.getElementById("poster").disabled=true;		
+		document.getElementById("communication").innerHTML="Partie terminée !";
+		setTimeout(function() {
+			alert("Là normalement c'est vraiment fini.");
+		}, 30000);
+	}
+}
+/*
 var timer=setInterval("affichage()",500);	
 var timer=setInterval("actualiser()",1000);
 var timer=setInterval("arret_partie()", 100);
-
+*/
 
 // ========== AFFICHAGE DES MESSAGES ========== // 
 	
@@ -195,30 +203,19 @@ function actualiser(){
 			}	
 		}
    	}	
-};
+}
 
 // ========== COMPTEUR FIN DE PARTIE ========== // 
-var fini=false;
 function arret_partie(){
-	if (fini==false){
-		var xhr = new XMLHttpRequest(); 
-		//Passage avec GET, arret_partie retourne TRUE s'il faut fermer la partie c-a-d que les 2 joueurs ont échangé 10 messages 
-		xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
-		xhr.send();
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState == 4) {				//serveur ok + réponse reçue
-				var r = xhr.responseText;			//récupération du résultat
-				if(r==true){
-					return true;
-					fini=true;
-					document.getElementById("poster").disabled=true;		
-					document.getElementById("communication").innerHTML="Partie terminée !";
-					setTimeout(function() {
-						alert("Là normalement c'est vraiment fini.");
-					}, 30000);			
-				}
-				else return false;
-	   		}	
-		}
+	var xhr = new XMLHttpRequest(); 
+	//Passage avec GET, arret_partie retourne TRUE s'il faut fermer la partie c-a-d que les 2 joueurs ont échangé 20 messages 
+	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
+	xhr.send();
+	xhr.onreadystatechange = function() {
+        	if (xhr.readyState == 4) {
+			if (xhr.responseText==1) res=true;
+			else res=false;
+        	}
 	}
-};
+	return res;
+}

@@ -21,7 +21,7 @@
 					WHERE idPartie={$_SESSION['id_partie']}
 					";
 		$res_stop = $bdd->query($req_stop);
-		if ($resst_op==false){
+		if ($res_stop==false){
 			echo "Erreur query arret partie : $req_stop.";
 			exit();
 		}
