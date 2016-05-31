@@ -2,7 +2,7 @@
 	session_start();
 	require ("../config.php");
 
-	//REQUETE idj1 (id le plus petit)
+	//=============== REQUETE idj1 (id le plus petit) ===================/
 	$req_j1 =	"SELECT M.idMembre,pseudo FROM Membres M
 				JOIN Role R ON R.idMembre=M.idMembre
 				WHERE R.idPartie={$_SESSION['id_partie']}
@@ -16,7 +16,7 @@
 
 	$res_j1 = $bdd->query($req_j1);
 	if($res_j1 == false) {
-		echo "Erreur query : $req_j1.";
+		echo "Erreur requete j1 : $req_j1.";
 	}
 
 	//Si pseudo vide, pseudo "en attente d'un joueur"
@@ -28,7 +28,7 @@
 	if ($tab_j1['idMembre']==null) $idj1 ="-1";
 	else $idj1  = $tab_j1['idMembre'];
 
-	//REQUETE idj2 (id le plus grand)
+	//=============== REQUETE idj2 (id le plus grand) ===================/
 	$req_j2 =	"SELECT M.idMembre,pseudo FROM Membres M
 				JOIN Role R ON R.idMembre=M.idMembre
 				WHERE R.idPartie={$_SESSION['id_partie']}
@@ -42,7 +42,7 @@
 
 	$res_j2 = $bdd -> query($req_j2);
 	if($res_j2 == false) {
-		echo "Erreur query : $req_j2.";
+		echo "Erreur requete j2 : $req_j2.";
 	}
 	$tab_j2 = $res_j2 -> fetch();
 
@@ -54,8 +54,9 @@
 	if ($tab_j2['idMembre']==null ||$tab_j2['idMembre']==$idj1 ) $idj2 ="-1";
 	else $idj2  = $tab_j2['idMembre'];
 
-	//REQUETE SUJET DE LA PARTIE
-	$req_sujet=	"SELECT sujet FROM Parties
+	//===============REQUETE SUJET DE LA PARTIE===================//
+	$req_sujet=	"SELECT nomSujet FROM Sujets S
+				JOIN Parties P ON P.idSujet=S.idSujet
 				WHERE idPartie={$_SESSION['id_partie']}
 				;";
 	$res_sujet = $bdd -> query($req_sujet);
@@ -64,8 +65,8 @@
 	}	
 
 	$tab_sujet = $res_sujet -> fetch();
-	if($tab_sujet['sujet']==null) $sujet="Sujet non-choisi.";
-	else $sujet=$tab_sujet['sujet'];
+	if($tab_sujet['nomSujet']==null) $sujet="Sujet non-choisi.";
+	else $sujet=$tab_sujet['nomSujet'];
 
 	//Tableau pour l'envoi
 	$tab = array(
