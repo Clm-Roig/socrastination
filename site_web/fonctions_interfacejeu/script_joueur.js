@@ -10,20 +10,50 @@ $('textarea').click(function(e){
 $(window).ready(function() {
 	setTimeout(function() {
 		 $('#loader').fadeOut(1000);
-	}, 1000);	
-    		
+	}, 1000);	 		
 });
 
 //======================================//
 
-// ========== AFFICHAGE DES MESSAGES ========== // 
-var timer=setInterval("affichage()",500);	//on lance la fonction toutes les secondes.
+// ==== ENVOI DU SUJET ==== //
+$("#valider_sujet").click(function(){
+	var id = document.getElementById("liste_choix_sujet").value;	
+	if (id != null) {
+	     	$.ajax({
+			url : 'fonctions_interfacejeu/envoi_sujet.php',
+	       		type : 'POST', 
+	       		dataType : 'html',
+			data : 'id_sujet='+id,
+			success : function(){ 
+				//Envoi ok, on efface le formulaire de choix de sujet	
+				document.getElementById("choix_sujet").style.display='none';	
+			}
+	   	});
+	}	
+})
 
-var compteur_moi=0;	
-var compteur_adv=0;	
+
+// ========== FONCTION GENERALE ========== //
+//TO DO !!!
+/*var timer=setInterval("general()",500);	
+function general() {
+	if(!arret_partie()) {
+		setTimeout(function() {
+			affichage();	
+			actualiser();
+		}, 500);		
+	}
+}*/
+
+var timer=setInterval("affichage()",500);	
+var timer=setInterval("actualiser()",1000);
+var timer=setInterval("arret_partie()", 100);
+
+
+// ========== AFFICHAGE DES MESSAGES ========== // 
 	
 //On stocke l'id du dernier message affiché 
-//Initialisation à -1 quand l'arbitre arrive pour la première fois
+//Initialisation à -1 quand le joueur arrive pour la première fois
 var id_last_mess=-1;
 
 function affichage() {
@@ -50,11 +80,9 @@ function affichage() {
 		    			var new_div = document.createElement('div');
 					if (auteur==1){
 						new_div.className = 'message_moi';
-						compteur_moi ++;
 					}
 					else {
 						new_div.className = 'message_adv';
-						compteur_adv ++;
 					}
 
 					//Config du p contenant le message
@@ -82,6 +110,7 @@ function affichage() {
 // ================== ENVOI MESSAGE EN AJAX/JQUERY  ================== //
 $("#poster").click(function(){
 	var mess = document.getElementById("message").value.trim();	
+	var id_adv = document.getElementById('idj2').innerHTML;
 	if (mess != "") {
 		//On grise le bouton d'envoi
 		document.getElementById("poster").disabled=true;
@@ -89,7 +118,7 @@ $("#poster").click(function(){
 			url : 'fonctions_interfacejeu/envoi_message.php',
 	       		type : 'POST', 
 	       		dataType : 'html',
-			data : 'message='+mess,
+			data : 'message='+mess+'&id_adv='+id_adv,
 			success : function(){ 
 				//On efface le contenu après postage du message
 				document.getElementById('message').value='';  
@@ -98,25 +127,8 @@ $("#poster").click(function(){
 	}	
 })
 
-// ==== ENVOI DU SUJET ==== //
-$("#valider_sujet").click(function(){
-	var id = document.getElementById("liste_choix_sujet").value;	
-	if (id != null) {
-	     	$.ajax({
-			url : 'fonctions_interfacejeu/envoi_sujet.php',
-	       		type : 'POST', 
-	       		dataType : 'html',
-			data : 'id_sujet='+id,
-			success : function(retour){ 
-				//Envoi ok, on efface le formulaire de choix de sujet	
-				document.getElementById("choix_sujet").style.display='none';	
-			}
-	   	});
-	}	
-})
-
 // ========== ACTUALISATION DES INFOS  ========== // 
-var timer=setInterval("actualiser()",1000);	//on lance la fonction toutes les secondes.
+var bouton=document.getElementById("poster");
 function actualiser(){
 	var xhr = new XMLHttpRequest(); 
 	//Passage avec GET
@@ -131,25 +143,30 @@ function actualiser(){
 			document.getElementById('idj2').innerHTML=r.idj2;
 			document.getElementById('sujet').innerHTML=r.sujet;
 
-			//Si ce n'est pas mon tour, on empêche l'envoi de message
-			if (!r.tour)  document.getElementById("poster").disabled=true;
-			else document.getElementById("poster").disabled=false;
+			//Si ce n'est pas mon tour ou s'il n'y a pas d'adversaire, on empêche l'envoi de message
+			if ( (!r.tour) || (document.getElementById('idj2').innerHTML==-1) ) bouton.disabled=true;
+			else bouton.disabled=false;
 
-			//Si le sujet n'est pas choisi, on empêche l'envoi de message
-			if(document.getElementById('sujet').innerHTML=="Sujet non-choisi.") document.getElementById("poster").disabled=true;
-			else {
-				document.getElementById("poster").disabled=false;		
-				//sujet choisi, on cache le formulaire
-				document.getElementById("choix_sujet").style.display='none';	
+			//Si le sujet est choisi, on cache le formulaire et on annonce à qui c'est le tour. Sinon on bloque l'envoi de message
+			if(document.getElementById('sujet').innerHTML != "Sujet non-choisi.") {
+				document.getElementById("choix_sujet").style.display='none';
+				if(r.tour) document.getElementById("communication").innerHTML="A vous de jouer !";
+				else 	document.getElementById("communication").innerHTML=r.pseudoj2+" prépare son argument...";
 			}
-			
+			else {
+				bouton.disabled=true;	
+				//Si on ne choisit pas le sujet, on cache le formulaire de choix de sujet
+				if(!r.tour) {
+					document.getElementById("choix_sujet").style.display='none';
+					document.getElementById("communication").innerHTML="L'adversaire choisit le sujet du débat, veuillez patienter.";
+				}
+			}		
 		}
    	}	
 };
 
 // ========== COMPTEUR FIN DE PARTIE ========== // 
 var fini=false;
-var timer=setInterval("arret_partie()", 100);	//on lance la fonction toutes les 0.1s
 function arret_partie(){
 	if (fini==false){
 		var xhr = new XMLHttpRequest(); 
@@ -160,13 +177,15 @@ function arret_partie(){
 			if(xhr.readyState == 4) {				//serveur ok + réponse reçue
 				var r = xhr.responseText;			//récupération du résultat
 				if(r==true){
+					return true;
 					fini=true;
 					document.getElementById("poster").disabled=true;		
-					alert('Il reste 30 secondes aux arbitres pour voter !')
+					document.getElementById("communication").innerHTML="Partie terminée !";
 					setTimeout(function() {
 						alert("Là normalement c'est vraiment fini.");
 					}, 30000);			
 				}
+				else return false;
 	   		}	
 		}
 	}
