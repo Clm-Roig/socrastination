@@ -150,7 +150,10 @@ function actualiser(){
 			//Si le sujet est choisi, on cache le formulaire et on annonce à qui c'est le tour. Sinon on bloque l'envoi de message
 			if(document.getElementById('sujet').innerHTML != "Sujet non-choisi.") {
 				document.getElementById("choix_sujet").style.display='none';
-				if (r.tour) document.getElementById("communication").innerHTML="A vous de jouer !";
+				//Mon tour mais pas d'adversaire
+				if ( (r.tour) && (document.getElementById('idj2').innerHTML==-1) ) document.getElementById("communication").innerHTML="En attente d'un adversaire...";
+				//Mon tour et il y a un adversaire
+				else if(r.tour) document.getElementById("communication").innerHTML="A vous de jouer !";
 				else document.getElementById("communication").innerHTML=r.pseudoj2+" prépare son argument...";
 			}
 			else {
