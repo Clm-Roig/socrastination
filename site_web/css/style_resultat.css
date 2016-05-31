@@ -22,4 +22,5 @@ p.resultat {
 #quitter {
 	text-align : center;
 	box-shadow : 0 2px 5px black;
+	margin : 0;
 }
