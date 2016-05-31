@@ -46,11 +46,12 @@ body {
 	margin : auto;
 	margin-top : 60px;
 	margin-bottom : 100px;
-	box-shadow : 0 10px 20px;
+	box-shadow : 5px 5px 20px rgba(50,0,0,0.7), 1px 1px 40px rgba(255,255,255,0.4) inset;
 	width : 75%;
 	height : 600px;
 	opacity : 1;
 	overflow : auto;
+	border-radius:5px;
 }
 
 /* ---- Partie Centrale ---- */
@@ -144,10 +145,18 @@ label.control-label {
 
 /*----- TEXTE DEFAUT -----*/ 
 
+p, h1, h2, h3, h4, h5 {
+
+	color: rgba(0,0,0,0.95);
+	text-shadow: 1px 1px rgba(255, 255, 200, 1);
+}
+
+
 p{
 	padding : 0 4em;
 	font-size : 1.1em;
 	text-align : justify;
+	
 }
 
 h1{
@@ -247,6 +256,8 @@ form.forum{
 p.foot {
 	color : white;
 	text-align : center;
+	text-shadow:inherit;
+	opacity:0.8;
 }
 
 /*----- CHAT -----*/
