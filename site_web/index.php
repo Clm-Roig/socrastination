@@ -92,6 +92,15 @@
 			}
 			
 		break;
+/*----------------- DECONNEXION ----------------- */
+
+		case("deconnexion") :
+		session_unset ();
+		// On détruit notre session
+		session_destroy ();
+		header('Location: index.php');
+		break;
+		
 
 /*----------------- MEMBRE ----------------- */
 		case("membre") :
