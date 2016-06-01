@@ -64,14 +64,14 @@
 /*----------------- CONNEXION ----------------- */			
 		
 		case("connexion") :
-			
-			$req="SELECT idMembre,pseudo,motDePasse FROM Membres WHERE pseudo='{$_POST['pseudo']}';";
+			$pseudo=trim($_POST['pseudo']);
+			$req="SELECT idMembre,pseudo,motDePasse FROM Membres WHERE pseudo='$pseudo';";
 			$res=$bdd->query($req);
 			
 			if($res!=false){
 				$data=$res->fetch();
 				$mdp=$data['motDePasse'];
-				if (md5($_POST['pwd'])=='e1671797c52e15f763380b45e841ec32') { // Accès OK 
+				if (md5($_POST['pwd'])=="$mdp") { // Accès OK 
 					$_SESSION['pseudo'] = $data['pseudo'];
 					$_SESSION['idMembre'] = $data['idMembre'];
 					header('Location: liste_forums.php'); 
