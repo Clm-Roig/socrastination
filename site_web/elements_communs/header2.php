@@ -1,5 +1,5 @@
 							<li>
-								<form id="form_login" class="form-inline" action="login.php" method="post">
+								<form id="form_login" class="form-inline" action="index.php?action=connexion" method="post">
 									<div class="form-group">
 									    <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo" size="12" required>
 									    <input type="password" name="pwd" class="form-control" id="password" placeholder="Mot de passe" size="12" required>

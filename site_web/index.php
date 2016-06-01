@@ -49,17 +49,43 @@
 			
 /*----------------- INSCRIPTION VALIDEE----------------- */
 		case("inscription_validee") :
-		$vue = file_get_contents("vues/v_erreur.html");
+			$vue = file_get_contents("vues/v_erreur.html");
 			$message="Inscripion validée.";
 			// REQUETE 
-			$mdp=crypt($_POST['motDePasse']);
-			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0);";
-			$rst=$bdd->query($req);
+			$mdp=md5("{$_POST['motDePasse']}");
+			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, nbDePoints, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0, 0);";
+			$res=$bdd->query($req);
 			
 			
 			$vue = str_replace('{erreur}',$message,$vue);
 			break;
+			
+			
+/*----------------- CONNEXION ----------------- */			
+		
+		case("connexion") :
+			
+			$req="SELECT idMembre,pseudo,motDePasse FROM Membres WHERE pseudo='{$_POST['pseudo']}';";
+			$res=$bdd->query($req);
+			
+			if($res!=false){
+				$data=$res->fetch();
+				$mdp=$data['motDePasse'];
+				if (md5($_POST['pwd'])=='e1671797c52e15f763380b45e841ec32') { // Accès OK 
+					$_SESSION['pseudo'] = $data['pseudo'];
+					$_SESSION['idMembre'] = $data['idMembre'];
+					header('Location: liste_forums.php'); 
+				}
+				else { // Accès pas OK !
+					header('Location: index.php?action=erreur&num_erreur=3');
 					
+				}
+			}
+		/*	else { 
+				header('Location: index.php?action=erreur&num_erreur=1');
+			}*/
+			
+		break;
 
 /*----------------- MEMBRE ----------------- */
 		case("membre") :
