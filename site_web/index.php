@@ -50,7 +50,7 @@
 /*----------------- INSCRIPTION VALIDEE----------------- */
 		case("inscription_validee") :
 			$vue = file_get_contents("vues/v_erreur.html");
-			$message="Inscripion validée.";
+			$message="Inscription validée.";
 			// REQUETE 
 			$mdp=md5("{$_POST['motDePasse']}");
 			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, nbDePoints, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0, 0);";
