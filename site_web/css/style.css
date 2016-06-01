@@ -240,6 +240,14 @@ h3{
 
 /*----- TEXTE PERSO -----*/ 
 
+a {
+	color: rgb(138, 64, 2);
+}
+
+a:hover{
+	color: rgb(150, 70, 5);
+}
+
 .citation{
 	padding:5px;
 	font-size: 1.3em;
