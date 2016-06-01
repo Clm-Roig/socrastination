@@ -252,11 +252,24 @@ h3{
 }
 
 #jouer {
-	font-size : 2em;
-	padding-left:20px;
-	padding-right:20px;
+	font-size: 2em;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	/* Début Effet doré */
+	background-image: linear-gradient(-1deg, #f3e493 0%, #CC982F 45%, #fff6b9 50%, #f0e278 60%, #A78306);
+	box-shadow: 2px 2px 5px rgb(254, 255, 202) inset, 2px 2px 5px rgba( 30,0,0,0.8);
+	text-shadow: 1px 1px 2px rgba(253, 255, 185, 0.8);
+	border:#fff;
+	/* fin effet doré */
+	transition:0.3s;
 }
 
+#jouer:hover{
+	color:rgba(150,120,100,1);
+	text-shadow: 1px 1px 2px rgba(253, 255, 185, 0.8), 0px 0px 30px rgba(253, 255, 185, 1) ;
+	transition:0.3s;
+}
 
 /*----- IMAGES, FIGURES, BOUTONS -----*/ 
 
