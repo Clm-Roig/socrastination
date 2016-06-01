@@ -61,7 +61,7 @@ body {
 	margin : auto;
 	margin-top : 60px;
 	margin-bottom : 100px;
-	box-shadow : 5px 5px 20px rgba(50,0,0,0.7), 1px 1px 40px rgba(255,255,255,0.4) inset;
+	box-shadow : 5px 5px 20px rgba(50,0,0,0.3), 1px 1px 40px rgba(255,255,255,0.2) inset;
 	width : 75%;
 	height : 600px;
 	opacity : 1;
@@ -175,13 +175,17 @@ label.control-label {
 	padding-left:20px;
 }
 
-* > ol, label, p, h1, h2, h3, h4, h5 {
+* > ol, btn, label, p, h1, h2, h3, h4, h5 {
 
-	color: rgba(0,0,0,0.95);
+	color: rgba(20,0,0,0.9);
 	text-shadow: 1px 1px 2px rgba(255, 255, 200, 0.7);
+
+
+}
+
+* {
 	font-family:Amaranth;
 	font-weight:400;
-
 }
 
 li, ul, ol{
@@ -225,19 +229,11 @@ h3{
 }
 
 #jouer {
-	color : black;
 	font-size : 2em;
-	border : 4px solid brown;
-	padding : 0 0.5em;
-	transition : 0.5s;
+	padding-left:20px;
+	padding-right:20px;
 }
 
-#jouer:hover {
-	text-decoration : none;
-	background-color : black;
-	color : white;
-	transition : 0.5s;
-}
 
 /*----- IMAGES, FIGURES, BOUTONS -----*/ 
 
