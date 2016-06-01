@@ -96,6 +96,9 @@ function affichage() {
 					new_div.appendChild(new_p);
 					//Affichage du div 
 		    			document.getElementById('conversation').appendChild(new_div);  	
+
+					//Scroll en bas du div 
+					$("#conversation").animate({ scrollTop: $('#conversation').prop("scrollHeight")}, 2000);
 				}
 			}  							
 		}			

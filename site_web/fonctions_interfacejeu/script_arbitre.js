@@ -67,6 +67,7 @@ function affichage() {
 	    			document.getElementById('conversation').appendChild(new_bloc_arbitre);
 
 				//Scroll en bas du div 
+				$("#conversation").animate({ scrollTop: $('#conversation').prop("scrollHeight")}, 1000);
 			}						
 		}			
 	}
