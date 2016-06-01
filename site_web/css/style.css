@@ -19,7 +19,7 @@ body {
 	background-image : url('../images/bg.jpg');
 	background-repeat : no-repeat;
 	background-attachment: fixed;
-	background-size : 100% 100%;
+	background-size : 100%;
 	
 	/*Pour fixer le footer en bas */
 	box-sizing: border-box;
@@ -264,9 +264,9 @@ form.forum{
 }
 
 p.foot {
-	color : white;
+	/*color : white;*/
 	text-align : center;
-	text-shadow:inherit;
+	/*text-shadow:inherit;*/
 	opacity:0.8;
 }
 
