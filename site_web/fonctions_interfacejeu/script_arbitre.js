@@ -65,6 +65,8 @@ function affichage() {
 
 				//Affichage du div 
 	    			document.getElementById('conversation').appendChild(new_bloc_arbitre);
+
+				//Scroll en bas du div 
 			}						
 		}			
 	}
