@@ -81,9 +81,9 @@
 					
 				}
 			}
-		/*	else { 
+			else { 
 				header('Location: index.php?action=erreur&num_erreur=1');
-			}*/
+			}
 			
 		break;
 
