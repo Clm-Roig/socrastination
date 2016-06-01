@@ -20,9 +20,6 @@ p, h1, h2, h3, h4, a{
     border-bottom: 2px solid #715544;
 }
 
-.table > tbody > tr > td:hover{
-	background:rgba(255,255,255,0.2);
-}
 
 /* modifs pour le menu NAVBAR */
 
@@ -318,9 +315,16 @@ img.case{
 }
 
 .table-responsive {
-	height : 96.5%;
+	height : 100%;
+	margin:0px;
 }
 
+.table > tbody > tr:hover{
+	background-color:rgba(255,255,255,0.1);
+}
+.table > tbody > tr > td :hover{
+	background-color:inherit;
+}
 
 
 form.forum{
