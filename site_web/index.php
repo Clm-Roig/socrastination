@@ -124,24 +124,30 @@
 
 /*----------------- ERREUR ----------------- */
 		case("erreur") :
-			$vue = file_get_contents("vues/v_erreur.html");
-			$message="";
+			$vue 		= file_get_contents("vues/v_erreur.html");
+			$message	="";		
 
 			//Contrôle de l'erreur envoyée
-			if ($_GET['num_erreur']==0){
-				$message = 'Erreur : identification requise.';
-			}
+			switch ($_GET['num_erreur']){
+				case(0):
+					$message = 'Erreur : identification requise.';
+					break;
 
-			if ($_GET['num_erreur']==1){
-				$message = 'Erreur : problème de connexion serveur.';
-			}
+				case(1):
+					$message = 'Erreur : problème de connexion serveur.';
+					break;
 
-			if ($_GET['num_erreur']==2){
-				$message = 'Erreur : partie pleine.';
-			}	
+				case(2):
+					$message = 'Erreur : partie pleine.';
+					break;
 
-			if ($_GET['num_erreur']==3){
-				$message = 'Erreur : login incorrect.';
+				case(3):
+					$message = 'Erreur : login incorrect.';
+					break;
+
+				default:
+					$message = 'Erreur : inconnue...';
+					break;
 			}
 	
 			//Remplacement
