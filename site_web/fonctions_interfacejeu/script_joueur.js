@@ -37,7 +37,6 @@ var timer=setInterval("general()",1000);
 
 function general() {
 	var statut=arret_partie();
-	console.log(statut);
 	if(!statut) {
 		affichage();	
 		actualiser();
@@ -46,17 +45,12 @@ function general() {
 		//On arrete de relancer la fonction avec clearInterval()
 		clearInterval(timer);
 		document.getElementById("poster").disabled=true;		
-		document.getElementById("communication").innerHTML="Partie terminée !";
+		document.getElementById("communication").innerHTML="Partie terminée ! Les arbitres disposent de 30 secondes pour placer leurs derniers votes.";
 		setTimeout(function() {
-			alert("Là normalement c'est vraiment fini.");
-		}, 30000);
+		 	document.location.href = "page_resultat.php";
+		}, 30000);	 	
 	}
 }
-/*
-var timer=setInterval("affichage()",500);	
-var timer=setInterval("actualiser()",1000);
-var timer=setInterval("arret_partie()", 100);
-*/
 
 // ========== AFFICHAGE DES MESSAGES ========== // 
 	
