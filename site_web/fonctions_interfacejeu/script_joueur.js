@@ -171,7 +171,7 @@ function actualiser(){
 						document.getElementById("communication").innerHTML="En attente d'un deuxième joueur...";
 					}
 					//Mon tour + sujet choisi + un adv présent 
-					else {SELECT * FROM `Parties` WHERE 1
+					else {
 						bouton.disabled=false;
 						document.getElementById("communication").innerHTML="A vous de jouer !";						
 					}
