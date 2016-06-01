@@ -50,12 +50,18 @@
 /*----------------- INSCRIPTION VALIDEE----------------- */
 		case("inscription_validee") :
 			$vue = file_get_contents("vues/v_erreur.html");
-			$message="Inscription validée.";
+			$message="";
 			// REQUETE 
 			$mdp=md5("{$_POST['motDePasse']}");
 			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, nbDePoints, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0, 0);";
 			$res=$bdd->query($req);
-			
+			if($res!=false){
+				$message="Inscription validée.";
+			}
+			else { // Accès pas OK !
+					header('Location: index.php?action=erreur&num_erreur=3');
+					
+				}
 			
 			$vue = str_replace('{erreur}',$message,$vue);
 			break;
