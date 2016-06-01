@@ -38,9 +38,10 @@
 
 	$res_sujet = $res_sujet->fetch();
 
-	if ($res_sujet['nomSujet']==null) $sujet = "";
+	if ($res_sujet['nomSujet']==null) $sujet = "Partie disponible, sujet au choix.";
 	else $sujet = $res_sujet['nomSujet'];
 
 	// MISE À JOUR DE LA PAGE 
+	// à faire : renvoyer du html, en chargeant une vue correspondant à une ligne du tableau des forums.
 	echo "$nb_j,$nb_a,$sujet";	
 ?>

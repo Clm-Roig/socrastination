@@ -17,12 +17,14 @@ function actualiser(numero) {
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {		//serveur ok + réponse reçue
 			var r=xhr.responseText;	//récupération du résultat
-			var rj=r.substring(0,1);
-			var ra=r.substring(2,3);
-			var suj=r.substring(4);
-			document.getElementById('nbj'+numero).innerHTML = rj;
-			document.getElementById('nba'+numero).innerHTML = ra;
-			document.getElementById('suj'+numero).innerHTML = suj;
+			var nbJoueur=r.substring(0,1);
+			var nbArbitre=r.substring(2,3);
+			var sujet=r.substring(4);
+			
+			// Ne pourrait-on pas plutot injecter un gros div avec tout le tableau rempli d'un seul coup ? Il faut que actualisation_forums.php renvoie du html.
+			document.getElementById('nbj'+numero).innerHTML = nbJoueur;
+			document.getElementById('nba'+numero).innerHTML = nbArbitre;
+			document.getElementById('suj'+numero).innerHTML = sujet;
 		}		
 	};
 

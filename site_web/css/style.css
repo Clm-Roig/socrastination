@@ -13,11 +13,11 @@ p, h1, h2, h3, h4, a{
     padding: 8px;
     line-height: 1.42857;
     vertical-align:inherit;
-    border-top: 1px solid #A58650;
+    border-bottom: 1px solid #A58650;
 }
-.table > thead > tr > th {
+.table > thead > tr {
     vertical-align: bottom;
-    border-bottom: 2px solid #715544;
+    /*border: 1px solid #715544;*/
 }
 
 
@@ -36,7 +36,6 @@ p, h1, h2, h3, h4, a{
 
 .navbar{
 	background: linear-gradient(0deg,#60480D,#3c2611,#573C1D, #4D291D) !important
-
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -239,13 +238,14 @@ h3{
 
 /*----- TEXTE PERSO -----*/ 
 
-a {
-	color: rgb(138, 64, 2);
-}
+	/* Liens */
+	a {
+		color: rgb(138, 64, 2);
+	}
 
-a:hover{
-	color: rgb(150, 70, 5);
-}
+	a:hover{
+		color: rgb(150, 70, 5);
+	}
 
 .citation{
 	padding:5px;
@@ -273,9 +273,10 @@ a:hover{
 }
 
 #jouer:hover{
-	/*color:rgba(150,120,100,1);*/
+	/* Début Effet doré */
 	text-shadow: 1px 1px 2px rgba(253, 255, 185, 0.8), 0px 0px 30px rgba(253, 255, 185, 1) ;
 	border: solid 2px rgba(253, 255, 185, 0.8);
+	/* fin effet doré */
 	transition:0.3s;
 }
 
