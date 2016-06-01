@@ -88,6 +88,9 @@ body {
 	opacity : 1;
 	overflow : none;
 	border-radius:5px;
+	
+	/* léger dégradé pour dessiner un rectangle en haut du corps */
+	background-image: linear-gradient(180deg, rgba(255,200,200,0.1)12%, rgba(90, 55, 10, 0.08)12%, rgba(0,0,0,0.0) 14%) !important;
 }
 
 /* ---- Partie Centrale ---- */
