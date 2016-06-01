@@ -77,8 +77,18 @@ body {
 
 /* ---- CLASSEMENT ---- */
 
+div.classement{
+	border-radius:10px;
+	background-color:rgba(50,0,0,0.1);
+	padding:20px;
+	margin-top:30px;
+	margin-left: 30%;
+	margin-right: 30%;
+	box-shadow : 2px 2px 10px rgba(50,0,0,0.2)inset, 1px 1px 40px rgba(255,255,255,0.2) ;
+}
+
 ol.classement {
-	text-align : center;
+	text-align : left;
 }
 
 li.classement {
