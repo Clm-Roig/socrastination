@@ -171,7 +171,7 @@ function actualiser(){
 						document.getElementById("communication").innerHTML="En attente d'un deuxième joueur...";
 					}
 					//Mon tour + sujet choisi + un adv présent 
-					else {
+					else {SELECT * FROM `Parties` WHERE 1
 						bouton.disabled=false;
 						document.getElementById("communication").innerHTML="A vous de jouer !";						
 					}
@@ -208,7 +208,7 @@ function actualiser(){
 function arret_partie(){
 	var xhr = new XMLHttpRequest(); 
 	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
-	xhr.open("GET", "fonctions_interfacejeu/arret_partie2.php");
+	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
 	xhr.send();
 	xhr.onreadystatechange = function() {
         	if (xhr.readyState == 4) {
