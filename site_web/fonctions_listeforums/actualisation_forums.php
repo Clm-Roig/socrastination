@@ -38,7 +38,7 @@
 
 	$res_sujet = $res_sujet->fetch();
 
-	if ($res_sujet['nomSujet']==null) $sujet = "Partie disponible, sujet au choix.";
+	if ($res_sujet['nomSujet']==null) $sujet = "<p><i>Partie disponible, sujet au choix.</i></p>";
 	else $sujet = $res_sujet['nomSujet'];
 
 	// MISE À JOUR DE LA PAGE 
