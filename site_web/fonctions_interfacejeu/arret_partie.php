@@ -15,6 +15,7 @@
 
 	//S'il y a 20 messages échangés, on positionne l'attribut tour_joueur sur -1 
 	//pour que personne n'envoie de message supplémentaire
+	//Et on débloque le compteur
 	if($nb_mess==20) {
 		$req_stop = 	"UPDATE Parties
 					SET tour_joueur=-1
@@ -25,7 +26,8 @@
 			echo "Erreur query arret partie : $req_stop.";
 			exit();
 		}
+		//TODO : INSERTION BDD TIME FIN PARTIE
 	}
 
-	echo $nb_mess>=20; 
+	echo $nb_mess >= 20; 
 ?>
