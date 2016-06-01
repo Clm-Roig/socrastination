@@ -1,7 +1,7 @@
 // SCRIPT VALIDATION FORMULAIRE AVEC ENTREE
 function validerForm(){
 	document.getElementById("poster").click();	
-}
+};
 //Annulation défaut du saut de ligne 
 $('textarea').click(function(e){
 	e.preventDefault(); 
@@ -30,27 +30,29 @@ $("#valider_sujet").click(function(){
 			}
 	   	});
 	}	
-})
+});
 
 // ========== FONCTION GENERALE ========== //
-var timer=setInterval("general()",1000);	
+var timer1=setInterval("general()",500);
 
-function general() {
+function general(){
 	var statut=arret_partie();
-	if(!statut) {
-		affichage();	
+	if (statut==-1 || statut==undefined) {
 		actualiser();
+		affichage();
 	}	
 	else {
-		//On arrete de relancer la fonction avec clearInterval()
-		clearInterval(timer);
+		//On arrete de relancer la fonction avec clearInterval() et on relance juste arret partie pour avoir le compteur
+		var timer2=arret_partie();
 		document.getElementById("poster").disabled=true;		
-		document.getElementById("communication").innerHTML="Partie terminée ! Les arbitres disposent de 30 secondes pour placer leurs derniers votes.";
-		setTimeout(function() {
-		 	document.location.href = "page_resultat.php";
-		}, 30000);	 	
+		document.getElementById("communication").innerHTML="Partie terminée ! Les arbitres disposent de "+timer2+" secondes pour placer leurs derniers votes.";
+		if (timer2==0) {
+			clearInterval(timer2);			
+			document.location.href ="page_resultat.php";	
+		}
 	}
-}
+};
+
 
 // ========== AFFICHAGE DES MESSAGES ========== // 
 	
@@ -202,16 +204,15 @@ function actualiser(){
    	}	
 }
 
-// ========== COMPTEUR FIN DE PARTIE ========== // 
+// ========== COMPTEUR FIN DE PARTIE2 ========== // 
 function arret_partie(){
 	var xhr = new XMLHttpRequest(); 
-	//Passage avec GET, arret_partie retourne TRUE s'il faut fermer la partie c-a-d que les 2 joueurs ont échangé 20 messages 
-	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
+	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
+	xhr.open("GET", "fonctions_interfacejeu/arret_partie2.php");
 	xhr.send();
 	xhr.onreadystatechange = function() {
         	if (xhr.readyState == 4) {
-			if (xhr.responseText==1) res=true;
-			else res=false;
+			res=xhr.responseText;
         	}
 	}
 	return res;
