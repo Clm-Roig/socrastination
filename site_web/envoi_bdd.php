@@ -66,9 +66,8 @@
 
 					<?php
 						require("config.php");
-						try{
-						// REQUETE 
-							$req = 'INSERT INTO Membres(pseudo, motDePasse, mail, niveau, nbDePoints, nbPartiesGagnees, NbTotalParties) VALUES(:pseudo, :motDePasse, :mail, 1, 0, 0, 0);';
+							// REQUETE 
+							$req = 'INSERT INTO Membres(pseudo, motDePasse, mail, nbPartiesGagnees, NbTotalParties) VALUES(:pseudo, :motDePasse, :mail, 1, 0, 0, 0);';
 							$stmt = $bdd->prepare($req);
 
 						// PDO::BINDPARAM
@@ -77,9 +76,7 @@
 							$stmt->bindParam(':mail', $_POST['mail'], PDO::PARAM_STR);
 							$stmt->execute() or die (print_r($stmt->errorInfo(), true));
 						}
-						catch (PDOException $e) {
-					  		  echo '<h2>Erreur enregistrement des données : ' . $e->getMessage().'</h2>';
-						}
+						
 						echo '<h2>Inscription reussie, vous allez être redirigé sur la page d\'accueil automatiquement</h2>';
 						echo '<h2>Sinon cliquez <a href="index.php">ici</a></h2>';     
 						header("refresh:3;url=index.php");

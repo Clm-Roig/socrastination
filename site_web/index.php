@@ -45,6 +45,21 @@
 		case("inscription") :
 			$vue=file_get_contents("vues/v_inscription.html");	
 			break;
+			
+			
+/*----------------- INSCRIPTION VALIDEE----------------- */
+		case("inscription_validee") :
+		$vue = file_get_contents("vues/v_erreur.html");
+			$message="Inscripion validée.";
+			// REQUETE 
+			$mdp=crypt($_POST['motDePasse']);
+			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0);";
+			$rst=$bdd->query($req);
+			
+			
+			$vue = str_replace('{erreur}',$message,$vue);
+			break;
+					
 
 /*----------------- MEMBRE ----------------- */
 		case("membre") :
