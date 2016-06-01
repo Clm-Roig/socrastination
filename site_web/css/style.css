@@ -12,12 +12,16 @@ p, h1, h2, h3, h4, a{
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 8px;
     line-height: 1.42857;
-    /*vertical-align: top;*/
+    vertical-align:inherit;
     border-top: 1px solid #A58650;
 }
 .table > thead > tr > th {
     vertical-align: bottom;
     border-bottom: 2px solid #715544;
+}
+
+.table > tbody > tr > td:hover{
+	background-color:rgba(255,255,255,0.2);
 }
 
 /*----- BLOCS -----*/ 
