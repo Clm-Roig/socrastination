@@ -104,9 +104,11 @@ body {
 
 /* ---- Partie Centrale ---- */
 
+/*
 #section{
-	margin-top : 1em;
+	margin-top : 1em; Devenu inutile
 }
+*/
 
 /* --- INSCRIPTION --- */
 #alertes{
@@ -243,7 +245,7 @@ p{
 }
 
 h1{
-	margin-bottom : 1em;
+	padding : 15px;
 	text-align : center;
 	font-weight : bold;
 }
@@ -275,7 +277,6 @@ h3{
 
 #bloc_jouer {
 	text-align : center;
-	margin-top : 2em;
 	margin-bottom : 2em;
 }
 
@@ -391,9 +392,9 @@ p.foot {
 	text-align : center;
 }
 
-h2.haut_chat {
-	color:white;
-	text-shadow:inherit;
+.haut_chat {
+
+	padding:10px;
 }
 
 #choix_sujet {
@@ -409,24 +410,29 @@ h2.haut_chat {
 	margin-bottom : 0.3em;
 }
 
-.message_adv, .message_moi {
-	margin-bottom : 1em;	
-	box-shadow : 0 4px 7px;
-	border-radius : 10px;
-	word-break: break-all;
-}
+/* messages chat */
+/*===============*/
 
-.message_adv {
-	background-color : gold;
-	margin-left : 45%;
-	margin-right : 20px;
-}
+	.message_adv, .message_moi {
+		margin-bottom : 1em;	
+		
+		border-radius : 5px;
+		word-break: break-all;
+		box-shadow: 2px 2px 4px rgba(113, 66, 21, 0.35) inset;
+	}
 
-.message_moi{
-	background-color : lightblue;
-	margin-right : 45%;
-	margin-left : 20px;
-}
+	.message_adv {
+		background-color: rgba(255, 225, 0, 0.32);
+		margin-left : 45%;
+		margin-right : 20px;
+	}
+
+	.message_moi{
+		background-color: rgba(198, 231, 209, 0.50);
+		margin-right : 45%;
+		margin-left : 20px;
+	}
+
 
 p.arg {
 	margin : 0;
@@ -452,11 +458,12 @@ p.arg {
 	padding-left: 20px;
 	padding-right: 20px;
 	box-shadow: 2px 2px 4px rgba(113, 66, 21, 0.74) inset;
+	margin:5px;
 	/* padding: 5px; */
 }
 
 #pseudo_moi, .pseudo_j1 {
-	background-color: rgba(85, 236, 204, 0.7);
+	background-color: rgba(198, 231, 209, 0.96);
 }
 
 #pseudo_adv, .pseudo_j2 {

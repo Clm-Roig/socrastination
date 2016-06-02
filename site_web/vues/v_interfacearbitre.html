@@ -42,29 +42,26 @@
 		<div class="row">
 			 <nav class="navbar navbar-inverse">
 				<div class="container-fluid">
-				    	<div class="navbar-header text-center">
-						<h2 class="haut_chat">Sujet : <span id="sujet">{sujet}</span></h2>
-					</div>
 				</div>
 			</nav>
 		</div>
 		<!-- ========= -->
 
 		<div class="container" id="corps">
-			<div class="row">
+		  <div class="div-sm-12"><h1>Sujet : <span id="sujet">{sujet}</span></h1></div>
+			<div class="">
 
 				<div id="section">
 
 	<!-- INTERFACE DE CHAT -->
 			
-					<div class="col-sm-12">
+					<div class="row">
 						<div class="row">
-							<div class="col-sm-12">
-
+							<div class="col-sm-12">							
 								<div id="pseudos">
 									<div class="pseudo_j1"><p><span class="glyphicon glyphicon-user"></span> - <span id="pseudo_j1">{pseudo_j1}</span></p></div><div id="idj1" class="hide">{idj1}</div>
 									<div class="pseudo_j2"><p><span class="glyphicon glyphicon-user"></span> - <span id="pseudo_j2">{pseudo_j2}</span></p></div><div id="idj2" class="hide">{idj2}</div>	
-									<div id="communication" class="text-center"></div>
+									<div ><p class="text-center"id="communication"></p></div>
 								</div>
 
 						<!-- Panneau affichage de la conversation -->
@@ -83,12 +80,9 @@
 
 	<!-- ====== BOUTON POUR QUITTER ===== -->
 		<div class="text-center">
-			<form method="post" action="fonctions_interfacejeu/quit.php?role=1">
-				<button  class="btn btn-danger" id="quitter" type="submit" name="quitter">
-					<span class="glyphicon glyphicon-log-out"></span> Quitter</a>
-				</button>	
-			</form>		
+			<a  href="fonctions_interfacejeu/quit.php?role=1" class="btn btn-danger" id="quitter" ><span class="glyphicon glyphicon-log-out"></span> Abandonner</a>
 		</div>
+		
 	<!-- ================================ -->
 
 		<!-- FOOTER -->
