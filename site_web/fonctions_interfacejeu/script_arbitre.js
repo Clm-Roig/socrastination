@@ -137,6 +137,13 @@ function actualiser(){
 			document.getElementById('idj1').innerHTML=r.idj1;
 			document.getElementById('idj2').innerHTML=r.idj2;
 			document.getElementById('sujet').innerHTML=r.sujet;
+			
+			if (r.sujet=="Sujet non-choisi."){
+				document.getElementById("communication").innerHTML="Veuillez patienter, un joueur choisit le sujet du débat.";
+			}
+			else {
+
+			}
 		}
    	}	
 };	
