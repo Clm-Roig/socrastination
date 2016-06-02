@@ -19,9 +19,9 @@ function general(){
 			//Si la partie n'est pas finie, on boucle sur f au bout de 0.5s			
 			if(res==-1) setTimeout(general,500);	
 
-			//Sinon on déclenche le compteur final
+			//Sinon on déclenche le compteur final après 0.5s pour être sûr de pas avoir un compteur à 0 d'entrée
 			else {
-				compteur();
+				setTimeout(compteur,500);	
 			}
 		}
 	};
@@ -147,7 +147,7 @@ function compteur() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			var res=xhr.responseText;	
-			if(res==0) document.location.href="index.php?action=resultat"
+			if(res<=0) document.location.href="index.php?action=resultat";
 			document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
 			compteur();			
 		}
