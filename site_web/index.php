@@ -2,6 +2,7 @@
 	session_start();
 	require("config.php");
 
+	//Header dynamique (loggué ou pas)
 	if (!isset($_SESSION['pseudo'])) {
 		$header=file_get_contents("elements_communs/header2.php");
 	}
@@ -105,6 +106,7 @@
 /*----------------- MEMBRE ----------------- */
 		case("membre") :
 			$vue=file_get_contents("vues/v_membre.html");
+			$header=str_replace("{class_membre}","active",$header);
 			// INTERROGATION
 			$req = "SELECT * FROM Membres WHERE idMembre={$_SESSION['idMembre']}";
 			$query = $bdd->query($req);
@@ -120,6 +122,7 @@
 				$vue=str_replace("{nbTotalParties}",$info['nbTotalParties'],$vue);
 				$vue=str_replace("{nbPartiesGagnees}",$info['nbPartiesGagnees'],$vue);
 			}
+			
 			break;
 
 /*----------------- ERREUR ----------------- */
@@ -159,9 +162,10 @@
 			$vue=file_get_contents("vues/v_index.html");	
 			break;
 	}//fin switch
-
-	//Remplacement header + pseudo + affichage
+		
+	//Remplacement Header
 	$vue=str_replace("{header}",$header,$vue);
+
 	echo $vue;
 ?>
 		
