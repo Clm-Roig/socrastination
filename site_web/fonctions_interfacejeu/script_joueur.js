@@ -33,26 +33,29 @@ $("#valider_sujet").click(function(){
 });
 
 // ========== FONCTION GENERALE ========== //
-var timer1=setInterval("general()",500);
-
+general();
 function general(){
-	var statut=arret_partie();
-	if (statut==-1 || statut==undefined) {
-		actualiser();
-		affichage();
-	}	
-	else {
-		//On arrete de relancer la fonction avec clearInterval() et on relance juste arret partie pour avoir le compteur
-		var timer2=arret_partie();
-		document.getElementById("poster").disabled=true;		
-		document.getElementById("communication").innerHTML="Partie terminée ! Les arbitres disposent de "+timer2+" secondes pour placer leurs derniers votes.";
-		if (timer2==0) {
-			clearInterval(timer2);			
-			document.location.href ="page_resultat.php";	
-		}
-	}
-};
+	actualiser();
+	affichage();
 
+	// Vérification si fin de partie en AJAX 
+	var xhr = new XMLHttpRequest(); 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var res=xhr.responseText;
+			//Si la partie n'est pas finie, on boucle sur f au bout de 0.5s			
+			if(res==-1) setTimeout(general,500);	
+
+			//Sinon on déclenche le compteur final
+			else {
+				compteur();
+			}
+		}
+	};
+	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
+	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
+	xhr.send();
+}
 
 // ========== AFFICHAGE DES MESSAGES ========== // 
 	
@@ -204,16 +207,19 @@ function actualiser(){
    	}	
 }
 
-// ========== COMPTEUR FIN DE PARTIE2 ========== // 
-function arret_partie(){
+// COMPTEUR FIN PARTIE
+function compteur() {
 	var xhr = new XMLHttpRequest(); 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var res=xhr.responseText;	
+			if(res==0) document.location.href="index.php?action=resultat"
+			document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
+			compteur();			
+		}
+	};
 	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
 	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
 	xhr.send();
-	xhr.onreadystatechange = function() {
-        	if (xhr.readyState == 4) {
-			res=xhr.responseText;
-        	}
-	}
-	return res;
 }
+
