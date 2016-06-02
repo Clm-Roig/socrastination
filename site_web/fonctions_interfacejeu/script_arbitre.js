@@ -60,11 +60,9 @@ function affichage() {
 
 				if (idj==idj1){
 					new_div.className = 'message_moi';
-					compteur_j1++;
 				}
 				else {
 					new_div.className = 'message_adv';
-					compteur_j2++;
 				}
 
 				var new_p = document.createElement('p');
