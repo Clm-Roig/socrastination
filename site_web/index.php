@@ -30,7 +30,7 @@
 	  
 			$i=1;
 	  		while(($info=$classement -> fetchobject())!=null){ 
-	       			$ps=$info->pseudo; 
+	       		$ps=$info->pseudo; 
 				$po=$info->nbDePoints;
 				$tabmotclef=array(0=>"{pseudo".$i."}",1=>"{nbp".$i."}");
 				$tabvaleur=array(0=>$ps,1=>$po);
@@ -69,6 +69,57 @@
 			$vue->configurer('erreur',$message);
 			break;
 			
+/*----------------- RESULTAT ----------------- */
+
+		case("resultat") :
+			$vue =New Vue("v_pageresultat.html");  //$_SESSION['id_partie']
+			$req="SELECT R.idMembre, M.pseudo FROM Role AS R JOIN Membres AS M ON R.idMembre = M.idMembre WHERE idPartie={$_SESSION['id_partie']};";//{$_SESSION['id_partie']}
+			$res=$bdd->query($req);
+			if ($res!=false){
+				$vue->configurer('num_partie',$_SESSION['id_partie']);
+				while(($data=$res -> fetchobject())!=null){
+					if(($data->idMembre)!=($_SESSION['idMembre'])){
+						$vue->configurer('pseudo_adversaire',$data->pseudo);
+					}
+					else{
+						$vue->configurer('pseudo_joueur',$data->pseudo);
+					}
+				}				
+			}
+			else{
+				header('Location: erreur.php?num_erreur=1');
+	       		exit();
+			}
+			$reqPlus="SELECT C.message_id_membre, COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} GROUP BY C.message_id_membre;";
+			$resPlus=$bdd->query($reqPlus);
+			if ($resPlus!=false){
+				$votePlus=$resPlus->fetch();
+				if ($votePlus['message_id_membre']==$_SESSION['idMembre']){
+					$vue->configurer('nb_votes_plus_joueur',$votePlus['vote_plus']);
+				}
+				else{
+					$vue->configurer('nb_votes_plus_adversaire',$votePlus['vote_plus']);
+				}
+			}
+			$reqMoins="SELECT C.message_id_membre, COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=-1 AND C.id_partie={$_SESSION['id_partie']} GROUP BY C.message_id_membre;";
+			$resMoins=$bdd->query($reqMoins);
+			if ($resMoins!=false){
+				$voteMoins=$resMoins->fetch();
+				if ($voteMoins['message_id_membre']==$_SESSION['idMembre']){
+					$vue->configurer('nb_votes_moins_joueur',$voteMoins['vote_plus']);
+				}
+				else{
+					$vue->configurer('nb_votes_moins_adversaire',$voteMoins['vote_plus']);
+				}
+			}
+				
+			
+			
+			
+		
+		break;
+
+
 			
 /*----------------- CONNEXION ----------------- */			
 		
@@ -166,7 +217,7 @@
 	//Remplacement Header
 	$vue->configurer("header",$header);
 
-	//echo $vue;
+	
 	$vue->afficher();
 ?>
 		
