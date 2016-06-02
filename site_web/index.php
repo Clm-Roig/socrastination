@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require("config.php");
+	require("vues/Vue.php");
 
 	//Header dynamique (loggué ou pas)
 	if (!isset($_SESSION['pseudo'])) {
@@ -18,7 +19,7 @@
 
 /*----------------- CLASSEMENT ----------------- */
 		case("classement") :
-			$vue=file_get_contents("vues/v_classement.html");	
+			$vue=new Vue("v_classement.html");	
 
 	   		// INTERROGATION 
 	   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
@@ -31,26 +32,27 @@
 	  		while(($info=$classement -> fetchobject())!=null){ 
 	       			$ps=$info->pseudo; 
 				$po=$info->nbDePoints;
-				$vue=str_replace("{pseudo".$i."}",$ps,$vue);
-				$vue=str_replace("{nbp".$i."}",$po,$vue);
+				$tabmotclef=array(0=>"{pseudo".$i."}",1=>"{nbp".$i."}");
+				$tabvaleur=array(0=>$ps,1=>$po);
+				$vue->configurerAvecTableaux($tabmotclef,$tabvaleur);
 				$i = $i+1;
 		   	}					
 			break;
 
 /*----------------- REGLES ----------------- */
 		case("regles") :
-			$vue=file_get_contents("vues/v_regles.html");	
+			$vue=new Vue("v_regles.html");	
 			break;
 
 /*----------------- INSCRIPTION ----------------- */
 		case("inscription") :
-			$vue=file_get_contents("vues/v_inscription.html");	
+			$vue=new Vue("v_inscription.html");	
 			break;
 			
 			
 /*----------------- INSCRIPTION VALIDEE----------------- */
 		case("inscription_validee") :
-			$vue = file_get_contents("vues/v_erreur.html");
+			$vue = new Vue("v_erreur.html");
 			$message="";
 			// REQUETE 
 			$mdp=md5("{$_POST['motDePasse']}");
@@ -64,7 +66,7 @@
 					
 				}
 			
-			$vue = str_replace('{erreur}',$message,$vue);
+			$vue->configurer('erreur',$message);
 			break;
 			
 			
@@ -105,7 +107,7 @@
 
 /*----------------- MEMBRE ----------------- */
 		case("membre") :
-			$vue=file_get_contents("vues/v_membre.html");
+			$vue=new Vue("v_membre.html");
 			$header=str_replace("{class_membre}","active",$header);
 			// INTERROGATION
 			$req = "SELECT * FROM Membres WHERE idMembre={$_SESSION['idMembre']}";
@@ -116,18 +118,16 @@
 			}
 			else {
 				$info=$query->fetch();
-				$vue=str_replace("{pseudo}",$info['pseudo'],$vue);
-				$vue=str_replace("{mail}",$info['mail'],$vue);
-				$vue=str_replace("{nbDePoints}",$info['nbDePoints'],$vue);
-				$vue=str_replace("{nbTotalParties}",$info['nbTotalParties'],$vue);
-				$vue=str_replace("{nbPartiesGagnees}",$info['nbPartiesGagnees'],$vue);
+				$tabmotclef=array(0=>"{pseudo}",1=>"{mail}",2=>"{nbDePoints}",3=>"{nbTotalParties}",4=>"{nbPartiesGagnees}");
+				$tabvaleur=array(0=>$info['pseudo'],1=>$info['mail'],2=>$info['nbDePoints'],3=>$info['nbTotalParties'],4=>$info['nbPartiesGagnees']);
+				$vue->configurerAvecTableaux($tabmotclef,$tabvaleur);
 			}
 			
 			break;
 
 /*----------------- ERREUR ----------------- */
 		case("erreur") :
-			$vue 		= file_get_contents("vues/v_erreur.html");
+			$vue 		= new Vue("v_erreur.html");
 			$message	="";		
 
 			//Contrôle de l'erreur envoyée
@@ -154,18 +154,19 @@
 			}
 	
 			//Remplacement
-			$vue = str_replace('{erreur}',$message,$vue);	
+			$vue ->configurer('erreur',$message);	
 			break;
 
 /*----------------- DEFAUT (INDEX) ----------------- */
 		default :
-			$vue=file_get_contents("vues/v_index.html");	
+			$vue=new Vue("v_index.html");	
 			break;
 	}//fin switch
 		
 	//Remplacement Header
-	$vue=str_replace("{header}",$header,$vue);
+	$vue->configurer("header",$header);
 
-	echo $vue;
+	//echo $vue;
+	$vue->afficher();
 ?>
 		
