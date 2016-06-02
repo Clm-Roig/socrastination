@@ -8,27 +8,28 @@ function quitter(){
 };	
 
 // ========== FONCTION GENERALE ========== //
-var timer=setInterval("general()",1000);	
+general();
+function general(){
+	actualiser();
+	affichage();
+	// Vérification si fin de partie en AJAX 
+	var xhr = new XMLHttpRequest(); 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var res=xhr.responseText;
+			//Si la partie n'est pas finie, on boucle sur f au bout de 0.5s			
+			if(res==-1) setTimeout(general,500);	
 
-function general() {
-	var statut=arret_partie();
-	if(!statut) {
-		affichage();	
-		actualiser();
-	}	
-	else {
-		//On arrete de relancer la fonction avec clearInterval()
-		clearInterval(timer);
-		document.getElementById("poster").disabled=true;		
-		document.getElementById("communication").innerHTML="Partie terminée ! Les arbitres disposent de 30 secondes pour placer leurs derniers votes.";
-		setTimeout(function() {
-		 	document.location.href = "page_resultat.php";
-		}, 30000);	 	
-	}
+			//Sinon on déclenche le compteur final
+			else {
+				compteur();
+			}
+		}
+	};
+	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
+	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
+	xhr.send();
 }
-
-var timer=setInterval("actualiser()",400);	//on lance la fonction toutes les 0.4s
-var timer=setInterval("affichage()",500);	//on lance la fonction toutes les 0.5s
 
 // ========== AFFICHAGE DU MESSAGE ========== // 
 function affichage() {
@@ -146,17 +147,18 @@ function actualiser(){
    	}	
 };	
 
-// ========== COMPTEUR FIN DE PARTIE ========== // 
-function arret_partie(){
+// COMPTEUR FIN PARTIE
+function compteur() {
 	var xhr = new XMLHttpRequest(); 
-	//Passage avec GET, arret_partie retourne TRUE s'il faut fermer la partie c-a-d que les 2 joueurs ont échangé 20 messages 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var res=xhr.responseText;	
+			if(res==0) document.location.href="index.php?action=resultat"
+			document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
+			compteur();			
+		}
+	};
+	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
 	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
 	xhr.send();
-	xhr.onreadystatechange = function() {
-        	if (xhr.readyState == 4) {
-			if (xhr.responseText==1) res=true;
-			else res=false;
-        	}
-	}
-	return res;
 }
