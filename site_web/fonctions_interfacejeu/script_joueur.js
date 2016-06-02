@@ -7,6 +7,7 @@ $('textarea').click(function(e){
 	e.preventDefault(); 
 });
 
+//Gif de chargement
 $(window).ready(function() {
 	setTimeout(function() {
 		 $('#loader').fadeOut(1000);
