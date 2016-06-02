@@ -443,7 +443,7 @@ p.arg {
 	margin-bottom : 1em;
 }
 
-#pseudo_moi, #pseudo_adv, #pseudo_j1, #pseudo_j2 {
+#pseudo_moi, #pseudo_adv, .pseudo_j1, .pseudo_j2 {
 	display: inline-block;
 	font-size: 1.2em;
 	padding: 0.2em;
@@ -455,11 +455,11 @@ p.arg {
 	/* padding: 5px; */
 }
 
-#pseudo_moi, #pseudo_j1 {
+#pseudo_moi, .pseudo_j1 {
 	background-color: rgba(85, 236, 204, 0.7);
 }
 
-#pseudo_adv, #pseudo_j2 {
+#pseudo_adv, .pseudo_j2 {
 	background-color: rgba(255, 225, 0, 0.64);
 	float : right;
 }
