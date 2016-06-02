@@ -143,9 +143,6 @@ function actualiser(){
 			document.getElementById('idj1').innerHTML=r.idj1;
 			document.getElementById('idj2').innerHTML=r.idj2;
 			document.getElementById('sujet').innerHTML=r.sujet;
-
-			if(
-			document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
 		}
    	}	
 };	
