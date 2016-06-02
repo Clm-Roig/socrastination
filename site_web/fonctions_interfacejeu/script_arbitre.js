@@ -1,13 +1,12 @@
-//On stocke l'id du dernier message affiché 
-//Initialisation à -1 quand l'arbitre arrive pour la première fois
-var id_last_mess=-1;
-
 // ========== TODO : ALERTE SI ON QUITTE LA PAGE ========== // 
 function quitter(){
 	window.location = "liste_forums.php";
 };	
 
 // ========== FONCTION GENERALE ========== //
+//On stocke l'id du dernier message affiché 
+//Initialisation à -1 quand l'arbitre arrive pour la première fois
+var id_last_mess=-1;
 general();
 function general(){
 	actualiser();
@@ -38,7 +37,7 @@ function affichage() {
 	//Traitement du résultat du php
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
-			var r = JSON.parse(xhr.responseText);		//récupération du résultat	
+			var r=JSON.parse(xhr.responseText);		//récupération du résultat	
 			if (r.statut){					
 				var idj = r.auteur; 
 				var message = r.message_txt;
@@ -59,12 +58,8 @@ function affichage() {
 				var idj1=document.getElementById('idj1').innerHTML;
 				var idj2=document.getElementById('idj2').innerHTML;
 
-				if (idj==idj1){
-					new_div.className = 'message_moi';
-				}
-				else {
-					new_div.className = 'message_adv';
-				}
+				if (idj==idj1) new_div.className = 'message_moi';
+				else new_div.className = 'message_adv';
 
 				var new_p = document.createElement('p');
 				new_p.className = 'arg';
@@ -94,10 +89,9 @@ function affichage() {
 	}
 	
 	//Passage avec POST
-	xhr.open("POST", "fonctions_interfacejeu/afficher_message_arbitre.php");
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.open("GET", "fonctions_interfacejeu/afficher_message_arbitre.php?id_last_mess="+id_last_mess);
 	//ID du dernier message affiché
-	xhr.send("id_last_mess="+id_last_mess);
+	xhr.send();
 };
 
 // ========== ENVOI DU VOTE ========== // 

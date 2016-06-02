@@ -4,7 +4,7 @@
 	require("../config.php");
 
 // ========== SEARCH DU MESSAGE ========== // 
-	$id_mess = $_POST['id_last_mess'];
+	$id_mess = $_GET['id_last_mess'];
 
 	//Si l'id passé en paramètre est celui du dernier message ou s'il n'y a pas de messages, on quitte 
 	$req_last_id =	"SELECT MAX(message_id) AS last_id
@@ -12,14 +12,13 @@
 					WHERE id_partie=".$_SESSION['id_partie']."
 					;";
 	$res_last_id = $bdd -> query($req_last_id);
-	$res_tab_last_id = $res_last_id -> fetch((PDO::FETCH_ASSOC));	
+	$res_tab_last_id = $res_last_id -> fetch();	
 
 	if ($id_mess==$res_tab_last_id['last_id']) {
 		//Tableau pour l'envoi
 		$tab = array(
 					"statut"=>false,	//requete échouée 
 					);
-
 		echo json_encode($tab);	
 		exit();
 	}
@@ -95,11 +94,14 @@
 				AND idArbitre={$_SESSION['idMembre']}
 				;";
 	$res_vote = $bdd -> query($req_vote);
-	if ($res_vote==false) $vote=0;	//Si la requete est vide, on retourne 0
+	if(!$res_vote) {
+		echo("Erreur requete vote : $req_vote.");
+		exit();
+	}
+	$res_vote_tab = $res_vote->fetch();
+	if ($res_vote_tab==false) $vote=0;	//Si la requete est vide, on retourne 0
 	else {
-		$res_tab = $res_vote->fetch();	
-		if($res_tab['vote']==null) $vote=0;
-		else $vote=$res_tab['vote'];
+		$vote=$res_vote_tab['vote'];
 	}			
 	
 	//Tableau pour l'envoi
