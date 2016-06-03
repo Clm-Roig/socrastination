@@ -28,7 +28,6 @@
 	}
 		
 	$_SESSION['id_forum']=0;
-	$_SESSION['id_partie']=0;
 	//Redirection vers les résultats
 	header('Location: ../index.php?action=resultat');
 ?>
