@@ -68,45 +68,35 @@ function affichage() {
 	var xhr = new XMLHttpRequest(); 
 	//Traitement du résultat du php
 	xhr.onreadystatechange = function() {
-		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
-			var r_brut = xhr.responseText;		//récupération du résultat
+		if(xhr.readyState == 4) {			
+			var r_brut = JSON.parse(xhr.responseText);	//récupération du résultat
+			if (r_brut.statut){
+				//On récupère les variables présentes dans le tableau JSON
+				var auteur = r_brut.auteur;
+				var id_message = r_brut.idm;
+				var message = r_brut.message_txt;
 
-			if (r_brut != "Dernier message atteint.") {
-				if (r_brut != "Pas de messages."){
-					//ù%*µ sont les caractères qui séparent l'id du message du message
-					var index_separateur_id = r_brut.lastIndexOf('ù%*µ');
-					index_separateur_id += 4;
-					var id_message = r_brut.substring(index_separateur_id);
+				//On mémorise l'id du dernier message affiché 
+				id_last_mess = id_message;
+				
+				//Config du div contenant le bloc p
+	    			var new_div = document.createElement('div');
+				if (auteur==1) new_div.className = 'message_moi';
+				else new_div.className = 'message_adv';
 
-					//On mémorise l'id du dernier message affiché 
-					id_last_mess = id_message;
+				//Config du p contenant le message
+				var new_p = document.createElement('p');
+				new_p.className = 'arg';
+	    			new_p.innerHTML = message;      
+	
+				//Passage de p dans le div
+				new_div.appendChild(new_p);
+				//Affichage du div 
+	    			document.getElementById('conversation').appendChild(new_div);  	
 
-					var auteur = r_brut.substring(0,1);	//auteur
-					var r = r_brut.substring(1,index_separateur_id-4);	//message
-			
-					//Config du div contenant le bloc p
-		    			var new_div = document.createElement('div');
-					if (auteur==1){
-						new_div.className = 'message_moi';
-					}
-					else {
-						new_div.className = 'message_adv';
-					}
-
-					//Config du p contenant le message
-					var new_p = document.createElement('p');
-					new_p.className = 'arg';
-		    			new_p.innerHTML = r;      
-		
-					//Passage de p dans le div
-					new_div.appendChild(new_p);
-					//Affichage du div 
-		    			document.getElementById('conversation').appendChild(new_div);  	
-
-					//Scroll en bas du div 
-					$("#conversation").animate({ scrollTop: $('#conversation').prop("scrollHeight")}, 2000);
-				}
-			}  							
+				//Scroll en bas du div 
+				$("#conversation").animate({ scrollTop: $('#conversation').prop("scrollHeight")}, 2000);
+			}								
 		}			
 	};
 	
