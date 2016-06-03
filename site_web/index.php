@@ -22,7 +22,7 @@
 			$vue=new Vue("v_classement.html");	
 
 	   		// INTERROGATION 
-	   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY nbDePoints DESC LIMIT 5");
+	   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY points DESC LIMIT 5");
 	   		if ($classement==false) {
 	       			header('Location: index.php?action=erreur&num_erreur=1');
 	       			exit();
@@ -31,7 +31,7 @@
 			$i=1;
 	  		while(($info=$classement -> fetchobject())!=null){ 
 	       		$ps=$info->pseudo; 
-				$po=$info->nbDePoints;
+				$po=$info->points;
 				$tabmotclef=array(0=>"{pseudo".$i."}",1=>"{nbp".$i."}");
 				$tabvaleur=array(0=>$ps,1=>$po);
 				$vue->configurerAvecTableaux($tabmotclef,$tabvaleur);
@@ -82,6 +82,14 @@
 			}
 			$role=$resRole->fetch();
 			
+			$reqNbArbitre="SELECT COUNT(idMembre) AS nbArbitre FROM Role WHERE idPartie={$_SESSION['id_partie']} AND role=1";
+				$resNbArbitre=$bdd->query($reqNbArbitre);
+				if($resNbArbitre==false){
+					echo "erreur requete resNbArbitre : $reqNbArbitre";
+					exit();
+				}
+				$nbArbitre=$resNbArbitre->fetch();
+			
 			// Cas des Joueurs
 			if($role['role']==0){
 				$req="SELECT R.idMembre, M.pseudo FROM Role AS R JOIN Membres AS M ON R.idMembre = M.idMembre WHERE idPartie={$_SESSION['id_partie']} AND R.role={$role['role']};";//{$_SESSION['id_partie']}
@@ -93,6 +101,7 @@
 				$vue->configurer('num_partie',$_SESSION['id_partie']);
 				while(($data=$res -> fetchobject())!=null){
 					if(($data->idMembre)!=($_SESSION['idMembre'])){
+						$idAdverse=$data->idMembre;
 						$vue->configurer('pseudo_adversaire',$data->pseudo);
 						$vue->configurer('pseudo',"contre {$data->pseudo}");
 					}
@@ -100,8 +109,7 @@
 						$vue->configurer('pseudo_joueur',$data->pseudo);
 					}
 				}				
-			
-			
+				
 			
 				//Requete pour joueur
 				$reqPlusJoueur="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$_SESSION['idMembre']};";
@@ -123,6 +131,8 @@
 				$vue->configurer('nb_votes_moins_joueur',$voteMoinsJoueur['vote_moins']);
 				$final_joueur=($votePlusJoueur['vote_plus'])-($voteMoinsJoueur['vote_moins']);
 				$vue->configurer('score_joueur',$final_joueur);
+				$pointJoueur=ceil(($final_joueur)/(ceil($nbArbitre['nbArbitre']/2)));
+				$vue->configurer('point_joueur',$pointJoueur);
 				
 				
 				//Requete pour adverse
@@ -145,11 +155,20 @@
 				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsAdverse['vote_moins']);
 				$final_adverse=($votePlusAdverse['vote_plus'])-($voteMoinsAdverse['vote_moins']);
 				$vue->configurer('score_adversaire',$final_adverse);
+				$pointAdverse=ceil(($final_adverse)/(ceil($nbArbitre['nbArbitre']/2)));
+				$vue->configurer('point_adversaire',$pointAdverse);
 				
-
+				
+				$reqAddPoints="UPDATE Membres SET points=points+{$pointAdverse} WHERE idMembre={$idAdverse}; UPDATE Membres SET points=points+{$pointJoueur} WHERE idMembre={$_SESSION['idMembre']};";
+				$resAddPoints=$bdd->query($reqAddPoints);
+				if ($resAddPoints==false){
+					echo "erreur requete resAddPoints : $reqAddPoints";
+					exit();
+				}
 				
 				if ($final_joueur>$final_adverse){
 					$vue->configurer('statut','Victoire !');
+					
 				}
 				else if($final_adverse>$final_joueur){
 					$vue->configurer('statut','Défaite !');
@@ -208,6 +227,8 @@
 				$vue->configurer('nb_votes_moins_joueur',$voteMoinsJoueur['vote_moins']);
 				$final_joueur=($votePlusJoueur['vote_plus'])-($voteMoinsJoueur['vote_moins']);
 				$vue->configurer('score_joueur',$final_joueur);
+				$pointJoueur=ceil(($final_joueur)/(ceil($nbArbitre['nbArbitre']/2)));
+				$vue->configurer('point_joueur',$pointJoueur);
 				
 				
 				//Requete pour Joueur idMAX
@@ -249,6 +270,8 @@
 				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsAdverse['vote_moins']);
 				$final_adverse=($votePlusAdverse['vote_plus'])-($voteMoinsAdverse['vote_moins']);
 				$vue->configurer('score_adversaire',$final_adverse);
+				$pointAdverse=ceil(($final_adverse)/(ceil($nbArbitre['nbArbitre']/2)));
+				$vue->configurer('point_adversaire',$pointAdverse);
 				
 				if ($final_joueur>$final_adverse){
 					$vue->configurer('statut',"Victoire de {$pseudoMin['pseudo']} ");
@@ -315,7 +338,7 @@
 			else {
 				$info=$query->fetch();
 				$tabmotclef=array(0=>"{pseudo}",1=>"{mail}",2=>"{nbDePoints}",3=>"{nbTotalParties}",4=>"{nbPartiesGagnees}");
-				$tabvaleur=array(0=>$info['pseudo'],1=>$info['mail'],2=>$info['nbDePoints'],3=>$info['nbTotalParties'],4=>$info['nbPartiesGagnees']);
+				$tabvaleur=array(0=>$info['pseudo'],1=>$info['mail'],2=>$info['points'],3=>$info['nbTotalParties'],4=>$info['nbPartiesGagnees']);
 				$vue->configurerAvecTableaux($tabmotclef,$tabvaleur);
 			}
 			
