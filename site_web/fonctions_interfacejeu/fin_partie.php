@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	require('../config.php');
 	//On regarde si le forum a bien été délesté de sa partie par quelqu'un 
 	$req = 	"SELECT idPartie FROM Forums
@@ -14,7 +15,7 @@
 	//Si l'id est différent du nôtre, c'est que soit il vaut 0 (quelqu'un l'a mis à 0 déjà), 
 	//soit il a été mis à 0 puis quelqu'un a créé une partie par-dessus 
 	//Auquel cas on en fait rien. Sinon, il faut le mettre à 0
-	if($idp==$_SESSION('id_partie']){
+	if($idp==$_SESSION['id_partie']){
 		$req_f = 	"UPDATE Forums 
 				SET idPartie=0
 				WHERE idPartie={$_SESSION['id_partie']}
@@ -26,7 +27,8 @@
 		}	
 	}
 		
+	$_SESSION['id_forum']=0;
+	$_SESSION['id_partie']=0;
 	//Redirection vers les résultats
-	header('Location: index.php?action=resultat');
-
+	header('Location: ../index.php?action=resultat');
 ?>

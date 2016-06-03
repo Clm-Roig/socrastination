@@ -205,8 +205,10 @@ function compteur() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			var res=xhr.responseText;	
 			if(res<=0) document.location.href="fonctions_interfacejeu/fin_partie.php";
-			document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
-			compteur();			
+			else {
+				document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
+				compteur();	
+			}		
 		}
 	};
 	//Passage avec GET, arret_partie retourne le temps qu'il reste avant la fin de la partie si finie (sinon -1);
