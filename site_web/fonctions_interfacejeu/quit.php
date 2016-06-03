@@ -19,6 +19,7 @@
 	
 		//S'il y a un autre joueur, c'est son "tour" (il peut choisir le sujet)
 		if ($nb_j==2) {
+			echo "J'étais pas seul !";
 			//On récupère son id
 			$req_adv=	"SELECT idMembre FROM Role
 						WHERE role=0
@@ -59,11 +60,16 @@
 			exit();
 		}
 		//Sinon on redirige vers la liste des forums
-		else {
-			//Nettoyage dans $_SESSION 
-			$_SESSION['id_forum']="";	
-			$_SESSION['id_partie']="";
-			header('Location: ../liste_forums.php');
-		}
 	}
+
+	//Nettoyage dans $_SESSION 
+	$_SESSION['id_forum']="";	
+	$_SESSION['id_partie']="";
+	//Envoi de la requete 
+	$res=$bdd->query($req);
+	if(!$res){
+		echo "Erreur nettoyage BDD quit : $req.";
+		exit();
+	}
+	header('Location: ../liste_forums.php');
 ?>
