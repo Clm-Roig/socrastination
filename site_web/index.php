@@ -152,7 +152,7 @@
 					$vue->configurer('statut','Victoire !');
 				}
 				else if($final_adverse>$final_joueur){
-					$vue->configurer('statut','Defaite !');
+					$vue->configurer('statut','Défaite !');
 				}
 				else{
 					$vue->configurer('statut','Egalité !');
