@@ -52,7 +52,9 @@
 	//Un arbitre quitte
 	else {
 		$req = 	"DELETE FROM Role 
-				WHERE idMembre={$_SESSION['idMembre']}
+				WHERE idMembre={$_SESSION['idMembre']};
+				DELETE FROM Votes
+				WHERE idArbitre={$_SESSION['idMembre']}
 				;";
 		$res = $bdd->query($req);
 		if(!$res) {
