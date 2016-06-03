@@ -414,21 +414,20 @@ p.foot {
 /*===============*/
 
 	.message_adv, .message_moi {
-		margin-bottom : 1em;	
-		
+		margin-bottom : 1em;		
 		border-radius : 5px;
 		word-break: break-all;
 		box-shadow: 2px 2px 4px rgba(113, 66, 21, 0.35) inset;
 	}
 
 	.message_adv {
-		background-color: rgba(255, 225, 0, 0.32);
+		background-color: rgba(255, 225, 0, 0.5);
 		margin-left : 45%;
 		margin-right : 20px;
 	}
 
 	.message_moi{
-		background-color: rgba(198, 231, 209, 0.50);
+		background-color: rgba(198, 231, 209, 0.60);
 		margin-right : 45%;
 		margin-left : 20px;
 	}
