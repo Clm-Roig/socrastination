@@ -4,8 +4,9 @@
 	require("../config.php");
 
 	// ========== POST DU MESSAGE ========== // 
+	$mess=$bdd->quote($_POST['message']);
 	$req_message = 	"INSERT INTO Chat_messages(message_id_membre, message_time, message_text, id_partie)
-					VALUES ({$_SESSION['idMembre']}, NOW(), '".$_POST['message']."', {$_SESSION['id_partie']})
+					VALUES ({$_SESSION['idMembre']}, NOW(), $mess, {$_SESSION['id_partie']})
 					;";	
 	$res=$bdd->query($req_message);
 	//CONTROLE
