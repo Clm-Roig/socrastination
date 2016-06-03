@@ -134,6 +134,9 @@ function actualiser(){
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
 			var r = JSON.parse(xhr.responseText);			//récupération du résultat
+			//Sauvegarde des anciennes valeurs
+			var old_id_j1 = document.getElementById('idj1').innerHTML;
+			var old_id_j2 = document.getElementById('idj2').innerHTML;
 			document.getElementById('pseudo_j1').innerHTML=r.pseudoj1;
 			document.getElementById('pseudo_j2').innerHTML=r.pseudoj2;
 			document.getElementById('idj1').innerHTML=r.idj1;
@@ -144,7 +147,17 @@ function actualiser(){
 				document.getElementById("communication").innerHTML="Veuillez patienter, un joueur choisit le sujet du débat.";
 			}
 			else {
-				document.getElementById("communication").innerHTML="Débat en cours...";
+				//Sujet choisi + le joueur 1 a quitté 
+				if ( (old_id_adv != -1) && (old_id_j1 != r.idj1) ){
+					alert('Un adversaire a quitté la partie, vous allez être redirigé.');
+					document.location.href="fonctions_interfacejeu/quit.php";						
+				}
+				//Sujet choisi + le joueur 2 a quitté 
+				else if ( (old_id_adv != -1) && (old_id_j2 != r.idj2) ){
+					alert('Un adversaire a quitté la partie, vous allez être redirigé.');
+					document.location.href="fonctions_interfacejeu/quit.php";						
+				}
+				else document.getElementById("communication").innerHTML="Débat en cours...";
 			}
 		}
    	}	

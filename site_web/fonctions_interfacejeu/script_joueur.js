@@ -136,8 +136,11 @@ function actualiser(){
 	xhr.open("GET", "fonctions_interfacejeu/infos_partie.php");
 	xhr.send();
 	xhr.onreadystatechange = function() {
-		if(xhr.readyState == 4) {				//serveur ok + réponse reçue
+		if(xhr.readyState == 4) {							//serveur ok + réponse reçue
 			var r = JSON.parse(xhr.responseText);			//récupération du résultat
+			//Sauvegarde des valeurs précédentes
+			var old_id_adv = document.getElementById('idj2').innerHTML;
+			//Remplacement des infos
 			document.getElementById('pseudo_j1').innerHTML=r.pseudoj1;
 			document.getElementById('pseudo_j2').innerHTML=r.pseudoj2;
 			document.getElementById('idj1').innerHTML=r.idj1;
@@ -159,6 +162,11 @@ function actualiser(){
 
 				//Mon tour + sujet choisi 
 				else {
+					//Mon tour + sujet choisi + l'adversaire à quitter : on sort
+					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) ){
+						alert('Un adversaire a quitté la partie, vous allez être redirigé.');
+						document.location.href="fonctions_interfacejeu/quit.php";						
+					}
 					//Mon tour + sujet choisi + pas d'adv
 					if(document.getElementById('idj2').innerHTML==-1) {
 						bouton.disabled=true;
@@ -182,6 +190,11 @@ function actualiser(){
 
 				//Pas mon tour + sujet choisi 
 				else {
+					//Pas mon tour + sujet choisi + l'adversaire à quitter : on sort
+					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) ){
+						alert('Un adversaire a quitté la partie, vous allez être redirigé.');
+						document.location.href="fonctions_interfacejeu/quit.php";						
+					}
 					//Pas mon tour + sujet choisi + pas d'adv (impossible normalement : c'est forcément mon tour s'il n'y a pas d'aversaire)
 					if(document.getElementById('idj2').innerHTML==-1) {
 						bouton.disabled=true;
