@@ -164,8 +164,8 @@ function actualiser(){
 				else {
 					//Mon tour + sujet choisi + l'adversaire à quitter : on sort
 					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) ){
-						alert('Un adversaire a quitté la partie, vous allez être redirigé.');
-						document.location.href="fonctions_interfacejeu/quit.php";						
+						alert('Un adversaire a quitté la partie, cliquez sur ok pour être redirigé.');
+						document.location.href="fonctions_interfacejeu/quit.php?role=0";						
 					}
 					//Mon tour + sujet choisi + pas d'adv
 					if(document.getElementById('idj2').innerHTML==-1) {
@@ -192,8 +192,8 @@ function actualiser(){
 				else {
 					//Pas mon tour + sujet choisi + l'adversaire à quitter : on sort
 					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) ){
-						alert('Un adversaire a quitté la partie, vous allez être redirigé.');
-						document.location.href="fonctions_interfacejeu/quit.php";						
+						alert('Un adversaire a quitté la partie, cliquez sur ok pour être redirigé.');
+						document.location.href="fonctions_interfacejeu/quit.php?role=0";						
 					}
 					//Pas mon tour + sujet choisi + pas d'adv (impossible normalement : c'est forcément mon tour s'il n'y a pas d'aversaire)
 					if(document.getElementById('idj2').innerHTML==-1) {

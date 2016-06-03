@@ -4,7 +4,7 @@
 
 	//On regarde si c'est un joueur ou un arbitre qui demande à quitter
 	//Un joueur quitte
-	if($_POST['role']==0) {
+	if($_GET['role']==0) {
 		//On supprime dans Role, on supprime les messages 
 		$req = 	"DELETE FROM Role 
 				WHERE idMembre={$_SESSION['idMembre']};
@@ -56,12 +56,6 @@
 				DELETE FROM Votes
 				WHERE idArbitre={$_SESSION['idMembre']}
 				;";
-		$res = $bdd->query($req);
-		if(!$res) {
-			echo "Erreur query quit arbitre : $req.";
-			exit();
-		}
-		//Sinon on redirige vers la liste des forums
 	}
 
 	//Nettoyage dans $_SESSION 
