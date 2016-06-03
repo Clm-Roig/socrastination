@@ -9,7 +9,10 @@
 		$req = 	"DELETE FROM Role 
 				WHERE idMembre={$_SESSION['idMembre']};
 				DELETE FROM Chat_messages 
-				WHERE message_id_membre={$_SESSION['idMembre']}
+				WHERE message_id_membre={$_SESSION['idMembre']};
+				DELETE V FROM Votes AS V 
+				JOIN Chat_messages AS C ON V.idMessage=C.message_id
+				WHERE C.message_id_membre = {$_SESSION['idMembre']}
 				;";
 
 
@@ -19,7 +22,6 @@
 	
 		//S'il y a un autre joueur, c'est son "tour" (il peut choisir le sujet)
 		if ($nb_j==2) {
-			echo "J'étais pas seul !";
 			//On récupère son id
 			$req_adv=	"SELECT idMembre FROM Role
 						WHERE role=0
@@ -38,7 +40,7 @@
 					SET tour_joueur=$id_adv
 					WHERE idPartie={$_SESSION['id_partie']};";
 		}
-		//Sinon, on supprime la partie
+		//Sinon, on supprime la partie, on était le dernier dedans
 		else {
 			$req.=	"DELETE FROM Parties
 					WHERE idPartie={$_SESSION['id_partie']};
@@ -47,25 +49,26 @@
 					WHERE idPartie={$_SESSION['id_partie']}
 					;";
 		}
-		header('Location: ../liste_forums.php');
 	}
-	//Un arbitre quitte
+	//Un arbitre quitte, on supprime son role et ses votes
 	else {
 		$req = 	"DELETE FROM Role 
 				WHERE idMembre={$_SESSION['idMembre']};
-				DELETE FROM Votes
+				DELETE FROM Votes 
 				WHERE idArbitre={$_SESSION['idMembre']}
 				;";
 	}
 
-	//Nettoyage dans $_SESSION 
-	$_SESSION['id_forum']="";	
-	$_SESSION['id_partie']="";
+	//On exécute la requete et on nettoie $_SESSION
 	//Envoi de la requete 
 	$res=$bdd->query($req);
 	if(!$res){
 		echo "Erreur nettoyage BDD quit : $req.";
 		exit();
 	}
+
+	//Nettoyage dans $_SESSION 
+	$_SESSION['id_forum']="";	
+	$_SESSION['id_partie']="";
 	header('Location: ../liste_forums.php');
 ?>

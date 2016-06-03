@@ -148,12 +148,12 @@ function actualiser(){
 			}
 			else {
 				//Sujet choisi + le joueur 1 a quitté 
-				if ( (old_id_j1 != -1) && (old_id_j1 != r.idj1) ){
+				if ( (old_id_j1 != -1) && (r.idj1 == -1) ){
 					alert('Un adversaire a quitté la partie, cliquez sur ok pour être redirigé.');
 					document.location.href="fonctions_interfacejeu/quit.php?role=1";						
 				}
 				//Sujet choisi + le joueur 2 a quitté 
-				else if ( (old_id_j2 != -1) && (old_id_j2 != r.idj2) ){
+				else if ( (old_id_j2 != -1) && (r.idj2 == -1) ){
 					alert('Un adversaire a quitté la partie, cliquez sur ok pour être redirigé.');
 					document.location.href="fonctions_interfacejeu/quit.php?role=1";						
 				}
