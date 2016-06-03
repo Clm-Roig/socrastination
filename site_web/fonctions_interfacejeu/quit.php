@@ -46,6 +46,7 @@
 					WHERE idPartie={$_SESSION['id_partie']}
 					;";
 		}
+		header('Location: ../liste_forums.php');
 	}
 	//Un arbitre quitte
 	else {
