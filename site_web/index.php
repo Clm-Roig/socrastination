@@ -171,6 +171,7 @@
 					}
 					else{
 						$vue->configurer('pseudo_joueur',$data->pseudo);
+						
 					}
 				}
 				
