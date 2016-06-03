@@ -15,8 +15,8 @@
 // ================= VERIFICATION SI PARTIE INEXISTANTE ================= //
 
 		$verif=$bdd->query("SELECT idPartie FROM Forums WHERE idForum=$num_forum");
-		$verif_string=$verif->fetchobject();
-		$id_partie=$verif_string->idPartie;
+		$verif_string=$verif->fetch();
+		$id_partie=$verif_string['idPartie'];
 
 		if($id_partie == 0){		//si 0, on créé une nouvelle partie
 			
@@ -36,13 +36,13 @@
 
 			//Requete pour la table Parties (si tu es joueur, c'est toi qui choisis le sujet) 
 			$req_creation2="INSERT INTO Parties (idPartie,tour_joueur)
-						VALUES ($id_max,".$_SESSION['idMembre'].");						
-						";
+						VALUES ($id_max,{$_SESSION['idMembre']})
+						;";
 
 			//Requete pour la table Role
 			$req_creation3="INSERT INTO Role (role,idPartie,idMembre)
-						VALUES ($num_role,$id_max,".$_SESSION['idMembre'].");						
-						";
+						VALUES ($num_role,$id_max,{$_SESSION['idMembre']})
+						;";
 
 			$bdd->query($req_creation1);
 			$bdd->query($req_creation2);
@@ -134,41 +134,33 @@
 	// ================= VERIFICATION ARBITRE ================= //
 
 			if($num_role==1){			//Il y a une partie sur ce forum et on est rentré en tant qu'arbitre
-
-				$req_ida = $bdd->query("SELECT idMembre FROM Role WHERE idPartie=$id_partie AND role=1");
-				$ida = $req_ida->fetch();
-				echo $ida;
-
-				$req_nba = $bdd->query("SELECT COUNT(idMembre) FROM Role WHERE idPartie=$id_partie AND role=1");
-				$nba= $req_nba->fetchColumn();
-
-				if($ida == null){		//Nouvel arbitre 
-					if($nba>=10) {	//Partie pleine
-						//Redirection vers erreur.php
-						header("Location: ../index.php?action=erreur?num_erreur=2");
-					}	
-					else { 	//Ok place disponible
+				//On compte le nb d'arbitres présents
+				$req_nba = 	"SELECT COUNT(idMembre) FROM Role
+							WHERE idPartie=$id_partie
+							AND role=1
+							;";
+				$res_nba = $bdd->query($req_nba);
+				$nba = $res_nba->fetchColumn();
+				if($nba>=10) {			//Partie pleine
+					//Redirection vers erreur.php
+					header("Location: ../index.php?action=erreur?num_erreur=2");
+				}	
+				else { 	//Ok place disponible
 						//Requete pour la table Role
-						$req_creation_a1="INSERT INTO Role (role,idPartie,idMembre)
-								VALUES ($num_role,$id_partie,".$_SESSION['idMembre'].");						
-								";
+					$req_creation_a1="INSERT INTO Role (role,idPartie,idMembre)
+									VALUES ($num_role,$id_partie,{$_SESSION['idMembre']})
+									;";
 
-						$bdd->query($req_creation_a1);
+					$bdd->query($req_creation_a1);
 
-						//Stockage dans $_SESSION 
-						$_SESSION['id_forum']=$num_forum;	
-						$_SESSION['id_partie']=$id_partie;
+					//Stockage dans $_SESSION 
+					$_SESSION['id_forum']=$num_forum;	
+					$_SESSION['id_partie']=$id_partie;
 
-						//Redirection vers la partie
-						header("Location: ../interfacearbitre.php");
-					}
-				}
-			
-				else {	//Ok on te connait toi, tu peux passer
 					//Redirection vers la partie
 					header("Location: ../interfacearbitre.php");
 				}
-			}	
+			}
 		}
 	}
 ?>

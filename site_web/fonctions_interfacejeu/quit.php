@@ -52,19 +52,17 @@
 		$req = 	"DELETE FROM Role 
 				WHERE idMembre={$_SESSION['idMembre']}
 				;";
-	}
-
-	$res = $bdd->query($req);
-	//Si ça ne marche pas on ne fait rien
-	if($res==false) {
-		echo "Erreur query : $req.";
-		exit();
-	}
-	//Sinon on redirige vers la liste des forums
-	else {
-		//Nettoyage dans $_SESSION 
-		$_SESSION['id_forum']="";	
-		$_SESSION['id_partie']="";
-		header('Location: ../liste_forums.php');
+		$res = $bdd->query($req);
+		if(!$res) {
+			echo "Erreur query quit arbitre : $req.";
+			exit();
+		}
+		//Sinon on redirige vers la liste des forums
+		else {
+			//Nettoyage dans $_SESSION 
+			$_SESSION['id_forum']="";	
+			$_SESSION['id_partie']="";
+			header('Location: ../liste_forums.php');
+		}
 	}
 ?>

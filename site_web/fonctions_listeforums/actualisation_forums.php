@@ -17,7 +17,7 @@
 	$nb_j= $res_joueur->fetchColumn();	//on compte le nombre de joueur (role=0) dans une partie
 
 	//NB D'ARBITRES
-	$req_arbitre = 	"SELECT COUNT(*) FROM Role R
+	$req_arbitre = 	"SELECT COUNT(*) AS nba FROM Role R
 					 JOIN Forums F ON F.idPartie=R.idPartie
 					WHERE F.idForum=$id_forum	
 					AND R.role=1
@@ -27,7 +27,8 @@
 		echo "Erreur requete nb arbitres : $req_arbitre.";
 		exit();
 	}	
-	$nb_a=$res_arbitre->fetchColumn();	//on compte le nombre d'arbitres (role=1) dans une partie
+	$nba_tab=$res_arbitre->fetch();
+	$nba=$nba_tab['nba'];
 
 	//SUJET CHOISI
 	$req_sujet =	"SELECT nomSujet FROM Sujets S
@@ -48,5 +49,5 @@
 
 	// MISE À JOUR DE LA PAGE 
 	// à faire : renvoyer du html, en chargeant une vue correspondant à une ligne du tableau des forums.
-	echo "$nb_j,$nb_a,$sujet";	
+	echo "$nb_j,$nba,$sujet";	
 ?>

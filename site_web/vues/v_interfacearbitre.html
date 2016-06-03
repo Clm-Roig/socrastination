@@ -80,9 +80,10 @@
 
 	<!-- ====== BOUTON POUR QUITTER ===== -->
 		<div class="text-center">
-			<a  href="fonctions_interfacejeu/quit.php?role=1" class="btn btn-danger" id="quitter" ><span class="glyphicon glyphicon-log-out"></span> Abandonner</a>
+			 <form method="post" action="fonctions_interfacejeu/quit.php">           
+				<button type="submit" id="quitter" class="btn btn-danger"  value="1" name="role"><span class="glyphicon glyphicon-log-out"></span> Abandonner</button>
+			</form>  
 		</div>
-		
 	<!-- ================================ -->
 
 		<!-- FOOTER -->
