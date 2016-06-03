@@ -12,7 +12,7 @@ var id_last_mess=-1;
 general();
 function general(){
 	actualiser();
-	affichage();
+	setTimeout(affichage,50);	
 	// Vérification si fin de partie en AJAX 
 	var xhr = new XMLHttpRequest(); 
 	xhr.onreadystatechange = function() {

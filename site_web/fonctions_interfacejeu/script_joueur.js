@@ -37,7 +37,7 @@ $("#valider_sujet").click(function(){
 general();
 function general(){
 	actualiser();
-	affichage();
+	setTimeout(affichage,50);	
 
 	// Vérification si fin de partie en AJAX 
 	var xhr = new XMLHttpRequest(); 
