@@ -358,6 +358,15 @@ img.illustration{
 	background-color:inherit;
 }
 
+i.partie_dispo{
+	font-size : 0.95em;
+	opacity : 0.7;
+	font-family : 'Kanit';
+}
+
+p.nom_sujet{
+	font-size : 1.1em;
+}	
 
 form.forum{
 	margin : 0;
