@@ -167,10 +167,10 @@
 					exit();
 				}
 				$vue->configurer('num_partie',$_SESSION['id_partie']);
-				$vue->configurer('pseudo',$_SESSION['pseudo']);
+				
 				
 				//Requete pour Joueur idMIN
-				$reqJoueurMin= "SELECT MIN(idMembre) AS idMembre FROM Role WHERE idPartie={$_SESSION['id_partie']}";
+				$reqJoueurMin= "SELECT MIN(idMembre) AS idMembre FROM Role WHERE idPartie={$_SESSION['id_partie']} AND role=0";
 				$resJoueurMin=$bdd->query($reqJoueurMin);
 				if($resJoueurMin==false){
 					echo "erreur requete resJoueurMax : $reqJoueurMin";
@@ -192,7 +192,7 @@
 				$reqPlusJoueur="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$donnee['idMembre']};";
 				$resPlusJoueur=$bdd->query($reqPlusJoueur);
 				if ($resPlusJoueur==false){ 
-					echo "erreur requete resPlus : $reqPlusAdverse";
+					echo "erreur requete resPlus : $reqPlusJoueur";
 					exit();
 				}
 				$votePlusJoueur=$resPlusJoueur->fetch();
@@ -211,7 +211,7 @@
 				
 				
 				//Requete pour Joueur idMAX
-				$reqJoueurMax= "SELECT MAX(idMembre) AS idMembre FROM Role WHERE idPartie={$_SESSION['id_partie']}";
+				$reqJoueurMax= "SELECT MAX(idMembre) AS idMembre FROM Role WHERE idPartie={$_SESSION['id_partie']} AND role=0";
 				$resJoueurMax=$bdd->query($reqJoueurMax);
 				if($resJoueurMax==false){
 					echo "erreur requete resJoueurMax : $reqJoueurMax";
@@ -228,6 +228,7 @@
 				
 				
 				$vue->configurer('pseudo_adversaire',$pseudoMax['pseudo']);
+				$vue->configurer('pseudo',"arbitrée ({$pseudoMin['pseudo']} vs {$pseudoMax['pseudo']})");
 				
 				$reqPlusAdverse="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$donneeMax['idMembre']};";
 				$resPlusAdverse=$bdd->query($reqPlusAdverse);
