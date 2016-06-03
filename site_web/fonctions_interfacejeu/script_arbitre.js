@@ -144,7 +144,7 @@ function actualiser(){
 				document.getElementById("communication").innerHTML="Veuillez patienter, un joueur choisit le sujet du débat.";
 			}
 			else {
-
+				document.getElementById("communication").innerHTML="Débat en cours...";
 			}
 		}
    	}	
