@@ -58,7 +58,6 @@ function affichage() {
 
 				//De qui vient le message ?
 				var idj1=document.getElementById('idj1').innerHTML;
-				var idj2=document.getElementById('idj2').innerHTML;
 
 				if (idj==idj1) new_div.className = 'message_moi';
 				else new_div.className = 'message_adv';

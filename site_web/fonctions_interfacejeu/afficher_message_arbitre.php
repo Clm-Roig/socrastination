@@ -35,11 +35,11 @@
 	if ($id_mess==-1){
 		$req =	"SELECT message_id , message_id_membre, message_text
 				FROM Chat_messages
-				WHERE id_partie=".$_SESSION['id_partie']."
-				AND message_time = (
-					SELECT MIN(message_time)
+				WHERE id_partie={$_SESSION['id_partie']}
+				AND message_id = (
+					SELECT MIN(message_id)
 					FROM Chat_messages
-					WHERE id_partie=".$_SESSION['id_partie']."
+					WHERE id_partie={$_SESSION['id_partie']}
 					)
 				;";
 
