@@ -2,6 +2,7 @@
 	session_start();
 	require("config.php");
 	require("vues/Vue.php");
+	require("vues/VueResultat.php");
 
 	//Header dynamique (loggué ou pas)
 	if (!isset($_SESSION['pseudo'])) {
@@ -72,23 +73,10 @@
 /*----------------- RESULTAT ----------------- */
 
 		case("resultat") :
-			$vue =New Vue("v_pageresultat.html");  //$_SESSION['id_partie']
+			$vue =New VueResultat("v_pageresultat.html");  //$_SESSION['id_partie']
 			
-			$reqRole="SELECT role FROM Role WHERE idPartie={$_SESSION['id_partie']} AND idMembre={$_SESSION['idMembre']};";
-			$resRole=$bdd->query($reqRole);
-			if ($resRole==false){
-				echo "erreur requete resRole: $reqRole";
-				ecit();
-			}
-			$role=$resRole->fetch();
-			
-			$reqNbArbitre="SELECT COUNT(idMembre) AS nbArbitre FROM Role WHERE idPartie={$_SESSION['id_partie']} AND role=1";
-				$resNbArbitre=$bdd->query($reqNbArbitre);
-				if($resNbArbitre==false){
-					echo "erreur requete resNbArbitre : $reqNbArbitre";
-					exit();
-				}
-				$nbArbitre=$resNbArbitre->fetch();
+			$role=$vue->role();
+			$nbArbitre=$vue->nombreArbitre();
 			
 			// Cas des Joueurs
 			if($role['role']==0){
@@ -112,176 +100,86 @@
 				
 			
 				//Requete pour joueur
-				$reqPlusJoueur="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$_SESSION['idMembre']};";
-				$resPlusJoueur=$bdd->query($reqPlusJoueur);
-				if ($resPlusJoueur==false){ 
-					echo "erreur requete resPlus : $reqPlusAdverse";
-					exit();
-				}
-				$votePlusJoueur=$resPlusJoueur->fetch();
+				
+				$votePlusJoueur=$vue ->votePlus($_SESSION['idMembre']);
 				$vue->configurer('nb_votes_plus_joueur',$votePlusJoueur['vote_plus']);
 				
-				$reqMoinsJoueur="SELECT COUNT(V.idMessage) AS vote_moins FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=-1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$_SESSION['idMembre']};";
-				$resMoinsJoueur=$bdd->query($reqMoinsJoueur);
-				if ($resMoinsJoueur==false){
-					echo "erreur requete resPlus : $reqMoinsAdverse"; 
-					exit();
-				}
-				$voteMoinsJoueur=$resMoinsJoueur->fetch();
+				$voteMoinsJoueur=$vue->voteMoins($_SESSION['idMembre']);
 				$vue->configurer('nb_votes_moins_joueur',$voteMoinsJoueur['vote_moins']);
+				
+				
 				$final_joueur=($votePlusJoueur['vote_plus'])-($voteMoinsJoueur['vote_moins']);
 				$vue->configurer('score_joueur',$final_joueur);
-				$pointJoueur=ceil(($final_joueur)/(ceil($nbArbitre['nbArbitre']/2)));
+				
+				$pointJoueur=$vue->calculPoints($final_joueur,$nbArbitre['nbArbitre']);
 				$vue->configurer('point_joueur',$pointJoueur);
 				
 				
 				//Requete pour adverse
-				$reqPlusAdverse="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre!={$_SESSION['idMembre']};";
-				$resPlusAdverse=$bdd->query($reqPlusAdverse);
-				if ($resPlusAdverse==false){ 
-					echo "erreur requete resPlus : $reqPlusAdverse";
-					exit();
-				}
-				$votePlusAdverse=$resPlusAdverse->fetch();
+				
+				$votePlusAdverse=$vue->votePlus($idAdverse);
 				$vue->configurer('nb_votes_plus_adversaire',$votePlusAdverse['vote_plus']);
 				
-				$reqMoinsAdverse="SELECT COUNT(V.idMessage) AS vote_moins FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=-1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre!={$_SESSION['idMembre']};";
-				$resMoinsAdverse=$bdd->query($reqMoinsAdverse);
-				if ($resMoinsAdverse==false){
-					echo "erreur requete resPlus : $reqMoinsAdverse"; 
-					exit();
-				}
-				$voteMoinsAdverse=$resMoinsAdverse->fetch();
+				
+				$voteMoinsAdverse=$vue->voteMoins($idAdverse);
 				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsAdverse['vote_moins']);
+				
 				$final_adverse=($votePlusAdverse['vote_plus'])-($voteMoinsAdverse['vote_moins']);
 				$vue->configurer('score_adversaire',$final_adverse);
-				$pointAdverse=ceil(($final_adverse)/(ceil($nbArbitre['nbArbitre']/2)));
+				
+				$pointAdverse=$vue->calculPoints($final_adverse,$nbArbitre['nbArbitre']);
 				$vue->configurer('point_adversaire',$pointAdverse);
-				
-				
-				$reqAddPoints="UPDATE Membres SET points=points+{$pointAdverse} WHERE idMembre={$idAdverse}; UPDATE Membres SET points=points+{$pointJoueur} WHERE idMembre={$_SESSION['idMembre']};";
-				$resAddPoints=$bdd->query($reqAddPoints);
-				if ($resAddPoints==false){
-					echo "erreur requete resAddPoints : $reqAddPoints";
-					exit();
-				}
-				
-				if ($final_joueur>$final_adverse){
-					$vue->configurer('statut','Victoire !');
-					
-				}
-				else if($final_adverse>$final_joueur){
-					$vue->configurer('statut','Défaite !');
-				}
-				else{
-					$vue->configurer('statut','Egalité !');
-				}
+								
+				$statut=$vue->statutFinalJoueur($final_joueur,$_SESSION['idMembre'],$final_adverse,$idAdverse);
+				$vue->configurer('statut',"$statut");
 			}
 			// cas arbitres
 			else{
-				$req="SELECT R.idMembre, M.pseudo FROM Role AS R JOIN Membres AS M ON R.idMembre = M.idMembre WHERE idPartie={$_SESSION['id_partie']}";//{$_SESSION['id_partie']}
-				$res=$bdd->query($req);
-				if ($res==false){
-					echo "erreur requete res : $req";
-					exit();
-				}
+				
 				$vue->configurer('num_partie',$_SESSION['id_partie']);
 				
-				
 				//Requete pour Joueur idMIN
-				$reqJoueurMin= "SELECT MIN(idMembre) AS idMembre FROM Role WHERE idPartie={$_SESSION['id_partie']} AND role=0";
-				$resJoueurMin=$bdd->query($reqJoueurMin);
-				if($resJoueurMin==false){
-					echo "erreur requete resJoueurMax : $reqJoueurMin";
-					exit();
-				}
-				$donnee=$resJoueurMin->fetch();
 				
+				$donneeMin=$vue->getIdMin();			
+				$pseudoMin=$vue->reqPseudo($donneeMin['idMembre']);
+				$vue->configurer('pseudo_joueur',$pseudoMin['pseudo']);				
+			
+				$votePlusMin=$vue->votePlus($donneeMin['idMembre']);
+				$vue->configurer('nb_votes_plus_joueur',$votePlusMin['vote_plus']);
 				
-				$reqPseudoMin="SELECT pseudo FROM Membres WHERE idMembre={$donnee['idMembre']}";
-				$resPseudoMin=$bdd->query($reqPseudoMin);
-				if($resPseudoMin==false){
-					echo "erreur requete resPseudoMin: $reqPseudoMin";
-					exit();
-				}
-				$pseudoMin=$resPseudoMin->fetch();
-				$vue->configurer('pseudo_joueur',$pseudoMin['pseudo']);
+				$voteMoinsMin=$vue->voteMoins($donneeMin['idMembre']);
+				$vue->configurer('nb_votes_moins_joueur',$voteMoinsMin['vote_moins']);
 				
+				$final_Min=($votePlusMin['vote_plus'])-($voteMoinsMin['vote_moins']);
+				$vue->configurer('score_joueur',$final_Min);
 				
-				$reqPlusJoueur="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$donnee['idMembre']};";
-				$resPlusJoueur=$bdd->query($reqPlusJoueur);
-				if ($resPlusJoueur==false){ 
-					echo "erreur requete resPlus : $reqPlusJoueur";
-					exit();
-				}
-				$votePlusJoueur=$resPlusJoueur->fetch();
-				$vue->configurer('nb_votes_plus_joueur',$votePlusJoueur['vote_plus']);
-				
-				$reqMoinsJoueur="SELECT MIN(C.message_id_membre), COUNT(V.idMessage) AS vote_moins FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=-1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$donnee['idMembre']};";
-				$resMoinsJoueur=$bdd->query($reqMoinsJoueur);
-				if ($resMoinsJoueur==false){
-					echo "erreur requete resPlus : $reqMoinsAdverse"; 
-					exit();
-				}
-				$voteMoinsJoueur=$resMoinsJoueur->fetch();
-				$vue->configurer('nb_votes_moins_joueur',$voteMoinsJoueur['vote_moins']);
-				$final_joueur=($votePlusJoueur['vote_plus'])-($voteMoinsJoueur['vote_moins']);
-				$vue->configurer('score_joueur',$final_joueur);
-				$pointJoueur=ceil(($final_joueur)/(ceil($nbArbitre['nbArbitre']/2)));
-				$vue->configurer('point_joueur',$pointJoueur);
+				$pointMin=$vue->calculPoints($final_Min,$nbArbitre['nbArbitre']);
+				$vue->configurer('point_joueur',$pointMin);
 				
 				
 				//Requete pour Joueur idMAX
-				$reqJoueurMax= "SELECT MAX(idMembre) AS idMembre FROM Role WHERE idPartie={$_SESSION['id_partie']} AND role=0";
-				$resJoueurMax=$bdd->query($reqJoueurMax);
-				if($resJoueurMax==false){
-					echo "erreur requete resJoueurMax : $reqJoueurMax";
-					exit();
-				}
-				$donneeMax=$resJoueurMax->fetch();
-				$reqPseudoMax="SELECT pseudo FROM Membres WHERE idMembre={$donneeMax['idMembre']}";
-				$resPseudoMax=$bdd->query($reqPseudoMax);
-				if($resPseudoMax==false){
-					echo "erreur requete resPseudoMax: $reqPseudoMax";
-					exit();
-				}
-				$pseudoMax=$resPseudoMax->fetch();
 				
-				
+				$donneeMax=$vue->getIdMax();
+				$pseudoMax=$vue->reqPseudo($donneeMax['idMembre']);				
 				$vue->configurer('pseudo_adversaire',$pseudoMax['pseudo']);
-				$vue->configurer('pseudo',"arbitrée ({$pseudoMin['pseudo']} vs {$pseudoMax['pseudo']})");
 				
-				$reqPlusAdverse="SELECT COUNT(V.idMessage) AS vote_plus FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$donneeMax['idMembre']};";
-				$resPlusAdverse=$bdd->query($reqPlusAdverse);
-				if ($resPlusAdverse==false){ 
-					echo "erreur requete resPlus : $reqPlusAdverse";
-					exit();
-				}
-				$votePlusAdverse=$resPlusAdverse->fetch();
-				$vue->configurer('nb_votes_plus_adversaire',$votePlusAdverse['vote_plus']);
+				$vue->configurer('pseudo',"arbitrée ({$pseudoMin['pseudo']} vs {$pseudoMax['pseudo']})");				
+
+				$votePlusMax=$vue->votePlus($donneeMax['idMembre']);
+				$vue->configurer('nb_votes_plus_adversaire',$votePlusMax['vote_plus']);				
+			
+				$voteMoinsMax=$vue->voteMoins($donneeMax['idMembre']);
+				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsMax['vote_moins']);
 				
-				$reqMoinsAdverse="SELECT COUNT(V.idMessage) AS vote_moins FROM Votes AS V JOIN Chat_messages AS C ON V.idMessage=C.message_id WHERE vote=-1 AND C.id_partie={$_SESSION['id_partie']} AND C.message_id_membre={$donneeMax['idMembre']};";
-				$resMoinsAdverse=$bdd->query($reqMoinsAdverse);
-				if ($resMoinsAdverse==false){
-					echo "erreur requete resPlus : $reqMoinsAdverse"; 
-					exit();
-				}
-				$voteMoinsAdverse=$resMoinsAdverse->fetch();
-				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsAdverse['vote_moins']);
-				$final_adverse=($votePlusAdverse['vote_plus'])-($voteMoinsAdverse['vote_moins']);
-				$vue->configurer('score_adversaire',$final_adverse);
-				$pointAdverse=ceil(($final_adverse)/(ceil($nbArbitre['nbArbitre']/2)));
-				$vue->configurer('point_adversaire',$pointAdverse);
+				$final_Max=($votePlusMax['vote_plus'])-($voteMoinsMax['vote_moins']);
+				$vue->configurer('score_adversaire',$final_Max);
 				
-				if ($final_joueur>$final_adverse){
-					$vue->configurer('statut',"Victoire de {$pseudoMin['pseudo']} ");
-				}
-				else if($final_adverse>$final_joueur){
-					$vue->configurer('statut',"Victoire de {$pseudoMax['pseudo']}");
-				}
-				else{
-					$vue->configurer('statut','Egalité !');
-				}
+				$pointMax=$vue->calculPoints($final_Max,$nbArbitre['nbArbitre']);
+				$vue->configurer('point_adversaire',$pointMax);
+				
+				$statut=$vue->statutFinalArbitre($final_Min,$pseudoMin['pseudo'],$final_Max,$pseudoMax['pseudo']);
+				$vue->configurer('statut',"$statut");
+				
 				
 			}
 		
