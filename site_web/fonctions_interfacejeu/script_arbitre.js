@@ -179,22 +179,3 @@ function compteur() {
 	xhr.open("GET", "fonctions_interfacejeu/arret_partie.php");
 	xhr.send();
 }
-
-// ========== ALERTE SI ON QUITTE LA PAGE ========== // 
-var confirmOnLeave = function(msg) {
-    window.onbeforeunload = function (e) {
-        e = e || window.event;
-        msg = msg || '';
- 
-        // For IE and Firefox
-        if (e) {e.returnValue = msg;}
- 
-        // For Chrome and Safari
-        return msg;
-    }; 
-};
-
-// message de confirmation générique du navigateur
-confirmOnLeave(); 
-// message de confirmation personnalisé
-confirmOnLeave('Si vous quittez cette page, vos votes octroyés seront définitivement perdus. Voulez vous tout de même quitter ?');

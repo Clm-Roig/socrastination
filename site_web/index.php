@@ -48,8 +48,7 @@
 /*----------------- INSCRIPTION ----------------- */
 		case("inscription") :
 			$vue=new Vue("v_inscription.html");	
-			break;
-			
+			break;			
 			
 /*----------------- INSCRIPTION VALIDEE----------------- */
 		case("inscription_validee") :
