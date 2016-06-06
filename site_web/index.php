@@ -182,10 +182,9 @@
 					$vue->configurer('statut',"$statut");			
 				}
 			}
-			else header('Location: index.php');		
+			else header('Location: index.php');	
+			$_SESSION['id_partie']=0;	
 			break;
-
-
 			
 /*----------------- CONNEXION ----------------- */			
 		
