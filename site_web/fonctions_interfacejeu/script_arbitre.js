@@ -197,4 +197,4 @@ var confirmOnLeave = function(msg) {
 // message de confirmation générique du navigateur
 confirmOnLeave(); 
 // message de confirmation personnalisé
-confirmOnLeave('Si vous quittez cette page, vous allez perdre la partie en cours. Voulez vous tout de même quitter ?');
+confirmOnLeave('Si vous quittez cette page, vos votes octroyés seront définitivement perdus. Voulez vous tout de même quitter ?');
