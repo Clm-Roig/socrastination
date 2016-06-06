@@ -217,7 +217,10 @@ function compteur() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			var res=xhr.responseText;	
-			if(res<=0) document.location.href="fonctions_interfacejeu/fin_partie.php";
+			if(res<=0) {
+				window.onbeforeunload.preventDefault();
+				document.location.href="fonctions_interfacejeu/fin_partie.php";
+			}
 			else {
 				document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
 				compteur();	
@@ -230,7 +233,7 @@ function compteur() {
 }
 
 // ========== ALERTE SI ON QUITTE LA PAGE ========== // 
-var confirmOnLeave = function(msg) {
+var confirmOnLeave = function quitter(msg) {
     window.onbeforeunload = function (e) {
         e = e || window.event;
         msg = msg || '';
