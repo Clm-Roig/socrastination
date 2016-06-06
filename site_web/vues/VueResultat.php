@@ -58,7 +58,7 @@
 		public function statutFinalJoueur($scoreJoueur,$idJoueur,$scoreAdversaire,$idAdversaire){
 			require("config.php");
 			if ($scoreJoueur>$scoreAdversaire){
-				$reqVictoire="UPDATE Membres SET nbPartiesGagnees=nbPartiesGagnees+1 WHERE idMembre={$idJoueur}; UPDATE Membres SET points=points+{$scoreJoueur} WHERE idMembre={$idJoueur}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idMembre};";
+				$reqVictoire="UPDATE Membres SET nbPartiesGagnees=nbPartiesGagnees+1 WHERE idMembre={$idJoueur}; UPDATE Membres SET points=points+{$scoreJoueur} WHERE idMembre={$idJoueur}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idJoueur};";
 				$resVictoire=$bdd->query($reqVictoire);
 				if ($resVictoire==false){
 					echo "erreur requete resVictoire : $reqVictoire";
@@ -68,7 +68,7 @@
 				return "Victoire !";	
 			}
 			else if($scoreAdversaire>$scoreJoueur){
-				$reqDefaite="UPDATE Membres SET points=points+{$scoreJoueur} WHERE idMembre={$idJoueur}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idMembre};";
+				$reqDefaite="UPDATE Membres SET points=points+{$scoreJoueur} WHERE idMembre={$idJoueur}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idJoueur};";
 				$resDefaite=$bdd->query($reqDefaite);
 				if ($resDefaite==false){
 					echo "erreur requete resDefaite : $reqDefaite";
@@ -78,7 +78,7 @@
 				
 			}
 			else{
-				$reqAddPoints="UPDATE Membres SET points=points+{$scoreJoueur} WHERE idMembre={$idJoueur}; UPDATE Membres SET points=points+{$scoreAdversaire} WHERE idMembre={$idAdversaire}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idMembre}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idAdversaire};";
+				$reqAddPoints="UPDATE Membres SET points=points+{$scoreJoueur} WHERE idMembre={$idJoueur}; UPDATE Membres SET points=points+{$scoreAdversaire} WHERE idMembre={$idAdversaire}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idJoueur}; UPDATE Membres SET nbTotalParties=nbTotalParties+1 WHERE idMembre={$idAdversaire};";
 				$resAddPoints=$bdd->query($reqAddPoints);
 				if ($resAddPoints==false){
 					echo "erreur requete resAddPoints : $reqAddPoints";
