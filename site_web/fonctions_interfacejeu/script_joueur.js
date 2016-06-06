@@ -218,7 +218,6 @@ function compteur() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			var res=xhr.responseText;	
 			if(res<=0) {
-				window.onbeforeunload.preventDefault();
 				document.location.href="fonctions_interfacejeu/fin_partie.php";
 			}
 			else {
