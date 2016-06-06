@@ -1,5 +1,4 @@
 <?php
-
 	class VueResultat extends Vue{
 				
 		
@@ -89,6 +88,7 @@
 				
 			}
 		}
+		
 		
 		/*public function setPoints($pointsJoueur,$idAdversaire,$pointsAdversaire){
 			require("config.php");
