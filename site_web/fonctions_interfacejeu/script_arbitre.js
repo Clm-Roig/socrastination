@@ -136,6 +136,8 @@ function actualiser(){
 			//Sauvegarde des anciennes valeurs
 			var old_id_j1 = document.getElementById('idj1').innerHTML;
 			var old_id_j2 = document.getElementById('idj2').innerHTML;
+			var old_pseudo_j1 = document.getElementById('pseudo_j1').innerHTML;
+			var old_pseudo_j2 = document.getElementById('pseudo_j2').innerHTML;
 			document.getElementById('pseudo_j1').innerHTML=r.pseudoj1;
 			document.getElementById('pseudo_j2').innerHTML=r.pseudoj2;
 			document.getElementById('idj1').innerHTML=r.idj1;
@@ -148,12 +150,12 @@ function actualiser(){
 			else {
 				//Sujet choisi + le joueur 1 a quitté 
 				if ( (old_id_j1 != -1) && (r.idj1 == -1) && (old_id_j1 != "{idj1}") ){
-					alert(r.pseudoj1+' a quitté la partie, cliquez sur ok pour être redirigé. salut');
+					alert(old_pseudo_j1+' a quitté la partie, cliquez sur ok pour être redirigé.');
 					document.location.href="fonctions_interfacejeu/quit.php?role=1";						
 				}
 				//Sujet choisi + le joueur 2 a quitté 
 				else if ( (old_id_j2 != -1) && (r.idj2 == -1) && (old_id_j2 != "{idj2}") ){
-					alert(r.pseudoj2+' a quitté la partie, cliquez sur ok pour être redirigé. coucou');
+					alert(old_pseudo_j1+' a quitté la partie, cliquez sur ok pour être redirigé.');
 					document.location.href="fonctions_interfacejeu/quit.php?role=1";						
 				}
 				else if ( (r.idj1 == -1) || (r.idj2 == -1) ){
