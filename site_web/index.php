@@ -23,7 +23,7 @@
 			$vue=new Vue("v_classement.html");	
 
 	   		// INTERROGATION 
-	   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY points DESC LIMIT 5");
+	   		$classement = $bdd -> query("SELECT * FROM Membres ORDER BY points DESC LIMIT 5;");
 	   		if ($classement==false) {
 	       			header('Location: index.php?action=erreur&num_erreur=1');
 	       			exit();
@@ -31,7 +31,7 @@
 	  
 			$i=1;
 	  		while(($info=$classement -> fetchobject())!=null){ 
-	       		$ps=$info->pseudo; 
+	       			$ps=$info->pseudo; 
 				$po=$info->points;
 				$tabmotclef=array(0=>"{pseudo".$i."}",1=>"{nbp".$i."}");
 				$tabvaleur=array(0=>$ps,1=>$po);
