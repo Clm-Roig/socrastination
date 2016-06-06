@@ -121,6 +121,7 @@ $("#poster").click(function(){
 	       		dataType : 'html',
 			data : 'message='+mess+'&id_adv='+id_adv,
 			success : function(){ 
+				actualiser();
 				//On efface le contenu après postage du message
 				document.getElementById('message').value='';  
 			}
@@ -148,7 +149,8 @@ function actualiser(){
 			document.getElementById('sujet').innerHTML=r.sujet;
 
 			// ========= CONDITIONS SUR LE BOUTON ENVOI, LE FORMULAIRE, LE MESSAGE AFFICHÉ ======== //
-
+			//Temporisation 
+			setTimeout("",200);	
 			//Formulaire "sujet" masqué de base à chaque appel
 			document.getElementById("choix_sujet").style.display='none';
 			//=== Mon tour ===/
@@ -163,7 +165,7 @@ function actualiser(){
 				//Mon tour + sujet choisi 
 				else {
 					//Mon tour + sujet choisi + l'adversaire à quitter : on sort
-					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) ){
+					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) && (old_id_adv!="{idj2}") ){
 						alert('Un adversaire a quitté la partie, cliquez sur ok pour être redirigé.');
 						document.location.href="fonctions_interfacejeu/quit.php?role=0";						
 					}
@@ -174,7 +176,7 @@ function actualiser(){
 					}
 					//Mon tour + sujet choisi + un adv présent 
 					else {
-						bouton.disabled=false;
+						setTimeout(function(){bouton.disabled=false;},500);	
 						document.getElementById("communication").innerHTML="A vous de jouer !";						
 					}
 				}
@@ -191,7 +193,7 @@ function actualiser(){
 				//Pas mon tour + sujet choisi 
 				else {
 					//Pas mon tour + sujet choisi + l'adversaire à quitter : on sort
-					if ( (old_id_adv != -1) && (old_id_adv != r.idj2) ){
+					if ((old_id_adv != -1) && (old_id_nav != r.idj2) && (old_id_adv != "{idj2}")){
 						alert('Un adversaire a quitté la partie, cliquez sur ok pour être redirigé.');
 						document.location.href="fonctions_interfacejeu/quit.php?role=0";						
 					}
