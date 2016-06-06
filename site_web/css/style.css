@@ -425,7 +425,7 @@ p.foot {
 	.message_adv, .message_moi {
 		margin-bottom : 1em;		
 		border-radius : 5px;
-		word-break: break-all;
+		word-break: auto;
 		box-shadow: 2px 2px 4px rgba(113, 66, 21, 0.35) inset;
 	}
 
