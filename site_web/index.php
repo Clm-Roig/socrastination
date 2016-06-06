@@ -131,7 +131,7 @@
 					$pointAdverse=$vue->calculPoints($final_adverse,$nbArbitre['nbArbitre']);
 					$vue->configurer('point_adversaire',$pointAdverse);
 								
-					$statut=$vue->statutFinalJoueur($final_joueur,$_SESSION['idMembre'],$final_adverse,$idAdverse);
+					$statut=$vue->statutFinalJoueur($pointJoueur,$_SESSION['idMembre'],$pointAdverse,$idAdverse);
 					$vue->configurer('statut',"$statut");
 				}
 				// cas arbitres
