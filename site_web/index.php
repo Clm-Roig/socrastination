@@ -57,7 +57,7 @@
 			$message="";
 			// REQUETE 
 			$mdp=md5("{$_POST['motDePasse']}");
-			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, nbDePoints, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0, 0);";
+			$req = "INSERT INTO Membres(pseudo, motDePasse, mail, points, nbPartiesGagnees, NbTotalParties) VALUES('{$_POST['pseudo']}', '{$mdp}', '{$_POST['mail']}', 0, 0, 0);";
 			$res=$bdd->query($req);
 			if($res!=false){
 				$message="Inscription validée.";
