@@ -110,6 +110,7 @@ function affichage() {
 // ================== ENVOI MESSAGE EN AJAX/JQUERY  ================== //
 $("#poster").click(function(){
 	var mess = document.getElementById("message").value.trim();	
+	mess = mess.replace("+","%2B");
 	var id_adv = document.getElementById('idj2').innerHTML;
 	if (mess != "") {
 		//On grise le bouton d'envoi
