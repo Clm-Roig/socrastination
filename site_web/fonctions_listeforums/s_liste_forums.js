@@ -16,10 +16,10 @@ function actualiser(numero) {
 	//Traitement du résultat du php
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {		//serveur ok + réponse reçue
-			var r=xhr.responseText;	//récupération du résultat
-			var nbJoueur=r.substring(0,1);
-			var nbArbitre=r.substring(2,3);
-			var sujet=r.substring(4);
+			var r=JSON.parse(xhr.responseText);     //récupération résultat JSON
+			var nbJoueur=r.nbj;
+           		var nbArbitre=r.nba;
+            		var sujet=r.sujet;
 			
 			// Ne pourrait-on pas plutot injecter un gros div avec tout le tableau rempli d'un seul coup ? Il faut que actualisation_forums.php renvoie du html.
 			document.getElementById('nbj'+numero).innerHTML = nbJoueur;

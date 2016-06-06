@@ -14,7 +14,7 @@
 		echo "Erreur requete nb joueurs : $req_joueur.";
 		exit();
 	}	
-	$nb_j= $res_joueur->fetchColumn();	//on compte le nombre de joueur (role=0) dans une partie
+	$nbj= $res_joueur->fetchColumn();	//on compte le nombre de joueur (role=0) dans une partie
 
 	//NB D'ARBITRES
 	$req_arbitre = 	"SELECT COUNT(*) AS nba FROM Role R
@@ -47,7 +47,11 @@
 	if ($res_sujet_tab['nomSujet']==null) $sujet = '<i class="partie_dispo">Partie disponible, sujet au choix.</i>';
 	else $sujet = '<p class="nom_sujet">'.$res_sujet_tab['nomSujet'].'</p>';
 
-	// MISE À JOUR DE LA PAGE 
-	// à faire : renvoyer du html, en chargeant une vue correspondant à une ligne du tableau des forums.
-	echo "$nb_j,$nba,$sujet";	
+	// ENVOI EN TABLEAU JSON
+	$tab = array(
+			"nbj"=>$nbj,
+			"nba"=>$nba,
+			"sujet"=>$sujet,
+		);	
+	echo json_encode($tab);	
 ?>
