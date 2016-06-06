@@ -5,11 +5,6 @@ $(window).ready(function() {
 	}, 1000);	 		
 });
 
-//Fenêtre fermée = on quitte 
-window.onbeforeunload = function (e) {
-	document.getElementById("quitter").click();	
-}
-
 // ========== FONCTION GENERALE ========== //
 //On stocke l'id du dernier message affiché 
 //Initialisation à -1 quand l'arbitre arrive pour la première fois

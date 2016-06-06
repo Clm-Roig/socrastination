@@ -14,11 +14,6 @@ $(window).ready(function() {
 	}, 1000);	 		
 });
 
-//Fenêtre fermée = on quitte 
-window.onbeforeunload = function (e) {
-	document.getElementById("quitter").click();	
-}
-
 //======================================//
 
 // ==== ENVOI DU SUJET ==== //
