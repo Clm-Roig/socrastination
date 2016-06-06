@@ -73,118 +73,117 @@
 /*----------------- RESULTAT ----------------- */
 
 		case("resultat") :
-			$vue =New VueResultat("v_pageresultat.html");  //$_SESSION['id_partie']
+			if($_SESSION['id_partie']!=0){
+				$vue =New VueResultat("v_pageresultat.html");  //$_SESSION['id_partie']
 			
-			$role=$vue->role();
-			$nbArbitre=$vue->nombreArbitre();
+				$role=$vue->role();
+				$nbArbitre=$vue->nombreArbitre();
 			
-			// Cas des Joueurs
-			if($role['role']==0){
-				$req="SELECT R.idMembre, M.pseudo FROM Role AS R JOIN Membres AS M ON R.idMembre = M.idMembre WHERE idPartie={$_SESSION['id_partie']} AND R.role={$role['role']};";//{$_SESSION['id_partie']}
-				$res=$bdd->query($req);
-				if ($res==false){
-					echo "erreur requete res : $req";
-					exit();
-				}
-				$vue->configurer('num_partie',$_SESSION['id_partie']);
-				while(($data=$res -> fetchobject())!=null){
-					if(($data->idMembre)!=($_SESSION['idMembre'])){
-						$idAdverse=$data->idMembre;
-						$vue->configurer('pseudo_adversaire',$data->pseudo);
-						$vue->configurer('pseudo',"contre {$data->pseudo}");
+				// Cas des Joueurs
+				if($role['role']==0){
+					$req="SELECT R.idMembre, M.pseudo FROM Role AS R JOIN Membres AS M ON R.idMembre = M.idMembre WHERE idPartie={$_SESSION['id_partie']} AND R.role={$role['role']};";//{$_SESSION['id_partie']}
+					$res=$bdd->query($req);
+					if ($res==false){
+						echo "erreur requete res : $req";
+						exit();
 					}
-					else{
-						$vue->configurer('pseudo_joueur',$data->pseudo);
-					}
-				}				
+					$vue->configurer('num_partie',$_SESSION['id_partie']);
+					while(($data=$res -> fetchobject())!=null){
+						if(($data->idMembre)!=($_SESSION['idMembre'])){
+							$idAdverse=$data->idMembre;
+							$vue->configurer('pseudo_adversaire',$data->pseudo);
+							$vue->configurer('pseudo',"contre {$data->pseudo}");
+						}
+						else{
+							$vue->configurer('pseudo_joueur',$data->pseudo);
+						}
+					}				
 				
 			
-				//Requete pour joueur
+					//Requete pour joueur
 				
-				$votePlusJoueur=$vue ->votePlus($_SESSION['idMembre']);
-				$vue->configurer('nb_votes_plus_joueur',$votePlusJoueur['vote_plus']);
+					$votePlusJoueur=$vue ->votePlus($_SESSION['idMembre']);
+					$vue->configurer('nb_votes_plus_joueur',$votePlusJoueur['vote_plus']);
 				
-				$voteMoinsJoueur=$vue->voteMoins($_SESSION['idMembre']);
-				$vue->configurer('nb_votes_moins_joueur',$voteMoinsJoueur['vote_moins']);
-				
-				
-				$final_joueur=($votePlusJoueur['vote_plus'])-($voteMoinsJoueur['vote_moins']);
-				$vue->configurer('score_joueur',$final_joueur);
-				
-				$pointJoueur=$vue->calculPoints($final_joueur,$nbArbitre['nbArbitre']);
-				$vue->configurer('point_joueur',$pointJoueur);
+					$voteMoinsJoueur=$vue->voteMoins($_SESSION['idMembre']);
+					$vue->configurer('nb_votes_moins_joueur',$voteMoinsJoueur['vote_moins']);
 				
 				
-				//Requete pour adverse
+					$final_joueur=($votePlusJoueur['vote_plus'])-($voteMoinsJoueur['vote_moins']);
+					$vue->configurer('score_joueur',$final_joueur);
 				
-				$votePlusAdverse=$vue->votePlus($idAdverse);
-				$vue->configurer('nb_votes_plus_adversaire',$votePlusAdverse['vote_plus']);
+					$pointJoueur=$vue->calculPoints($final_joueur,$nbArbitre['nbArbitre']);
+					$vue->configurer('point_joueur',$pointJoueur);
 				
 				
-				$voteMoinsAdverse=$vue->voteMoins($idAdverse);
-				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsAdverse['vote_moins']);
+					//Requete pour adverse
 				
-				$final_adverse=($votePlusAdverse['vote_plus'])-($voteMoinsAdverse['vote_moins']);
-				$vue->configurer('score_adversaire',$final_adverse);
+					$votePlusAdverse=$vue->votePlus($idAdverse);
+					$vue->configurer('nb_votes_plus_adversaire',$votePlusAdverse['vote_plus']);
 				
-				$pointAdverse=$vue->calculPoints($final_adverse,$nbArbitre['nbArbitre']);
-				$vue->configurer('point_adversaire',$pointAdverse);
+				
+					$voteMoinsAdverse=$vue->voteMoins($idAdverse);
+					$vue->configurer('nb_votes_moins_adversaire',$voteMoinsAdverse['vote_moins']);
+				
+					$final_adverse=($votePlusAdverse['vote_plus'])-($voteMoinsAdverse['vote_moins']);
+					$vue->configurer('score_adversaire',$final_adverse);
+				
+					$pointAdverse=$vue->calculPoints($final_adverse,$nbArbitre['nbArbitre']);
+					$vue->configurer('point_adversaire',$pointAdverse);
 								
-				$statut=$vue->statutFinalJoueur($final_joueur,$_SESSION['idMembre'],$final_adverse,$idAdverse);
-				$vue->configurer('statut',"$statut");
-			}
-			// cas arbitres
-			else{
+					$statut=$vue->statutFinalJoueur($final_joueur,$_SESSION['idMembre'],$final_adverse,$idAdverse);
+					$vue->configurer('statut',"$statut");
+				}
+				// cas arbitres
+				else{
 				
-				$vue->configurer('num_partie',$_SESSION['id_partie']);
+					$vue->configurer('num_partie',$_SESSION['id_partie']);
 				
-				//Requete pour Joueur idMIN
+					//Requete pour Joueur idMIN
 				
-				$donneeMin=$vue->getIdMin();			
-				$pseudoMin=$vue->reqPseudo($donneeMin['idMembre']);
-				$vue->configurer('pseudo_joueur',$pseudoMin['pseudo']);				
+					$donneeMin=$vue->getIdMin();			
+					$pseudoMin=$vue->reqPseudo($donneeMin['idMembre']);
+					$vue->configurer('pseudo_joueur',$pseudoMin['pseudo']);				
 			
-				$votePlusMin=$vue->votePlus($donneeMin['idMembre']);
-				$vue->configurer('nb_votes_plus_joueur',$votePlusMin['vote_plus']);
+					$votePlusMin=$vue->votePlus($donneeMin['idMembre']);
+					$vue->configurer('nb_votes_plus_joueur',$votePlusMin['vote_plus']);
 				
-				$voteMoinsMin=$vue->voteMoins($donneeMin['idMembre']);
-				$vue->configurer('nb_votes_moins_joueur',$voteMoinsMin['vote_moins']);
+					$voteMoinsMin=$vue->voteMoins($donneeMin['idMembre']);
+					$vue->configurer('nb_votes_moins_joueur',$voteMoinsMin['vote_moins']);
 				
-				$final_Min=($votePlusMin['vote_plus'])-($voteMoinsMin['vote_moins']);
-				$vue->configurer('score_joueur',$final_Min);
+					$final_Min=($votePlusMin['vote_plus'])-($voteMoinsMin['vote_moins']);
+					$vue->configurer('score_joueur',$final_Min);
 				
-				$pointMin=$vue->calculPoints($final_Min,$nbArbitre['nbArbitre']);
-				$vue->configurer('point_joueur',$pointMin);
+					$pointMin=$vue->calculPoints($final_Min,$nbArbitre['nbArbitre']);
+					$vue->configurer('point_joueur',$pointMin);
 				
 				
-				//Requete pour Joueur idMAX
+					//Requete pour Joueur idMAX
 				
-				$donneeMax=$vue->getIdMax();
-				$pseudoMax=$vue->reqPseudo($donneeMax['idMembre']);				
-				$vue->configurer('pseudo_adversaire',$pseudoMax['pseudo']);
+					$donneeMax=$vue->getIdMax();
+					$pseudoMax=$vue->reqPseudo($donneeMax['idMembre']);				
+					$vue->configurer('pseudo_adversaire',$pseudoMax['pseudo']);
 				
-				$vue->configurer('pseudo',"arbitrée ({$pseudoMin['pseudo']} vs {$pseudoMax['pseudo']})");				
+					$vue->configurer('pseudo',"arbitrée ({$pseudoMin['pseudo']} vs {$pseudoMax['pseudo']})");				
 
-				$votePlusMax=$vue->votePlus($donneeMax['idMembre']);
-				$vue->configurer('nb_votes_plus_adversaire',$votePlusMax['vote_plus']);				
+					$votePlusMax=$vue->votePlus($donneeMax['idMembre']);
+					$vue->configurer('nb_votes_plus_adversaire',$votePlusMax['vote_plus']);				
 			
-				$voteMoinsMax=$vue->voteMoins($donneeMax['idMembre']);
-				$vue->configurer('nb_votes_moins_adversaire',$voteMoinsMax['vote_moins']);
+					$voteMoinsMax=$vue->voteMoins($donneeMax['idMembre']);
+					$vue->configurer('nb_votes_moins_adversaire',$voteMoinsMax['vote_moins']);
 				
-				$final_Max=($votePlusMax['vote_plus'])-($voteMoinsMax['vote_moins']);
-				$vue->configurer('score_adversaire',$final_Max);
+					$final_Max=($votePlusMax['vote_plus'])-($voteMoinsMax['vote_moins']);
+					$vue->configurer('score_adversaire',$final_Max);
 				
-				$pointMax=$vue->calculPoints($final_Max,$nbArbitre['nbArbitre']);
-				$vue->configurer('point_adversaire',$pointMax);
+					$pointMax=$vue->calculPoints($final_Max,$nbArbitre['nbArbitre']);
+					$vue->configurer('point_adversaire',$pointMax);
 				
-				$statut=$vue->statutFinalArbitre($final_Min,$pseudoMin['pseudo'],$final_Max,$pseudoMax['pseudo']);
-				$vue->configurer('statut',"$statut");
-				
-				
+					$statut=$vue->statutFinalArbitre($final_Min,$pseudoMin['pseudo'],$final_Max,$pseudoMax['pseudo']);
+					$vue->configurer('statut',"$statut");			
+				}
 			}
-			
-		
-		break;
+			else header('Location: index.php');		
+			break;
 
 
 			
