@@ -1,16 +1,13 @@
-//On attend un peu avant de lancer la fonction pour que tout s'affiche en même temps
 //On lance la fonction toutes les secondes pour tous les forums
-
-	var timer=setInterval("actualiser(1)",1000);
-	var timer=setInterval("actualiser(2)",1000);	
-	var timer=setInterval("actualiser(3)",1000);
-	var timer=setInterval("actualiser(4)",1000);	
-	var timer=setInterval("actualiser(5)",1000);
-	var timer=setInterval("actualiser(6)",1000);	
-	var timer=setInterval("actualiser(7)",1000);
-	var timer=setInterval("actualiser(8)",1000);	
-	var timer=setInterval("actualiser(9)",1000);
-
+var timer=setInterval("actualiser(1)",1000);
+var timer=setInterval("actualiser(2)",1000);	
+var timer=setInterval("actualiser(3)",1000);
+var timer=setInterval("actualiser(4)",1000);	
+var timer=setInterval("actualiser(5)",1000);
+var timer=setInterval("actualiser(6)",1000);	
+var timer=setInterval("actualiser(7)",1000);
+var timer=setInterval("actualiser(8)",1000);	
+var timer=setInterval("actualiser(9)",1000);
 
 //Gif de chargement
 $(window).ready(function() {
