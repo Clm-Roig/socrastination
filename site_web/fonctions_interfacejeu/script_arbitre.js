@@ -175,7 +175,7 @@ function compteur() {
 			var res=xhr.responseText;	
 			if(res<=0) document.location.href="fonctions_interfacejeu/fin_partie.php";
 			else{
-				document.getElementById("communication").innerHTML="Partie terminée. Ils restent "+res+" secondes aux arbitres pour voter.";
+				document.getElementById("communication").innerHTML="Partie terminée. Il vous reste "+res+" secondes pour voter.";
 				compteur();	
 			}		
 		}
