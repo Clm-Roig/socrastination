@@ -77,6 +77,7 @@
 			
 				$role=$vue->role();
 				$nbArbitre=$vue->nombreArbitre();
+				$vue->configurer('nba',$nbArbitre['nbArbitre']);
 			
 				// Cas des Joueurs
 				if($role['role']==0){
