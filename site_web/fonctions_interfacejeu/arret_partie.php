@@ -45,6 +45,7 @@
 		if($time==null){
 			$req_up_time = 	"UPDATE Parties
 							SET time_fin_partie='$now'
+							WHERE idPartie={$_SESSION['id_partie']}
 							;";
 			$res_up_time = $bdd->query($req_up_time);
 			if(!$res_up_time){
