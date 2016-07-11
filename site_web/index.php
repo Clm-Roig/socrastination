@@ -4,7 +4,8 @@
 	require("vues/Vue.php");
 	require("vues/VueResultat.php");
 
-	//Header dynamique (loggué ou pas)
+/*------------------ HEADER ---------------------------------*/
+
 	if (!isset($_SESSION['pseudo'])) {
 		$header=file_get_contents("elements_communs/header2.php");
 	}
